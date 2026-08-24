@@ -10,6 +10,7 @@
 @endif
 
 <link href="{{ asset('public/css/styles.css') }}?v={{$settings->version}}" rel="stylesheet">
+<link href="{{ asset('public/css/ffm-brand.css') }}?v={{$settings->version}}" rel="stylesheet">
 <link href="{{ asset('public/js/plyr/plyr.css')}}?v={{$settings->version}}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{{ asset('public/js/reels/reels.css') }}?v={{$settings->version}}">
 

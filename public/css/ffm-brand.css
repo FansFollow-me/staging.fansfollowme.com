@@ -1,0 +1,778 @@
+/* ============================================
+   FANSFOLLOWME - Custom Brand Styles
+   Creator Platform for Fitness & Sports
+   ============================================ */
+
+/* Import modern fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ============================================
+   CSS VARIABLES - FFM Brand Colors
+   ============================================ */
+:root {
+  /* Primary brand colors */
+  --ffm-primary: #6C63FF;
+  --ffm-primary-dark: #5A52D5;
+  --ffm-primary-light: #8B83FF;
+  
+  /* Secondary/accent colors */
+  --ffm-accent: #FF6B6B;
+  --ffm-accent-dark: #EE5A5A;
+  --ffm-accent-light: #FF8E8E;
+  
+  /* Gradient colors */
+  --ffm-gradient-start: #6C63FF;
+  --ffm-gradient-mid: #8B5CF6;
+  --ffm-gradient-end: #A855F7;
+  
+  /* Dark theme colors */
+  --ffm-dark: #0F0F23;
+  --ffm-dark-lighter: #1A1A2E;
+  --ffm-dark-card: #16213E;
+  
+  /* Text colors */
+  --ffm-text-primary: #FFFFFF;
+  --ffm-text-secondary: #B8B8D4;
+  --ffm-text-muted: #6B7280;
+  
+  /* Background colors */
+  --ffm-bg-primary: #0F0F23;
+  --ffm-bg-secondary: #1A1A2E;
+  --ffm-bg-card: #16213E;
+  
+  /* Border colors */
+  --ffm-border: rgba(108, 99, 255, 0.2);
+  --ffm-border-light: rgba(255, 255, 255, 0.1);
+  
+  /* Shadows */
+  --ffm-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --ffm-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  
+  /* Border radius */
+  --ffm-radius: 12px;
+  --ffm-radius-lg: 16px;
+  --ffm-radius-xl: 24px;
+  
+  /* Transitions */
+  --ffm-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   GLOBAL OVERRIDES
+   ============================================ */
+
+/* Override body styles */
+body {
+  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  background-color: var(--ffm-bg-primary) !important;
+  color: var(--ffm-text-primary) !important;
+  line-height: 1.6;
+}
+
+/* Override headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  color: var(--ffm-text-primary) !important;
+}
+
+/* Override links */
+a {
+  color: var(--ffm-primary-light);
+  transition: var(--ffm-transition);
+}
+
+a:hover {
+  color: var(--ffm-primary);
+  text-decoration: none;
+}
+
+/* ============================================
+   NAVBAR STYLES
+   ============================================ */
+
+.navbar {
+  background: rgba(15, 15, 35, 0.95) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--ffm-border);
+  padding: 0.75rem 0;
+  transition: var(--ffm-transition);
+}
+
+.navbar.scroll {
+  background: rgba(15, 15, 35, 0.98) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-brand .logo {
+  height: 40px;
+  width: auto;
+  transition: var(--ffm-transition);
+}
+
+.navbar-brand:hover .logo {
+  transform: scale(1.05);
+}
+
+/* Nav links */
+.nav-link {
+  color: var(--ffm-text-secondary) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px;
+  transition: var(--ffm-transition);
+}
+
+.nav-link:hover {
+  color: var(--ffm-text-primary) !important;
+  background: rgba(108, 99, 255, 0.1);
+}
+
+/* Search bar */
+.search-bar {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid var(--ffm-border-light) !important;
+  color: var(--ffm-text-primary) !important;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  transition: var(--ffm-transition);
+}
+
+.search-bar:focus {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: var(--ffm-primary) !important;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+.search-bar::placeholder {
+  color: var(--ffm-text-muted);
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+/* Primary button */
+.btn-primary,
+.btn-main.btn-primary {
+  background: linear-gradient(135deg, var(--ffm-primary), var(--ffm-gradient-end)) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  transition: var(--ffm-transition);
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+}
+
+.btn-primary:hover,
+.btn-main.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+  background: linear-gradient(135deg, var(--ffm-primary-dark), var(--ffm-primary)) !important;
+}
+
+/* Light button (for dark backgrounds) */
+.btn-light,
+.btn-main.btn-light {
+  background: white !important;
+  color: var(--ffm-primary) !important;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: var(--ffm-transition);
+}
+
+.btn-light:hover,
+.btn-main.btn-light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Outline light button */
+.btn-outline-light,
+.btn-main.btn-outline-light {
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  background: transparent !important;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--ffm-transition);
+}
+
+.btn-outline-light:hover,
+.btn-main.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: white !important;
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   HERO SECTION (Jumbotron)
+   ============================================ */
+
+.jumbotron.homepage {
+  background: linear-gradient(135deg, var(--ffm-dark) 0%, var(--ffm-dark-lighter) 50%, var(--ffm-dark) 100%) !important;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 100px !important;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Add animated gradient overlay */
+.jumbotron.homepage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(108, 99, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Add subtle grid pattern */
+.jumbotron.homepage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(108, 99, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+.jumbotron.homepage .container {
+  position: relative;
+  z-index: 1;
+}
+
+.jumbotron.homepage h1 {
+  font-size: 3.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #fff 0%, #e0e0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.jumbotron.homepage p {
+  font-size: 1.25rem;
+  color: var(--ffm-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* Hero image styling */
+.jumbotron.homepage .img-center {
+  max-height: 500px;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  transition: var(--ffm-transition);
+}
+
+.jumbotron.homepage .img-center:hover {
+  transform: scale(1.02);
+}
+
+/* ============================================
+   SECTION STYLES
+   ============================================ */
+
+.section {
+  background: var(--ffm-bg-primary) !important;
+  padding: 80px 0;
+}
+
+.section:nth-child(even) {
+  background: var(--ffm-bg-secondary) !important;
+}
+
+.section h1,
+.section h2 {
+  font-size: 2.5rem !important;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  color: var(--ffm-text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Feature cards */
+.section .text-center img {
+  filter: brightness(0.9) saturate(1.1);
+  transition: var(--ffm-transition);
+}
+
+.section .text-center:hover img {
+  transform: translateY(-5px);
+  filter: brightness(1) saturate(1.2);
+}
+
+.section .text-center h4 {
+  color: var(--ffm-text-primary) !important;
+  margin-top: 1.5rem !important;
+}
+
+.section .text-center p {
+  color: var(--ffm-text-secondary);
+}
+
+/* ============================================
+   COUNTER SECTION
+   ============================================ */
+
+.bg-gradient.text-white {
+  background: linear-gradient(135deg, var(--ffm-primary) 0%, var(--ffm-gradient-end) 100%) !important;
+  padding: 60px 0;
+}
+
+.bg-gradient.text-white h3 {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+}
+
+.bg-gradient.text-white h5 {
+  font-weight: 500 !important;
+  opacity: 0.9;
+}
+
+/* ============================================
+   CREATOR CARDS
+   ============================================ */
+
+.card {
+  background: var(--ffm-bg-card) !important;
+  border: 1px solid var(--ffm-border) !important;
+  border-radius: var(--ffm-radius-lg) !important;
+  overflow: hidden;
+  transition: var(--ffm-transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ffm-shadow-lg);
+  border-color: var(--ffm-primary) !important;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  color: var(--ffm-text-primary) !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================
+   FOOTER STYLES
+   ============================================ */
+
+.footer_background_color {
+  background: var(--ffm-bg-secondary) !important;
+  border-top: 1px solid var(--ffm-border);
+}
+
+.footer_text_color {
+  color: var(--ffm-text-secondary) !important;
+}
+
+footer h6 {
+  color: var(--ffm-text-primary) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.link-footer {
+  color: var(--ffm-text-muted) !important;
+  transition: var(--ffm-transition);
+  display: inline-block;
+  padding: 0.25rem 0;
+}
+
+.link-footer:hover {
+  color: var(--ffm-primary-light) !important;
+  transform: translateX(5px);
+}
+
+.ico-social {
+  color: var(--ffm-text-muted) !important;
+  font-size: 1.25rem;
+  transition: var(--ffm-transition);
+}
+
+.ico-social:hover {
+  color: var(--ffm-primary) !important;
+  transform: translateY(-3px);
+}
+
+/* Copyright section */
+footer.py-3 {
+  background: var(--ffm-dark) !important;
+  border-top: 1px solid var(--ffm-border);
+}
+
+footer .copyright {
+  color: var(--ffm-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+
+.form-control {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--ffm-border-light) !important;
+  color: var(--ffm-text-primary) !important;
+  border-radius: var(--ffm-radius);
+  transition: var(--ffm-transition);
+}
+
+.form-control:focus {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--ffm-primary) !important;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+.form-control::placeholder {
+  color: var(--ffm-text-muted);
+}
+
+/* ============================================
+   EARNINGS SIMULATOR
+   ============================================ */
+
+.custom-range {
+  accent-color: var(--ffm-primary);
+}
+
+.custom-range::-webkit-slider-thumb {
+  background: var(--ffm-primary);
+}
+
+.custom-range::-webkit-slider-runnable-track {
+  background: rgba(108, 99, 255, 0.2);
+}
+
+/* ============================================
+   BOTTOM CTA SECTION
+   ============================================ */
+
+.jumbotron.text-white.text-center.bg-gradient {
+  background: linear-gradient(135deg, var(--ffm-dark) 0%, var(--ffm-dark-lighter) 50%, var(--ffm-dark) 100%) !important;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+.jumbotron.text-white.text-center.bg-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 50% 50%, rgba(108, 99, 255, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.jumbotron.text-white.text-center.bg-gradient h1 {
+  font-size: 2.5rem !important;
+  margin-bottom: 1rem;
+}
+
+.jumbotron.text-white.text-center.bg-gradient p {
+  font-size: 1.1rem;
+  color: var(--ffm-text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 991px) {
+  .jumbotron.homepage {
+    padding: 100px 0 60px !important;
+    min-height: auto;
+  }
+  
+  .jumbotron.homepage h1 {
+    font-size: 2.5rem !important;
+    text-align: center;
+  }
+  
+  .jumbotron.homepage p {
+    text-align: center;
+  }
+  
+  .jumbotron.homepage .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .section h1,
+  .section h2 {
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .jumbotron.homepage h1 {
+    font-size: 2rem !important;
+  }
+  
+  .jumbotron.homepage p {
+    font-size: 1rem;
+  }
+  
+  .bg-gradient.text-white h3 {
+    font-size: 2rem !important;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.jumbotron.homepage h1,
+.jumbotron.homepage p,
+.jumbotron.homepage .btn {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.jumbotron.homepage p {
+  animation-delay: 0.2s;
+}
+
+.jumbotron.homepage .btn {
+  animation-delay: 0.4s;
+}
+
+/* ============================================
+   SCROLLBAR STYLES
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ffm-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ffm-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ffm-primary-light);
+}
+
+/* ============================================
+   SELECTION STYLES
+   ============================================ */
+
+::selection {
+  background: var(--ffm-primary);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--ffm-primary);
+  color: white;
+}
+
+/* ============================================
+   HOMEPAGE SPECIFIC STYLES
+   ============================================ */
+
+/* Hero badge */
+.hero-badge .badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  background: rgba(108, 99, 255, 0.15) !important;
+  color: var(--ffm-primary-light) !important;
+  border: 1px solid rgba(108, 99, 255, 0.3);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, var(--ffm-primary-light), var(--ffm-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero stats */
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item h3 {
+  font-size: 1.75rem !important;
+  font-weight: 800 !important;
+  color: var(--ffm-primary-light) !important;
+  margin-bottom: 0.25rem;
+}
+
+.stat-item small {
+  font-size: 0.8rem;
+  color: var(--ffm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Hero image wrapper */
+.hero-image-wrapper {
+  position: relative;
+}
+
+.hero-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(ellipse, rgba(108, 99, 255, 0.2) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+/* Feature cards */
+.feature-card {
+  background: var(--ffm-bg-card);
+  border: 1px solid var(--ffm-border);
+  border-radius: var(--ffm-radius-lg);
+  transition: var(--ffm-transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--ffm-primary);
+  box-shadow: 0 10px 30px rgba(108, 99, 255, 0.15);
+}
+
+.feature-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(108, 99, 255, 0.1);
+  border-radius: 50%;
+  transition: var(--ffm-transition);
+}
+
+.feature-card:hover .feature-icon {
+  background: rgba(108, 99, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Simulator card */
+.simulator-card {
+  background: var(--ffm-bg-card);
+  border: 1px solid var(--ffm-border);
+  border-radius: var(--ffm-radius-lg);
+}
+
+/* Earnings result */
+.earnings-result {
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(168, 85, 247, 0.1));
+  border: 1px solid var(--ffm-border);
+  border-radius: var(--ffm-radius-lg);
+}
+
+/* Stat icon */
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+/* Badge styles */
+.badge.bg-primary.bg-opacity-10 {
+  background: rgba(108, 99, 255, 0.1) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .hero-stats {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .stat-item h3 {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .stat-item {
+    flex: 1;
+    min-width: 80px;
+  }
+}

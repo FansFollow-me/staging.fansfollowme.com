@@ -1,15 +1,19 @@
 <!-- FOOTER -->
 <div class="py-5 @auth d-none d-lg-block @endauth @if (auth()->check() && auth()->user()->dark_mode == 'off' || auth()->guest()) footer_background_color footer_text_color @else bg-white @endif @if (auth()->check() && auth()->user()->dark_mode == 'off' && $settings->footer_background_color == '#ffffff' || auth()->guest() && $settings->footer_background_color == '#ffffff' ) border-top @endif">
 <footer class="container">
-  <div class="row">
-    <div class="col-md-3">
+  <div class="row g-4">
+    <div class="col-md-4">
       <a href="{{url('/')}}">
         @if (auth()->check() && auth()->user()->dark_mode == 'on')
-          <img src="{{url('public/img', $settings->logo)}}" alt="{{$settings->title}}" class="max-w-125">
+          <img src="{{url('public/img', $settings->logo)}}" alt="{{$settings->title}}" class="max-w-125 mb-3">
         @else
-          <img src="{{url('public/img', $settings->logo_2)}}" alt="{{$settings->title}}" class="max-w-125">
+          <img src="{{url('public/img', $settings->logo_2)}}" alt="{{$settings->title}}" class="max-w-125 mb-3">
       @endif
       </a>
+      <p class="text-muted mb-4" style="max-width: 300px;">
+        The premier creator platform for fitness enthusiasts, athletes, and sports influencers. Monetize your passion and build your community.
+      </p>
+      
       @if ($settings->facebook != ''
           || $settings->twitter != ''
           || $settings->instagram != ''
@@ -24,7 +28,7 @@
           || $settings->threads != ''
           )
       <div class="w-100">
-        <span class="w-100">{{trans('general.keep_connect_with_us')}} {{trans('general.follow_us_social')}}</span>
+        <h6 class="text-uppercase mb-3">Follow Us</h6>
         <ul class="list-inline list-social m-0">
           @if ($settings->twitter != '')
           <li class="list-inline-item"><a href="{{$settings->twitter}}" target="_blank" class="ico-social"><i class="bi-twitter-x"></i></a></li>
@@ -40,39 +44,39 @@
 
           @if ($settings->pinterest != '')
           <li class="list-inline-item"><a href="{{$settings->pinterest}}" target="_blank" class="ico-social"><i class="fab fa-pinterest"></i></a></li>
-          @endif
+        @endif
 
           @if ($settings->youtube != '')
           <li class="list-inline-item"><a href="{{$settings->youtube}}" target="_blank" class="ico-social"><i class="fab fa-youtube"></i></a></li>
-          @endif
+        @endif
 
           @if ($settings->github != '')
           <li class="list-inline-item"><a href="{{$settings->github}}" target="_blank" class="ico-social"><i class="fab fa-github"></i></a></li>
-          @endif
+        @endif
 
           @if ($settings->tiktok != '')
           <li class="list-inline-item"><a href="{{$settings->tiktok}}" target="_blank" class="ico-social"><i class="bi-tiktok"></i></a></li>
-          @endif
+        @endif
 
           @if ($settings->snapchat != '')
           <li class="list-inline-item"><a href="{{$settings->snapchat}}" target="_blank" class="ico-social"><i class="bi-snapchat"></i></a></li>
-          @endif
+        @endif
 
           @if ($settings->telegram != '')
           <li class="list-inline-item"><a href="{{$settings->telegram}}" target="_blank" class="ico-social"><i class="bi-telegram"></i></a></li>
-          @endif
+        @endif
 
           @if ($settings->reddit != '')
           <li class="list-inline-item"><a href="{{$settings->reddit}}" target="_blank" class="ico-social"><i class="bi-reddit"></i></a></li>
-          @endif
+        @endif
 
           @if ($settings->linkedin != '')
           <li class="list-inline-item"><a href="{{$settings->linkedin}}" target="_blank" class="ico-social"><i class="bi-linkedin"></i></a></li>
-          @endif
+        @endif
 
           @if ($settings->threads != '')
           <li class="list-inline-item"><a href="{{$settings->threads}}" target="_blank" class="ico-social"><i class="bi-threads"></i></a></li>
-          @endif
+        @endif
         </ul>
       </div>
     @endif
@@ -86,7 +90,8 @@
     </li>
 
     </div>
-    <div class="col-md-3">
+    
+    <div class="col-md-2">
       <h6 class="text-uppercase">@lang('general.about')</h6>
       <ul class="list-unstyled">
         @foreach (Helper::pages() as $page)
@@ -125,6 +130,7 @@
         @endif
       </ul>
     </div>
+    
     @if (!$settings->disable_creators_section)
       @if ($categoriesCount != 0)
       <div class="col-md-3">
@@ -145,6 +151,7 @@
       </div>
       @endif
     @endif
+    
     <div class="col-md-3">
       <h6 class="text-uppercase">@lang('general.links')</h6>
       <ul class="list-unstyled">
@@ -196,10 +203,20 @@
       </div>
     @endauth
       <div class="col-md-12 copyright @auth d-none d-lg-block @endauth">
-        &copy; {{date('Y')}} {{$settings->title}}, {{__('emails.rights_reserved')}}
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+          <div>
+            &copy; {{date('Y')}} {{$settings->title}}, {{__('emails.rights_reserved')}}
+          </div>
+          <div class="mt-2 mt-md-0">
+            <span class="text-muted">
+              <i class="bi bi-heart-fill text-danger me-1"></i>
+              Built for Fitness Creators
+            </span>
+          </div>
+        </div>
 
         @if ($settings->show_address_company_footer)
-        <small class="ml-2">
+        <small class="d-block mt-2 text-muted">
           {{ $settings->company }} - {{ __('general.address') }}: {{ $settings->address }} {{ $settings->city }} {{ $settings->country }}
         </small>
         @endif
