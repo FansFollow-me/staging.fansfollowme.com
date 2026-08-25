@@ -1,0 +1,68 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ffm-app
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - APP_URL=http://localhost:8000
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=ffm
+      - DB_USERNAME=ffm
+      - DB_PASSWORD=ffm_secret
+      - CACHE_DRIVER=redis
+      - SESSION_DRIVER=redis
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
+    networks:
+      - ffm-network
+
+  db:
+    image: mysql:8.0
+    container_name: ffm-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_secret
+      - MYSQL_DATABASE=ffm
+      - MYSQL_USER=ffm
+      - MYSQL_PASSWORD=ffm_secret
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - ffm-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: ffm-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - ffm-network
+
+  node:
+    image: node:20-alpine
+    container_name: ffm-node
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    command: sh -c "npm install && npm run dev"
+    networks:
+      - ffm-network
+
+volumes:
+  db_data:
+
+networks:
+  ffm-network:
+    driver: bridge

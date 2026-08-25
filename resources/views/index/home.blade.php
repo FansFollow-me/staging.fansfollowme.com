@@ -1,145 +1,231 @@
 @extends('layouts.app')
 
 @section('content')
-  <!-- Hero Section -->
-  <div class="jumbotron homepage m-0">
+  {{-- ============================================
+       HERO SECTION - Match fansfollowme.com
+       ============================================ --}}
+  <section class="jumbotron homepage m-0">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-6 second">
-          <div class="hero-badge mb-4">
-            <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-pill">
-              <i class="bi bi-lightning-charge-fill me-2"></i>
-              Creator Platform for Fitness & Sports
-            </span>
-          </div>
-          
-          <h1 class="display-4 mb-4">
-            Turn Your Passion<br>
-            <span class="text-gradient">Into Profit</span>
+        {{-- Left column: Text content --}}
+        <div class="col-lg-6 second mb-5 mb-lg-0">
+          <h1 class="display-4 mb-3" style="font-size: 2.5rem; font-weight: 900; line-height: 1.1;">
+            {{ $settings->title }} — where fans become friends
           </h1>
-          
-          <p class="lead mb-4">
-            Join thousands of fitness creators, athletes, and sports influencers who are monetizing their content and building thriving communities on FansFollowMe.
-          </p>
-          
-          <div class="hero-stats d-flex gap-4 mb-4">
-            <div class="stat-item">
-              <h3 class="mb-0">10K+</h3>
-              <small class="text-muted">Active Creators</small>
-            </div>
-            <div class="stat-item">
-              <h3 class="mb-0">$2M+</h3>
-              <small class="text-muted">Paid to Creators</small>
-            </div>
-            <div class="stat-item">
-              <h3 class="mb-0">500K+</h3>
-              <small class="text-muted">Subscribers</small>
-            </div>
+
+          <div class="mb-4">
+            <p class="text-orange fw-semibold mb-3" style="font-size: 1rem;">
+              For Fitness, Bodybuilding and Martial Arts Creators
+            </p>
+            <p class="lead mb-0" style="font-size: 1rem; color: var(--ffm-text-secondary); line-height: 1.7;">
+              Built for fitness coaches, bodybuilders, nutrition experts, martial artists and combat sports creators to earn from fans worldwide through content, coaching and direct fan access.
+            </p>
           </div>
-          
-          <p>
+
+          <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
             @if (!$settings->disable_creators_section)
-              <a href="{{url('creators')}}" class="btn btn-lg btn-main btn-outline-light btn-w-mb px-4 mr-2" role="button">
-                <i class="bi bi-compass me-2"></i>{{__('general.explore')}}
+              <a href="{{url('creators')}}" class="btn btn-lg btn-main btn-primary px-4 d-flex align-items-center justify-content-center gap-2 animate-glow-pulse" role="button">
+                <i class="bi bi-search"></i>
+                <span>{{__('general.explore')}} Creators</span>
               </a>
             @endif
 
-            <a class="btn btn-lg btn-main btn-light btn-w px-4 toggleRegister btn-arrow" href="{{ $settings->registration_active == '1' ? url('signup') : url('login')}}">
-              <i class="bi bi-rocket-takeoff me-2"></i>{{__('general.getting_started')}}
+            <a class="btn btn-lg btn-main btn-light px-4 d-flex align-items-center justify-content-center gap-2 toggleRegister btn-arrow" href="{{ $settings->registration_active == '1' ? url('signup') : url('login')}}">
+              <i class="bi bi-person-plus"></i>
+              <span>{{__('general.getting_started')}}</span>
             </a>
-          </p>
+          </div>
         </div>
+
+        {{-- Right column: Hero image --}}
         <div class="col-lg-6 first text-center">
           <div class="hero-image-wrapper">
-            <img src="{{url('public/img', $settings->home_index)}}" class="img-center img-fluid" alt="FansFollowMe Creator Platform">
+            <img src="{{url('public/img', $settings->home_index)}}" 
+                 class="img-center img-fluid" 
+                 alt="{{$settings->title}} Creator Platform"
+                 style="width: 75%; max-width: 400px; margin: 0 auto;">
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- ./ Hero Section -->
+  </section>
+  {{-- ./ Hero Section --}}
 
-  <!-- Features Section -->
-  <div class="section py-5 py-large">
+  {{-- ============================================
+       FEATURES SECTION - Glass morphism cards
+       ============================================ --}}
+  <div class="section py-5">
     <div class="container">
       <div class="text-center mb-5">
-        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-pill mb-3">
-          Why Choose Us
-        </span>
-        <h1 class="txt-black">{{__('general.header_box_2')}}</h1>
-        <p class="text-muted mx-auto" style="max-width: 600px;">
-          {{__('general.desc_box_2')}}
+        <h1 class="txt-black" style="font-size: 2rem; font-weight: 900;">
+          One home for fitness creators and their fans
+        </h1>
+        <p class="mx-auto" style="max-width: 700px; color: var(--ffm-text-secondary);">
+          {{ $settings->title }} brings fighters, coaches, fitness influencers, sports professionals and actors with fitness-based content together on one platform, so fans can find them in one place and creators can build real relationships.
         </p>
       </div>
 
       <div class="row g-4">
-        <div class="col-lg-4">
-          <div class="feature-card text-center p-4 rounded-4 h-100">
-            <div class="feature-icon mb-4">
-              <img src="{{url('public/img', $settings->img_1)}}" class="img-center img-fluid" width="120">
+        {{-- Feature 1: Keep Revenue --}}
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card text-center h-100">
+            <div class="feature-icon mb-3">
+              <i class="bi bi-cash-stack"></i>
             </div>
-            <h4 class="mt-1 txt-black">{{__('general.card_1')}}</h4>
-            <p class="text-muted mt-1">{{__('general.desc_card_1')}}</p>
+            <h4>Keep 80%+ Revenue</h4>
+            <p class="mb-0">Keep more of what you earn with a creator-first revenue share.</p>
           </div>
         </div>
 
-        <div class="col-lg-4">
-          <div class="feature-card text-center p-4 rounded-4 h-100">
-            <div class="feature-icon mb-4">
-              <img src="{{url('public/img', $settings->img_2)}}" class="img-center img-fluid" width="120">
+        {{-- Feature 2: Revenue Streams --}}
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card text-center h-100">
+            <div class="feature-icon mb-3">
+              <i class="bi bi-lightning-charge"></i>
             </div>
-            <h4 class="mt-1 txt-black">{{__('general.card_2')}}</h4>
-            <p class="text-muted mt-1">{{__('general.desc_card_2')}}</p>
+            <h4>17+ Revenue Streams</h4>
+            <p class="mb-0">Earn through subscriptions, coaching, premium content, calls, tips and more.</p>
           </div>
         </div>
 
-        <div class="col-lg-4">
-          <div class="feature-card text-center p-4 rounded-4 h-100">
-            <div class="feature-icon mb-4">
-              <img src="{{url('public/img', $settings->img_3)}}" class="img-center img-fluid" width="120">
+        {{-- Feature 3: Global Payments --}}
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card text-center h-100">
+            <div class="feature-icon mb-3">
+              <i class="bi bi-globe2"></i>
             </div>
-            <h4 class="mt-1 txt-black">{{__('general.card_3')}}</h4>
-            <p class="text-muted mt-1">{{__('general.desc_card_3')}}</p>
+            <h4>Global Payments</h4>
+            <p class="mb-0">Accept payments from fans worldwide with flexible payment options.</p>
+          </div>
+        </div>
+
+        {{-- Feature 4: Direct Fan Connection --}}
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card text-center h-100">
+            <div class="feature-icon mb-3">
+              <i class="bi bi-chat-dots"></i>
+            </div>
+            <h4>Direct Fan Connection</h4>
+            <p class="mb-0">Build stronger fan relationships through private access and paid interactions.</p>
+          </div>
+        </div>
+
+        {{-- Feature 5: Mobile Content --}}
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card text-center h-100">
+            <div class="feature-icon mb-3">
+              <i class="bi bi-camera"></i>
+            </div>
+            <h4>Mobile Content Creation</h4>
+            <p class="mb-0">Create and upload content directly from your phone.</p>
+          </div>
+        </div>
+
+        {{-- Feature 6: Instant Messaging --}}
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card text-center h-100">
+            <div class="feature-icon mb-3">
+              <i class="bi bi-telephone"></i>
+            </div>
+            <h4>Instant Messaging</h4>
+            <p class="mb-0">Chat privately with fans in real time.</p>
+          </div>
+        </div>
+
+        {{-- Feature 7: Live Streaming --}}
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card text-center h-100">
+            <div class="feature-icon mb-3">
+              <i class="bi bi-broadcast"></i>
+            </div>
+            <h4>Live Streaming</h4>
+            <p class="mb-0">Go live to your audience from any device.</p>
+          </div>
+        </div>
+
+        {{-- Feature 8: QR Sign-Ups --}}
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card text-center h-100">
+            <div class="feature-icon mb-3">
+              <i class="bi bi-qr-code"></i>
+            </div>
+            <h4>In-Person QR Sign-Ups</h4>
+            <p class="mb-0">Let fans join and pay on the spot by scanning your unique QR code at events and gyms.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Create Profile Section -->
-  <div class="section py-5 py-large">
+  {{-- ============================================
+       FOR FANS SECTION
+       ============================================ --}}
+  <div class="section py-5">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-lg-6 text-center mb-4 mb-lg-0">
-          <img src="{{url('public/img', $settings->img_4)}}" alt="Create Your Profile" class="img-fluid" style="max-height: 400px;">
+      <div class="text-center mb-5">
+        <div class="d-inline-flex align-items-center px-4 py-2 rounded-pill mb-4" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(249, 115, 22, 0.3);">
+          <i class="bi bi-people text-orange me-2"></i>
+          <span class="text-orange fw-semibold" style="font-size: 0.875rem;">For Fans Globally | Pay with BTC/ETH/USDT/SOL</span>
         </div>
-        <div class="col-12 col-lg-6">
-          <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-pill mb-3">
-            Get Started Today
-          </span>
-          <h1 class="m-0 card-profile txt-black">{{__('general.header_box_3')}}</h1>
-          <p class="py-4 m-0 text-muted fs-5">{{__('general.desc_box_3')}}</p>
-          <a href="{{ $settings->registration_active == '1' ? url('signup') : url('login')}}" class="btn-arrow btn btn-lg btn-main btn-primary px-5 py-3">
-            <i class="bi bi-rocket-takeoff me-2"></i>{{__('general.getting_started')}}
-          </a>
+
+        <h1 style="font-size: 2rem; font-weight: 900;">
+          Get closer access to your favourite athletes & creators
+        </h1>
+        <p class="mx-auto" style="max-width: 700px; color: var(--ffm-text-secondary);">
+          {{ $settings->title }} lets you build real connections with UFC fighters, bodybuilders, martial artists, fitness models and other creators through private chats, exclusive content, calls and video sessions.
+        </p>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-md-3 col-6">
+          <div class="text-center p-4 rounded-4" style="background: linear-gradient(to bottom right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(249, 115, 22, 0.3);">
+            <i class="bi bi-chat-dots text-orange mb-2" style="font-size: 1.5rem;"></i>
+            <div class="fw-bold text-white mb-1">Personal Chats</div>
+            <small style="color: var(--ffm-text-secondary);">Direct messaging with your favorite athletes</small>
+          </div>
         </div>
+        <div class="col-md-3 col-6">
+          <div class="text-center p-4 rounded-4" style="background: linear-gradient(to bottom right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(168, 85, 247, 0.3);">
+            <i class="bi bi-lock text-purple mb-2" style="font-size: 1.5rem;"></i>
+            <div class="fw-bold text-white mb-1">Exclusive Content</div>
+            <small style="color: var(--ffm-text-secondary);">Premium photos, videos, and training materials</small>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="text-center p-4 rounded-4" style="background: linear-gradient(to bottom right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(249, 115, 22, 0.3);">
+            <i class="bi bi-telephone text-orange mb-2" style="font-size: 1.5rem;"></i>
+            <div class="fw-bold text-white mb-1">Phone Calls</div>
+            <small style="color: var(--ffm-text-secondary);">Voice conversations and coaching</small>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="text-center p-4 rounded-4" style="background: linear-gradient(to bottom right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(168, 85, 247, 0.3);">
+            <i class="bi bi-camera-video text-purple mb-2" style="font-size: 1.5rem;"></i>
+            <div class="fw-bold text-white mb-1">Video Sessions</div>
+            <small style="color: var(--ffm-text-secondary);">Face-to-face time with champions</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="{{ $settings->registration_active == '1' ? url('signup') : url('login')}}" class="btn btn-lg btn-main btn-primary px-5 d-inline-flex align-items-center gap-2">
+          <span>Sign Up as Fan - It's Free</span>
+          <i class="bi bi-arrow-right"></i>
+        </a>
       </div>
     </div>
   </div>
 
+  {{-- ============================================
+       FEATURED CREATORS SECTION
+       ============================================ --}}
   @if ($settings->widget_creators_featured == 'on')
     @if ($users->count() != 0)
-    <!-- Featured Creators Section -->
-    <div class="section py-5 py-large">
+    <div class="section py-5">
       <div class="container">
         <div class="text-center mb-5">
-          <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-pill mb-3">
-            Top Creators
-          </span>
-          <h1 class="txt-black">{{__('general.creators_featured')}}</h1>
-          <p class="text-muted mx-auto" style="max-width: 600px;">
-            {{__('general.desc_creators_featured')}}
-          </p>
+          <h1 class="txt-black" style="font-size: 2rem; font-weight: 900;">{{__('general.creators_featured')}}</h1>
+          <p style="color: var(--ffm-text-secondary);">{{__('general.desc_creators_featured')}}</p>
         </div>
         
         <div class="row">
@@ -151,8 +237,8 @@
 
           @if (!$settings->disable_creators_section)
             @if ($usersTotal > $users->total())
-            <div class="w-100 text-center mt-4 px-lg-0 px-3">
-              <a href="{{url('creators')}}" class="btn-arrow btn btn-lg btn-main btn-outline-primary btn-w px-4">
+            <div class="w-100 text-center mt-4">
+              <a href="{{url('creators')}}" class="btn btn-lg btn-main btn-outline-light px-4">
                 <i class="bi bi-people me-2"></i>{{__('general.view_all_creators')}}
               </a>
             </div>
@@ -164,14 +250,16 @@
     @endif
   @endif
 
+  {{-- ============================================
+       STATS COUNTER SECTION
+       ============================================ --}}
   @if ($settings->show_counter == 'on')
-  <!-- Stats Counter Section -->
   <div class="section py-5 bg-gradient text-white">
     <div class="container">
       <div class="row g-4">
         <div class="col-md-4">
           <div class="d-flex align-items-center justify-content-center p-4">
-            <div class="stat-icon me-4">
+            <div class="me-4">
               <i class="bi bi-people display-4"></i>
             </div>
             <div>
@@ -182,7 +270,7 @@
         </div>
         <div class="col-md-4">
           <div class="d-flex align-items-center justify-content-center p-4">
-            <div class="stat-icon me-4">
+            <div class="me-4">
               <i class="bi bi-images display-4"></i>
             </div>
             <div>
@@ -193,7 +281,7 @@
         </div>
         <div class="col-md-4">
           <div class="d-flex align-items-center justify-content-center p-4">
-            <div class="stat-icon me-4">
+            <div class="me-4">
               <i class="bi bi-cash-coin display-4"></i>
             </div>
             <div>
@@ -211,169 +299,48 @@
   </div>
   @endif
 
-  @if ($settings->earnings_simulator == 'on')
-  <!-- Earnings Simulator Section -->
-  <div class="section py-5 py-large">
-    <div class="container mb-4">
-      <div class="text-center mb-5">
-        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-pill mb-3">
-          Calculate Your Earnings
-        </span>
-        <h1 class="txt-black">{{__('general.earnings_simulator')}}</h1>
-        <p class="text-muted mx-auto" style="max-width: 600px;">
-          {{__('general.earnings_simulator_subtitle')}}
+  {{-- ============================================
+       BOTTOM CTA SECTION
+       ============================================ --}}
+  <section class="py-5" style="background: linear-gradient(to bottom right, #111827, #1f2937, #111827); position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 70%); pointer-events: none;"></div>
+    <div class="container text-center position-relative" style="z-index: 1;">
+      <div class="mx-auto p-5 rounded-4" style="max-width: 700px; background: linear-gradient(to bottom right, rgba(30, 41, 59, 0.6), rgba(51, 65, 85, 0.4)); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.6); box-shadow: 0 25px 50px -12px rgba(249, 115, 22, 0.15);">
+        <h1 style="font-size: 2rem; font-weight: 900; background: linear-gradient(to right, var(--ffm-orange-light), var(--ffm-orange), var(--ffm-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          Ready to start as a creator?
+        </h1>
+        <p class="mb-4" style="color: var(--ffm-text-secondary);">
+          Keep more of what you earn, connect with fans in one place and unlock new media and casting opportunities as you grow on {{ $settings->title }}.
         </p>
-      </div>
-      
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="simulator-card p-4 rounded-4">
-            <label for="rangeNumberFollowers" class="w-100 fw-semibold">
-              <i class="bi bi-people me-2"></i>{{ __('general.number_followers') }}
-              <span class="float-end badge bg-primary">
-                #<span id="numberFollowers">1000</span>
-              </span>
-            </label>
-            <input type="range" class="custom-range" value="0" min="1000" max="1000000" id="rangeNumberFollowers" onInput="$('#numberFollowers').html($(this).val())">
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="simulator-card p-4 rounded-4">
-            <label for="rangeMonthlySubscription" class="w-100 fw-semibold">
-              <i class="bi bi-tag me-2"></i>{{ __('general.monthly_subscription_price') }}
-              <span class="float-end badge bg-primary">
-                {{ $settings->currency_position == 'left' ? $settings->currency_symbol : null }}
-                <span id="monthlySubscription">{{ $settings->min_subscription_amount }}</span>
-                {{ $settings->currency_position == 'right' ? $settings->currency_symbol : null }}
-              </span>
-            </label>
-            <input type="range" class="custom-range" value="0" onInput="$('#monthlySubscription').html($(this).val())" min="{{ $settings->min_subscription_amount }}" max="{{ $settings->max_subscription_amount }}" id="rangeMonthlySubscription">
-          </div>
-        </div>
-
-        <div class="col-md-12 text-center mt-4">
-          <div class="earnings-result p-4 rounded-4">
-            <h3 class="fw-light mb-3">{{__('general.earnings_simulator_subtitle_2')}}</h3>
-            <div class="display-4 fw-bold text-primary mb-2">
-              <span id="estimatedEarn"></span>
-              <small class="fs-5 opacity-75">{{$settings->currency_code}}</small>
-            </div>
-            <p class="text-muted mb-1">{{ __('general.per_month') }}*</p>
-            <small class="d-block text-muted">* {{__('general.earnings_simulator_subtitle_3')}}</small>
-            @if ($settings->fee_commission != 0)
-              <small class="d-block text-muted mt-1">* {{__('general.include_platform_fee', ['percentage' => $settings->fee_commission])}}</small>
-            @endif
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  @endif
-
-  <!-- Bottom CTA Section -->
-  <div class="jumbotron m-0 text-white text-center bg-gradient">
-    <div class="container position-relative">
-      <h1 class="display-5 fw-bold mb-3">{{__('general.head_title_bottom')}}</h1>
-      <p class="fs-5 mb-4 opacity-90">{{__('general.head_title_bottom_desc')}}</p>
-      <p>
-        @if (!$settings->disable_creators_section)
-          <a href="{{url('creators')}}" class="btn btn-lg btn-main btn-outline-light btn-w-mb px-4 mr-2" role="button">
-            <i class="bi bi-compass me-2"></i>{{__('general.explore')}}
-          </a>
-        @endif
-        <a class="btn-arrow btn btn-lg btn-main btn-light btn-w px-4 toggleRegister" href="{{ $settings->registration_active == '1' ? url('signup') : url('login')}}" role="button">
-          <i class="bi bi-rocket-takeoff me-2"></i>{{__('general.getting_started')}}
+        <a href="{{ $settings->registration_active == '1' ? url('signup') : url('login')}}" class="btn btn-lg btn-main btn-primary px-5 rounded-pill">
+          <span>{{__('general.getting_started')}}</span>
         </a>
-      </p>
+      </div>
     </div>
-  </div>
+  </section>
 
 @endsection
 
 @section('javascript')
-
-  @if ($settings->earnings_simulator == 'on')
+  @if (session('success_verify'))
   <script type="text/javascript">
-
-  function decimalFormat(nStr)
-  {
-    @if ($settings->decimal_format == 'dot')
-     var $decimalDot = '.';
-     var $decimalComma = ',';
-     @else
-     var $decimalDot = ',';
-     var $decimalComma = '.';
-     @endif
-
-     @if ($settings->currency_position == 'left')
-     var currency_symbol_left = '{{$settings->currency_symbol}}';
-     var currency_symbol_right = '';
-     @else
-     var currency_symbol_right = '{{$settings->currency_symbol}}';
-     var currency_symbol_left = '';
-     @endif
-
-      nStr += '';
-      var x = nStr.split('.');
-      var x1 = x[0];
-      var x2 = x.length > 1 ? $decimalDot + x[1] : '';
-      var rgx = /(\d+)(\d{3})/;
-      while (rgx.test(x1)) {
-          var x1 = x1.replace(rgx, '$1' + $decimalComma + '$2');
-      }
-      return currency_symbol_left + x1 + x2 + currency_symbol_right;
-    }
-
-    function earnAvg() {
-      var fee = {{ $settings->fee_commission }};
-      @if($settings->currency_code == 'JPY')
-       $decimal = 0;
-      @else
-       $decimal = 2;
-      @endif
-
-      var monthlySubscription = parseFloat($('#rangeMonthlySubscription').val());
-      var numberFollowers = parseFloat($('#rangeNumberFollowers').val());
-
-      var estimatedFollowers = (numberFollowers * 5 / 100)
-      var followersAndPrice = (estimatedFollowers * monthlySubscription);
-      var percentageAvgFollowers = (followersAndPrice * fee / 100);
-      var earnAvg = followersAndPrice - percentageAvgFollowers;
-
-      return decimalFormat(earnAvg.toFixed($decimal));
-    }
-   $('#estimatedEarn').html(earnAvg());
-
-   $("#rangeNumberFollowers, #rangeMonthlySubscription").on('change', function() {
-
-     $('#estimatedEarn').html(earnAvg());
-
-   });
+    swal({
+      title: "{{ __('general.welcome') }}",
+      text: "{{ __('users.account_validated') }}",
+      type: "success",
+      confirmButtonText: "{{ __('users.ok') }}"
+    });
   </script>
-@endif
+  @endif
 
-@if (session('success_verify'))
+  @if (session('error_verify'))
   <script type="text/javascript">
-
-	swal({
-		title: "{{ __('general.welcome') }}",
-		text: "{{ __('users.account_validated') }}",
-		type: "success",
-		confirmButtonText: "{{ __('users.ok') }}"
-		});
-    </script>
-	 @endif
-
-	 @if (session('error_verify'))
-   <script type="text/javascript">
-	swal({
-		title: "{{ __('general.error_oops') }}",
-		text: "{{ __('users.code_not_valid') }}",
-		type: "error",
-		confirmButtonText: "{{ __('users.ok') }}"
-		});
-    </script>
-	 @endif
-
+    swal({
+      title: "{{ __('general.error_oops') }}",
+      text: "{{ __('users.code_not_valid') }}",
+      type: "error",
+      confirmButtonText: "{{ __('users.ok') }}"
+    });
+  </script>
+  @endif
 @endsection

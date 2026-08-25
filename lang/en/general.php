@@ -20,24 +20,24 @@ return array(
 
 	// Box #2 On Index
 	'header_box_2' => 'Start earning money now!',
-	'desc_box_2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut tortor rutrum massa efficitur tincidunt vel nec lacus.',
+	'desc_box_2' => 'Join thousands of fitness creators who are monetizing their content and building thriving communities on FansFollowMe.',
 	'card_1' => 'Create an free account',
-	'desc_card_1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+	'desc_card_1' => 'Create your profile, upload content, and start earning from your fans.',
 	'card_2' => 'Create great content',
-	'desc_card_2' => 'Consectetur adipiscing elit. Integer ut tortor rutrum massa.',
+	'desc_card_2' => 'Share your fitness journey, training tips, and exclusive content with your fans.',
 	'card_3' => 'Grow your market',
-	'desc_card_3' => 'Ipsum dolor sit amet, consectetur adipiscing elit.',
+	'desc_card_3' => 'Build your community, grow your subscriber base, and earn from your passion.',
 
 	// Box #3 On Index
 	'header_box_3' => 'Create your profile in few minutes',
-	'desc_box_3' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut tortor rutrum massa efficitur tincidunt vel nec lacus. Curabitur porta aliquet diam, eu gravida neque lacinia in',
+	'desc_box_3' => 'Join thousands of fitness creators who are monetizing their content and building thriving communities on FansFollowMe. Curabitur porta aliquet diam, eu gravida neque lacinia in',
 
 	'getting_started' => 'Getting started',
 	'creators_featured' => 'Creators Featured',
 	'desc_creators_featured' => 'The best creators selected by our team.',
 	'go_to_page' => 'Go to Page',
 	'are_you_ready' => 'Are you are ready?',
-	'desc_are_you_ready' => 'Lorem Ipsum eu gravida neque lacinia in. Praesent eget orci id sem commodo aliquet.',
+	'desc_are_you_ready' => 'Ready to start earning? Join FansFollowMe today and turn your fitness content into a thriving business.',
 	'keep_connect_with_us' => 'Keep connect with us!',
 	'follow_us_social' => 'Follow us on any of these platforms',
 	'search' 		            => 		'Search',

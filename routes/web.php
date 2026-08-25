@@ -117,6 +117,17 @@ Route::post('password/reset', [ResetPasswordController::class, 'reset']);
 Route::get('contact', [HomeController::class, 'contact']);
 Route::post('contact', [HomeController::class, 'contactStore'])->middleware('throttle:5,10');
 
+// FFM Custom Pages
+Route::view('fans', 'index.fans');
+Route::view('celebrities', 'index.celebrities');
+Route::view('casting', 'index.casting');
+Route::view('business', 'index.business');
+Route::view('support', 'index.support');
+Route::view('faq', 'index.faq');
+Route::view('privacy', 'index.privacy');
+Route::view('terms', 'index.terms');
+Route::view('cookies', 'index.cookies');
+
 // Blog
 Route::get('blog', [BlogController::class, 'blog']);
 Route::get('blog/post/{id}/{slug?}', [BlogController::class, 'post'])->name('seo');

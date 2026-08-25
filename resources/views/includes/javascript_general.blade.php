@@ -287,11 +287,11 @@ $('.btnMultipleUpload').on('click', function() {
 					 }
 
 					 if (result.check_account) {
-					 	$('#checkAccount').html(result.check_account).fadeIn(500);
+					 	$('#checkAccount').html(result.check_account).removeClass('d-none');
 
-						$('#btnLoginRegister').removeAttr('disabled');
-						$('#btnLoginRegister').find('i').removeClass('spinner-border spinner-border-sm align-middle mr-1');
-						$('#errorLogin').fadeOut(100);
+					 	$('#btnLoginRegister').removeAttr('disabled');
+					 	$('#btnLoginRegister').find('i').removeClass('spinner-border spinner-border-sm align-middle mr-1');
+					 	$('#errorLogin').addClass('d-none');
 						$("#formLoginRegister").reset();
 					 }
 
@@ -306,7 +306,7 @@ $('.btnMultipleUpload').on('click', function() {
 						 }
 
 						 $('#showErrorsLogin').html(error);
-						 $('#errorLogin').fadeIn(500);
+						 $('#errorLogin').removeClass('d-none');
 						 $('#btnLoginRegister').removeAttr('disabled');
 						 $('#btnLoginRegister').find('i').removeClass('spinner-border spinner-border-sm align-middle mr-1');
 

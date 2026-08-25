@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="{{ auth()->user()->dark_mode == 'on' ? 'dark' : 'light' }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,7 +38,7 @@
 
     <style>
      :root {
-       --color-default: #000000;
+       --color-default: #f97316;
     }
      </style>
 
@@ -50,7 +50,7 @@
 
     <main>
 
-      <div class="offcanvas offcanvas-start sidebar bg-dark text-white" tabindex="-1" id="sidebar-nav" data-bs-keyboard="false" data-bs-backdrop="false">
+      <div class="offcanvas offcanvas-start sidebar text-white" tabindex="-1" id="sidebar-nav" data-bs-keyboard="false" data-bs-backdrop="false" style="background: #0f172a !important;">
       <div class="offcanvas-header">
           <h5 class="offcanvas-title"><img src="{{ url('public/img', $settings->logo) }}" width="100" /></h5>
           <button type="button" class="btn-close btn-close-custom text-white toggle-menu d-lg-none" data-bs-dismiss="offcanvas" aria-label="Close">
@@ -584,13 +584,13 @@
       </div>
   </div>
 
-  <header class="py-3 mb-3 shadow-custom">
+  <header class="py-3 mb-3" style="background: rgba(17, 24, 39, 0.95); border-bottom: 1px solid rgba(255,255,255,0.08);">
 
     <div class="container-fluid d-grid gap-3 px-4 justify-content-end position-relative">
 
       <div class="d-flex align-items-center">
 
-        <a class="text-dark ms-2 animate-up-2 me-4" href="{{ url('/') }}">
+        <a class="text-white ms-2 animate-up-2 me-4" href="{{ url('/') }}">
         {{ __('admin.view_site') }} <i class="bi-arrow-up-right"></i>
         </a>
 
@@ -615,7 +615,7 @@
           </ul>
         </div>
 
-        <a class="ms-4 toggle-menu d-block d-lg-none text-dark fs-3 position-absolute start-0" data-bs-toggle="offcanvas" data-bs-target="#sidebar-nav" href="#">
+        <a class="ms-4 toggle-menu d-block d-lg-none text-white fs-3 position-absolute start-0" data-bs-toggle="offcanvas" data-bs-target="#sidebar-nav" href="#">
             <i class="bi-list"></i>
             </a>
       </div>
@@ -630,7 +630,7 @@
       </div>
   </div>
 
-  <footer class="admin-footer px-4 py-3 shadow-custom">
+  <footer class="admin-footer px-4 py-3" style="background: rgba(17, 24, 39, 0.95); border-top: 1px solid rgba(255,255,255,0.08); color: #9ca3af;">
     &copy; {{ $settings->title }} v{{$settings->version}} - {{ date('Y') }}
   </footer>
 

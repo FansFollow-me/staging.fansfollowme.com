@@ -43,7 +43,7 @@
 
 						<input type="hidden" name="isModal" id="isModal" value="true">
 
-						<div class="form-group mb-3 display-none" id="full_name">
+						<div class="form-group mb-3 d-none" id="full_name">
 							<div class="input-group input-group-alternative">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="feather icon-user"></i></span>
@@ -52,7 +52,7 @@
 							</div>
 						</div>
 
-					<div class="form-group mb-3 display-none" id="email">
+					<div class="form-group mb-3 d-none" id="email">
 						<div class="input-group input-group-alternative">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="feather icon-mail"></i></span>
@@ -94,7 +94,7 @@
 						</label>
 					</div>
 
-					<div class="custom-control custom-control-alternative custom-checkbox display-none" id="agree_gdpr">
+					<div class="custom-control custom-control-alternative custom-checkbox d-none" id="agree_gdpr">
 						<input class="custom-control-input" id="customCheckRegister" type="checkbox" name="agree_gdpr">
 							<label class="custom-control-label" for="customCheckRegister">
 								<span>
@@ -106,11 +106,11 @@
 							</label>
 					</div>
 
-					<div class="alert alert-danger display-none mb-0 mt-3" id="errorLogin">
+					<div class="alert alert-danger d-none mb-0 mt-3" id="errorLogin">
 							<ul class="list-unstyled m-0" id="showErrorsLogin"></ul>
 						</div>
 
-						<div class="alert alert-success display-none mb-0 mt-3" id="checkAccount"></div>
+						<div class="alert alert-success d-none mb-0 mt-3" id="checkAccount"></div>
 
 					<div class="text-center">
 						@if ($settings->captcha == 'on')

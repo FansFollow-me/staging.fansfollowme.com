@@ -2,3 +2,4 @@
 <link href="{{ asset('public/bootstrap/css/bootstrap.min.css') }}?v={{$settings->version}}" rel="stylesheet">
 <link href="{{ asset('public/css/bootstrap-icons.css') }}?v={{$settings->version}}" rel="stylesheet">
 <link href="{{ asset('public/admin/admin-styles.css') }}?v={{$settings->version}}" rel="stylesheet">
+<link href="{{ asset('public/css/ffm-brand.css') }}?v={{$settings->version}}" rel="stylesheet">

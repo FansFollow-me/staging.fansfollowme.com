@@ -1,145 +1,260 @@
 /* ============================================
    FANSFOLLOWME - Custom Brand Styles
-   Creator Platform for Fitness & Sports
+   PIXEL-PERFECT match to fansfollowme.com
+   Verified design tokens from live site computed styles
    ============================================ */
 
-/* Import modern fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+/* Import Inter font (matches fansfollowme.com) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* ============================================
    CSS VARIABLES - FFM Brand Colors
+   Exact values from fansfollowme.com
+   Override Bootstrap dark theme variables
    ============================================ */
-:root {
-  /* Primary brand colors */
-  --ffm-primary: #6C63FF;
-  --ffm-primary-dark: #5A52D5;
-  --ffm-primary-light: #8B83FF;
-  
-  /* Secondary/accent colors */
-  --ffm-accent: #FF6B6B;
-  --ffm-accent-dark: #EE5A5A;
-  --ffm-accent-light: #FF8E8E;
-  
-  /* Gradient colors */
-  --ffm-gradient-start: #6C63FF;
-  --ffm-gradient-mid: #8B5CF6;
-  --ffm-gradient-end: #A855F7;
-  
-  /* Dark theme colors */
-  --ffm-dark: #0F0F23;
-  --ffm-dark-lighter: #1A1A2E;
-  --ffm-dark-card: #16213E;
-  
-  /* Text colors */
-  --ffm-text-primary: #FFFFFF;
-  --ffm-text-secondary: #B8B8D4;
-  --ffm-text-muted: #6B7280;
-  
+:root,
+[data-bs-theme="dark"] {
+  /* Override Bootstrap dark theme body bg */
+  --bs-body-bg: #111827;
+  --bs-body-bg-rgb: 17, 24, 39;
+  --bs-body-color: #dee2e6;
+  --bs-body-color-rgb: 222, 226, 230;
+  --bs-emphasis-color: #fff;
+  --bs-heading-color: #fff;
+  --bs-border-color: rgba(255, 255, 255, 0.1);
+
+  /* Primary brand colors - Orange from fansfollowme.com */
+  --ffm-orange: #f97316;
+  --ffm-orange-dark: #ea580c;
+  --ffm-orange-light: #fb923c;
+  --ffm-orange-lighter: #fdba74;
+  --ffm-orange-rgb: 249, 115, 22;
+
+  /* Purple accent from fansfollowme.com */
+  --ffm-purple: #9333ea;
+  --ffm-purple-dark: #7c3aed;
+  --ffm-purple-light: #a855f7;
+  --ffm-purple-rgb: 147, 51, 234;
+
+  /* Gradient - exact from fansfollowme.com */
+  --ffm-gradient: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234));
+  --ffm-gradient-hover: linear-gradient(to right, rgb(234, 88, 12), rgb(124, 58, 237));
+
+  /* Dark theme colors - exact from fansfollowme.com */
+  --ffm-dark: #111827;
+  --ffm-dark-lighter: #1f2937;
+  --ffm-dark-card: #1f2937;
+
+  /* Text colors - exact from fansfollowme.com */
+  --ffm-text-primary: #ffffff;
+  --ffm-text-secondary: #d1d5db;
+  --ffm-text-muted: #9ca3af;
+
   /* Background colors */
-  --ffm-bg-primary: #0F0F23;
-  --ffm-bg-secondary: #1A1A2E;
-  --ffm-bg-card: #16213E;
-  
+  --ffm-bg-primary: #111827;
+  --ffm-bg-secondary: #1f2937;
+
   /* Border colors */
-  --ffm-border: rgba(108, 99, 255, 0.2);
-  --ffm-border-light: rgba(255, 255, 255, 0.1);
-  
+  --ffm-border: rgba(255, 255, 255, 0.1);
+  --ffm-border-hover: rgba(249, 115, 22, 0.5);
+
+  /* Glass effect */
+  --ffm-glass-bg: rgba(255, 255, 255, 0.05);
+  --ffm-glass-border: rgba(255, 255, 255, 0.1);
+
   /* Shadows */
-  --ffm-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  --ffm-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  
-  /* Border radius */
+  --ffm-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --ffm-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --ffm-shadow-orange: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+
+  /* Border radius - exact from fansfollowme.com */
   --ffm-radius: 12px;
   --ffm-radius-lg: 16px;
-  --ffm-radius-xl: 24px;
-  
+  --ffm-radius-xl: 16px;
+
   /* Transitions */
-  --ffm-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --ffm-transition: all 0.2s ease;
 }
 
 /* ============================================
-   GLOBAL OVERRIDES
+   GLOBAL OVERRIDES - Exact fansfollowme.com
    ============================================ */
 
-/* Override body styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  background-color: var(--ffm-bg-primary) !important;
-  color: var(--ffm-text-primary) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  background-color: #111827 !important;
+  background: #111827 !important;
+  color: #ffffff !important;
   line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
 }
 
-/* Override headings */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+/* Force body background via multiple selectors */
+html body,
+html[data-bs-theme="dark"] body,
+body {
+  background-color: #111827 !important;
+  background: #111827 !important;
+}
+
+h1 {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  line-height: 1.2;
+}
+
+h2 {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  line-height: 1.2;
+}
+
+h3 {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 20px !important;
   font-weight: 700 !important;
-  color: var(--ffm-text-primary) !important;
+  color: #ffffff !important;
 }
 
-/* Override links */
+h4, h5, h6 {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+
 a {
-  color: var(--ffm-primary-light);
+  color: var(--ffm-orange-light);
   transition: var(--ffm-transition);
-}
-
-a:hover {
-  color: var(--ffm-primary);
   text-decoration: none;
 }
 
+a:hover {
+  color: var(--ffm-orange);
+  text-decoration: none;
+}
+
+p {
+  color: #d1d5db;
+  font-size: 16px;
+}
+
 /* ============================================
-   NAVBAR STYLES
+   NAVBAR STYLES - Exact fansfollowme.com
+   Verified: header fixed, transparent, 72px
    ============================================ */
 
+header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 72px;
+}
+
 .navbar {
-  background: rgba(15, 15, 35, 0.95) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--ffm-border);
-  padding: 0.75rem 0;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  height: 72px;
   transition: var(--ffm-transition);
 }
 
 .navbar.scroll {
-  background: rgba(15, 15, 35, 0.98) !important;
+  background: rgba(17, 24, 39, 0.95) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--ffm-border) !important;
+}
+
+.navbar .container-fluid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .navbar-brand .logo {
-  height: 40px;
+  height: 32px;
   width: auto;
   transition: var(--ffm-transition);
 }
 
 .navbar-brand:hover .logo {
-  transform: scale(1.05);
+  opacity: 0.8;
 }
 
-/* Nav links */
+/* Nav links - exact fansfollowme.com: white, 600, 16px */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
 .nav-link {
-  color: var(--ffm-text-secondary) !important;
-  font-weight: 500;
-  font-size: 0.95rem;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
   padding: 0.5rem 1rem !important;
   border-radius: 8px;
   transition: var(--ffm-transition);
+  white-space: nowrap;
 }
 
 .nav-link:hover {
-  color: var(--ffm-text-primary) !important;
-  background: rgba(108, 99, 255, 0.1);
+  color: #fb923c !important;
+  background: transparent !important;
+}
+
+/* Override link-scroll styles from styles.css */
+.link-scroll a.nav-link:not(.btn) {
+  color: #ffffff !important;
+}
+
+.link-scroll a.nav-link:hover:not(.search):not(.btn),
+.link-scroll a.nav-link:active:not(.search):not(.btn),
+.link-scroll a.nav-link:focus:not(.search):not(.btn) {
+  color: #fb923c !important;
+}
+
+.p-nav a.nav-link:not(.btn) {
+  color: #ffffff !important;
+  font-size: 16px !important;
+}
+
+/* Override btn-arrow border-radius */
+.btn-arrow,
+.btn-arrow.btn {
+  border-radius: 12px !important;
+}
+
+.btn-arrow::after {
+  display: none !important;
 }
 
 /* Search bar */
 .search-bar {
   background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid var(--ffm-border-light) !important;
+  border: 1px solid var(--ffm-glass-border) !important;
   color: var(--ffm-text-primary) !important;
   border-radius: 50px;
   padding: 0.5rem 1rem;
@@ -148,8 +263,8 @@ a:hover {
 
 .search-bar:focus {
   background: rgba(255, 255, 255, 0.12) !important;
-  border-color: var(--ffm-primary) !important;
-  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+  border-color: var(--ffm-orange) !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
 }
 
 .search-bar::placeholder {
@@ -157,78 +272,131 @@ a:hover {
 }
 
 /* ============================================
-   BUTTON STYLES
+   BUTTON STYLES - Exact fansfollowme.com
+   Verified: border-radius 12px, padding 16px 32px, weight 700
    ============================================ */
 
-/* Primary button */
+/* Gradient button (primary CTA) - exact from fansfollowme.com */
 .btn-primary,
 .btn-main.btn-primary {
-  background: linear-gradient(135deg, var(--ffm-primary), var(--ffm-gradient-end)) !important;
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important;
   border: none !important;
-  color: white !important;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  padding: 16px 32px !important;
+  border-radius: 12px !important;
   transition: var(--ffm-transition);
-  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .btn-primary:hover,
 .btn-main.btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
-  background: linear-gradient(135deg, var(--ffm-primary-dark), var(--ffm-primary)) !important;
+  box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.4);
+  background: linear-gradient(to right, rgb(234, 88, 12), rgb(124, 58, 237)) !important;
 }
 
-/* Light button (for dark backgrounds) */
+/* Glass button (secondary CTA) - exact from fansfollowme.com */
 .btn-light,
 .btn-main.btn-light {
-  background: white !important;
-  color: var(--ffm-primary) !important;
-  font-weight: 600;
-  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  padding: 16px 32px !important;
+  border-radius: 12px !important;
   transition: var(--ffm-transition);
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .btn-light:hover,
 .btn-main.btn-light:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
 /* Outline light button */
 .btn-outline-light,
 .btn-main.btn-outline-light {
-  border: 2px solid rgba(255, 255, 255, 0.3) !important;
-  color: white !important;
-  background: transparent !important;
-  border-radius: 50px;
-  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  padding: 16px 32px !important;
   transition: var(--ffm-transition);
 }
 
 .btn-outline-light:hover,
 .btn-main.btn-outline-light:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: white !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
   transform: translateY(-2px);
 }
 
-/* ============================================
-   HERO SECTION (Jumbotron)
-   ============================================ */
-
-.jumbotron.homepage {
-  background: linear-gradient(135deg, var(--ffm-dark) 0%, var(--ffm-dark-lighter) 50%, var(--ffm-dark) 100%) !important;
-  position: relative;
-  overflow: hidden;
-  padding: 120px 0 100px !important;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
+/* Register button in navbar - exact fansfollowme.com */
+html[data-bs-theme="dark"] body .btn-register-menu,
+body .btn-register-menu,
+.btn-register-menu {
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  padding: 8px 24px !important;
+  transition: var(--ffm-transition);
+  font-size: 16px;
 }
 
-/* Add animated gradient overlay */
+.btn-register-menu:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.4);
+}
+
+/* Login button in navbar - exact fansfollowme.com */
+html[data-bs-theme="dark"] body .login-btn.btn,
+body .login-btn.btn,
+.login-btn.btn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  padding: 8px 24px !important;
+  transition: var(--ffm-transition);
+  font-size: 16px;
+}
+
+.login-btn.btn:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* ============================================
+   HERO SECTION - Exact fansfollowme.com
+   Verified: padding 224px top, 112px bottom
+   High specificity to override Bootstrap
+   ============================================ */
+
+html[data-bs-theme="dark"] body .jumbotron.homepage,
+body .jumbotron.homepage,
+.jumbotron.homepage {
+  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  background-color: #111827 !important;
+  position: relative;
+  overflow: hidden;
+  padding: 224px 0 112px !important;
+  min-height: 980px;
+  display: flex;
+  align-items: center;
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Background gradient overlay - exact from fansfollowme.com */
 .jumbotron.homepage::before {
   content: '';
   position: absolute;
@@ -236,52 +404,45 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(ellipse at 20% 50%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 0%, rgba(108, 99, 255, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-/* Add subtle grid pattern */
-.jumbotron.homepage::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    linear-gradient(rgba(108, 99, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(108, 99, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
+    radial-gradient(ellipse at 50% 0%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
   pointer-events: none;
 }
 
 .jumbotron.homepage .container {
   position: relative;
   z-index: 1;
+  max-width: 1280px;
 }
 
+/* Hero heading - exact fansfollowme.com: 36px, 900, white */
+html[data-bs-theme="dark"] body .jumbotron.homepage h1,
+body .jumbotron.homepage h1,
 .jumbotron.homepage h1 {
-  font-size: 3.5rem !important;
-  font-weight: 800 !important;
-  line-height: 1.1;
+  font-size: 36px !important;
+  font-weight: 900 !important;
+  line-height: 1.2;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #fff 0%, #e0e0ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff !important;
 }
 
-.jumbotron.homepage p {
-  font-size: 1.25rem;
-  color: var(--ffm-text-secondary);
+/* Subtitle - exact fansfollowme.com: orange rgb(251,146,60), weight 600 */
+.text-orange {
+  color: rgb(251, 146, 60) !important;
+  font-weight: 600 !important;
+}
+
+/* Hero subtitle text */
+.jumbotron.homepage .lead {
+  font-size: 18px;
+  color: #d1d5db;
   line-height: 1.7;
   margin-bottom: 2rem;
 }
 
-/* Hero image styling */
+/* Hero image */
 .jumbotron.homepage .img-center {
   max-height: 500px;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
@@ -293,66 +454,108 @@ a:hover {
 }
 
 /* ============================================
-   SECTION STYLES
+   SECTION STYLES - Exact fansfollowme.com
    ============================================ */
 
 .section {
-  background: var(--ffm-bg-primary) !important;
-  padding: 80px 0;
+  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  padding: 40px 0 24px;
+  position: relative;
+  overflow: hidden;
 }
 
-.section:nth-child(even) {
-  background: var(--ffm-bg-secondary) !important;
+.section .container {
+  position: relative;
+  z-index: 1;
 }
 
+/* Section headings - exact fansfollowme.com: 36px, 900, white */
 .section h1,
 .section h2 {
-  font-size: 2.5rem !important;
+  font-size: 36px !important;
+  font-weight: 900 !important;
   margin-bottom: 1rem;
+  color: #ffffff !important;
 }
 
 .section p {
-  color: var(--ffm-text-secondary);
-  font-size: 1.1rem;
-}
-
-/* Feature cards */
-.section .text-center img {
-  filter: brightness(0.9) saturate(1.1);
-  transition: var(--ffm-transition);
-}
-
-.section .text-center:hover img {
-  transform: translateY(-5px);
-  filter: brightness(1) saturate(1.2);
-}
-
-.section .text-center h4 {
-  color: var(--ffm-text-primary) !important;
-  margin-top: 1.5rem !important;
-}
-
-.section .text-center p {
-  color: var(--ffm-text-secondary);
+  color: #d1d5db;
+  font-size: 16px;
 }
 
 /* ============================================
-   COUNTER SECTION
+   FEATURE CARDS - Exact fansfollowme.com
+   Verified: bg rgba(255,255,255,0.05), border 1px solid rgba(255,255,255,0.1), radius 16px
    ============================================ */
 
-.bg-gradient.text-white {
-  background: linear-gradient(135deg, var(--ffm-primary) 0%, var(--ffm-gradient-end) 100%) !important;
-  padding: 60px 0;
+.feature-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  padding: 16px;
+  transition: var(--ffm-transition);
 }
 
-.bg-gradient.text-white h3 {
-  font-size: 2.5rem !important;
-  font-weight: 800 !important;
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--ffm-border-hover) !important;
+  box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.2);
 }
 
-.bg-gradient.text-white h5 {
-  font-weight: 500 !important;
-  opacity: 0.9;
+/* Feature card headings - exact fansfollowme.com: 20px, 700, white */
+.feature-card h4 {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin-top: 1rem;
+}
+
+.feature-card p {
+  color: #d1d5db;
+  font-size: 14px;
+}
+
+/* Feature icon wrapper */
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.feature-icon i,
+.feature-icon svg {
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* ============================================
+   FAN CARDS - Exact fansfollowme.com
+   Verified: gradient bg, border rgba(249,115,22,0.3), radius 12px
+   ============================================ */
+
+.fan-card {
+  background: linear-gradient(to right bottom, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)) !important;
+  border: 1px solid rgba(249, 115, 22, 0.3) !important;
+  border-radius: 12px !important;
+  padding: 16px;
+  transition: var(--ffm-transition);
+}
+
+.fan-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(249, 115, 22, 0.5) !important;
+}
+
+.fan-card-purple {
+  background: linear-gradient(to right bottom, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)) !important;
+  border: 1px solid rgba(168, 85, 247, 0.3) !important;
+  border-radius: 12px !important;
+  padding: 16px;
 }
 
 /* ============================================
@@ -360,8 +563,8 @@ a:hover {
    ============================================ */
 
 .card {
-  background: var(--ffm-bg-card) !important;
-  border: 1px solid var(--ffm-border) !important;
+  background: var(--ffm-dark-card) !important;
+  border: 1px solid var(--ffm-glass-border) !important;
   border-radius: var(--ffm-radius-lg) !important;
   overflow: hidden;
   transition: var(--ffm-transition);
@@ -370,7 +573,7 @@ a:hover {
 .card:hover {
   transform: translateY(-5px);
   box-shadow: var(--ffm-shadow-lg);
-  border-color: var(--ffm-primary) !important;
+  border-color: var(--ffm-border-hover) !important;
 }
 
 .card-body {
@@ -383,58 +586,174 @@ a:hover {
 }
 
 /* ============================================
-   FOOTER STYLES
+   COUNTER SECTION
+   ============================================ */
+
+.bg-gradient.text-white {
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important;
+  padding: 60px 0;
+}
+
+.bg-gradient.text-white h2 {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+}
+
+.bg-gradient.text-white h5 {
+  font-weight: 500 !important;
+  opacity: 0.9;
+}
+
+/* ============================================
+   BOTTOM CTA SECTION - Exact fansfollowme.com
+   ============================================ */
+
+.cta-section {
+  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  position: relative;
+  overflow: hidden;
+  padding: 32px 0;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* CTA card - glass morphism */
+.cta-card {
+  background: linear-gradient(to bottom right, rgba(30, 41, 59, 0.6), rgba(51, 65, 85, 0.4)) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(51, 65, 85, 0.6) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 50px -12px rgba(249, 115, 22, 0.15);
+}
+
+/* CTA heading - gradient text */
+.cta-section h2 {
+  background: linear-gradient(to right, var(--ffm-orange-light), var(--ffm-orange), var(--ffm-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 30px !important;
+  font-weight: 900 !important;
+}
+
+/* ============================================
+   FOOTER STYLES - Exact fansfollowme.com
    ============================================ */
 
 .footer_background_color {
-  background: var(--ffm-bg-secondary) !important;
-  border-top: 1px solid var(--ffm-border);
+  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  border-top: 1px solid var(--ffm-glass-border);
+  position: relative;
 }
 
 .footer_text_color {
   color: var(--ffm-text-secondary) !important;
 }
 
-footer h6 {
-  color: var(--ffm-text-primary) !important;
-  font-weight: 600 !important;
+footer h6,
+footer h3 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+}
+
+footer h6::after,
+footer h3::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234));
+  border-radius: 2px;
 }
 
 .link-footer {
-  color: var(--ffm-text-muted) !important;
+  color: #9ca3af !important;
   transition: var(--ffm-transition);
   display: inline-block;
   padding: 0.25rem 0;
+  font-size: 14px;
 }
 
 .link-footer:hover {
-  color: var(--ffm-primary-light) !important;
-  transform: translateX(5px);
+  color: #fb923c !important;
+  transform: translateX(4px);
 }
 
 .ico-social {
-  color: var(--ffm-text-muted) !important;
+  color: #9ca3af !important;
   font-size: 1.25rem;
   transition: var(--ffm-transition);
 }
 
 .ico-social:hover {
-  color: var(--ffm-primary) !important;
+  color: #fb923c !important;
   transform: translateY(-3px);
 }
 
 /* Copyright section */
 footer.py-3 {
-  background: var(--ffm-dark) !important;
-  border-top: 1px solid var(--ffm-border);
+  background: #111827 !important;
+  border-top: 1px solid var(--ffm-glass-border);
 }
 
 footer .copyright {
-  color: var(--ffm-text-muted);
-  font-size: 0.9rem;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* Footer gradient line */
+.footer-gradient-line {
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--ffm-orange), transparent);
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+/* ============================================
+   DROPDOWN MENU - Exact fansfollowme.com
+   ============================================ */
+
+.dropdown-menu {
+  background: rgba(17, 24, 39, 0.95) !important;
+  border: 1px solid #374151 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  padding: 8px 0;
+}
+
+.dropdown-item {
+  color: #d1d5db !important;
+  padding: 8px 16px;
+  font-size: 14px;
+  transition: var(--ffm-transition);
+}
+
+.dropdown-item:hover {
+  color: #fb923c !important;
+  background: rgba(31, 41, 55, 0.5) !important;
 }
 
 /* ============================================
@@ -443,7 +762,7 @@ footer .copyright {
 
 .form-control {
   background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid var(--ffm-border-light) !important;
+  border: 1px solid var(--ffm-glass-border) !important;
   color: var(--ffm-text-primary) !important;
   border-radius: var(--ffm-radius);
   transition: var(--ffm-transition);
@@ -451,8 +770,8 @@ footer .copyright {
 
 .form-control:focus {
   background: rgba(255, 255, 255, 0.08) !important;
-  border-color: var(--ffm-primary) !important;
-  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+  border-color: var(--ffm-orange) !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
 }
 
 .form-control::placeholder {
@@ -460,319 +779,1290 @@ footer .copyright {
 }
 
 /* ============================================
-   EARNINGS SIMULATOR
+   BADGE STYLES
    ============================================ */
 
-.custom-range {
-  accent-color: var(--ffm-primary);
-}
-
-.custom-range::-webkit-slider-thumb {
-  background: var(--ffm-primary);
-}
-
-.custom-range::-webkit-slider-runnable-track {
-  background: rgba(108, 99, 255, 0.2);
+.badge-gradient {
+  background: linear-gradient(to right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)) !important;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  color: #fb923c !important;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 9999px;
 }
 
 /* ============================================
-   BOTTOM CTA SECTION
+   UTILITY CLASSES
    ============================================ */
 
-.jumbotron.text-white.text-center.bg-gradient {
-  background: linear-gradient(135deg, var(--ffm-dark) 0%, var(--ffm-dark-lighter) 50%, var(--ffm-dark) 100%) !important;
-  position: relative;
-  overflow: hidden;
-  padding: 80px 0;
+.text-orange { color: rgb(251, 146, 60) !important; }
+.text-purple { color: var(--ffm-purple) !important; }
+.bg-gradient-ffm { background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important; }
+.border-glow { border-color: var(--ffm-border-hover) !important; }
+
+/* Glow animation for buttons */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(249, 115, 22, 0.5); }
 }
 
-.jumbotron.text-white.text-center.bg-gradient::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(ellipse at 50% 50%, rgba(108, 99, 255, 0.2) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.jumbotron.text-white.text-center.bg-gradient h1 {
-  font-size: 2.5rem !important;
-  margin-bottom: 1rem;
-}
-
-.jumbotron.text-white.text-center.bg-gradient p {
-  font-size: 1.1rem;
-  color: var(--ffm-text-secondary);
-  margin-bottom: 2rem;
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
 }
 
 /* ============================================
    RESPONSIVE ADJUSTMENTS
    ============================================ */
 
-@media (max-width: 991px) {
+@media (max-width: 768px) {
   .jumbotron.homepage {
-    padding: 100px 0 60px !important;
+    padding: 120px 0 60px !important;
     min-height: auto;
   }
-  
+
   .jumbotron.homepage h1 {
-    font-size: 2.5rem !important;
-    text-align: center;
+    font-size: 28px !important;
   }
-  
-  .jumbotron.homepage p {
-    text-align: center;
-  }
-  
-  .jumbotron.homepage .btn {
-    width: 100%;
-    margin-bottom: 0.5rem;
-  }
-  
+
   .section h1,
   .section h2 {
-    font-size: 2rem !important;
+    font-size: 28px !important;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 576px) {
   .jumbotron.homepage h1 {
-    font-size: 2rem !important;
+    font-size: 24px !important;
   }
-  
-  .jumbotron.homepage p {
-    font-size: 1rem;
-  }
-  
-  .bg-gradient.text-white h3 {
-    font-size: 2rem !important;
+
+  .jumbotron.homepage .lead {
+    font-size: 16px;
   }
 }
 
 /* ============================================
-   ANIMATIONS
+   OVERRIDES FOR BOOTLIGHT DEFAULTS
+   Force dark theme for all guests
    ============================================ */
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Override Bootstrap light defaults */
+.bg-white { background-color: #111827 !important; }
+.text-dark { color: #ffffff !important; }
+.border-top { border-color: rgba(255, 255, 255, 0.1) !important; }
+
+/* Ensure all sections have dark background */
+.jumbotron,
+.section,
+footer {
+  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+/* Fix any light backgrounds that leak through */
+.card,
+.modal-content {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
 }
 
-.jumbotron.homepage h1,
-.jumbotron.homepage p,
-.jumbotron.homepage .btn {
-  animation: fadeInUp 0.6s ease-out forwards;
+/* Ensure proper text colors everywhere */
+.txt-black {
+  color: #ffffff !important;
 }
 
-.jumbotron.homepage p {
-  animation-delay: 0.2s;
+/* Navbar background override for non-home pages */
+.navbar_background_color {
+  background: rgba(17, 24, 39, 0.95) !important;
 }
 
-.jumbotron.homepage .btn {
-  animation-delay: 0.4s;
+.link-scroll {
+  background: rgba(17, 24, 39, 0.95) !important;
+}
+
+/* Fix Bootstrap button overrides */
+.btn-arrow {
+  border-radius: 12px !important;
+}
+
+.btn-arrow::after {
+  display: none;
+}
+
+/* Ensure proper spacing */
+main {
+  padding-top: 72px;
+}
+
+/* Fix any remaining Bootstrap defaults */
+.shadow-custom {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* ============================================
-   SCROLLBAR STYLES
+   AUTH PAGES (LOGIN / REGISTER)
+   Dark card, Inter font, orange accents
    ============================================ */
 
+/* Auth page jumbotron */
+.jumbotron.home,
+.jumbotron.home.m-0 {
+  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  background-color: #111827 !important;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px !important;
+  padding-bottom: 60px !important;
+}
+
+/* Auth card - dark glass morphism */
+.jumbotron.home .card,
+.jumbotron.home .card.bg-white,
+.card.bg-white.shadow.border-0.b-radio-custom {
+  background: rgba(31, 41, 55, 0.95) !important;
+  background-color: rgba(31, 41, 55, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(20px);
+  color: #ffffff !important;
+}
+
+/* Auth card body */
+.jumbotron.home .card-body,
+.jumbotron.home .card-body.px-lg-5 {
+  color: #ffffff !important;
+}
+
+/* Auth headings */
+.jumbotron.home h4,
+.jumbotron.home .card h4 {
+  color: #ffffff !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+}
+
+/* Auth subtitle */
+.jumbotron.home small,
+.jumbotron.home .card small {
+  color: #9ca3af !important;
+}
+
+/* Auth form inputs */
+.jumbotron.home .form-control,
+.jumbotron.home .input-group .form-control {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  padding: 12px 16px;
+  font-size: 15px;
+}
+
+.jumbotron.home .form-control:focus {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: #f97316 !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.jumbotron.home .form-control::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Auth input group - icon prefix */
+.jumbotron.home .input-group-text {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #9ca3af !important;
+  border-radius: 12px 0 0 12px !important;
+}
+
+.jumbotron.home .input-group-append .input-group-text {
+  border-radius: 0 12px 12px 0 !important;
+}
+
+/* Auth checkbox */
+.jumbotron.home .custom-control-label span,
+.jumbotron.home label span {
+  color: #d1d5db !important;
+  font-size: 14px;
+}
+
+.jumbotron.home .custom-control-label a,
+.jumbotron.home label a {
+  color: #fb923c !important;
+}
+
+/* Auth primary button (Login / Register) */
+.jumbotron.home .btn-primary,
+.jumbotron.home button.btn-primary,
+.jumbotron.home #btnLoginRegister {
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  padding: 14px 32px !important;
+  border-radius: 12px !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.jumbotron.home .btn-primary:hover,
+.jumbotron.home button.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.4) !important;
+  background: linear-gradient(to right, rgb(234, 88, 12), rgb(124, 58, 237)) !important;
+}
+
+/* Auth social buttons */
+.jumbotron.home .btn-facebook {
+  background: rgba(24, 119, 242, 0.15) !important;
+  border: 1px solid rgba(24, 119, 242, 0.3) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  padding: 12px 24px !important;
+}
+
+.jumbotron.home .btn-facebook:hover {
+  background: rgba(24, 119, 242, 0.25) !important;
+}
+
+.jumbotron.home .btn-twitter {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  padding: 12px 24px !important;
+}
+
+.jumbotron.home .btn-google {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  padding: 12px 24px !important;
+}
+
+/* Auth "or" divider */
+.jumbotron.home .or,
+.jumbotron.home small.or {
+  color: #6b7280 !important;
+  font-size: 12px !important;
+  letter-spacing: 2px;
+}
+
+/* Auth "Back to Home" button */
+.jumbotron.home .btn-outline-secondary {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #d1d5db !important;
+  border-radius: 12px !important;
+  font-weight: 500 !important;
+}
+
+.jumbotron.home .btn-outline-secondary:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+/* Auth footer links (forgot pw, sign up) */
+.jumbotron.home .text-light,
+.jumbotron.home a.text-light {
+  color: #9ca3af !important;
+}
+
+.jumbotron.home .text-light:hover,
+.jumbotron.home a.text-light:hover {
+  color: #fb923c !important;
+}
+
+/* Auth alert styling */
+.jumbotron.home .alert-danger {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: #fca5a5 !important;
+  border-radius: 12px !important;
+}
+
+.jumbotron.home .alert-success {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  color: #86efac !important;
+  border-radius: 12px !important;
+}
+
+/* ============================================
+   DASHBOARD & CREATOR PAGES
+   Dark cards, stats, tables
+   ============================================ */
+
+/* Section wrapper */
+.section.section-sm {
+  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  padding-top: 100px;
+}
+
+/* Dashboard stat cards */
+.section .card,
+.section .card.shadow-sm {
+  background: rgba(31, 41, 55, 0.8) !important;
+  background-color: rgba(31, 41, 55, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  color: #ffffff !important;
+  transition: all 0.2s ease;
+}
+
+.section .card:hover {
+  border-color: rgba(249, 115, 22, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.section .card-body {
+  color: #ffffff !important;
+}
+
+.section .card-body h4,
+.section .card-body h3,
+.section .card-body h6 {
+  color: #ffffff !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.section .card-body small {
+  color: #9ca3af !important;
+}
+
+/* Dashboard icon styling */
+.icon-dashboard,
+.icon-dashboard-2 {
+  color: #f97316 !important;
+}
+
+.icon-wrap.icon--dashboard {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  opacity: 0.08;
+  color: #f97316;
+}
+
+/* Card footer */
+.section .card-footer {
+  background: rgba(17, 24, 39, 0.5) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 0 0 16px 16px !important;
+}
+
+.section .card-footer a {
+  color: #9ca3af !important;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.section .card-footer a:hover {
+  color: #fb923c !important;
+}
+
+/* Revenue stats */
+.text-revenue {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.text-success {
+  color: #22c55e !important;
+}
+
+.text-danger {
+  color: #ef4444 !important;
+}
+
+/* Dashboard tables */
+.section .table {
+  color: #d1d5db !important;
+  margin-bottom: 0;
+}
+
+.section .table thead th {
+  background: rgba(17, 24, 39, 0.5) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #9ca3af !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 16px;
+}
+
+.section .table tbody td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 12px 16px;
+  color: #d1d5db !important;
+  vertical-align: middle;
+}
+
+.section .table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.section .table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Badges in tables */
+.badge-success, .badge.badge-success {
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #22c55e !important;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  font-weight: 600;
+}
+
+.badge-warning, .badge.badge-warning {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #f59e0b !important;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  font-weight: 600;
+}
+
+.badge-danger, .badge.badge-danger {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  font-weight: 600;
+}
+
+.badge-info, .badge.badge-info {
+  background: rgba(59, 130, 246, 0.15) !important;
+  color: #3b82f6 !important;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-weight: 600;
+}
+
+.badge-pill {
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+/* Chart container */
+.section .card-body canvas {
+  border-radius: 8px;
+}
+
+/* Custom select (earnings filter) */
+.custom-select,
+.form-select {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.custom-select:focus,
+.form-select:focus {
+  border-color: #f97316 !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2) !important;
+}
+
+/* ============================================
+   SETTINGS PAGES
+   Dark forms, cards, sidebar nav
+   ============================================ */
+
+/* Settings sidebar cards */
+.cards-settings .card,
+.cards-settings .list-group-item {
+  background: rgba(31, 41, 55, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+.cards-settings .list-group-item.active {
+  background: linear-gradient(to right, rgba(249, 115, 22, 0.2), rgba(147, 51, 234, 0.2)) !important;
+  border-color: rgba(249, 115, 22, 0.4) !important;
+  color: #ffffff !important;
+}
+
+.cards-settings .list-group-item:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #fb923c !important;
+}
+
+/* Settings form controls */
+.section .form-control,
+.section .custom-select,
+.section .input-group .form-control {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  padding: 12px 16px;
+}
+
+.section .form-control:focus,
+.section .custom-select:focus {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: #f97316 !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.section .form-control:disabled {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: #6b7280 !important;
+}
+
+.section .form-control::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Settings input group text */
+.section .input-group-text {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #9ca3af !important;
+  border-radius: 12px 0 0 12px !important;
+}
+
+/* Settings save button */
+.section .btn-success,
+.section button.btn-success {
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  padding: 14px 32px !important;
+  border-radius: 12px !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease;
+}
+
+.section .btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.4) !important;
+}
+
+/* Settings checkbox */
+.section .custom-control-label h6,
+.section .custom-control-label {
+  color: #d1d5db !important;
+  font-weight: 400 !important;
+}
+
+/* Settings alerts */
+.section .alert-success {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  color: #86efac !important;
+  border-radius: 12px !important;
+}
+
+.section .alert-danger {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: #fca5a5 !important;
+  border-radius: 12px !important;
+}
+
+.section .alert-warning {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  color: #fde68a !important;
+  border-radius: 12px !important;
+}
+
+.section .alert-info {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  color: #93c5fd !important;
+  border-radius: 12px !important;
+}
+
+/* ============================================
+   ADMIN PANEL
+   Sidebar, cards, forms, tables
+   ============================================ */
+
+/* Admin body */
+body:has(.sidebar) {
+  background-color: #111827 !important;
+  background: #111827 !important;
+}
+
+/* Admin sidebar */
+.sidebar,
+.offcanvas.sidebar {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+  width: 260px;
+}
+
+.sidebar .offcanvas-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 20px;
+}
+
+.sidebar .offcanvas-body {
+  padding-top: 8px;
+}
+
+/* Admin sidebar nav links */
+.sidebar .nav-link {
+  color: #9ca3af !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  padding: 10px 20px !important;
+  border-radius: 8px !important;
+  margin: 2px 8px;
+  transition: all 0.2s ease;
+}
+
+.sidebar .nav-link:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link.text-white {
+  color: #ffffff !important;
+  background: linear-gradient(to right, rgba(249, 115, 22, 0.15), rgba(147, 51, 234, 0.15)) !important;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+.sidebar .nav-link .badge {
+  font-size: 11px;
+  padding: 3px 8px;
+}
+
+/* Admin main content area */
+.admin-content,
+main > .container,
+main > .container-fluid {
+  background: #111827 !important;
+}
+
+/* Admin cards */
+.card.shadow-custom,
+.card.shadow-custom.border-0 {
+  background: rgba(31, 41, 55, 0.8) !important;
+  background-color: rgba(31, 41, 55, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.card.shadow-custom .card-body {
+  color: #ffffff !important;
+}
+
+.card.shadow-custom .card-body h3,
+.card.shadow-custom .card-body h6 {
+  color: #ffffff !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.card.shadow-custom .card-body small {
+  color: #9ca3af !important;
+}
+
+/* Admin card footer */
+.card.shadow-custom .card-footer,
+.card-footer.bg-light {
+  background: rgba(17, 24, 39, 0.5) !important;
+  background-color: rgba(17, 24, 39, 0.5) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 0 0 16px 16px !important;
+}
+
+.card.shadow-custom .card-footer a,
+.card-footer.bg-light a {
+  color: #9ca3af !important;
+}
+
+.card.shadow-custom .card-footer a:hover,
+.card-footer.bg-light a:hover {
+  color: #fb923c !important;
+}
+
+/* Admin icon dashboard */
+.icon-wrap.icon--admin {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  opacity: 0.08;
+  color: #f97316;
+}
+
+/* Admin form controls */
+.form-control,
+.form-select,
+.custom-select {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+.custom-select:focus {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: #f97316 !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.form-control::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Admin input group */
+.input-group-text {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #9ca3af !important;
+}
+
+/* Admin tables */
+.table {
+  color: #d1d5db !important;
+}
+
+.table thead th {
+  background: rgba(17, 24, 39, 0.5) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #9ca3af !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table tbody td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  color: #d1d5db !important;
+  vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Admin buttons */
+.btn-primary,
+.btn-main.btn-primary {
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3) !important;
+}
+
+.btn-success {
+  background: linear-gradient(to right, rgb(34, 197, 94), rgb(16, 185, 129)) !important;
+  border: none !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+.btn-warning {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  color: #f59e0b !important;
+  border-radius: 12px !important;
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: #ef4444 !important;
+  border-radius: 12px !important;
+}
+
+.btn-info {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  color: #3b82f6 !important;
+  border-radius: 12px !important;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #d1d5db !important;
+  border-radius: 12px !important;
+}
+
+/* Admin badges */
+.badge.rounded-pill.bg-success {
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #22c55e !important;
+}
+
+.badge.rounded-pill.bg-warning {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #f59e0b !important;
+}
+
+.badge.rounded-pill.bg-info {
+  background: rgba(59, 130, 246, 0.15) !important;
+  color: #3b82f6 !important;
+}
+
+.badge.rounded-pill.bg-danger {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #ef4444 !important;
+}
+
+/* Admin alerts */
+.alert-success {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  color: #86efac !important;
+  border-radius: 12px !important;
+}
+
+.alert-danger {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: #fca5a5 !important;
+  border-radius: 12px !important;
+}
+
+.alert-warning {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  color: #fde68a !important;
+  border-radius: 12px !important;
+}
+
+.alert-info {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  color: #93c5fd !important;
+  border-radius: 12px !important;
+}
+
+/* Admin pagination */
+.pagination .page-link {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #d1d5db !important;
+  border-radius: 8px !important;
+  margin: 0 2px;
+}
+
+.pagination .page-link:hover {
+  background: rgba(249, 115, 22, 0.15) !important;
+  border-color: rgba(249, 115, 22, 0.3) !important;
+  color: #fb923c !important;
+}
+
+.pagination .page-item.active .page-link {
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+/* Admin modal */
+.modal-content {
+  background: #1f2937 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  color: #ffffff !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.modal-title {
+  color: #ffffff !important;
+}
+
+.btn-close {
+  filter: invert(1);
+}
+
+/* Admin dropdown */
+.dropdown-menu {
+  background: rgba(31, 41, 55, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-item {
+  color: #d1d5db !important;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #fb923c !important;
+}
+
+.dropdown-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Admin form labels */
+.form-label,
+label {
+  color: #d1d5db !important;
+  font-weight: 500;
+}
+
+/* Admin form check */
+.form-check-input {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.form-check-input:checked {
+  background-color: #f97316 !important;
+  border-color: #f97316 !important;
+}
+
+/* Admin nav tabs */
+.nav-tabs {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.nav-tabs .nav-link {
+  color: #9ca3af !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  padding: 12px 20px;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #ffffff !important;
+  border-bottom-color: rgba(249, 115, 22, 0.3) !important;
+}
+
+.nav-tabs .nav-link.active {
+  color: #ffffff !important;
+  background: transparent !important;
+  border-bottom-color: #f97316 !important;
+}
+
+/* Admin breadcrumb */
+.breadcrumb {
+  background: transparent !important;
+  padding: 0;
+}
+
+.breadcrumb-item a {
+  color: #9ca3af !important;
+}
+
+.breadcrumb-item.active {
+  color: #d1d5db !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: #6b7280 !important;
+}
+
+/* ============================================
+   GLOBAL DARK THEME ENFORCEMENT
+   Override ALL remaining Bootstrap light defaults
+   ============================================ */
+
+/* Force dark bg on everything */
+html, body,
+html[data-bs-theme="dark"],
+html[data-bs-theme="dark"] body {
+  background-color: #111827 !important;
+  color: #ffffff !important;
+}
+
+/* Override any remaining bg-white */
+.bg-white {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+/* Override bg-light */
+.bg-light {
+  background-color: rgba(31, 41, 55, 0.5) !important;
+}
+
+/* Override text-dark */
+.text-dark {
+  color: #ffffff !important;
+}
+
+/* Override text-muted to be readable */
+.text-muted {
+  color: #9ca3af !important;
+}
+
+/* Override border colors */
+.border {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.border-top {
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.border-bottom {
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Override close button */
+.close, .btn-close-custom {
+  color: #9ca3af !important;
+  opacity: 0.8;
+}
+
+.close:hover, .btn-close-custom:hover {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+/* Override popovers */
+.popover {
+  background: #1f2937 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.popover .popover-header {
+  background: rgba(17, 24, 39, 0.5) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+.popover .popover-body {
+  color: #d1d5db !important;
+}
+
+/* Override tooltips */
+.tooltip-inner {
+  background: #1f2937 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* Override datepicker */
+.datepicker.dropdown-menu {
+  background-color: #1f2937 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+/* Override spinner */
+.spinner-border {
+  border-color: rgba(249, 115, 22, 0.3) !important;
+  border-right-color: #f97316 !important;
+}
+
+/* Override list group */
+.list-group-item {
+  background: rgba(31, 41, 55, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #d1d5db !important;
+}
+
+.list-group-item.active {
+  background: linear-gradient(to right, rgba(249, 115, 22, 0.15), rgba(147, 51, 234, 0.15)) !important;
+  border-color: rgba(249, 115, 22, 0.3) !important;
+  color: #ffffff !important;
+}
+
+.list-group-item:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Override accordion */
+.accordion-item {
+  background: rgba(31, 41, 55, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.accordion-button {
+  background: rgba(31, 41, 55, 0.5) !important;
+  color: #ffffff !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background: rgba(249, 115, 22, 0.08) !important;
+  color: #fb923c !important;
+}
+
+.accordion-button::after {
+  filter: invert(1);
+}
+
+.accordion-body {
+  color: #d1d5db !important;
+}
+
+/* Override card in all contexts */
+.card {
+  background: rgba(31, 41, 55, 0.8) !important;
+  background-color: rgba(31, 41, 55, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+/* Override textarea */
+textarea.form-control {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+textarea.form-control:focus {
+  border-color: #f97316 !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2) !important;
+}
+
+/* Override offcanvas */
+.offcanvas {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+
+/* Override navbar on non-home pages */
+.navbar_background_color,
+.link-scroll {
+  background: rgba(17, 24, 39, 0.95) !important;
+}
+
+/* Override txt-black (Sponzy uses this for text) */
+.txt-black {
+  color: #ffffff !important;
+}
+
+/* Override font-montserrat links */
+.font-montserrat a {
+  color: #ffffff !important;
+}
+
+/* Override link-border */
+.link-border {
+  border-bottom: 1px solid rgba(249, 115, 22, 0.3);
+  color: #fb923c !important;
+}
+
+.link-border:hover {
+  border-bottom-color: #f97316;
+  color: #f97316 !important;
+}
+
+/* Override blocked class */
+.blocked {
+  background-color: transparent !important;
+}
+
+/* Override progress bar */
+.progress {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 8px;
+}
+
+.progress-bar {
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important;
+  border-radius: 8px;
+}
+
+/* Override custom switch */
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #f97316 !important;
+  border-color: #f97316 !important;
+}
+
+/* Override scrollbar for dark theme */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--ffm-dark);
+  background: #111827;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--ffm-primary);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--ffm-primary-light);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Override select2 dropdown */
+.select2-container--bootstrap-5 .select2-selection {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+.select2-container--bootstrap-5 .select2-dropdown {
+  background: #1f2937 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.select2-container--bootstrap-5 .select2-results__option {
+  color: #d1d5db !important;
+}
+
+.select2-container--bootstrap-5 .select2-results__option--highlighted {
+  background: rgba(249, 115, 22, 0.15) !important;
+  color: #ffffff !important;
 }
 
 /* ============================================
-   SELECTION STYLES
+   RESPONSIVE - Backend pages
    ============================================ */
 
-::selection {
-  background: var(--ffm-primary);
-  color: white;
-}
-
-::-moz-selection {
-  background: var(--ffm-primary);
-  color: white;
-}
-
-/* ============================================
-   HOMEPAGE SPECIFIC STYLES
-   ============================================ */
-
-/* Hero badge */
-.hero-badge .badge {
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  background: rgba(108, 99, 255, 0.15) !important;
-  color: var(--ffm-primary-light) !important;
-  border: 1px solid rgba(108, 99, 255, 0.3);
-}
-
-/* Text gradient */
-.text-gradient {
-  background: linear-gradient(135deg, var(--ffm-primary-light), var(--ffm-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Hero stats */
-.hero-stats {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-item h3 {
-  font-size: 1.75rem !important;
-  font-weight: 800 !important;
-  color: var(--ffm-primary-light) !important;
-  margin-bottom: 0.25rem;
-}
-
-.stat-item small {
-  font-size: 0.8rem;
-  color: var(--ffm-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Hero image wrapper */
-.hero-image-wrapper {
-  position: relative;
-}
-
-.hero-image-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
-  background: radial-gradient(ellipse, rgba(108, 99, 255, 0.2) 0%, transparent 70%);
-  filter: blur(40px);
-  z-index: -1;
-}
-
-/* Feature cards */
-.feature-card {
-  background: var(--ffm-bg-card);
-  border: 1px solid var(--ffm-border);
-  border-radius: var(--ffm-radius-lg);
-  transition: var(--ffm-transition);
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--ffm-primary);
-  box-shadow: 0 10px 30px rgba(108, 99, 255, 0.15);
-}
-
-.feature-icon {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(108, 99, 255, 0.1);
-  border-radius: 50%;
-  transition: var(--ffm-transition);
-}
-
-.feature-card:hover .feature-icon {
-  background: rgba(108, 99, 255, 0.2);
-  transform: scale(1.05);
-}
-
-/* Simulator card */
-.simulator-card {
-  background: var(--ffm-bg-card);
-  border: 1px solid var(--ffm-border);
-  border-radius: var(--ffm-radius-lg);
-}
-
-/* Earnings result */
-.earnings-result {
-  background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(168, 85, 247, 0.1));
-  border: 1px solid var(--ffm-border);
-  border-radius: var(--ffm-radius-lg);
-}
-
-/* Stat icon */
-.stat-icon {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-}
-
-/* Badge styles */
-.badge.bg-primary.bg-opacity-10 {
-  background: rgba(108, 99, 255, 0.1) !important;
-}
-
-/* Responsive adjustments */
-@media (max-width: 991px) {
-  .hero-stats {
-    justify-content: center;
-    gap: 1.5rem;
+@media (max-width: 768px) {
+  .jumbotron.home {
+    padding-top: 80px !important;
   }
-  
-  .stat-item h3 {
-    font-size: 1.5rem !important;
-  }
-}
 
-@media (max-width: 767px) {
-  .hero-stats {
-    flex-wrap: wrap;
-    gap: 1rem;
+  .section.section-sm {
+    padding-top: 80px;
   }
-  
-  .stat-item {
-    flex: 1;
-    min-width: 80px;
+
+  .sidebar {
+    width: 280px;
   }
 }

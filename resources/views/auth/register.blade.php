@@ -1,20 +1,26 @@
 @extends('layouts.app')
 
-@section('title') {{__('auth.sign_up')}} -@endsection
+@section('title') {{__('auth.sign_up')}} - @endsection
 
 @section('content')
   <div class="jumbotron home m-0 bg-gradient">
     <div class="container pt-lg-md">
       <div class="row justify-content-center">
         <div class="col-lg-5">
+          <a href="{{url('/')}}" class="btn btn-sm btn-outline-secondary mb-3"><i class="feather icon-arrow-left mr-1"></i> Back to Home</a>
+          
           <div class="card bg-white shadow border-0 b-radio-custom">
-
             <div class="card-body px-lg-5 py-lg-5">
 
+              <!-- FFM Logo -->
+              <div class="text-center mb-4">
+                <img src="{{ url('public/img', $settings->logo) }}" alt="{{$settings->title}}" height="40" class="mb-3">
+              </div>
+
               <h4 class="text-center mb-0 font-weight-bold">
-                {{__('auth.sign_up')}}
+                Create your account
               </h4>
-              <small class="btn-block text-center mt-2 mb-4">{{ __('auth.signup_welcome') }}</small>
+              <small class="btn-block text-center mt-2 mb-4">Join the #1 global fitness & martial arts platform</small>
 
               @if (session('status'))
                       <div class="alert alert-success">
@@ -60,7 +66,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="feather icon-user"></i></span>
                       </div>
-                      <input class="form-control" value="{{ old('name')}}" placeholder="{{__('auth.full_name')}}" name="name" type="text" required>
+                      <input class="form-control" value="{{ old('name')}}" placeholder="Full Name" name="name" type="text" required>
                     </div>
                   </div>
 
@@ -69,7 +75,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="feather icon-mail"></i></span>
                     </div>
-                    <input class="form-control" value="{{ old('email')}}" placeholder="{{__('auth.email')}}" name="email" type="text" required>
+                    <input class="form-control" value="{{ old('email')}}" placeholder="Email" name="email" type="text" required>
                   </div>
                 </div>
 
@@ -78,7 +84,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="iconmoon icon-Key"></i></span>
                     </div>
-                    <input name="password" type="password" class="form-control" placeholder="{{__('auth.password')}}" required>
+                    <input name="password" type="password" class="form-control" placeholder="Password (minimum 6 characters)" required>
                     <div class="input-group-append">
                       <span class="input-group-text c-pointer"><i class="feather icon-eye-off"></i></span>
                   </div>
@@ -89,10 +95,10 @@
                   <input class="custom-control-input" id="customCheckRegister" type="checkbox" name="agree_gdpr" required>
                     <label class="custom-control-label" for="customCheckRegister">
                       <span>
-                        {{__('admin.i_agree_gdpr')}}
-                        <a href="{{$settings->link_terms}}" target="_blank">{{__('admin.terms_conditions')}}</a>
+                        I agree to the
+                        <a href="{{$settings->link_terms}}" target="_blank">Terms of Service</a>
                         {{ __('general.and') }}
-                        <a href="{{$settings->link_privacy}}" target="_blank">{{__('admin.privacy_policy')}}</a>
+                        <a href="{{$settings->link_privacy}}" target="_blank">Privacy Policy</a>
                       </span>
                     </label>
                 </div>
@@ -110,7 +116,7 @@
                   {!! NoCaptcha::renderJs() !!}
 
                   @else
-                  <button type="submit" class="btn btn-primary mt-4 w-100" id="btnLoginRegister"><i></i> {{__('auth.sign_up')}}</button>
+                  <button type="submit" class="btn btn-primary mt-4 w-100" id="btnLoginRegister"><i></i> Create Account</button>
                   @endif
                 </div>
               </form>
@@ -126,7 +132,7 @@
           <div class="row mt-3">
             <div class="col-12 text-center">
               <a href="{{url('login')}}" class="text-light">
-                <small>{{__('auth.already_have_an_account')}}</small>
+                <small>Already have an account? Sign in here</small>
               </a>
             </div>
           </div>

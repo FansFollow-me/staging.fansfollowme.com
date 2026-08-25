@@ -1984,14 +1984,14 @@
 		var urlRegister = $('#formLoginRegister').attr('data-url-register');
 
 		element.toggleClass('register');
-		$('#errorLogin').hide();
+		$('#errorLogin').addClass('d-none');
 
 
 		if (element.hasClass('register')) {
 			element.html('<strong>' + alreadyAccount + '</strong>');
 			$('#btnLoginRegister').html('<i></i> ' + textRegister);
-			$('#full_name, #email, #agree_gdpr').show();
-			$('#username_email, #remember, #forgotPassword').hide();
+			$('#full_name, #email, #agree_gdpr').removeClass('d-none');
+			$('#username_email, #remember, #forgotPassword').addClass('d-none');
 			$('#formLoginRegister').attr('action', urlRegister);
 			$('#loginRegisterContinue').html(register);
 			$('.loginRegisterWith').html(sign_up_with);
@@ -1999,8 +1999,8 @@
 		} else {
 			element.html('<strong>' + notAccount + '</strong>');
 			$('#btnLoginRegister').html('<i></i> ' + textLogin);
-			$('#full_name, #email, #agree_gdpr').hide();
-			$('#username_email, #remember, #forgotPassword').show();
+			$('#full_name, #email, #agree_gdpr').addClass('d-none');
+			$('#username_email, #remember, #forgotPassword').removeClass('d-none');
 			$('#formLoginRegister').attr('action', urlLogin);
 			$('#loginRegisterContinue').html(login_continue);
 			$('.loginRegisterWith').html(login_with);
@@ -2009,11 +2009,20 @@
 
 	// Reset form Login/Register
 	$('#loginFormModal').on('hidden.bs.modal', function (e) {
-		$('#errorLogin').hide();
+		$('#errorLogin').addClass('d-none');
 		$('#formLoginRegister').trigger('reset');
 
-		if ($('#toggleLogin').hasClass('register')) {
-			$('#toggleLogin').trigger('click');
+		// Directly reset to login state instead of triggering a synthetic click
+		var toggleEl = $('#toggleLogin');
+		if (toggleEl.hasClass('register')) {
+			toggleEl.removeClass('register');
+			toggleEl.html('<strong>' + toggleEl.attr('data-not-account') + '</strong>');
+			$('#btnLoginRegister').html('<i></i> ' + toggleEl.attr('data-text-login'));
+			$('#full_name, #email, #agree_gdpr').addClass('d-none');
+			$('#username_email, #remember, #forgotPassword').removeClass('d-none');
+			$('#formLoginRegister').attr('action', $('#formLoginRegister').attr('data-url-login'));
+			$('#loginRegisterContinue').html(login_continue);
+			$('.loginRegisterWith').html(login_with);
 		}
 
 	});

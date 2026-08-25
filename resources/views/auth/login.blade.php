@@ -1,32 +1,38 @@
 @extends('layouts.app')
 
-@section('title') {{__('auth.login')}} -@endsection
+@section('title') {{__('auth.login')}} - @endsection
 
 @section('content')
   <div class="jumbotron home m-0 bg-gradient">
     <div class="container pt-lg-md">
       <div class="row justify-content-center">
         <div class="col-lg-5">
+          <a href="{{url('/')}}" class="btn btn-sm btn-outline-secondary mb-3"><i class="feather icon-arrow-left mr-1"></i> Back to Home</a>
+          
           <div class="card bg-white shadow border-0 b-radio-custom">
-
             <div class="card-body px-lg-5 py-lg-5">
+              
+              <!-- FFM Logo -->
+              <div class="text-center mb-4">
+                <img src="{{ url('public/img', $settings->logo) }}" alt="{{$settings->title}}" height="40" class="mb-3">
+              </div>
 
               <h4 class="text-center mb-0 font-weight-bold">
-                {{__('auth.welcome_back')}}
+                Login to continue
               </h4>
-              <small class="btn-block text-center mt-2 mb-4">{{ __('auth.login_welcome') }}</small>
+              <small class="btn-block text-center mt-2 mb-4">Welcome back to {{$settings->title}}</small>
 
               @if (session('login_required'))
                 <div class="alert alert-danger" id="dangerAlert">
                   <i class="fa fa-exclamation-triangle"></i> {{session('login_required')}}
                 </div>
-                	@endif
+                @endif
 
                   @if (session('error_social_login'))
                   <div class="alert alert-danger" id="dangerAlert">
                     <i class="fa fa-exclamation-triangle"></i> {{__('general.error')}} "{{ session('error_social_login') }}"
                   </div>
-                	@endif
+                @endif
 
               @include('errors.errors-forms')
 
@@ -70,7 +76,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="feather icon-mail"></i></span>
                     </div>
-                    <input class="form-control" required value="{{ old('username_email') }}" placeholder="{{ __('auth.username_or_email') }}" name="username_email" type="text">
+                    <input class="form-control" required value="{{ old('username_email') }}" placeholder="Email" name="username_email" type="text">
 
                   </div>
                 </div>
@@ -79,7 +85,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="iconmoon icon-Key"></i></span>
                     </div>
-                    <input name="password" required type="password" class="form-control" placeholder="{{ __('auth.password') }}">
+                    <input name="password" required type="password" class="form-control" placeholder="Password">
                     <div class="input-group-append">
                       <span class="input-group-text c-pointer"><i class="feather icon-eye-off"></i></span>
                   </div>
@@ -89,7 +95,7 @@
                 <div class="custom-control custom-control-alternative custom-checkbox">
                   <input class="custom-control-input" id=" customCheckLogin" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
                   <label class="custom-control-label" for=" customCheckLogin">
-                    <span>{{__('auth.remember_me')}}</span>
+                    <span>Remember me</span>
                   </label>
                 </div>
 
@@ -109,10 +115,6 @@
                   </button>
 
                   @endif
-                  
-
-                  
-                  
                   
                 </div>
               </form>
@@ -134,7 +136,7 @@
             @if ($settings->registration_active == '1')
             <div class="col-6 text-right">
               <a href="{{url('signup')}}" class="text-light">
-                <small>{{__('auth.not_have_account')}}</small>
+                <small>Don't have an account? Sign up here</small>
               </a>
             </div>
             @endif

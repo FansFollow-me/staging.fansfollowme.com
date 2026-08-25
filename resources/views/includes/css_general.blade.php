@@ -3,11 +3,7 @@
 <link href="{{ asset('public/css/bootstrap-icons.css') }}?v={{$settings->version}}" rel="stylesheet">
 <link href="{{ asset('public/css/icomoon.css') }}" rel="stylesheet">
 
-@if (auth()->check() && auth()->user()->dark_mode == 'on')
 <link href="{{ asset('public/css/bootstrap-dark.min.css') }}?v={{$settings->version}}" rel="stylesheet">
-@else
-<link href="{{ asset('public/css/bootstrap.min.css') }}?v={{$settings->version}}" rel="stylesheet">
-@endif
 
 <link href="{{ asset('public/css/styles.css') }}?v={{$settings->version}}" rel="stylesheet">
 <link href="{{ asset('public/css/ffm-brand.css') }}?v={{$settings->version}}" rel="stylesheet">
