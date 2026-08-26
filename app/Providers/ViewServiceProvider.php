@@ -22,104 +22,108 @@ use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
 {
-	/**
-	 * Register any application services.
-	 */
-	public function register(): void
-	{
-	}
+    public function register(): void
+    {
+    }
 
-	/**
-	 * Bootstrap any application services.
-	 */
-	public function boot()
-	{
-		try {
-			$settings = AdminSettings::first();
+    public function boot()
+    {
+        // Always provide defaults first
+        $settings = (object)[
+            'title' => 'FansFollowMe',
+            'description' => 'Creator Platform for Fitness & Sports',
+            'keywords' => 'fitness, creators, sports, martial arts',
+            'currency_symbol' => '$',
+            'currency_code' => 'USD',
+            'min_subscription_amount' => 5,
+            'fee_commission' => 20,
+            'file_size_allowed' => 100000000,
+            'status_page' => '1',
+            'email_verification' => '0',
+            'captcha' => 'off',
+            'payment_gateway' => 'Stripe',
+            'navbar_background_color' => '#111827',
+            'navbar_text_color' => '#ffffff',
+            'footer_background_color' => '#111827',
+            'footer_text_color' => '#d1d5db',
+        ];
+        $updatesPendingCount = 0;
+        $depositsPendingCount = 0;
+        $reports = 0;
+        $withdrawalsPendingCount = 0;
+        $verificationRequestsCount = 0;
+        $paymentsGateways = collect([]);
+        $paymentGatewaysSubscription = collect([]);
+        $blogsCount = 0;
+        $categoriesCount = 0;
+        $categoriesFooter = collect([]);
+        $languages = collect([]);
+        $taxRatesCount = 0;
+        $showSectionMyCards = false;
+        $getCurrentLiveCreators = [];
+        $advertising = collect([]);
+        $gifts = collect([]);
+        $reelsPublic = 0;
 
-		// Updates pending count on Panel Admin
-		$updatesPendingCount = Updates::selectRaw('COUNT(id) as total')->whereStatus('pending')->pluck('total')->first();
+        try {
+            \DB::connection()->getPdo();
+            if (\DB::getSchemaBuilder()->hasTable('admin_settings')) {
+                $dbSettings = AdminSettings::first();
+                if ($dbSettings) {
+                    foreach ($dbSettings->attributesToArray() as $key => $value) {
+                        $settings->$key = $value;
+                    }
+                }
+                $updatesPendingCount = Updates::selectRaw('COUNT(id) as total')->whereStatus('pending')->pluck('total')->first() ?? 0;
+                $depositsPendingCount = Deposits::selectRaw('COUNT(id) as total')->whereStatus('pending')->pluck('total')->first() ?? 0;
+                $reports = Reports::selectRaw('COUNT(id) as total')->pluck('total')->first() ?? 0;
+                $withdrawalsPendingCount = Withdrawals::selectRaw('COUNT(id) as total')->whereStatus('pending')->pluck('total')->first() ?? 0;
+                $verificationRequestsCount = VerificationRequests::selectRaw('COUNT(id) as total')->whereStatus('pending')->pluck('total')->first() ?? 0;
+                $paymentsGateways = PaymentGateways::all();
+                $paymentGatewaysSubscription = PaymentGateways::where('enabled', '1')->whereSubscription('yes')->get();
+                $blogsCount = Blogs::count();
+                $categoriesCount = Categories::count();
+                $categoriesFooter = Categories::where('mode', 'on')->orderBy('name')->take(6)->get();
+                $languages = Languages::orderBy('name')->get();
+                $taxRatesCount = TaxRates::whereStatus('1')->count();
+                $showSectionMyCards = Helper::showSectionMyCards();
+                $getCurrentLiveCreators = LiveStreamings::whereType('normal')
+                    ->where('updated_at', '>', now()->subMinutes(5))
+                    ->whereStatus('0')
+                    ->pluck('user_id')
+                    ->toArray();
+                $advertising = Advertising::where('expired_at', '>', now())
+                    ->whereStatus(1)
+                    ->inRandomOrder()
+                    ->take(1)
+                    ->get();
+                $gifts = Gift::whereStatus(true)->orderBy('price', 'asc')->get();
+                $reelsPublic = Reel::whereStatus('active')->whereType('public')->count();
+            }
+        } catch (\Exception $e) {
+            // DB unavailable — use defaults
+        }
 
-		// Deposits pending count on Panel Admin
-		$depositsPendingCount = Deposits::selectRaw('COUNT(id) as total')->whereStatus('pending')->pluck('total')->first();
-
-		// Reports on Panel Admin
-		$reports = Reports::selectRaw('COUNT(id) as total')->pluck('total')->first();
-
-		// Withdrawals pending count on Panel Admin
-		$withdrawalsPendingCount = Withdrawals::selectRaw('COUNT(id) as total')->whereStatus('pending')->pluck('total')->first();
-
-		// Verification Requests count on Panel Admin
-		$verificationRequestsCount = VerificationRequests::selectRaw('COUNT(id) as total')->whereStatus('pending')->pluck('total')->first();
-
-		// Payment Gateways
-		$paymentsGateways = PaymentGateways::all();
-
-		// Payment Gateways Subscription, Tips, PPV
-		$paymentGatewaysSubscription = PaymentGateways::where('enabled', '1')->whereSubscription('yes')->get();
-
-		// Blogs Count
-		$blogsCount = Blogs::count();
-
-		// Categories Count
-		$categoriesCount = Categories::count();
-
-		// Al categories
-		$categoriesFooter = Categories::where('mode', 'on')->orderBy('name')->take(6)->get();
-
-		// Languages
-		$languages = Languages::orderBy('name')->get();
-
-		// Tax Rates
-		$taxRatesCount = TaxRates::whereStatus('1')->count();
-
-		// Show Section My Cards
-		$showSectionMyCards = Helper::showSectionMyCards();
-
-		// Get Current Live
-		$getCurrentLiveCreators = LiveStreamings::whereType('normal')
-			->where('updated_at', '>', now()->subMinutes(5))
-			->whereStatus('0')
-			->pluck('user_id')
-			->toArray();
-
-		// Get Advertising 
-		$advertising = Advertising::where('expired_at', '>', now())
-			->whereStatus(1)
-			->inRandomOrder()
-			->take(1)
-			->get();
-
-		// Get Gifts
-		$gifts = Gift::whereStatus(true)->orderBy('price', 'asc')->get();
-
-		// Reels public
-		$reelsPublic = Reel::whereStatus('active')->whereType('public')->count();
-
-		view()->share(
-			compact(
-				'settings',
-				'updatesPendingCount',
-				'depositsPendingCount',
-				'reports',
-				'withdrawalsPendingCount',
-				'verificationRequestsCount',
-				'paymentsGateways',
-				'blogsCount',
-				'categoriesCount',
-				'categoriesFooter',
-				'languages',
-				'showSectionMyCards',
-				'paymentGatewaysSubscription',
-				'taxRatesCount',
-				'getCurrentLiveCreators',
-				'advertising',
-				'gifts',
-				'reelsPublic'
-			)
-		);
-		} catch (\Exception $e) {
-			// Silently fail during build/migration
-		}
-	}
+        view()->share(
+            compact(
+                'settings',
+                'updatesPendingCount',
+                'depositsPendingCount',
+                'reports',
+                'withdrawalsPendingCount',
+                'verificationRequestsCount',
+                'paymentsGateways',
+                'blogsCount',
+                'categoriesCount',
+                'categoriesFooter',
+                'languages',
+                'taxRatesCount',
+                'showSectionMyCards',
+                'getCurrentLiveCreators',
+                'advertising',
+                'gifts',
+                'reelsPublic'
+            )
+        );
+    }
 }
