@@ -35,17 +35,7 @@ class ViewServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		try {
-			// Bail if DB is unreachable or tables don't exist yet (e.g. during build)
-			\DB::connection()->getPdo();
-			if (!\DB::getSchemaBuilder()->hasTable('admin_settings')) {
-				return;
-			}
-		} catch (\Exception $e) {
-			return;
-		}
-		
-		// Admin Settings
-		$settings = AdminSettings::first();
+			$settings = AdminSettings::first();
 
 		// Updates pending count on Panel Admin
 		$updatesPendingCount = Updates::selectRaw('COUNT(id) as total')->whereStatus('pending')->pluck('total')->first();
@@ -128,5 +118,8 @@ class ViewServiceProvider extends ServiceProvider
 				'reelsPublic'
 			)
 		);
+		} catch (\Exception $e) {
+			// Silently fail during build/migration
+		}
 	}
 }
