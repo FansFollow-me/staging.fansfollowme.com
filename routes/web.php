@@ -117,12 +117,19 @@ Route::post('password/reset', [ResetPasswordController::class, 'reset']);
 Route::get('contact', [HomeController::class, 'contact']);
 Route::post('contact', [HomeController::class, 'contactStore'])->middleware('throttle:5,10');
 
+
 // FFM Custom Pages
-Route::view('fans', 'index.fans');
-Route::view('celebrities', 'index.celebrities');
-Route::view('casting', 'index.casting');
-Route::view('business', 'index.business');
-Route::view('support', 'index.support');
+Route::get('for-creators', function () {
+	return response()->view('index.creators-marketing');
+});
+Route::get('live-streams', function () {
+	return response()->view('index.livestreams-new');
+});
+Route::view('fans', 'index.fans-marketing');
+Route::view('celebrities', 'index.celebrities-marketing');
+Route::view('casting', 'index.casting-marketing');
+Route::view('business', 'index.business-marketing');
+Route::view('support', 'index.support-marketing');
 Route::view('faq', 'index.faq');
 Route::view('privacy', 'index.privacy');
 Route::view('terms', 'index.terms');

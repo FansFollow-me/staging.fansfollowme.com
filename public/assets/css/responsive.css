@@ -1,0 +1,1002 @@
+@media (min-width: 320px) and (max-width: 1700px) { 
+    .lady {
+	max-width: 529px;
+}
+ .man {
+	max-width: 364px;
+}
+
+    .hero__content__box h2 {
+        font-size: 55px;
+        padding: 25px 45px;
+    }
+
+    .hero__content__box h3 {
+        font-size: 42px;
+        padding: 24px 46px;
+    }
+ 
+
+    .hero__content__wrapper {
+        max-width: 755px;
+    } 
+
+    .live__stream__thumb {
+        max-width: 600px;
+    }
+  
+}
+
+
+
+
+@media (min-width: 320px) and (max-width: 1600px) {
+    
+    
+    .perk__item__thumb {
+	max-width: 300px;
+
+}
+    
+    
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1430px !important;
+    }
+
+    .hero__content__box h3 {
+        font-size: 35px;
+        padding: 21px 45px;
+    }
+
+    .hero__content__box h2 {
+        font-size: 60px;
+        padding: 24px 49px;
+    }
+
+    .hero__content__box h2 {
+        font-size: 49px;
+        padding: 24px 45px;
+    }
+
+    .hero__content__wrapper {
+        max-width: 695px;
+    }
+
+    .common__btn {
+        width: 195px;
+        font-size: 17px;
+        margin-left: 15px;
+    }
+
+    .live__stream__thumb {
+        max-width: 560px;
+    }
+
+    .common__title h2 {
+        font-size: 65px;
+    }
+
+    .common__title {
+        padding-top: 105px;
+        margin-bottom: 115px;
+    }
+
+  .single__perk__item::after {
+	width: 78%;
+	height: 372px;
+}
+
+       .lady {
+	max-width: 465px;
+}
+ .man {
+	max-width: 327px;
+}
+.park__title {
+	max-width: 348px;
+	
+}
+
+}
+
+
+
+
+@media (min-width: 320px) and (max-width: 1500px) {
+    
+    .welcome__area .container {
+	max-width: 1000px !important;
+}
+    
+    .hero__content__box h3:first-child {
+        padding-bottom: 15px;
+    }
+
+    .hero__content__box h3 {
+        font-size: 34px;
+        padding: 21px 43px;
+    }
+
+    .hero__content__box h2 {
+        font-size: 47px;
+        padding: 24px 44px;
+    }
+
+    .hero__content__wrapper {
+        max-width: 655px;
+    }
+
+    .live__stream__thumb {
+        max-width: 505px;
+    }
+
+  
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1370px !important;
+    }
+
+ .common__title h2 {
+	font-size: 52px;
+}
+
+    .park__title {
+        max-width: 455px;
+        margin-bottom: 5px;
+    }
+
+    .perk__item__thumb {
+        max-width: 380px;
+    }
+
+    .welcome__area {
+        padding: 80px 0;
+    }
+           .lady {
+	max-width: 465px;
+}
+ .man {
+	max-width: 327px;
+}
+}
+
+@media (min-width: 320px) and (max-width: 1400px) {
+           .lady {
+	max-width: 415px;
+}
+ .man {
+	max-width: 283px;
+}
+
+    .logo__main {
+        max-width: 458px;
+    }
+
+    .footer__links a {
+        font-size: 14px;
+        margin-right: 3px;
+    }
+
+    .footer__links a span {
+        font-size: 24px;
+        top: -2px;
+    }
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1180px !important;
+    }
+
+    .hero__content__box h3 {
+        font-size: 29px;
+        padding: 21px 38px;
+    }
+
+    .hero__content__box h2 {
+        font-size: 41px;
+        padding: 22px 36px;
+    }
+
+    .hero__content__wrapper {
+        max-width: 580px;
+    }
+
+    .common__btn {
+        width: 175px;
+        font-size: 15px;
+        margin-left: 14px;
+    }
+
+    .live__stream__thumb {
+        max-width: 450px;
+    }
+.common__title {
+	padding-top: 78px;
+	margin-bottom: 81px;
+}
+
+    .map__img {
+        max-width: 755px;
+    }
+
+   .park__title {
+	max-width: 333px;
+	margin-bottom: 5px;
+}
+
+   .perk__item__thumb {
+	max-width: 274px;
+}
+
+    .single__perk__item::after {
+        width: 96%;
+    }
+.single__perk__item::after {
+	bottom: 130px;
+	height: 341px;
+}
+    
+    
+}
+
+@media (min-width: 320px) and (max-width: 1300px) {
+
+    .hero__content__wrapper {
+        max-width:500px;
+    }
+    .hero__content__box h3 {
+        font-size: 25px;
+        padding: 20px 35px;
+    }
+
+.hero__content__box {
+	margin-bottom: 40px;
+}
+ 
+    .hero__content__box h2 {
+        font-size: 34px;
+        padding: 20px 35px;
+    }
+
+               .lady {
+	max-width: 364px;
+}
+ .man {
+	max-width: 246px;
+}
+
+    .live__stream__thumb {
+        max-width: 375px;
+    }
+
+
+
+
+
+
+
+}
+@media (min-width: 320px) and (max-width: 1200px) {
+    .lady {
+        left: 0;
+        max-width: 251px;
+    }
+
+    .man {
+        max-width: 196px;
+    }
+
+    .form__submit button {
+        width: 420px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .footer__links a {
+        font-size: 14px;
+    }
+
+    .footer__links {
+        margin-left: -45px;
+    }
+
+    .footer__area p {
+        font-size: 14px;
+    }
+
+    .modal__header p {
+        font-size: 16px;
+    }
+
+    .footer__bottom {
+        padding-top: 25px;
+    }
+
+    .footer__bottom p {
+        font-size: 18px;
+    }
+
+    .single__input__item {
+        margin-bottom: 16px;
+    }
+
+    .modal__header h3 {
+        font-size: 35px;
+        margin-bottom: 15px;
+    }
+
+    .modal-dialog {
+        max-width: 700px;
+    }
+
+    .single__input__item label {
+        font-size: 17px;
+        margin-left: 4px;
+        margin-right: -4px;
+    }
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 980px !important;
+    }
+
+    .logo__main {
+        max-width: 435px;
+    }
+
+    .common__btn {
+        width: 166px;
+        font-size: 14px;
+        margin-left: 10px;
+        height: 43px;
+    }
+
+    .common__btn.login {
+        max-width: 120px;
+    }
+
+    .hero__content__box h3 {
+        font-size: 30px;
+        padding: 21px 38px;
+    }
+
+    .hero__content__box h2 {
+        font-size: 42px;
+        padding: 22px 39px;
+    }
+
+    .hero__content__box {
+        margin-bottom: 46px;
+    }
+
+    .hero__content__wrapper {
+        max-width: 605px;
+    }
+
+    .live__stream__thumb {
+        max-width: 460px;
+    }
+
+    .common__title h2 {
+        font-size: 55px;
+    }
+
+    .common__title {
+        padding-top: 52px;
+        margin-bottom: 70px;
+    }
+
+    .map__img {
+        max-width: 680px;
+        top: -45px;
+    }
+
+    .park__title {
+        max-width: 390px;
+        margin-bottom: 5px;
+    }
+
+    .perk__item__thumb {
+        max-width: 309px;
+    }
+
+    .single__perk__item::after {
+        width: 98%;
+        height: 380px;
+        bottom: 100px;
+    }
+
+    .welcome__area {
+        padding: 75px 0;
+    }
+
+
+    .footer__area {
+        padding: 25px 0;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 991px) {
+
+    .lady {
+        left: 0;
+        max-width: 213px;
+    }
+
+    .man {
+
+        max-width: 146px;
+
+    }
+
+    .perk__item__thumb img {
+        border-radius: 26px;
+    }
+
+    .footer__area p {
+        font-size: 15px;
+        text-align: center;
+        max-width: 335px;
+        margin: 0 auto;
+        margin-bottom: 17px;
+    }
+
+    .footer__links {
+        margin-left: 0;
+        justify-content: center;
+        margin-top: 13px;
+    }
+
+    .footer__links a {
+        font-size: 16px;
+    }
+
+    .captcha {
+        top: 8px;
+        max-width: 104px;
+        left: 20px;
+    }
+
+    .retry-btn {
+        right: 12px;
+        top: 9px;
+        max-width: 23px;
+    }
+
+    .form-check label {
+        font-size: 15px;
+    }
+
+    .single__check__item {
+        padding-bottom: 17px;
+    }
+
+    .form__social.justify-content-end {
+        justify-content: center !important;
+        margin-top: 24px;
+    }
+
+    .modal-dialog {
+        max-width: 605px;
+    }
+
+    .modal__header h3 {
+        font-size: 31px;
+        margin-bottom: 13px;
+    }
+
+    .modal__header {
+        margin-bottom: 15px;
+    }
+
+    .single__input__item label {
+        font-size: 17px;
+        margin-left: 0;
+        margin-bottom: -5px;
+        display: block;
+    }
+
+    .form__submit button {
+        width: 385px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .single__input__item input {
+        height: 48px;
+        width: 100%;
+        padding: 0 19px;
+        font-size: 16px;
+    }
+
+    .single__input__item select {
+        height: 48px;
+        width: 100%;
+        padding: 0 14px;
+        font-size: 17px;
+    }
+
+    .modal__header p {
+        font-size: 15px;
+        padding-bottom: 12px;
+    }
+
+    .show__btn {
+        font-size: 17px;
+        top: 10px;
+        right: 13px;
+    }
+
+    .modal-content {
+        padding: 50px 33px;
+    }
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 765px !important;
+    }
+
+    .logo__main {
+        max-width: 320px;
+    }
+
+    .common__btn {
+        width: 135px;
+        font-size: 13px;
+        height: 40px;
+    }
+
+    .common__btn.login {
+        max-width: 95px;
+    }
+
+    .hero__content__wrapper {
+        max-width: 500px;
+    }
+
+    .hero__content__box h3 {
+        font-size: 26px;
+        padding: 20px 34px;
+    }
+
+    .hero__content__box h3:last-child {
+        padding-top: 18px;
+    }
+
+    .hero__content__box h2 {
+        font-size: 35px;
+        padding: 20px 35px;
+    }
+
+    .live__stream__thumb {
+        max-width: 395px;
+    }
+
+    .hero__area {
+        padding-top: 175px;
+    }
+
+    .common__title h2 {
+        font-size: 43px;
+    }
+
+    .map__img {
+        max-width: 525px;
+        top: -15px;
+    }
+
+    .welcome__area {
+        padding: 55px 0;
+    }
+
+    .perk__item__thumb {
+        max-width: 240px;
+    }
+
+    .single__perk__item::after {
+        width: 98%;
+        height: 295px;
+        bottom: 85px;
+    }
+
+    .park__title {
+        max-width: 314px;
+        margin-bottom: 6px;
+    }
+
+    .common__title {
+        padding-top: 50px;
+        margin-bottom: 55px;
+    }
+
+    .footer__links a {
+        font-size: 18px;
+    }
+
+    .footer__area {
+        padding: 20px 0;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    
+    .live__stream__thumb img {
+	margin-left: 23px;
+}
+    
+    
+  .man {
+      
+	max-width: 100px;
+}
+
+  .lady {
+	left: -0px;
+	max-width: 160px;
+}
+
+    .perk__item__thumb {
+        max-width: 420px;
+        margin: 0 auto;
+        position: relative;
+        filter: unset;
+        z-index: 1;
+    }
+
+    .btn-close {
+        position: absolute;
+        right: 14px;
+        top: 14px;
+        cursor: pointer;
+    }
+
+    .modal__header {
+        margin-bottom: 15px;
+    }
+
+    .footer__bottom p {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .modal-dialog {
+        max-width: 485px;
+    }
+
+    .modal__header h3 {
+        font-size: 25px;
+        margin-bottom: 12px;
+    }
+
+    .modal__header p {
+        font-size: 14px;
+        padding-bottom: 7px;
+        margin-left: -3px;
+        margin-right: -3px;
+    }
+
+    .form-check label {
+        font-size: 16px;
+    }
+
+    .forgot__password a {
+        font-size: 16px;
+        margin-top: 16px;
+        margin-bottom: 7px;
+    }
+
+    .or__text span {
+        font-size: 16px;
+        top: 11px;
+        padding: 0 11px;
+    }
+
+    .form__social a {
+        margin: 0 8px;
+        max-width: 29px;
+    }
+
+    .d-flex.align-items-center.justify-content-between {
+        flex-direction: column;
+    }
+
+    .logo__main {
+        max-width: 370px;
+        margin-bottom: 15px;
+    }
+
+    .common__btn {
+        width: 145px;
+        font-size: 13px;
+        height: 40px;
+    }
+
+    .hero__content__box h3 {
+        font-size: 24px;
+        padding: 19px 30px;
+    }
+
+    .hero__content__box h2 {
+        font-size: 32px;
+        padding: 17px 30px;
+    }
+
+    .hero__content__wrapper {
+        max-width: 458px;
+    }
+
+    .live__stream__thumb {
+        max-width: 335px;
+    }
+
+    .hero__content__box {
+        margin-bottom: 34px;
+    }
+
+    .common__title h2 {
+        font-size: 36px;
+    }
+
+    .common__title {
+        padding-top: 35px;
+        margin-bottom: 45px;
+    }
+
+    .map__img {
+        max-width: 441px;
+        top: -23px;
+    }
+
+    .park__title {
+        max-width: 340px;
+        margin-bottom: 10px;
+    }
+
+    .perk__item__thumb {
+        max-width: 263px;
+    }
+
+    .single__perk__item::after {
+        width: 90%;
+        height: 295px;
+        bottom: 95px;
+    }
+
+    .footer__links a {
+        font-size: 15px;
+    }
+
+    .footer__links a span {
+        font-size: 25px;
+        top: -3px;
+    }
+
+    .footer__area {
+        padding: 15px 0;
+    }
+}
+
+@media (min-width: 320px) and (max-width:575px) {
+    .has--width {
+        width: 100% !important;
+    }
+
+
+
+    .footer__area p {
+        font-size: 14px;
+        max-width: 315px;
+        margin-bottom: 16px;
+    }
+
+    .footer__links a {
+        font-size: 13px;
+    }
+
+    .footer__links {
+        margin-top: 7px;
+    }
+
+
+
+
+    .modal-dialog {
+        max-width: 100%;
+        margin: 0 12px;
+    }
+
+    .btn-close {
+        right: 13px;
+        top: 13px;
+        font-size: 13px;
+    }
+
+    .footer__bottom p {
+        font-size: 15px;
+    }
+
+    .captcha {
+        top: 8px;
+        max-width: 97px;
+        left: 18px;
+    }
+
+    .single__check__item {
+        padding-bottom: 8px;
+    }
+
+    .retry-btn {
+        right: 14px;
+        top: 8px;
+        max-width: 24px;
+    }
+
+    .modal-content {
+        padding: 28px 18px;
+        border-radius: 7px;
+    }
+
+    .modal__header h3 {
+        font-size: 22px;
+        margin-bottom: 11px;
+    }
+
+    .modal__header p {
+        font-size: 13px;
+        padding-bottom: 11px;
+    }
+
+    .login__form__wrapper {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .show__btn {
+        font-size: 17px;
+        top: 8px;
+        right: 13px;
+    }
+
+    .form__submit button {
+        width: 100%;
+        height: 46px;
+        font-size: 16px;
+    }
+
+    .forgot__password a {
+        font-size: 15px;
+        margin-top: 15px;
+        margin-bottom: 6px;
+    }
+
+    .or__text span {
+        font-size: 15px;
+        top: 12px;
+        padding: 0 10px;
+    }
+
+    .form__social a {
+        margin: 0 7px;
+        max-width: 26px;
+    }
+
+    .single__input__item input,
+    .single__input__item select {
+        height: 45px;
+        width: 100%;
+        padding: 0 15px;
+        font-size: 15px;
+    }
+
+    .form-check label {
+        font-size: 15px;
+    }
+
+    .logo__main {
+        max-width: 320px;
+        margin-bottom: 14px;
+    }
+
+    .common__btn {
+        width: 120px;
+        font-size: 10px;
+        height: 38px;
+        margin-left: 4px;
+    }
+
+    .common__btn:first-child {
+        margin-left: 0;
+    }
+
+    .common__btn.login {
+        max-width: 76px;
+    }
+
+    .hero__content__box h3 {
+        font-size: 20px;
+        padding: 17px 22px;
+    }
+
+    .hero__content__box h2 {
+        font-size: 27px;
+        padding: 16px 24px;
+        padding-right: 0;
+    }
+
+    .hero__content__box {
+        margin-bottom: 66px;
+        margin-top: -24px;
+    }
+
+    .hero__area {
+        padding-top: 170px;
+    }
+
+    .live__stream__thumb {
+        max-width: 260px;
+    }
+
+    .hero__content__wrapper {
+        max-width: 405px;
+    }
+
+    .common__title h2 {
+        font-size: 31px;
+    }
+
+    .common__title {
+        padding-top: 10px;
+        margin-bottom: 25px;
+    }
+
+    .map__img {
+        max-width: 345px;
+        top: -26px;
+    }
+
+    .park__title {
+        max-width: 315px;
+        margin-bottom: 8px;
+    }
+
+    .perk__item__thumb {
+        max-width: 240px;
+    }
+
+    .single__perk__item::after {
+        width: 96%;
+        height: 260px;
+        bottom: 85px;
+    }
+
+    .single__perk__item {
+        margin-bottom: 40px;
+    }
+
+    .footer__links {
+        flex-wrap: wrap;
+    }
+}

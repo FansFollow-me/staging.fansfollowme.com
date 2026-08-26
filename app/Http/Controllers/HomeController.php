@@ -81,7 +81,7 @@ class HomeController extends Controller
           ])
           ->paginate(6);
 
-        $home = 'home';
+        $home = 'homenew';
       }
 
       // Total creators
