@@ -12,10 +12,16 @@ class ImportFfmData extends Command
 
     public function handle()
     {
+        // First, create any missing tables
+        $schema = @file_get_contents('https://fansfollow.me/ffm_table_data/create_missing.sql');
+        if ($schema) {
+            DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+            try { DB::unprepared($schema); $this->line('Created missing tables'); } catch (\Exception $e) { $this->warn('Schema: ' . substr($e->getMessage(), 0, 80)); }
+        }
+
         $tables = ['admin_settings','blocked_users','blogs','bookmarks','categories',
             'comments','comments_likes','conversations','countries','creator_status',
-            'creator_subscriptions','deposits','email_notifications',
-            'favorites','followers','gifts','hashtags','languages','likes',
+            'deposits','gifts','hashtags','languages','likes',
             'live_streamings','media','messages','notifications','pages',
             'payment_gateways','products','subscriptions','transactions',
             'updates','users','verification_requests','withdrawals'];
@@ -27,11 +33,9 @@ class ImportFfmData extends Command
         DB::statement('SET SQL_MODE = ""');
 
         foreach ($tables as $table) {
-            // Drop and recreate from schema if it has wrong columns
             $url = "https://fansfollow.me/ffm_table_data/{$table}.sql";
             $sql = @file_get_contents($url);
             if ($sql && strlen($sql) > 10) {
-                // Convert INSERT to INSERT IGNORE
                 $sql = str_replace('INSERT INTO', 'INSERT IGNORE INTO', $sql);
                 try {
                     DB::unprepared($sql);
@@ -49,7 +53,6 @@ class ImportFfmData extends Command
         }
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-
         $this->info("\nDone: {$imported} imported, {$failed} failed");
         return 0;
     }
