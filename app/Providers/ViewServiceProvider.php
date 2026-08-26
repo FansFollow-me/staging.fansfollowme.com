@@ -34,11 +34,16 @@ class ViewServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		try {
-            \DB::connection()->getPdo();
-        } catch (\Exception $e) {
-			return false;
-        }
+		// Skip during build/console when DB may not exist
+		if (app()->runningInConsole() && !app()->runningUnitTests()) {
+			try {
+				\DB::connection()->getPdo();
+				// Check if tables exist
+				\DB::getSchemaBuilder()->hasTable('admin_settings');
+			} catch (\Exception $e) {
+				return;
+			}
+		}
 		
 		// Admin Settings
 		$settings = AdminSettings::first();
