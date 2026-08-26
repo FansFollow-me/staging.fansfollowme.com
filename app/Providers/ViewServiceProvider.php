@@ -127,3 +127,4 @@ class ViewServiceProvider extends ServiceProvider
         );
     }
 }
+// build cache bust 1787777810
