@@ -14,35 +14,37 @@ class ImportFfmData extends Command
     {
         $tables = ['admin_settings','blocked_users','blogs','bookmarks','categories',
             'comments','comments_likes','conversations','countries','creator_status',
-            'creator_subscriptions','deposits','email_notifications','failed_jobs',
+            'creator_subscriptions','deposits','email_notifications',
             'favorites','followers','gifts','hashtags','languages','likes',
             'live_streamings','media','messages','notifications','pages',
-            'password_resets','payment_gateways','personal_access_tokens','posts',
-            'products','reports','reels','saved_cards','settings',
-            'shared_posts','stories','subscriptions','tax_rates','tips',
-            'transactions','updates','users','verification_requests','withdrawals',
-            'advertising','blocked_countries','gifts','reels'];
+            'payment_gateways','products','subscriptions','transactions',
+            'updates','users','verification_requests','withdrawals'];
 
-        $tables = array_unique($tables);
         $imported = 0;
         $failed = 0;
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::statement('SET SQL_MODE = ""');
 
         foreach ($tables as $table) {
+            // Drop and recreate from schema if it has wrong columns
             $url = "https://fansfollow.me/ffm_table_data/{$table}.sql";
             $sql = @file_get_contents($url);
             if ($sql && strlen($sql) > 10) {
+                // Convert INSERT to INSERT IGNORE
+                $sql = str_replace('INSERT INTO', 'INSERT IGNORE INTO', $sql);
                 try {
                     DB::unprepared($sql);
+                    $count = DB::select("SELECT COUNT(*) as c FROM `{$table}`");
+                    $c = $count[0]->c ?? 0;
                     $imported++;
-                    $this->line("OK: {$table}");
+                    $this->line("OK: {$table} ({$c} rows)");
                 } catch (\Exception $e) {
                     $failed++;
                     $this->warn("ERR: {$table} - " . substr($e->getMessage(), 0, 80));
                 }
             } else {
-                $this->warn("SKIP: {$table} - no data");
+                $this->warn("SKIP: {$table}");
             }
         }
 
