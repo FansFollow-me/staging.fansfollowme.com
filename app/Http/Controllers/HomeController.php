@@ -26,6 +26,9 @@ class HomeController extends Controller
 {
   use Traits\Functions;
 
+  protected $request;
+  protected $settings;
+
   public function __construct(Request $request, AdminSettings $settings)
   {
     $this->request = $request;
