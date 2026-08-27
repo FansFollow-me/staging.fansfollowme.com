@@ -5,11 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>{{ __('general.profile_disabled') }}</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-	<link href="{{ asset('public/css/core.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('public/css/bootstrap-dark.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('public/css/styles.css') }}" rel="stylesheet">
-	<link href="{{ asset('public/css/ffm-brand.css') }}" rel="stylesheet">
-	<link rel="shortcut icon" href="{{ url('public/img', config('settings.favicon')) }}" />
+	<link href="{{ asset('css/core.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/bootstrap-dark.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/ffm-brand.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url('img', config('settings.favicon')) }}" />
 	<style>
 		html, body {
 			background-color: #111827 !important;

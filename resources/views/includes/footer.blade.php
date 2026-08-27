@@ -13,7 +13,7 @@
     {{-- Logo and description --}}
     <div class="col-md-4">
       <a href="{{url('/')}}">
-        <img src="{{url('public/fans-foloow-me-logo-final-file--png-version.png')}}" alt="{{$settings->title}}" class="max-w-125 mb-3">
+        <img src="{{url('fans-foloow-me-logo-final-file--png-version.png')}}" alt="{{$settings->title}}" class="max-w-125 mb-3">
       </a>
       <p class="mb-4" style="max-width: 300px; color: var(--ffm-text-muted); font-size: 0.875rem;">
         The premier creator platform for fitness enthusiasts, athletes, and sports influencers. Monetize your passion and build your community.

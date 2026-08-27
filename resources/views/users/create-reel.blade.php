@@ -62,6 +62,6 @@
 @endsection
 
 @section('javascript')
-  <script src="{{ asset('public/js/fileuploader/fileuploader-reel-file.js') }}?v={{ $settings->version }}"></script> 
-  <script src="{{ asset('public/js/reels/create-reel.js') }}?v={{ $settings->version }}"></script>
+  <script src="{{ asset('js/fileuploader/fileuploader-reel-file.js') }}?v={{ $settings->version }}"></script> 
+  <script src="{{ asset('js/reels/create-reel.js') }}?v={{ $settings->version }}"></script>
 @endsection

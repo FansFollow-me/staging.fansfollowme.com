@@ -575,7 +575,7 @@
   <header class="public-shell-topbar">
     <div class="container inner">
       <a class="public-shell-brand" href="{{ url('/') }}" aria-label="{{ $settings->title }}">
-        <img src="{{ url('public/img', auth()->check() && auth()->user()->dark_mode == 'on' ? $settings->logo : $settings->logo_2) }}" alt="{{ $settings->title }}">
+        <img src="{{ url('img', auth()->check() && auth()->user()->dark_mode == 'on' ? $settings->logo : $settings->logo_2) }}" alt="{{ $settings->title }}">
       </a>
       <nav class="public-shell-nav d-none d-lg-flex" aria-label="Primary">
         <a class="@if(request()->is('for-creators')) active @endif" href="{{ url('for-creators') }}">For Creators</a>

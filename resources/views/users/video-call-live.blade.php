@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>{{ $settings->title }}</title>
-    <link href="{{ url('public/css/core.min.css') }}?v={{config('settings.version')}}" rel="stylesheet">
-    <link href="{{ url('public/bootstrap/css/bootstrap.min.css') }}?v={{config('settings.version')}}" rel="stylesheet">
-    <link href="{{ url('public/img', $settings->favicon) }}" rel="icon">
+    <link href="{{ url('css/core.min.css') }}?v={{config('settings.version')}}" rel="stylesheet">
+    <link href="{{ url('bootstrap/css/bootstrap.min.css') }}?v={{config('settings.version')}}" rel="stylesheet">
+    <link href="{{ url('img', $settings->favicon) }}" rel="icon">
     <script src="https://js.pusher.com/8.3.0/pusher.min.js"></script>
     <style>
         html,
@@ -390,9 +390,9 @@
     </div>
 
     <!-- Bootstrap 5.3 JS Bundle with Popper -->
-    <script src="{{ url('public/js/core.min.js') }}?v={{config('settings.version')}}"></script>
-    <script src="{{ url('public/bootstrap/js/bootstrap.bundle.min.js') }}?v={{config('settings.version')}}"></script>
-    <script src="{{ url('public/js/agora/AgoraRTCSDK-v4.js') }}?v={{config('settings.version')}}"></script>
+    <script src="{{ url('js/core.min.js') }}?v={{config('settings.version')}}"></script>
+    <script src="{{ url('bootstrap/js/bootstrap.bundle.min.js') }}?v={{config('settings.version')}}"></script>
+    <script src="{{ url('js/agora/AgoraRTCSDK-v4.js') }}?v={{config('settings.version')}}"></script>
 
     <script>
     const AGORA_APP_ID = "{{ $settings->agora_app_id }}";

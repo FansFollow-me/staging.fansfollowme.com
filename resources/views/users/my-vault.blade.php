@@ -5,7 +5,7 @@
 @section('css')
 
 <link rel="stylesheet"
-    href="{{ asset('public/js/fileuploader/jquery.fileuploader-theme-gallery.css') }}?v={{ $settings->version }}">
+    href="{{ asset('js/fileuploader/jquery.fileuploader-theme-gallery.css') }}?v={{ $settings->version }}">
 
 <script>
     @if ($settings->video_encoding == 'off')
@@ -121,5 +121,5 @@
 @endsection
 
 @section('javascript')
-<script src="{{ asset('public/js/fileuploader/fileuploader-vault.js') }}?v={{ $settings->version }}"></script>
+<script src="{{ asset('js/fileuploader/fileuploader-vault.js') }}?v={{ $settings->version }}"></script>
 @endsection

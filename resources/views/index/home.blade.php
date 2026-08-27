@@ -40,7 +40,7 @@
         {{-- Right column: Hero image --}}
         <div class="col-lg-6 first text-center">
           <div class="hero-image-wrapper">
-            <img src="{{url('public/img', $settings->home_index)}}" 
+            <img src="{{url('img', $settings->home_index)}}" 
                  class="img-center img-fluid" 
                  alt="{{$settings->title}} Creator Platform"
                  style="width: 75%; max-width: 400px; margin: 0 auto;">
