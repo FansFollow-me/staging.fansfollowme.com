@@ -150,7 +150,7 @@
   var error_oops = "{{ __('general.error_oops') }}";
   var error_reload_page = "{{ __('general.error_reload_page') }}";
   var ok = "{{__('users.ok')}}";
-  var user_count_carousel = @if (auth()->guest() && request()->path() == '/' && config('settings.home_style') == 0) {{$users->count()}}@else 0 @endif;
+  var user_count_carousel = @if (auth()->guest() && request()->path() == '/' && config('settings.home_style') == 0) {{isset($users) && $users ? $users->count() : 0}}@else 0 @endif;
   var no_results_found = "{{__('general.no_results_found')}}";
   var no_results = "{{__('general.no_results')}}";
   var no_one_seen_story_yet =  "{{__('general.no_one_seen_story_yet')}}";
