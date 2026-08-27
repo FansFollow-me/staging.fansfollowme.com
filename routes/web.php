@@ -227,7 +227,7 @@ Route::get('verify/account/{confirmation_code}', [HomeController::class, 'getVer
 		// Paypal IPN (PPV)
 	  Route::post('paypal/ppv/ipn', [PayPerViewController::class, 'paypalPPVIpn']);
 
-	  Route::get('ajax/explore', [UpdatesController::class, 'ajaxExplore']);
+	  Route::get('ajax/explore', [UpdatesController::class, 'ajaxExplore'])->withoutMiddleware('auth');
 
  /*
   |-----------------------------------
@@ -417,7 +417,7 @@ Route::get('verify/account/{confirmation_code}', [HomeController::class, 'getVer
 	Route::post('send/ppv', [PayPerViewController::class, 'send']);
 
 	// Explore
-	Route::get('explore',[UpdatesController::class, 'explore']);
+	Route::get('explore',[UpdatesController::class, 'explore'])->withoutMiddleware('auth');
 
 	// Add/Remove Restrict User
 	Route::post('restrict/user/{id}', [UserController::class, 'restrictUser']);
