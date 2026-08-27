@@ -37,6 +37,7 @@
   --ffm-purple-rgb: 147, 51, 234;
 
   /* Gradient - exact from fansfollowme.com */
+  --cta-gradient: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234));
   --ffm-gradient: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234));
   --ffm-gradient-hover: linear-gradient(to right, rgb(234, 88, 12), rgb(124, 58, 237));
 
@@ -51,8 +52,10 @@
   --ffm-text-muted: #9ca3af;
 
   /* Background colors */
+  --ffm-bg: #111827;
   --ffm-bg-primary: #111827;
   --ffm-bg-secondary: #1f2937;
+  --ffm-card-bg: rgba(255, 255, 255, 0.05);
 
   /* Border colors */
   --ffm-border: rgba(255, 255, 255, 0.1);
