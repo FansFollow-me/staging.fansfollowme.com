@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appnew')
 
 @section('title') {{ request()->is('explore') ? __('general.explore') . ' -' : null }}@endsection
 

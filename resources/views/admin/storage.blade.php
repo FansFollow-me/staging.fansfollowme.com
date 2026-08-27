@@ -22,7 +22,7 @@
                 </div>
               @endif
 
-			  @if (count($errors) > 0)
+			  @if (count($errors ?? []) > 0)
 			  <div class="alert alert-danger alert-dismissible fade show" role="alert">
 					  {{ __('auth.error_desc') }}
 		  

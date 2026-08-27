@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appnew')
 
 @section('content')
   <div class="jumbotron m-0 bg-gradient">
@@ -57,7 +57,7 @@
               <form method="POST" action="{{ route('login') }}" data-url-login="{{ route('login') }}" data-url-register="{{ route('register') }}" id="formLoginRegister" enctype="multipart/form-data">
                   @csrf
 
-                  <input type="hidden" name="return" value="{{ count($errors) > 0 ? old('return') : url()->previous() }}">
+                  <input type="hidden" name="return" value="{{ count($errors ?? []) > 0 ? old('return') : url()->previous() }}">
 
                   <div class="form-group mb-3 display-none" id="full_name">
                     <div class="input-group input-group-alternative">

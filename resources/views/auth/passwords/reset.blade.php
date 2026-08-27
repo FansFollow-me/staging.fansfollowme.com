@@ -2,7 +2,7 @@
 
 @section('css')
   <script type="text/javascript">
-      var error_scrollelement = {{ count($errors) > 0 ? 'true' : 'false' }};
+      var error_scrollelement = {{ count($errors ?? []) > 0 ? 'true' : 'false' }};
   </script>
 @endsection
 

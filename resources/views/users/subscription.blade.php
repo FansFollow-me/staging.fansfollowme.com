@@ -27,7 +27,7 @@
                   </div>
                 @endif
 
-                @if (count($errors) > 0)
+                @if (count($errors ?? []) > 0)
                   <div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 			<i class="bi bi-x-lg"></i>

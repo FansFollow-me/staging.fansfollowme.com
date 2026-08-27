@@ -4,7 +4,7 @@
 
 @section('css')
   <script type="text/javascript">
-      var error_scrollelement = {{ count($errors) > 0 ? 'true' : 'false' }};
+      var error_scrollelement = {{ count($errors ?? []) > 0 ? 'true' : 'false' }};
   </script>
 @endsection
 
@@ -36,7 +36,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="feather icon-mail"></i></span>
                     </div>
-                    <input class="form-control @if (count($errors) > 0) is-invalid @endif" value="{{ old('email')}}" placeholder="{{__('auth.email')}}" name="email" required type="text">
+                    <input class="form-control @if (count($errors ?? []) > 0) is-invalid @endif" value="{{ old('email')}}" placeholder="{{__('auth.email')}}" name="email" required type="text">
 
                   </div>
                 </div>

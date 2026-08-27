@@ -226,7 +226,7 @@
 
           <div class="auth-card">
             <div class="auth-card__body">
-              @if (count($errors) > 0)
+              @if (count($errors ?? []) > 0)
                 <div class="auth-inline-error" id="dangerAlert">
                   {{ trans('auth.error_desc') }}
                   <ul class="list-unstyled">
@@ -240,7 +240,7 @@
               @if (! $settings->disable_login_register_email || request()->route()?->named('login.admin'))
                 <form method="POST" action="{{ url('login') }}" id="authLoginForm" enctype="multipart/form-data" class="auth-form" onsubmit="trackGA4Event('login', {method: 'email'});">
                   @csrf
-                  <input type="hidden" name="return" value="{{ count($errors) > 0 ? old('return') : url()->previous() }}">
+                  <input type="hidden" name="return" value="{{ count($errors ?? []) > 0 ? old('return') : url()->previous() }}">
 
                   <div class="form-group mb-3">
                     <label for="authLoginEmail" class="form-label">Email</label>

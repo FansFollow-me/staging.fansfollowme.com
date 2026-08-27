@@ -1,4 +1,4 @@
-@if (count($errors) > 0)
+@if (count($errors ?? []) > 0)
 	<!-- Start Box Body -->
   <div class="box-body">
 	<div class="alert alert-danger" id="dangerAlert">

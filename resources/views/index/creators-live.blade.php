@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appnew')
 
 @section('title') {{ trans('general.creators_live') }} -@endsection
 

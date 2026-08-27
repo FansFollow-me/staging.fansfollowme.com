@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appnew')
 
 @section('title') {{ trans('general.blog') }} -@endsection
 
@@ -13,7 +13,7 @@
       </div>
 
       <div class="row">
-        @if ($blogs->total() != 0)
+        @if (($blogs ?? collect())->total() != 0)
 
           @foreach ($blogs as $response)
             <div class="col-md-4">
