@@ -847,51 +847,57 @@ class UpdatesController extends Controller
       return redirect('/');
     }
 
-    $updates = Updates::verifyCountryBlocking();
+    $updates = Updates::leftjoin('users', 'updates.user_id', '=', 'users.id')
+        ->where('updates.status', 'active')
+        ->where('updates.expired', 'no')
+        ->where(function ($query) {
+            $query->where('updates.schedule_date_time', '<=', date('Y-m-d H:i:00'));
+            $query->orWhereNull('updates.schedule_date_time');
+        })
+        ->where('users.blocked_countries', 'NOT LIKE', '%'.Helper::userCountry().'%');
 
     // Filter by hashtag
-    $updates->when(strlen(request('q')) > 2, function ($q) {
-      $q->where('description', 'LIKE', '%' . request('q') . '%');
+    $updates->when(strlen(request('q')) > 2, function($q) {
+      $q->where('description', 'LIKE', '%'.request('q').'%');
     });
 
     // Sort by older
-    $updates->when(request('sort') == 'oldest', function ($q) {
+    $updates->when(request('sort') == 'oldest', function($q) {
       $q->orderBy('updates.id', 'asc');
     });
 
     // Sort by unlockable
-    $updates->when(request('sort') == 'unlockable', function ($q) {
+    $updates->when(request('sort') == 'unlockable', function($q) {
       $q->where('updates.price', '<>', 0.00);
     });
 
     // Sort by free
-    $updates->when(request('sort') == 'free', function ($q) {
+    $updates->when(request('sort') == 'free', function($q) {
       $q->where('updates.locked', 'no');
     });
 
-    $updates = $updates->whereStatus('active')
-      ->orderBy('updates.id', 'desc')
-      ->getSelectRelations()
-      ->simplePaginate(config('settings.number_posts_show'));
+    $updates = $updates->orderBy('updates.id', 'desc')
+      ->select('updates.*')
+      ->paginate($this->settings->number_posts_show);
 
     $users = $this->userExplore();
+    $title = trans('general.explore');
 
-    // Pay Per Views User
-    $payPerViewsUser = auth()->user()->payPerView()->count();
-
-    return view('index.explore', [
-      'updates' => $updates,
-      'hasPages' => $updates->hasPages(),
-      'users' => $users,
-      'payPerViewsUser' => $payPerViewsUser ?? null
-    ]);
+    return view('index.explore-new', ['updates' => $updates, 'users' => $users, 'title' => $title]);
   }
 
   // Explore Ajax Pagination
   public function ajaxExplore()
   {
     $skip = $this->request->input('skip');
-    $updates = Updates::verifyCountryBlocking();
+    $updates = Updates::leftjoin('users', 'updates.user_id', '=', 'users.id')
+        ->where('updates.status', 'active')
+        ->where('updates.expired', 'no')
+        ->where(function ($query) {
+            $query->where('updates.schedule_date_time', '<=', date('Y-m-d H:i:00'));
+            $query->orWhereNull('updates.schedule_date_time');
+        })
+        ->where('users.blocked_countries', 'NOT LIKE', '%'.Helper::userCountry().'%');
 
     // Filter by hashtag
     $updates->when(strlen(request('q')) > 2, function ($q) {

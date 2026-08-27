@@ -145,11 +145,17 @@ class HomeController extends Controller
 
   public function homeExplore()
   {
-    $updates = Updates::verifyCountryBlocking()
-      ->whereStatus('active')
-      ->orderBy('updates.id', 'desc')
-      ->getSelectRelations()
-      ->simplePaginate(config('settings.number_posts_show'));
+    $updates = Updates::leftjoin('users', 'updates.user_id', '=', 'users.id')
+        ->where('updates.status', 'active')
+        ->where('updates.expired', 'no')
+        ->where(function ($query) {
+            $query->where('updates.schedule_date_time', '<=', date('Y-m-d H:i:00'));
+            $query->orWhereNull('updates.schedule_date_time');
+        })
+        ->where('users.blocked_countries', 'NOT LIKE', '%'.Helper::userCountry().'%')
+        ->orderBy('updates.id', 'desc')
+        ->select('updates.*')
+        ->paginate(config('settings.number_posts_show'));
 
     return view('index.explore', [
       'updates' => $updates,
