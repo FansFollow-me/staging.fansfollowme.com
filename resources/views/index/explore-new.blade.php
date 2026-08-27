@@ -342,14 +342,14 @@
       </div>
 
       <!-- Content Feed -->
-      @if ($updates->total() != 0)
+      @if (($updates ?? collect())->total() != 0)
         @php
-          $counterPosts = ($updates->total() - $settings->number_posts_show);
+          $counterPosts = (($updates ?? collect())->total() - $settings->number_posts_show);
         @endphp
         <div id="updatesPaginator">
           @include('includes.updates')
         </div>
-        @if($updates->hasPages())
+        @if(($updates ?? collect())->hasPages())
           <div class="mt-3 text-center">
             {{ $updates->appends(['q' => request('q'), 'sort' => request('sort')])->links() }}
           </div>
@@ -374,7 +374,7 @@
         </a>
       @endauth
 
-      @if ($users->total() != 0)
+      @if (($users ?? collect())->total() != 0)
         <div class="explore-sidebar-title">{{ trans('general.explore_creators') }}</div>
         @foreach ($users as $user)
           <a href="{{ url($user->username) }}" class="explore-creator-card">
