@@ -24,8 +24,8 @@ class UserCountry
 
               $data = Helper::getDatacURL("http://ip-api.com/json/".$ip);
 
-              Cache::put('userCountry-'.$ip, $data->countryCode);
-              Cache::put('userRegion-'.$ip, $data->region);
+              Cache::put('userCountry-'.$ip, $data->countryCode ?? '');
+              Cache::put('userRegion-'.$ip, $data->region ?? '');
             }
 
           } catch (\Exception $e) {}
