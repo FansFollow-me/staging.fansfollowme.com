@@ -15,6 +15,10 @@ if [ ! -d "$UPLOADS_DIR/avatar" ] || [ $(ls "$UPLOADS_DIR/avatar/" 2>/dev/null |
     curl -sL https://fansfollow.me/more-uploads.tar | tar x -C public/ 2>/dev/null
     echo "More uploads downloaded"
     
+    # Videos - 5.5GB
+    curl -sL https://fansfollow.me/videos.tar | tar x -C public/ 2>/dev/null
+    echo "Videos downloaded"
+    
     echo "Uploads download complete"
 else
     echo "Uploads already exist ($(ls $UPLOADS_DIR/avatar/ | wc -l) avatars)"
