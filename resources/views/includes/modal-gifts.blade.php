@@ -14,7 +14,7 @@
 			<form method="post" style="display: contents;" action="{{url('send/gift')}}" id="formSendGift">
 				@csrf
 
-				@if (request()->route()->named('profile'))
+				@if (request()->route()?->named('profile'))
 					<input type="hidden" name="user_id" value="{{ $user->id }}" />
 				@endif
 
@@ -23,7 +23,7 @@
 					<input type="hidden" name="user_id" value="{{ $user->id }}" />
 				@endif
 
-				@if (request()->route()->named(['live', 'live.private']))
+				@if (request()->route()?->named(['live', 'live.private']))
 					<input type="hidden" name="isLive" value="1" />
 					
 					@if ($live)
@@ -53,7 +53,7 @@
 
             <div class="modal-footer">
 
-				@if (request()->is('messages/*') || request()->route()->named(['live', 'live.private']))
+				@if (request()->is('messages/*') || request()->route()?->named(['live', 'live.private']))
 				<div class="form-group w-100">
 					<input type="text" class="form-control" maxlength="50" name="message" placeholder="{{ __('general.write_short_message') }}">
 				</div>

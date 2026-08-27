@@ -14,7 +14,7 @@
 						<form method="post" action="{{ url('verify/2fa') }}" id="formVerify2fa">
 							@csrf
 
-							@if (request()->route()->named('profile'))
+							@if (request()->route()?->named('profile'))
 							<input type="hidden" name="isProfileTwoFA" value="true">
 							@endif
 

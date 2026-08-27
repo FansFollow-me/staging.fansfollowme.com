@@ -24,7 +24,7 @@
 								<input type="hidden" name="isMessage" value="1" />
 							@endif
 
-							@if (request()->route()->named(['live', 'live.private']))
+							@if (request()->route()?->named(['live', 'live.private']))
 								<input type="hidden" name="isLive" value="1" />
 
 								@if ($live)
@@ -41,7 +41,7 @@
 							  </small>
 							@csrf
 
-							@if (!request()->route()->named('live'))
+							@if (!request()->route()?->named('live'))
 
 							@foreach ($paymentGatewaysSubscription as $payment)
 

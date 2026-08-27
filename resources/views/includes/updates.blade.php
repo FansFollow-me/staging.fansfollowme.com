@@ -403,7 +403,7 @@
 
 		@if ($response->creator->planActive() && $response->price == 0.00
 				|| $response->creator->free_subscription == 'yes' && $response->price == 0.00)
-			<a href="{{ request()->route()->named('profile') ? 'javascript:void(0);' : url($response->creator->username) }}" @guest data-toggle="modal" data-target="#loginFormModal" @else @if (request()->route()->named('profile')) @if ($response->creator->free_subscription == 'yes') data-toggle="modal" data-target="#subscriptionFreeForm" @else data-toggle="modal" data-target="#subscriptionForm" @endif @endif @endguest class="btn btn-primary w-100">
+			<a href="{{ request()->route()?->named('profile') ? 'javascript:void(0);' : url($response->creator->username) }}" @guest data-toggle="modal" data-target="#loginFormModal" @else @if (request()->route()?->named('profile')) @if ($response->creator->free_subscription == 'yes') data-toggle="modal" data-target="#subscriptionFreeForm" @else data-toggle="modal" data-target="#subscriptionForm" @endif @endif @endguest class="btn btn-primary w-100">
 				{{ __('general.content_locked_user_logged') }}
 			</a>
 		@elseif ($response->creator->planActive() && $response->price != 0.00
@@ -840,7 +840,7 @@
 if (request()->ajax()) {
 	$getHasPages = $updates->count() < $settings->number_posts_show ? false : true;
 } else {
-	if (request()->route()->named('profile')) {
+	if (request()->route()?->named('profile')) {
 		$getHasPages = $updates->count() < $settings->number_posts_show ? false : true;
 	} else {
 		$getHasPages = $hasPages ?? null;

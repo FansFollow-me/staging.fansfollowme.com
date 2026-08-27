@@ -237,7 +237,7 @@
                 </div>
               @endif
 
-              @if (! $settings->disable_login_register_email || request()->route()->named('login.admin'))
+              @if (! $settings->disable_login_register_email || request()->route()?->named('login.admin'))
                 <form method="POST" action="{{ url('login') }}" id="authLoginForm" enctype="multipart/form-data" class="auth-form" onsubmit="trackGA4Event('login', {method: 'email'});">
                   @csrf
                   <input type="hidden" name="return" value="{{ count($errors) > 0 ? old('return') : url()->previous() }}">

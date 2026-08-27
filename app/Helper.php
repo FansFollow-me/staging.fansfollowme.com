@@ -1429,7 +1429,7 @@ class Helper
 	public static function showLoginFormModal()
 	{
 		return request()->is('/') && in_array(config('settings.home_style'), [0, 2])
-			|| request()->route()->named('profile')
+			|| request()->route()?->named('profile')
 			|| request()->is([
 				'creators',
 				'creators/*',

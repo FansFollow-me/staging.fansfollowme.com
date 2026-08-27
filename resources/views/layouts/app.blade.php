@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta name="description" content="@yield('description_custom')@if(!Request::route()->named('seo') && !Request::route()->named('profile')){{trans('seo.description')}}@endif">
+  <meta name="description" content="@yield('description_custom')@if(!Request::route()?->named('seo') && !Request::route()?->named('profile')){{trans('seo.description')}}@endif">
   <meta name="keywords" content="@yield('keywords_custom'){{ trans('seo.keywords') }}" />
   <meta name="theme-color" content="{{ config('settings.theme_color_pwa') }}">
   <title>{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show {{$settings->title.' - '.__('seo.slogan')}}</title>
@@ -130,11 +130,11 @@
     @yield('content')
 
     @if (auth()->guest() 
-          && ! request()->route()->named('profile')
+          && ! request()->route()?->named('profile')
           && ! request()->is(['creators', 'category/*', 'creators/*'])
           || auth()->check()
           && request()->path() != '/'
-          && ! request()->route()->named('profile')
+          && ! request()->route()?->named('profile')
           && ! request()->is([
             'my/bookmarks', 
             'my/likes', 

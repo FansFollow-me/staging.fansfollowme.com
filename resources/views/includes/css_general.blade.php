@@ -154,7 +154,7 @@
   var no_results_found = "{{__('general.no_results_found')}}";
   var no_results = "{{__('general.no_results')}}";
   var no_one_seen_story_yet =  "{{__('general.no_one_seen_story_yet')}}";
-  var is_profile = {{ request()->route()->named('profile') ? 'true' : 'false' }};
+  var is_profile = {{ request()->route()?->named('profile') ? 'true' : 'false' }};
   var error_scrollelement = false;
   var captcha = {{ $settings->captcha == 'on' ? 'true' : 'false' }};
   var alert_adult = {{ $settings->alert_adult == 'on' ? 'true' : 'false' }};
