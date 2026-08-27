@@ -862,7 +862,10 @@ class Helper
 		if (env('FILESYSTEM_DRIVER') == 'dospace' && env('DOS_CDN')) {
 			return 'https://' . env('DOS_BUCKET') . '.' . env('DOS_DEFAULT_REGION') . '.cdn.digitaloceanspaces.com/' . $path;
 		} else {
-			return Storage::url($path);
+			$url = Storage::url($path);
+			// Strip /public/ prefix if present (Laravel Cloud serves from public/ root)
+			$url = preg_replace('#/public/#', '/', $url, 1);
+			return $url;
 		}
 	}
 
