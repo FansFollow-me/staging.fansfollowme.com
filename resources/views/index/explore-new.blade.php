@@ -342,14 +342,14 @@
       </div>
 
       <!-- Content Feed -->
-      @if ((isset($updates) ? $updates->total() : 0) != 0)
+      @if ((isset($updates) && method_exists($updates, 'total') ? $updates->total() : (is_countable($updates) ? count($updates) : 0)) != 0)
         @php
-          $counterPosts = ((isset($updates) ? $updates->total() : 0) - $settings->number_posts_show);
+          $counterPosts = ((isset($updates) && method_exists($updates, 'total') ? $updates->total() : (is_countable($updates) ? count($updates) : 0)) - $settings->number_posts_show);
         @endphp
         <div id="updatesPaginator">
           @include('includes.updates')
         </div>
-        @if((isset($updates) ? $updates->hasPages() : false))
+        @if((isset($updates) && method_exists($updates, 'hasPages') ? $updates->hasPages() : false))
           <div class="mt-3 text-center">
             {{ $updates->appends(['q' => request('q'), 'sort' => request('sort')])->links() }}
           </div>
@@ -374,7 +374,7 @@
         </a>
       @endauth
 
-      @if ((isset($users) ? $users->total() : 0) != 0)
+      @if ((isset($users) && method_exists($users, 'total') ? $users->total() : (is_countable($users) ? count($users) : 0)) != 0)
         <div class="explore-sidebar-title">{{ trans('general.explore_creators') }}</div>
         @foreach ($users as $user)
           <a href="{{ url($user->username) }}" class="explore-creator-card">
