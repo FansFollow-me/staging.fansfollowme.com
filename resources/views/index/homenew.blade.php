@@ -23,11 +23,9 @@
         linear-gradient(rgba(0,0,0,.45), rgba(15,23,42,.35)),
         url('/ffmherobackground.jpg') center/cover no-repeat;
       color: var(--home-text);
-      min-height: calc(100svh + 76px);
       display: flex;
       align-items: center;
-      margin-top: -76px;
-      padding-top: 76px;
+      padding: 224px 0 112px;
     }
     .home-hero .hero-grid {
       position: relative;
@@ -36,7 +34,6 @@
       grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
       gap: 1.5rem;
       align-items: center;
-      padding: 5rem 0 4rem;
       max-width: 72rem;
       margin: 0 auto;
       text-align: left;
@@ -52,7 +49,7 @@
       text-shadow: 0 1px 4px rgba(0,0,0,.6);
     }
     .home-hero h1 {
-      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+      font-size: 36px;
       line-height: 1.25;
       margin: 0 0 .5rem;
       letter-spacing: -.025em;
@@ -63,7 +60,7 @@
     .home-hero p {
       color: #f1f5f9;
       max-width: 32rem;
-      font-size: 0.875rem;
+      font-size: 16px;
       font-weight: 500;
       text-shadow: 0 1px 3px rgba(0,0,0,.5);
       line-height: 1.75;
@@ -80,15 +77,15 @@
       border-radius: 12px;
       font-weight: 700;
       min-height: 44px;
-      padding: .75rem 1.5rem;
+      padding: 16px 32px;
       letter-spacing: -0.01em;
       border-width: 1px;
-      font-size: 0.875rem;
+      font-size: 16px;
       transition: all .3s ease;
     }
     .home-cta .btn-light {
-      background: var(--home-gradient) !important;
-      background-image: var(--home-gradient) !important;
+      background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important;
+      background-image: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)) !important;
       border-color: transparent !important;
       color: #fff !important;
       box-shadow: 0 10px 20px rgba(249, 115, 22, .3);
@@ -98,14 +95,14 @@
       box-shadow: 0 14px 28px rgba(249,115,22,.4);
     }
     .home-cta .btn-outline-light {
-      background: rgba(30,41,59,.8) !important;
+      background: rgba(255,255,255,0.1) !important;
       background-image: none !important;
       border: 1px solid rgba(255,255,255,.15) !important;
       color: #e2e8f0 !important;
       box-shadow: none !important;
     }
     .home-cta .btn-outline-light:hover {
-      background: rgba(51,65,85,.8) !important;
+      background: rgba(255,255,255,0.2) !important;
       border-color: rgba(255,255,255,.3) !important;
       transform: scale(1.05);
     }
@@ -133,7 +130,7 @@
 
     /* ===== SECTION 2: FEATURE CARDS ===== */
     .section-dark { padding: 4rem 0; background: transparent; }
-    .section-dark h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 900; color: #fff; text-align: center; margin-bottom: .5rem; line-height: 1.25; }
+    .section-dark h2 { font-size: 36px; font-weight: 900; color: #fff; text-align: center; margin-bottom: .5rem; line-height: 1.25; }
     .section-sub { text-align: center; color: #d1d5db; max-width: 48rem; margin: 0 auto 2rem; font-size: .95rem; line-height: 1.75; }
 
     .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
@@ -169,7 +166,7 @@
       height: 1.25rem;
     }
     .card:hover .feature-icon { transform: scale(1.1); }
-    .card h3 { margin: 0 0 .4rem; font-size: 1rem; font-weight: 700; color: #fff; }
+    .card h3 { margin: 0 0 .4rem; font-size: 20px; font-weight: 700; color: #fff; }
     .card p { color: #d1d5db; line-height: 1.65; margin-bottom: 0; font-size: .9rem; }
 
     /* ===== SECTION 3: FOR FANS ===== */
@@ -202,16 +199,16 @@
 
     /* ===== SECTION 4: CTA ===== */
     .section-photo { position: relative; overflow: hidden; background: linear-gradient(rgba(0,0,0,.5), rgba(15,23,42,.5)), url('/ffmherobackground.jpg') center/cover no-repeat; padding: 5rem 0; text-align: center; }
-    .section-photo h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #fff; margin-bottom: .5rem; }
+    .section-photo h2 { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: .5rem; }
     .section-photo p { color: #d1d5db; font-size: 1rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
-    .cta-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.75rem; border-radius: 12px; background: var(--home-gradient); color: #fff; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all .3s; box-shadow: 0 14px 28px rgba(249,115,22,.3); }
+    .cta-btn { display: inline-flex; align-items: center; gap: .5rem; padding: 16px 32px; border-radius: 12px; background: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234)); color: #fff; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all .3s; box-shadow: 0 14px 28px rgba(249,115,22,.3); }
     .cta-btn:hover { transform: scale(1.05); box-shadow: 0 20px 30px rgba(249,115,22,.4); }
 
     /* ===== NAV SPACING ===== */
     .public-shell-nav { gap: 0.2rem !important; }
 
     @media (max-width: 991.98px) {
-      .home-hero { min-height: calc(100svh + 76px); }
+      .home-hero { padding: 120px 0 60px; }
       .home-hero .hero-grid,
       .fans-grid,
       .grid-4 {
@@ -220,8 +217,7 @@
       .public-shell-nav { gap: 0.1rem !important; }
     }
     @media (max-width: 767.98px) {
-      .home-hero { display: flex; align-items: center; }
-      .home-hero .hero-grid { padding: 1rem 0; }
+      .home-hero { display: flex; align-items: center; padding: 80px 0 40px; }
       .section-dark { padding: 1.5rem 0; }
       #fans { padding-top: 0.75rem !important; }
       .section-photo { padding: 1.5rem 0; }

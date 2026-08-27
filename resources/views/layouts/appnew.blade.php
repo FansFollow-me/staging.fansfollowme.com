@@ -36,7 +36,7 @@
   <style>
     :root {
       color-scheme: dark;
-      --bg: #0b0f1a;
+      --bg: #111827;
       --panel: #151b2c;
       --text: #e5e7eb;
       --muted: #94a3b8;
@@ -44,7 +44,7 @@
       --accent: #60a5fa;
       --accent-2: #e5e7eb;
       --shadow: 0 18px 54px rgba(0, 0, 0, 0.36);
-      --cta-gradient: linear-gradient(135deg, #f97316 0%, #ec4899 48%, #a855f7 100%);
+      --cta-gradient: linear-gradient(to right, rgb(249, 115, 22), rgb(147, 51, 234));
     }
 
     * { box-sizing: border-box; }
@@ -92,9 +92,9 @@
     .public-shell-nav a, .public-shell-nav summary {
       padding: 0.5rem 0.7rem;
       border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #cbd5e1;
+      font-weight: 600;
+      font-size: 16px;
+      color: #ffffff;
       cursor: pointer;
       list-style: none;
       transition: background-color .16s ease, color .16s ease, transform .16s ease;
@@ -161,7 +161,7 @@
       border-radius: 12px;
       font-weight: 700;
       min-height: 42px;
-      padding: 0.65rem 1.1rem;
+      padding: 16px 32px;
       letter-spacing: -0.01em;
       border-width: 1px;
       font-size: .9rem;
@@ -182,11 +182,11 @@
     .public-shell-button.btn-outline-primary {
       color: #e5e7eb;
       border: none;
-      background: rgba(30,41,59,.9);
+      background: rgba(255,255,255,0.1);
     }
     .public-shell-button.btn-outline-primary:hover,
     .public-shell-button.btn-outline-primary:focus {
-      background: rgba(51,65,85,.9);
+      background: rgba(255,255,255,0.2);
       color: #fff;
     }
     .public-shell-content {
