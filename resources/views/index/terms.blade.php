@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appnew')
 
 @section('title') Terms of Service - @endsection
 
