@@ -865,6 +865,10 @@ class Helper
 			$url = Storage::url($path);
 			// Strip /public/ prefix if present (Laravel Cloud serves from public/ root)
 			$url = preg_replace('#/public/#', '/', $url, 1);
+			// Fallback to live site for missing uploads
+			if (!file_exists(public_path($path))) {
+				return 'https://fansfollow.me/public/' . $path;
+			}
 			return $url;
 		}
 	}
