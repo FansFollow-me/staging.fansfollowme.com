@@ -64,6 +64,7 @@ class ViewServiceProvider extends ServiceProvider
         $advertising = collect([]);
         $gifts = collect([]);
         $reelsPublic = 0;
+        $fonts = '';
 
         try {
             \DB::connection()->getPdo();
@@ -122,7 +123,8 @@ class ViewServiceProvider extends ServiceProvider
                 'getCurrentLiveCreators',
                 'advertising',
                 'gifts',
-                'reelsPublic'
+                'reelsPublic',
+                'fonts'
             )
         );
     }
