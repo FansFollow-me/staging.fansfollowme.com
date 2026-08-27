@@ -862,11 +862,6 @@ class Helper
 		if (env('FILESYSTEM_DRIVER') == 'dospace' && env('DOS_CDN')) {
 			return 'https://' . env('DOS_BUCKET') . '.' . env('DOS_DEFAULT_REGION') . '.cdn.digitaloceanspaces.com/' . $path;
 		} else {
-			// Fallback to live site for missing uploads (staging doesn't have uploads)
-			$localPath = public_path($path);
-			if (!file_exists($localPath) && app()->environment('production')) {
-				return 'https://fansfollow.me/public/' . $path;
-			}
 			return Storage::url($path);
 		}
 	}
