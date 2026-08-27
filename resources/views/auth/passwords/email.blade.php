@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appnew')
 
 @section('title') {{__('auth.password_recover')}} -@endsection
 
