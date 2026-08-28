@@ -47,45 +47,38 @@ echo "ViewServiceProvider fixed with comprehensive defaults\n";
 
 // Create missing tables that Sponzy v7.9.2 expects
 try {
-    \DB::connection()->getPdo();
+    $host = getenv('DB_HOST') ?: 'localhost';
+    $port = getenv('DB_PORT') ?: '3306';
+    $db   = getenv('DB_DATABASE') ?: 'forge';
+    $user = getenv('DB_USERNAME') ?: 'forge';
+    $pass = getenv('DB_PASSWORD') ?: '';
     
-    if (!\DB::getSchemaBuilder()->hasTable('video_calls')) {
-        \DB::statement('CREATE TABLE video_calls (
-            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            seller_id INT NOT NULL,
-            buyer_id INT NOT NULL,
-            price DECIMAL(10,2) DEFAULT 0,
-            status VARCHAR(255) DEFAULT "pending",
-            minutes INT DEFAULT 0,
-            token VARCHAR(255) NULL,
-            started_at TIMESTAMP NULL,
-            joined_at TIMESTAMP NULL,
-            ended_at TIMESTAMP NULL,
-            paid TINYINT(1) DEFAULT 0,
-            created_at TIMESTAMP NULL,
-            updated_at TIMESTAMP NULL
-        )');
-        echo "Created video_calls table\n";
-    }
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
     
-    if (!\DB::getSchemaBuilder()->hasTable('audio_calls')) {
-        \DB::statement('CREATE TABLE audio_calls (
-            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            seller_id INT NOT NULL,
-            buyer_id INT NOT NULL,
-            price DECIMAL(10,2) DEFAULT 0,
-            status VARCHAR(255) DEFAULT "pending",
-            minutes INT DEFAULT 0,
-            token VARCHAR(255) NULL,
-            started_at TIMESTAMP NULL,
-            joined_at TIMESTAMP NULL,
-            ended_at TIMESTAMP NULL,
-            paid TINYINT(1) DEFAULT 0,
-            created_at TIMESTAMP NULL,
-            updated_at TIMESTAMP NULL
-        )');
-        echo "Created audio_calls table\n";
+    $tables = ['video_calls', 'audio_calls'];
+    foreach ($tables as $table) {
+        $stmt = $pdo->query("SHOW TABLES LIKE '$table'");
+        if ($stmt->rowCount() === 0) {
+            $pdo->exec("CREATE TABLE $table (
+                id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                seller_id INT NOT NULL,
+                buyer_id INT NOT NULL,
+                price DECIMAL(10,2) DEFAULT 0,
+                status VARCHAR(255) DEFAULT 'pending',
+                minutes INT DEFAULT 0,
+                token VARCHAR(255) NULL,
+                started_at TIMESTAMP NULL,
+                joined_at TIMESTAMP NULL,
+                ended_at TIMESTAMP NULL,
+                paid TINYINT(1) DEFAULT 0,
+                created_at TIMESTAMP NULL,
+                updated_at TIMESTAMP NULL
+            )");
+            echo "Created $table table\n";
+        }
     }
-} catch (\Exception $e) {
+} catch (Exception $e) {
     echo "Schema fix error: " . $e->getMessage() . "\n";
 }
