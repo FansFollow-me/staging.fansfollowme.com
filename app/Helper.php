@@ -861,6 +861,11 @@ class Helper
 	{
 		if (env('FILESYSTEM_DRIVER') == 'dospace' && env('DOS_CDN')) {
 			return 'https://' . env('DOS_BUCKET') . '.' . env('DOS_DEFAULT_REGION') . '.cdn.digitaloceanspaces.com/' . $path;
+		} elseif (env('FILESYSTEM_DRIVER') == 's3') {
+			// R2/S3: construct public URL from bucket + endpoint
+			$bucket = env('AWS_BUCKET');
+			$endpoint = env('AWS_ENDPOINT');
+			return $endpoint . '/' . $bucket . '/' . $path;
 		} else {
 			$url = Storage::url($path);
 			// Strip /public/ prefix if present (Laravel Cloud serves from public/ root)
