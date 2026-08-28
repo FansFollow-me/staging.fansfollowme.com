@@ -1,7 +1,7 @@
 @extends('layouts.appnew')
 
-@section('title') FansFollow.me - Global Fitness & Martial Arts Creator Platform - @endsection
-@section('description_custom')FansFollow.me is the global fitness and martial arts creator platform for subscriptions, coaching, direct fan access, and live creator discovery.@endsection
+@section('title') FansFollowMe - Global Fitness & Martial Arts Creator Platform - @endsection
+@section('description_custom')FansFollowMe is the global fitness and martial arts creator platform for subscriptions, coaching, direct fan access, and live creator discovery.@endsection
 
 @section('css')
   <style>
@@ -230,7 +230,7 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <h1>FansFollow.me — where fans become friends</h1>
+          <h1>FansFollowMe — where fans become friends</h1>
           <div class="hero-eyebrow">For Fitness, Bodybuilding and Martial Arts Creators</div>
           <p>Built for fitness coaches, bodybuilders, nutrition experts, martial artists and combat sports creators to earn from fans worldwide through content, coaching and direct fan access.</p>
           <div class="home-cta">
@@ -282,7 +282,7 @@
           </script>
         </div>
         <div class="home-hero__image">
-          <img src="{{ url('fans-foloow-me-logo-final-file--png-version.png') }}" srcset="{{ url('fans-foloow-me-logo-final-file--png-version-480.png') }} 480w, {{ url('fans-foloow-me-logo-final-file--png-version-960.png') }} 960w, {{ url('fans-foloow-me-logo-final-file--png-version-1440.png') }} 1440w" sizes="(max-width: 991px) 92vw, 400px" alt="FansFollow.me logo" loading="eager" decoding="async">
+          <img src="{{ url('fans-foloow-me-logo-final-file--png-version.png') }}" srcset="{{ url('fans-foloow-me-logo-final-file--png-version-480.png') }} 480w, {{ url('fans-foloow-me-logo-final-file--png-version-960.png') }} 960w, {{ url('fans-foloow-me-logo-final-file--png-version-1440.png') }} 1440w" sizes="(max-width: 991px) 92vw, 400px" alt="FansFollowMe logo" loading="eager" decoding="async">
         </div>
       </div>
     </div>
@@ -292,7 +292,7 @@
     <div class="container">
       <div class="section-head" style="text-align:center;margin-bottom:2rem;">
         <h2>One home for fitness creators and their fans</h2>
-        <p class="section-sub">FansFollow.me brings fighters, coaches, fitness influencers, sports professionals and actors with fitness-based content together on one platform, so fans can find them in one place and creators can build real relationships, add new revenue streams and unlock bigger opportunities.</p>
+        <p class="section-sub">FansFollowMe brings fighters, coaches, fitness influencers, sports professionals and actors with fitness-based content together on one platform, so fans can find them in one place and creators can build real relationships, add new revenue streams and unlock bigger opportunities.</p>
       </div>
       <div class="grid-4">
         <div class="card"><div class="feature-icon"><i data-lucide="dollar-sign"></i></div><h3>Keep 80%+ Revenue</h3><p>Keep more of what you earn with a creator-first revenue share.</p></div>
@@ -315,7 +315,7 @@
           <span style="color:#fdba74;font-weight:600;font-size:.75rem;">For Fans Globally | Pay with BTC/ETH/USDT/SOL</span>
         </div>
         <h2>Get closer access to your favourite athletes &amp; creators</h2>
-        <p class="section-sub">FansFollow.me lets you build real connections with UFC fighters, bodybuilders, martial artists, fitness models and other creators through private chats, exclusive content, calls and video sessions.</p>
+        <p class="section-sub">FansFollowMe lets you build real connections with UFC fighters, bodybuilders, martial artists, fitness models and other creators through private chats, exclusive content, calls and video sessions.</p>
       </div>
       <div class="fans-container">
         <div class="fans-grid">
@@ -332,7 +332,7 @@
     <div id="scan" style="position:relative; top:-90px; height:0;"></div>
     <div class="container">
       <h2>Ready to start as a creator?</h2>
-      <p>Keep more of what you earn, connect with fans in one place and unlock new media and casting opportunities as you grow on FansFollow.me.</p>
+      <p>Keep more of what you earn, connect with fans in one place and unlock new media and casting opportunities as you grow on FansFollowMe.</p>
       <a class="cta-btn" href="{{ url('signup') }}">Get Started Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div>
   </section>
