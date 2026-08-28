@@ -108,6 +108,15 @@
 
 .img-profile-user .media-body {
   flex: 1;
+  min-width: 0;
+}
+
+.img-profile-user .media-body h1,
+.img-profile-user .media-body .profile-name {
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin-bottom: 0.25rem !important;
 }
 
 .img-profile-user .d-flex-user {
@@ -151,10 +160,6 @@
 .card-updates .card-footer {
   padding: 0.4rem 1rem !important;
   font-size: 0.8rem;
-}
-/* Hide media/images in post cards for compact view */
-.card-updates .btn-block {
-  display: none !important;
 }
 /* Hide post content text for ultra-compact rows */
 .card-updates .card-body.pt-0.pb-3 {
