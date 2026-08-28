@@ -5,7 +5,7 @@
 @section('css')
 <style>
   .explore-shell {
-    padding: 2rem 0 3rem;
+    padding: 5rem 0 3rem;
     background: transparent;
   }
   .explore-shell .explore-grid {
