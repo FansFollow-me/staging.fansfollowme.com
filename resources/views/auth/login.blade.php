@@ -287,4 +287,51 @@
       </div>
     </div>
   </section>
+
+<script>
+document.getElementById('authLoginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    var btn = document.getElementById('authLoginButton');
+    var errorDiv = document.getElementById('errorLogin');
+    var errorList = document.getElementById('showErrorsLogin');
+    
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> {{ __("auth.login") }}';
+    errorDiv.classList.add('d-none');
+    
+    var formData = new FormData(form);
+    formData.append('_token', document.querySelector('input[name="_token"]').value);
+    
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {'X-Requested-With': 'XMLHttpRequest'}
+    })
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+        if (data.success) {
+            window.location.href = data.url_return || '/';
+        } else {
+            errorDiv.classList.remove('d-none');
+            errorList.innerHTML = '';
+            if (data.errors) {
+                Object.values(data.errors).forEach(function(errs) {
+                    errs.forEach(function(err) {
+                        errorList.innerHTML += '<li class="text-danger">' + err + '</li>';
+                    });
+                });
+            }
+            btn.disabled = false;
+            btn.innerHTML = '{{ __("auth.login") }}';
+        }
+    })
+    .catch(function() {
+        errorDiv.classList.remove('d-none');
+        errorList.innerHTML = '<li class="text-danger">An error occurred. Please try again.</li>';
+        btn.disabled = false;
+        btn.innerHTML = '{{ __("auth.login") }}';
+    });
+});
+</script>
 @endsection
