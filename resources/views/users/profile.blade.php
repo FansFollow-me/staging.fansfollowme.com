@@ -33,7 +33,7 @@
   @endsection
 
 @section('content')
-<div class="jumbotron jumbotron-cover-user m-0 position-relative" style="padding: 80px 0; background: #505050 @if ($user->cover != '') url('{{Helper::getFile(config('path.cover').$user->cover)}}') no-repeat center center !important; background-size: cover !important; @endif">
+<div class="jumbotron jumbotron-cover-user m-0 position-relative" style="padding: 40px 0; background: #505050 @if ($user->cover != '') url('{{Helper::getFile(config('path.cover').$user->cover)}}') no-repeat center center !important; background-size: cover !important; @endif">
   @if (auth()->check() && auth()->user()->status == 'active' && auth()->id() == $user->id)
     <div class="progress-upload-cover"></div>
 
@@ -80,7 +80,7 @@
               <i class="fa fa-camera"></i>
             </a>
           @endif
-            <img src="{{Helper::getFile(config('path.avatar').$user->avatar)}}" width="150" height="150" alt="{{$user->hide_name == 'yes' ? $user->username : $user->name}}" class="rounded-circle img-user mb-2 avatarUser @if (auth()->check() && auth()->id() != $user->id && Helper::isCreatorLive($getCurrentLiveCreators, $user->id)) border-0 @endif">
+            <img src="{{Helper::getFile(config('path.avatar').$user->avatar)}}" width="128" height="128" alt="{{$user->hide_name == 'yes' ? $user->username : $user->name}}" class="rounded-circle img-user mb-2 avatarUser @if (auth()->check() && auth()->id() != $user->id && Helper::isCreatorLive($getCurrentLiveCreators, $user->id)) border-0 @endif">
           </div><!-- avatar-wrap -->
 
           <div class="media-body">
