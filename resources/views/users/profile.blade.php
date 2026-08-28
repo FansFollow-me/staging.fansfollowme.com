@@ -104,7 +104,13 @@
           </small>
           </h4>
 
-            <p>
+          @if ($user->verified_id == 'yes')
+            <span class="badge badge-pill px-3 py-1 mb-2" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(249, 115, 22, 0.3); color: var(--ffm-orange); font-size: 0.75rem; font-weight: 600;">
+              Creator
+            </span>
+          @endif
+
+          <p>
             <span>
               @if (! Cache::has('is-online-' . $user->id) && $user->hide_last_seen == 'no')
               <span class="w-100 d-block">
@@ -370,6 +376,30 @@
 
           </div><!-- media-body -->
         </div><!-- media -->
+
+        {{-- Stats display matching approved design --}}
+        @if ($user->verified_id == 'yes')
+        <div class="d-flex justify-content-center gap-4 mb-4 flex-wrap">
+          <div class="text-center">
+            <div class="fw-bold" style="font-size: 1.25rem; color: var(--ffm-text-primary);">{{ $totalPosts }}</div>
+            <small style="color: var(--ffm-text-secondary);">Posts</small>
+          </div>
+          <div class="text-center">
+            <div class="fw-bold" style="font-size: 1.25rem; color: var(--ffm-text-primary);">{{ $subscriptionsActive }}</div>
+            <small style="color: var(--ffm-text-secondary);">Subscribers</small>
+          </div>
+          <div class="text-center">
+            <div class="fw-bold" style="font-size: 1.25rem; color: var(--ffm-text-primary);">{{ $likeCount }}</div>
+            <small style="color: var(--ffm-text-secondary);">Likes</small>
+          </div>
+          @if ($user->price > 0)
+          <div class="text-center">
+            <div class="fw-bold" style="font-size: 1.25rem; color: var(--ffm-orange);">{{ Helper::formatPrice($user->price) }}</div>
+            <small style="color: var(--ffm-text-secondary);">Monthly</small>
+          </div>
+          @endif
+        </div>
+        @endif
 
         @if ($user->verified_id == 'yes')
         <ul class="nav nav-profile justify-content-center nav-fill">
