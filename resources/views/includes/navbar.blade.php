@@ -11,7 +11,7 @@
 			@endauth
 
 			<a class="navbar-brand" href="{{url('/')}}">
-				<img src="{{url('fans-foloow-me-logo-final-file--png-version.png')}}" alt="{{$settings->title}}" class="logo align-bottom max-w-100" />
+				<img src="{{url('img/' . $settings->logo_2)}}" alt="{{$settings->title}}" class="logo align-bottom max-w-100" />
 			</a>
 
 			@guest
