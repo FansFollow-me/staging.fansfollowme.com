@@ -410,10 +410,6 @@
               <a href="javascript:;" title="About" style="color: inherit; text-decoration: none;">About</a>
             </li>
 
-            <li class="nav-link navbar-user-mobile" style="font-weight: 600; font-size: 1rem; padding: 0.75rem 1.5rem; border-bottom: 2px solid transparent; cursor: pointer;">
-              <a href="javascript:;" title="Reviews" style="color: inherit; text-decoration: none;">Reviews</a>
-            </li>
-
         </ul>
 
         {{-- Media filter tabs (secondary navigation) --}}
@@ -1387,14 +1383,44 @@ $('.subsCCBill').on('click', function() {
     	 @endif
 
        @if (session('error_cancel'))
-    	swal({
-    		title: "{{ __('general.error_oops') }}",
-    		text: "{{ __('general.payment_card_error') }}",
-    		type: "error",
-    		confirmButtonText: "{{ __('users.ok') }}"
-    		});
-    	 @endif
-</script>
+       swal({
+       title: "{{ __('general.error_oops') }}",
+       text: "{{ __('general.payment_card_error') }}",
+       type: "error",
+       confirmButtonText: "{{ __('users.ok') }}"
+       });
+       @endif
+
+       // Profile tab switching: Posts vs About
+       document.addEventListener('DOMContentLoaded', function() {
+           var aboutSidebar = document.querySelector('#navbarUserHome');
+           var aboutCol = aboutSidebar ? aboutSidebar.closest('.col-lg-4') : null;
+           var postsSection = document.querySelector('.col-lg-8');
+           var aboutTab = document.querySelector('.nav-profile a[title="About"]');
+           var postsTab = document.querySelector('.nav-profile a[title*="Posts"]');
+
+           if (aboutTab) {
+               aboutTab.addEventListener('click', function(e) {
+                   e.preventDefault();
+                   if (postsSection) postsSection.style.display = 'none';
+                   if (aboutCol) { aboutCol.classList.remove('col-lg-4'); aboutCol.classList.add('col-lg-12'); }
+                   if (aboutSidebar) aboutSidebar.classList.add('ffm-show');
+                   document.querySelectorAll('.nav-profile .nav-link').forEach(function(t) { t.classList.remove('active'); });
+                   aboutTab.parentElement.classList.add('active');
+               });
+           }
+           if (postsTab) {
+               postsTab.addEventListener('click', function(e) {
+                   e.preventDefault();
+                   if (postsSection) postsSection.style.display = 'block';
+                   if (aboutCol) { aboutCol.classList.remove('col-lg-12'); aboutCol.classList.add('col-lg-4'); }
+                   if (aboutSidebar) aboutSidebar.classList.remove('ffm-show');
+                   document.querySelectorAll('.nav-profile .nav-link').forEach(function(t) { t.classList.remove('active'); });
+                   postsTab.parentElement.classList.add('active');
+               });
+           }
+       });
+       </script>
 @endsection
 @php session()->forget('subscription_cancel') @endphp
 @php session()->forget('subscription_success') @endphp

@@ -116,6 +116,19 @@
   flex-wrap: wrap;
 }
 
+/* Profile tabs: hide About sidebar by default, show on tab click */
+#navbarUserHome {
+  display: none !important;
+}
+#navbarUserHome.ffm-show {
+  display: block !important;
+}
+
+/* Hide media filter tabs by default (secondary nav) */
+.nav-profile + .nav.nav-profile {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .img-profile-user {
     flex-direction: column !important;
