@@ -131,7 +131,7 @@
 
 /* Profile posts: compact layout matching live site */
 .card-updates .card-body:first-child {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem !important;
 }
 .card-updates .card-body:first-child .media {
   display: flex;
@@ -143,12 +143,30 @@
   height: 32px !important;
 }
 .card-updates .card-body.pt-0.pb-3 {
-  padding: 0 1rem 0.5rem !important;
-  font-size: 0.9rem;
+  padding: 0 1rem 0.25rem !important;
+  font-size: 0.85rem;
+  max-height: 2.5rem;
+  overflow: hidden;
 }
 .card-updates .card-footer {
-  padding: 0.5rem 1rem !important;
-  font-size: 0.85rem;
+  padding: 0.4rem 1rem !important;
+  font-size: 0.8rem;
+}
+/* Hide media/images in post cards for compact view */
+.card-updates .btn-block {
+  display: none !important;
+}
+/* Hide post content text for ultra-compact rows */
+.card-updates .card-body.pt-0.pb-3 {
+  display: none !important;
+}
+/* Compact post card */
+.card-updates {
+  margin-bottom: 0.5rem !important;
+  border-radius: 0.5rem !important;
+}
+.card-updates .card-body:first-child .media .media-body small.text-muted {
+  font-size: 0.75rem;
 }
 
 @media (max-width: 768px) {
