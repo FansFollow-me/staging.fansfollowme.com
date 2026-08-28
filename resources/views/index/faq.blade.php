@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row justify-content-center text-center mb-5">
       <div class="col-lg-10">
-        <h1 class="mb-3" style="font-size: 2.5rem; font-weight: 900;">Frequently Asked Questions</h1>
+        <h1 class="mb-3" style="font-size: 2.5rem; font-weight: 900;">FAQ</h1>
         <p class="lead" style="color: var(--ffm-text-secondary); max-width: 600px; margin: 0 auto;">
           Everything you need to know about {{$settings->title}} - creator earnings, payments, and platform features.
         </p>

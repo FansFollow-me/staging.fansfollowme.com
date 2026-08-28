@@ -86,6 +86,7 @@
 /* Preserve cover image backgrounds on profile pages */
 .jumbotron-cover-user {
   background-color: transparent !important;
+  background-image: none !important;
 }
 
 * {
