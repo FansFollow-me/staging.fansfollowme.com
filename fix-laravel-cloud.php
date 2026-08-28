@@ -47,10 +47,10 @@ echo "ViewServiceProvider fixed with comprehensive defaults\n";
 
 // Create missing tables that Sponzy v7.9.2 expects
 try {
-    \\DB::connection()->getPdo();
+    \DB::connection()->getPdo();
     
-    if (!\\DB::getSchemaBuilder()->hasTable('video_calls')) {
-        \\DB::statement('CREATE TABLE video_calls (
+    if (!\DB::getSchemaBuilder()->hasTable('video_calls')) {
+        \DB::statement('CREATE TABLE video_calls (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             seller_id INT NOT NULL,
             buyer_id INT NOT NULL,
@@ -68,8 +68,8 @@ try {
         echo "Created video_calls table\n";
     }
     
-    if (!\\DB::getSchemaBuilder()->hasTable('audio_calls')) {
-        \\DB::statement('CREATE TABLE audio_calls (
+    if (!\DB::getSchemaBuilder()->hasTable('audio_calls')) {
+        \DB::statement('CREATE TABLE audio_calls (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             seller_id INT NOT NULL,
             buyer_id INT NOT NULL,
@@ -86,6 +86,6 @@ try {
         )');
         echo "Created audio_calls table\n";
     }
-} catch (\\Exception $e) {
+} catch (\Exception $e) {
     echo "Schema fix error: " . $e->getMessage() . "\n";
 }
