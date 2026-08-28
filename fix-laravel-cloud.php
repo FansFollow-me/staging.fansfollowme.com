@@ -103,5 +103,5 @@ try {
 try {
     $pdo2 = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pass);
     $pdo2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo2->exec("UPDATE admin_settings SET who_can_see_content = 'everyone' WHERE who_can_see_content = 'users'");
+    $pdo2->exec("UPDATE admin_settings SET who_can_see_content = 'all' WHERE who_can_see_content = 'users'");
 } catch (Exception $e) {}
