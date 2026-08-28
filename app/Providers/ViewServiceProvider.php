@@ -146,6 +146,7 @@ class ViewServiceProvider extends ServiceProvider
                 'withdrawalsPendingCount',
                 'verificationRequestsCount',
                 'paymentsGateways',
+                'paymentGatewaysSubscription',
                 'blogsCount',
                 'categoriesCount',
                 'categoriesFooter',
