@@ -402,12 +402,24 @@
         @endif
 
         @if ($user->verified_id == 'yes')
-        <ul class="nav nav-profile justify-content-center nav-fill">
+        <ul class="nav nav-profile justify-content-center nav-fill" style="border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem;">
 
-          <li class="nav-link @if (request()->path() == $user->username)active @endif navbar-user-mobile">
-            <small class="btn-block sm-btn-size">{{ $totalPosts }}</small>
-              <a href="{{request()->path() == $user->username ? 'javascript:;' : url($user->username)}}" title="{{__('general.posts')}}"><i class="feather icon-file-text"></i> <span class="d-lg-inline-block d-none">{{__('general.posts')}}</span></a>
+          <li class="nav-link @if (request()->path() == $user->username)active @endif navbar-user-mobile" style="font-weight: 600; font-size: 1rem; padding: 0.75rem 1.5rem; border-bottom: 2px solid transparent; cursor: pointer;">
+              <a href="{{request()->path() == $user->username ? 'javascript:;' : url($user->username)}}" title="{{__('general.posts')}}" style="color: inherit; text-decoration: none;">Posts({{ $totalPosts }})</a>
             </li>
+
+            <li class="nav-link navbar-user-mobile" style="font-weight: 600; font-size: 1rem; padding: 0.75rem 1.5rem; border-bottom: 2px solid transparent; cursor: pointer;">
+              <a href="javascript:;" title="About" style="color: inherit; text-decoration: none;">About</a>
+            </li>
+
+            <li class="nav-link navbar-user-mobile" style="font-weight: 600; font-size: 1rem; padding: 0.75rem 1.5rem; border-bottom: 2px solid transparent; cursor: pointer;">
+              <a href="javascript:;" title="Reviews" style="color: inherit; text-decoration: none;">Reviews</a>
+            </li>
+
+        </ul>
+
+        {{-- Media filter tabs (secondary navigation) --}}
+        <ul class="nav nav-profile justify-content-center nav-fill mb-3" style="font-size: 0.85rem;">
 
             <li class="nav-link @if (request()->path() == $user->username.'/photos')active @endif navbar-user-mobile">
               <small class="btn-block sm-btn-size">{{ $totalPhotos }}</small>
