@@ -15,7 +15,7 @@
         <span class="badge badge-pill px-4 py-2 mb-3" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(249, 115, 22, 0.3); color: var(--ffm-orange); font-size: 0.85rem;">
           SUPPORT CENTER
         </span>
-        <h1 style="font-size: 2.5rem; font-weight: 900;">We're Here to Help</h1>
+        <h1 style="font-size: 2.5rem; font-weight: 900;">We're Here to Help Support Center</h1>
         <p style="color: var(--ffm-text-secondary); max-width: 600px; margin: 0 auto;">
           Get the support you need to succeed on FansFollow. Our team is available to help you maximize your earnings and grow your community.
         </p>

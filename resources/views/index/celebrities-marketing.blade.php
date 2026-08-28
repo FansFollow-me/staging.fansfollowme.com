@@ -10,7 +10,7 @@
         <span class="badge badge-pill px-4 py-2 mb-3" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(249, 115, 22, 0.3); color: var(--ffm-orange); font-size: 0.85rem;">
           CELEBRITY CONNECTIONS
         </span>
-        <h1 class="mb-4" style="font-size: 3rem; font-weight: 900;">Chat Personally With<br>Your Favorite Champions</h1>
+        <h1 class="mb-4" style="font-size: 3rem; font-weight: 900;">Chat Personally<br>With<br>Your Favorite Champions</h1>
         <p class="lead mb-5" style="color: var(--ffm-text-secondary); max-width: 700px; margin: 0 auto;">
           Connect directly with UFC fighters, Olympic champions, bodybuilding legends, and fitness icons. Build real friendships through personal chats, phone calls, and video hangouts.
         </p>

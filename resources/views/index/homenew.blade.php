@@ -230,7 +230,7 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <h1>FansFollowMe — where fans become friends</h1>
+          <h1>FansFollow.me — where fans become friends</h1>
           <div class="hero-eyebrow">For Fitness, Bodybuilding and Martial Arts Creators</div>
           <p>Built for fitness coaches, bodybuilders, nutrition experts, martial artists and combat sports creators to earn from fans worldwide through content, coaching and direct fan access.</p>
           <div class="home-cta">

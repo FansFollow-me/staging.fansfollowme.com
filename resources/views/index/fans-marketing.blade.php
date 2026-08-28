@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row justify-content-center text-center mb-5">
       <div class="col-lg-10">
-        <h1 class="mb-4" style="font-size: 3.5rem; font-weight: 900;">Discover and connect with your favourite fitness creators</h1>
+        <h1 class="mb-4" style="font-size: 3.5rem; font-weight: 900;">Discover and connect<br>with your favourite<br>fitness creators</h1>
         <p class="lead mb-5" style="color: var(--ffm-text-secondary); max-width: 700px; margin: 0 auto;">
           Find fighters, coaches, bodybuilders and fitness influencers in one place and get closer access through chats, exclusive content, calls and video sessions.
         </p>
