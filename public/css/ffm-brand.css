@@ -15,7 +15,7 @@
 :root,
 [data-bs-theme="dark"] {
   /* Override Bootstrap dark theme body bg */
-  --bs-body-bg: #111827;
+  --bs-body-bg: #0B0F1A;
   --bs-body-bg-rgb: 17, 24, 39;
   --bs-body-color: #dee2e6;
   --bs-body-color-rgb: 222, 226, 230;
@@ -42,7 +42,7 @@
   --ffm-gradient-hover: linear-gradient(to right, rgb(234, 88, 12), rgb(124, 58, 237));
 
   /* Dark theme colors - exact from fansfollowme.com */
-  --ffm-dark: #111827;
+  --ffm-dark: #0B0F1A;
   --ffm-dark-lighter: #1f2937;
   --ffm-dark-card: #1f2937;
 
@@ -52,8 +52,8 @@
   --ffm-text-muted: #9ca3af;
 
   /* Background colors */
-  --ffm-bg: #111827;
-  --ffm-bg-primary: #111827;
+  --ffm-bg: #0B0F1A;
+  --ffm-bg-primary: #0B0F1A;
   --ffm-bg-secondary: #1f2937;
   --ffm-card-bg: rgba(255, 255, 255, 0.05);
 
@@ -195,8 +195,8 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif !important;
-  background-color: #111827 !important;
-  background: #111827 !important;
+  background-color: #0B0F1A !important;
+  background: #0B0F1A !important;
   color: #ffffff !important;
   line-height: 1.6;
   font-size: 16px;
@@ -207,8 +207,8 @@ body {
 html body,
 html[data-bs-theme="dark"] body,
 body {
-  background-color: #111827 !important;
-  background: #111827 !important;
+  background-color: #0B0F1A !important;
+  background: #0B0F1A !important;
 }
 
 h1 {
@@ -491,8 +491,8 @@ body .login-btn.btn,
 html[data-bs-theme="dark"] body .jumbotron.homepage,
 body .jumbotron.homepage,
 .jumbotron.homepage {
-  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
-  background-color: #111827 !important;
+  background: linear-gradient(to bottom right, #0B0F1A, #1f2937, #0B0F1A) !important;
+  background-color: #0B0F1A !important;
   position: relative;
   overflow: hidden;
   padding: 224px 0 112px !important;
@@ -565,7 +565,7 @@ body .jumbotron.homepage h1,
    ============================================ */
 
 .section {
-  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  background: linear-gradient(to bottom right, #0B0F1A, #1f2937, #0B0F1A) !important;
   padding: 40px 0 24px;
   position: relative;
   overflow: hidden;
@@ -716,7 +716,7 @@ body .jumbotron.homepage h1,
    ============================================ */
 
 .cta-section {
-  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  background: linear-gradient(to bottom right, #0B0F1A, #1f2937, #0B0F1A) !important;
   position: relative;
   overflow: hidden;
   padding: 32px 0;
@@ -762,7 +762,7 @@ body .jumbotron.homepage h1,
    ============================================ */
 
 .footer_background_color {
-  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  background: linear-gradient(to bottom right, #0B0F1A, #1f2937, #0B0F1A) !important;
   border-top: 1px solid var(--ffm-glass-border);
   position: relative;
 }
@@ -821,7 +821,7 @@ footer h3::after {
 
 /* Copyright section */
 footer.py-3 {
-  background: #111827 !important;
+  background: #0B0F1A !important;
   border-top: 1px solid var(--ffm-glass-border);
 }
 
@@ -954,7 +954,7 @@ footer .copyright {
    ============================================ */
 
 /* Override Bootstrap light defaults */
-.bg-white { background-color: #111827 !important; }
+.bg-white { background-color: #0B0F1A !important; }
 .text-dark { color: #ffffff !important; }
 .border-top { border-color: rgba(255, 255, 255, 0.1) !important; }
 
@@ -962,7 +962,7 @@ footer .copyright {
 .jumbotron,
 .section,
 footer {
-  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  background: linear-gradient(to bottom right, #0B0F1A, #1f2937, #0B0F1A) !important;
 }
 
 /* Fix any light backgrounds that leak through */
@@ -1013,8 +1013,8 @@ main {
 /* Auth page jumbotron */
 .jumbotron.home,
 .jumbotron.home.m-0 {
-  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
-  background-color: #111827 !important;
+  background: linear-gradient(to bottom right, #0B0F1A, #1f2937, #0B0F1A) !important;
+  background-color: #0B0F1A !important;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -1211,7 +1211,7 @@ main {
 
 /* Section wrapper */
 .section.section-sm {
-  background: linear-gradient(to bottom right, #111827, #1f2937, #111827) !important;
+  background: linear-gradient(to bottom right, #0B0F1A, #1f2937, #0B0F1A) !important;
   padding-top: 100px;
 }
 
@@ -1505,8 +1505,8 @@ main {
 
 /* Admin body */
 body:has(.sidebar) {
-  background-color: #111827 !important;
-  background: #111827 !important;
+  background-color: #0B0F1A !important;
+  background: #0B0F1A !important;
 }
 
 /* Admin sidebar */
@@ -1559,7 +1559,7 @@ body:has(.sidebar) {
 .admin-content,
 main > .container,
 main > .container-fluid {
-  background: #111827 !important;
+  background: #0B0F1A !important;
 }
 
 /* Admin cards */
@@ -1911,7 +1911,7 @@ label {
 html, body,
 html[data-bs-theme="dark"],
 html[data-bs-theme="dark"] body {
-  background-color: #111827 !important;
+  background-color: #0B0F1A !important;
   color: #ffffff !important;
 }
 
@@ -2122,7 +2122,7 @@ textarea.form-control:focus {
 }
 
 ::-webkit-scrollbar-track {
-  background: #111827;
+  background: #0B0F1A;
 }
 
 ::-webkit-scrollbar-thumb {

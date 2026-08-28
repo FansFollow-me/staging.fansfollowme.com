@@ -12,7 +12,7 @@
 	<link rel="shortcut icon" href="{{ url('img', config('settings.favicon')) }}" />
 	<style>
 		html, body {
-			background-color: #111827 !important;
+			background-color: #0B0F1A !important;
 			color: #ffffff !important;
 			font-family: 'Inter', system-ui, sans-serif !important;
 			margin: 0;
@@ -24,7 +24,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background: linear-gradient(to bottom right, #111827, #1f2937, #111827);
+			background: linear-gradient(to bottom right, #0B0F1A, #1f2937, #0B0F1A);
 		}
 		.error-page h1 {
 			font-family: 'Inter', system-ui, sans-serif !important;

@@ -28,7 +28,7 @@
   </div>
 </section>
 
-<section class="section section-sm" style="background: linear-gradient(to right bottom, #111827, #1f2937, #111827);">
+<section class="section section-sm" style="background: linear-gradient(to right bottom, #0B0F1A, #1f2937, #0B0F1A);">
   <div class="container">
     <div class="text-center mb-5">
       <h2 style="font-size: 2rem; font-weight: 900;">Why Celebrities Choose FansFollow</h2>
@@ -132,7 +132,7 @@
   </div>
 </section>
 
-<section class="section section-sm" style="background: linear-gradient(to right bottom, #111827, #1f2937, #111827);">
+<section class="section section-sm" style="background: linear-gradient(to right bottom, #0B0F1A, #1f2937, #0B0F1A);">
   <div class="container">
     <div class="text-center mb-4">
       <span class="badge badge-pill px-4 py-2 mb-3" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(249, 115, 22, 0.3); color: var(--ffm-orange); font-size: 0.85rem;">

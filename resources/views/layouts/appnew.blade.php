@@ -36,7 +36,7 @@
   <style>
     :root {
       color-scheme: dark;
-      --bg: #111827;
+      --bg: #0B0F1A;
       --panel: #151b2c;
       --text: #e5e7eb;
       --muted: #94a3b8;
@@ -231,14 +231,14 @@
     }
     .public-shell-content .btn-primary:hover,
     .public-shell-content .btn-primary:focus {
-      background: #111827;
-      border-color: #111827;
+      background: #0B0F1A;
+      border-color: #0B0F1A;
       color: #fff;
     }
     .public-shell-footer {
       padding: 1.5rem 0 1.2rem;
       color: var(--muted);
-      background: linear-gradient(135deg, #111827, #1f2937, #111827);
+      background: linear-gradient(135deg, #0B0F1A, #1f2937, #0B0F1A);
       border-top: 1px solid #1f293b;
     }
     .public-shell-footer .footer-topline,

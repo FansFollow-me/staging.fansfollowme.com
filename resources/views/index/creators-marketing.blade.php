@@ -57,7 +57,7 @@
   .creator-hero .hero-sub { font-size: 1.05rem; color: #e2e8f0; max-width: 520px; margin: 0 0 2rem; line-height: 1.7; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
 
   /* Shared section styles (matching For Fans) */
-  .section-dark { padding: 4rem 0; background: linear-gradient(to right bottom, #111827, #1f2937, #111827); }
+  .section-dark { padding: 4rem 0; background: linear-gradient(to right bottom, #0B0F1A, #1f2937, #0B0F1A); }
   .section-dark h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 900; color: #fff; text-align: left; margin-bottom: 2rem; }
   .section-sub { text-align: center; color: #d1d5db; max-width: 600px; margin: 0 auto 2.5rem; font-size: 1rem; line-height: 1.7; }
   .section-badge {

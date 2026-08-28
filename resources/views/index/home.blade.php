@@ -302,7 +302,7 @@
   {{-- ============================================
        BOTTOM CTA SECTION
        ============================================ --}}
-  <section class="py-5" style="background: linear-gradient(to bottom right, #111827, #1f2937, #111827); position: relative; overflow: hidden;">
+  <section class="py-5" style="background: linear-gradient(to bottom right, #0B0F1A, #1f2937, #0B0F1A); position: relative; overflow: hidden;">
     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 70%); pointer-events: none;"></div>
     <div class="container text-center position-relative" style="z-index: 1;">
       <div class="mx-auto p-5 rounded-4" style="max-width: 700px; background: linear-gradient(to bottom right, rgba(30, 41, 59, 0.6), rgba(51, 65, 85, 0.4)); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.6); box-shadow: 0 25px 50px -12px rgba(249, 115, 22, 0.15);">
