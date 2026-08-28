@@ -84,7 +84,7 @@
           </div><!-- avatar-wrap -->
 
           <div class="media-body">
-            <h4 class="mt-1 text-break">
+            <h1 class="profile-name" style="font-size: 1.5rem; font-weight: 700;">
               {{$user->hide_name == 'yes' ? $user->username : $user->name}}
 
               @if ($user->verified_id == 'yes')
@@ -102,7 +102,7 @@
           <small class="text-muted font-14 d-block w-100 mt-1">
             {{ '@' . $user->username }}
           </small>
-          </h4>
+          </h1>
 
           @if ($user->verified_id == 'yes')
             <span class="badge badge-pill px-3 py-1 mb-2" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.2), rgba(168, 85, 247, 0.2)); border: 1px solid rgba(249, 115, 22, 0.3); color: var(--ffm-orange); font-size: 0.75rem; font-weight: 600;">
