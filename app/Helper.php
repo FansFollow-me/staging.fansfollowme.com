@@ -862,7 +862,10 @@ class Helper
 		if (env('FILESYSTEM_DRIVER') == 'dospace' && env('DOS_CDN')) {
 			return 'https://' . env('DOS_BUCKET') . '.' . env('DOS_DEFAULT_REGION') . '.cdn.digitaloceanspaces.com/' . $path;
 		} elseif (env('FILESYSTEM_DRIVER') == 's3') {
-			// R2/S3: construct public URL (virtual-hosted style)
+			// R2/S3: use AWS_URL if set, otherwise construct from bucket+endpoint
+			if (env('AWS_URL')) {
+				return rtrim(env('AWS_URL'), '/') . '/' . $path;
+			}
 			$bucket = env('AWS_BUCKET');
 			$endpoint = str_replace('https://', '', env('AWS_ENDPOINT'));
 			return 'https://' . $bucket . '.' . $endpoint . '/' . $path;
