@@ -18,7 +18,7 @@
   <meta name="theme-color" content="{{ auth()->check() && auth()->user()->dark_mode == 'on' ? '#303030' : $settings->color_default }}">
   <meta name="msvalidate.01" content="83E04AABA8CC0BC0618D1849666A133A">
   <title>{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show @if(isset($settings->title)){{ $settings->title }}@endif</title>
-  <link href="/public/img/{{ $settings->favicon }}" rel="icon">
+  <link href="/img/{{ $settings->favicon }}" rel="icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
