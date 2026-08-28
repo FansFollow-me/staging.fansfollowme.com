@@ -44,3 +44,48 @@ PHP;
 $content = str_replace($old, $new, $content);
 file_put_contents($file, $content);
 echo "ViewServiceProvider fixed with comprehensive defaults\n";
+
+// Create missing tables that Sponzy v7.9.2 expects
+try {
+    \\DB::connection()->getPdo();
+    
+    if (!\\DB::getSchemaBuilder()->hasTable('video_calls')) {
+        \\DB::statement('CREATE TABLE video_calls (
+            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            seller_id INT NOT NULL,
+            buyer_id INT NOT NULL,
+            price DECIMAL(10,2) DEFAULT 0,
+            status VARCHAR(255) DEFAULT "pending",
+            minutes INT DEFAULT 0,
+            token VARCHAR(255) NULL,
+            started_at TIMESTAMP NULL,
+            joined_at TIMESTAMP NULL,
+            ended_at TIMESTAMP NULL,
+            paid TINYINT(1) DEFAULT 0,
+            created_at TIMESTAMP NULL,
+            updated_at TIMESTAMP NULL
+        )');
+        echo "Created video_calls table\n";
+    }
+    
+    if (!\\DB::getSchemaBuilder()->hasTable('audio_calls')) {
+        \\DB::statement('CREATE TABLE audio_calls (
+            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            seller_id INT NOT NULL,
+            buyer_id INT NOT NULL,
+            price DECIMAL(10,2) DEFAULT 0,
+            status VARCHAR(255) DEFAULT "pending",
+            minutes INT DEFAULT 0,
+            token VARCHAR(255) NULL,
+            started_at TIMESTAMP NULL,
+            joined_at TIMESTAMP NULL,
+            ended_at TIMESTAMP NULL,
+            paid TINYINT(1) DEFAULT 0,
+            created_at TIMESTAMP NULL,
+            updated_at TIMESTAMP NULL
+        )');
+        echo "Created audio_calls table\n";
+    }
+} catch (\\Exception $e) {
+    echo "Schema fix error: " . $e->getMessage() . "\n";
+}
