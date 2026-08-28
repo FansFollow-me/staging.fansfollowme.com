@@ -79,6 +79,22 @@ try {
             echo "Created $table table\n";
         }
     }
+    
+    // Add missing columns
+    $columns = [
+        ['table' => 'notifications', 'column' => 'context', 'definition' => 'TEXT DEFAULT NULL'],
+        ['table' => 'users', 'column' => 'allow_comments', 'definition' => "VARCHAR(10) DEFAULT 'yes'"],
+        ['table' => 'users', 'column' => 'display_list_donors', 'definition' => "VARCHAR(10) DEFAULT 'yes'"],
+        ['table' => 'subscriptions', 'column' => 'creator_id', 'definition' => 'INT DEFAULT NULL'],
+    ];
+    
+    foreach ($columns as $col) {
+        $stmt = $pdo->query("SHOW COLUMNS FROM `{$col['table']}` LIKE '{$col['column']}'");
+        if ($stmt->rowCount() === 0) {
+            $pdo->exec("ALTER TABLE `{$col['table']}` ADD COLUMN `{$col['column']}` {$col['definition']}");
+            echo "Added {$col['column']} to {$col['table']}\n";
+        }
+    }
 } catch (Exception $e) {
     echo "Schema fix error: " . $e->getMessage() . "\n";
 }
