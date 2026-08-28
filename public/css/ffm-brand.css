@@ -111,8 +111,8 @@
   min-width: 0;
 }
 
-.img-profile-user .media-body h1,
-.img-profile-user .media-body .profile-name {
+.img-profile-user .media-body h1.profile-name,
+.img-profile-user .media-body h1 {
   font-size: 1.75rem !important;
   font-weight: 700 !important;
   line-height: 1.3 !important;
