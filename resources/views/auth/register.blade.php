@@ -250,7 +250,7 @@
         </div>
       @endif
 
-      <form method="POST" action="{{ url('signup') }}" id="signupForm" onsubmit="trackGA4Event('sign_up', {method: 'email'});">
+      <form method="POST" action="{{ url('signup') }}" id="signupForm">
         @csrf
 
         @if($settings->captcha == 'on')

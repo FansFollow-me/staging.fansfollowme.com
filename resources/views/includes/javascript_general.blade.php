@@ -276,9 +276,16 @@ $('.btnMultipleUpload').on('click', function() {
          }
 
 				 // Success
-				 if (result.success) {
+				 			 if (result.success) {
 
-           if (result.isModal && result.isLoginRegister) {
+				            // Track successful registration/login
+				            if (typeof trackGA4Event === 'function') {
+				              var formType = document.querySelector('#signupForm') ? 'sign_up' : 'login';
+				              var roleType = document.querySelector('#roleType') ? document.querySelector('#roleType').value : 'unknown';
+				              trackGA4Event(formType, {method: 'email', success: true, user_type: roleType});
+				            }
+
+				            if (result.isModal && result.isLoginRegister) {
              window.location.reload();
            }
 
