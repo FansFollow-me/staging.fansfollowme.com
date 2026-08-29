@@ -84,6 +84,6 @@
 
 ## Technical Notes
 - **Git:** FansFollow-me/staging.fansfollowme.com (main branch)
-- **Latest:** 3b564eb
+- **Latest:** 4bd52eb
 - **Laravel Cloud env:** env-a295cd63-356e-4f25-94f8-0961fd2a539e
 - **R2 bucket:** fls-a29b3308-b261-4645-bd9d-d1b983bd9cba
