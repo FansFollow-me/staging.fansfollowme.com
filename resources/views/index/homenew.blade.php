@@ -1,6 +1,6 @@
 @extends('layouts.appnew')
 
-@section('title') FansFollowMe - Global Fitness & Martial Arts Creator Platform - @endsection
+@section('title') FansFollow.me - Global Fitness & Martial Arts Creator Platform - @endsection
 @section('description_custom')FansFollowMe is the global fitness and martial arts creator platform for subscriptions, coaching, direct fan access, and live creator discovery.@endsection
 
 @section('css')
