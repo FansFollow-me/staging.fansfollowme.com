@@ -37,6 +37,15 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xk78rrb386");
   </script>
+
+  <!-- GA4 Event Tracking -->
+  <script>
+    function trackGA4Event(eventName, params) {
+      if (typeof gtag === 'function') {
+        gtag('event', eventName, params || {});
+      }
+    }
+  </script>
 </head>
 
 <body>

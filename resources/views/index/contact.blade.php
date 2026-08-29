@@ -75,7 +75,7 @@
 
             @include('errors.errors-forms')
 
-            <form method="POST" action="https://usebasin.com/f/954d0d6e30da" id="contactForm">
+            <form method="POST" action="https://usebasin.com/f/954d0d6e30da" id="contactForm" onsubmit="trackGA4Event('generate_lead', {form_name: 'contact_support'});">
 
               <div class="row">
                 <div class="col-md-6">

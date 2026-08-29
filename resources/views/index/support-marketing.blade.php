@@ -121,20 +121,19 @@
     <div class="form-card" id="contact-form">
       <h3>Send Us a Message</h3>
       <p>Fill out the form below and we'll get back to you as soon as possible.</p>
-      <form>
+      <form method="GET" action="{{ url('support') }}" onsubmit="trackGA4Event('generate_lead', {form_name: 'support_message'});">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-          <div class="form-group"><label>Name *</label><input type="text" placeholder="Your name" required></div>
-          <div class="form-group"><label>Email *</label><input type="email" placeholder="you@email.com" required></div>
+          <div class="form-group"><label>Name *</label><input type="text" name="name" placeholder="Your name" required></div>
+          <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="you@email.com" required></div>
         </div>
-        <div class="form-group"><label>Phone Number (Optional)</label><input type="tel" placeholder="+1 234 567 890"></div>
-        <div class="form-group"><label>Subject *</label><select required><option>Select a subject</option><option>Technical Issue</option><option>Billing</option><option>Account</option><option>Content</option><option>Other</option></select></div>
+        <div class="form-group"><label>Phone Number (Optional)</label><input type="tel" name="phone" placeholder="+1 234 567 890"></div>
+        <div class="form-group"><label>Subject *</label><select name="subject" required><option>Select a subject</option><option>Technical Issue</option><option>Billing</option><option>Account</option><option>Content</option><option>Other</option></select></div>
         <div class="form-group">
           <label>Message *</label>
-          <textarea id="msgInput" placeholder="Describe your issue..." required minlength="10" oninput="var c=this.value.length;var el=document.getElementById('charCount');el.textContent=c+' characters (minimum 10)';el.className='char-count '+(c>=10?'valid':'invalid')"></textarea>
+          <textarea name="message" id="msgInput" placeholder="Describe your issue..." required minlength="10" oninput="var c=this.value.length;var el=document.getElementById('charCount');el.textContent=c+' characters (minimum 10)';el.className='char-count '+(c>=10?'valid':'invalid')"></textarea>
           <div class="char-count" id="charCount">0 characters (minimum 10)</div>
         </div>
         <button type="submit" class="cta-btn" style="width:100%;justify-content:center;">Send Message <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
-        <p style="color:#64748b;font-size:.8rem;text-align:center;margin-top:.75rem;">Your message will open in your email client for submission.</p>
       </form>
     </div>
 
