@@ -24,6 +24,9 @@ else
     echo "Uploads exist ($(ls public/uploads/avatar/ | wc -l) avatars)"
 fi
 
+# 3b. Run pending migrations
+php artisan migrate --force 2>&1 | tail -3
+
 # 4. Fix missing database columns (idempotent)
 php artisan tinker --execute="
 \$fixes = [
