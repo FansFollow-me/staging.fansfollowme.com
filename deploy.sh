@@ -47,6 +47,48 @@ DB::table('admin_settings')->where('id',1)->update(['captcha' => 'off', 'disable
 echo 'Schema fixes applied';
 " 2>&1 | tail -1
 
+# 4b. Create missing tables and columns (moved from fix-laravel-cloud.php)
+php artisan tinker --execute="
+// Create video_calls and audio_calls tables if missing
+foreach (['video_calls', 'audio_calls'] as \$table) {
+    if (!Schema::hasTable(\$table)) {
+        Schema::create(\$table, function (\$t) {
+            \$t->id();
+            \$t->integer('seller_id');
+            \$t->integer('buyer_id');
+            \$t->decimal('price', 10, 2)->default(0);
+            \$t->string('status')->default('pending');
+            \$t->integer('minutes')->default(0);
+            \$t->string('token')->nullable();
+            \$t->timestamp('started_at')->nullable();
+            \$t->timestamp('joined_at')->nullable();
+            \$t->timestamp('ended_at')->nullable();
+            \$t->tinyInteger('paid')->default(0);
+            \$t->timestamps();
+        });
+        echo \"Created \$table\n\";
+    }
+}
+
+// Add missing columns
+\$cols = [
+    ['notifications', 'context', fn(\$t) => \$t->text('context')->nullable()],
+    ['users', 'allow_comments', fn(\$t) => \$t->string('allow_comments', 10)->default('yes')],
+    ['users', 'display_list_donors', fn(\$t) => \$t->string('display_list_donors', 10)->default('yes')],
+    ['subscriptions', 'creator_id', fn(\$t) => \$t->integer('creator_id')->nullable()],
+];
+foreach (\$cols as [\$table, \$col, \$add]) {
+    if (Schema::hasTable(\$table) && !Schema::hasColumn(\$table, \$col)) {
+        Schema::table(\$table, \$add);
+        echo \"Added \$col to \$table\n\";
+    }
+}
+
+// Ensure public access to profiles
+DB::table('admin_settings')->where('who_can_see_content', 'users')->update(['who_can_see_content' => 'all']);
+echo 'Extra schema fixes applied';
+" 2>&1 | tail -1
+
 # 5. Clear caches
 php artisan config:clear
 php artisan view:clear
