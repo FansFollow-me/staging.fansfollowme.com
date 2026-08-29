@@ -17,7 +17,22 @@
   <meta name="keywords" content="{{ $keywordsCustom !== '' ? $keywordsCustom : trans('seo.keywords') }}" />
   <meta name="theme-color" content="{{ auth()->check() && auth()->user()->dark_mode == 'on' ? '#303030' : $settings->color_default }}">
   <meta name="msvalidate.01" content="83E04AABA8CC0BC0618D1849666A133A">
+  {{-- Open Graph --}}
+  @php($ogTitle = trim($__env->yieldContent('og_title')))
+  @php($ogImage = trim($__env->yieldContent('og_image')))
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ $settings->title }}">
+  <meta property="og:title" content="{{ $ogTitle !== '' ? $ogTitle : $settings->title }}">
+  <meta property="og:description" content="{{ $descriptionCustom !== '' ? $descriptionCustom : trans('seo.description') }}">
+  <meta property="og:image" content="{{ $ogImage !== '' ? $ogImage : url('fans-foloow-me-logo-final-file--png-version-480.png') }}">
+  <meta property="og:url" content="{{ url()->current() }}">
+  {{-- Twitter Card --}}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $ogTitle !== '' ? $ogTitle : $settings->title }}">
+  <meta name="twitter:description" content="{{ $descriptionCustom !== '' ? $descriptionCustom : trans('seo.description') }}">
+  <meta name="twitter:image" content="{{ $ogImage !== '' ? $ogImage : url('fans-foloow-me-logo-final-file--png-version-480.png') }}">
   <title>{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show @if(isset($settings->title)){{ $settings->title }}@endif</title>
+  <link rel="canonical" href="{{ url()->current() }}">
   <link href="/img/{{ $settings->favicon }}" rel="icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
