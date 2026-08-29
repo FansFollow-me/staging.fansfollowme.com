@@ -13,16 +13,8 @@ chmod -R 777 storage bootstrap/cache
 # 2. Create public/public symlink (for /public/uploads/ URLs)
 cd public && ln -sf . public && cd ..
 
-# 3. Download uploads if missing (only on first deploy)
-if [ ! -d public/uploads/avatar ] || [ $(ls public/uploads/avatar/ 2>/dev/null | wc -l) -lt 100 ]; then
-    echo "Downloading uploads from TMD..."
-    curl -sL https://fansfollow.me/essential-uploads.tar | tar x -C public/
-    curl -sL https://fansfollow.me/more-uploads.tar | tar x -C public/
-    curl -sL https://fansfollow.me/videos.tar | tar x -C public/
-    echo "Uploads downloaded ($(ls public/uploads/avatar/ | wc -l) avatars)"
-else
-    echo "Uploads exist ($(ls public/uploads/avatar/ | wc -l) avatars)"
-fi
+# 3. Uploads are on R2 (S3 driver). Skip TMD download (fansfollow.me is down).
+echo "Uploads: using R2 storage (FILESYSTEM_DRIVER=s3)"
 
 # 3b. Run pending migrations
 php artisan migrate --force 2>&1 | tail -3
