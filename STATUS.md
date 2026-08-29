@@ -9,7 +9,7 @@
 - **PHP 8.5, Laravel 12.46, MySQL 8.4**
 - **R2 Object Storage:** 2131+ files, 6.08GB uploaded
 - **Public URL:** https://fls-a29b3308-b261-4645-bd9d-d1b983bd9cba.laravel.cloud
-- **Deploy:** Auto on push to main, latest `3b564eb`
+- **Deploy:** Auto on push to main, latest `c7f3709`. Build: composer install + fix-laravel-cloud.php. Deploy: bash deploy.sh (migrate, schema fixes, cache clear)
 - **Zero 500 errors**
 
 ### All Pages (19/19 = 200)
