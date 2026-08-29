@@ -75,8 +75,7 @@
 
             @include('errors.errors-forms')
 
-            <form method="POST" action="{{ url('contact') }}" id="contactForm">
-              @csrf
+            <form method="POST" action="https://usebasin.com/f/954d0d6e30da" id="contactForm">
 
               <div class="row">
                 <div class="col-md-6">

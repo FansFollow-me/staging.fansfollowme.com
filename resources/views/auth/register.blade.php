@@ -2,7 +2,7 @@
 
 @section('hideFooter', true)
 
-@section('title')Sign Up - {{ $settings->title }}@endsection
+@section('title')Sign Up -@endsection
 @section('description_custom')Create your account on FansFollow.me. Join the #1 global fitness and martial arts creator platform.@endsection
 
 @section('css')
