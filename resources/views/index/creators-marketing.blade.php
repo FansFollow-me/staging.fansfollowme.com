@@ -1,6 +1,6 @@
 @extends('layouts.appnew')
 
-@section('title') For Creators - FansFollow.me
+@section('title') For Creators -
 @endsection
 
 @section('css')

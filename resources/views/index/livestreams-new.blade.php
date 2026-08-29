@@ -1,6 +1,6 @@
 @extends('layouts.appnew')
 
-@section('title') Live Streams - FansFollow.me
+@section('title') Live Streams -
 @endsection
 
 @section('css')

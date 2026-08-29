@@ -1,6 +1,6 @@
 @extends('layouts.appnew')
 
-@section('title') Movie Casting - FansFollow.me
+@section('title') Movie Casting -
 @endsection
 
 @section('css')

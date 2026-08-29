@@ -1,6 +1,6 @@
 @extends('layouts.appnew')
 
-@section('title') Scan Creator Code - FansFollow.me
+@section('title') Scan Creator Code -
 @endsection
 
 @section('css')
