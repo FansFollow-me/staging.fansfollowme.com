@@ -103,6 +103,18 @@ DB::table('admin_settings')->where('who_can_see_content', 'users')->update(['who
 echo 'Extra schema fixes applied';
 " 2>&1 | tail -1
 
+# 4c. Seed test accounts (idempotent)
+php artisan tinker --execute="
+if(\\App\\Models\\User::where('username','testfan')->count() == 0) {
+    \\App\\Models\\User::create(['username'=>'testfan','name'=>'Test Fan','email'=>'testfan@staging.test','password'=>bcrypt('TestPass123!'),'role'=>'normal','status'=>'active','verified_id'=>'yes','free_subscription'=>'yes']);
+    echo 'Created testfan';
+}
+if(\\App\\Models\\User::where('username','testcreator')->count() == 0) {
+    \\App\\Models\\User::create(['username'=>'testcreator','name'=>'Test Creator','email'=>'testcreator@staging.test','password'=>bcrypt('TestPass123!'),'role'=>'normal','status'=>'active','verified_id'=>'yes','free_subscription'=>'no','price'=>9.99]);
+    echo 'Created testcreator';
+}
+" 2>&1 | tail -1
+
 # 5. Clear caches
 php artisan config:clear
 php artisan view:clear
