@@ -106,12 +106,16 @@ echo 'Extra schema fixes applied';
 # 4c. Seed test accounts (idempotent)
 php artisan tinker --execute="
 if(\\App\\Models\\User::where('username','testfan')->count() == 0) {
-    \\App\\Models\\User::create(['username'=>'testfan','name'=>'Test Fan','email'=>'testfan@staging.test','password'=>bcrypt('TestPass123!'),'role'=>'normal','status'=>'active','verified_id'=>'yes','free_subscription'=>'yes']);
+    \\App\\Models\\User::create(['username'=>'testfan','name'=>'Test Fan','email'=>'testfan@staging.test','password'=>bcrypt('TestPass123!'),'role'=>'normal','status'=>'active','verified_id'=>'yes','free_subscription'=>'yes','age_verification'=>1]);
     echo 'Created testfan';
+} else {
+    \\App\\Models\\User::where('username','testfan')->update(['age_verification'=>1]);
 }
 if(\\App\\Models\\User::where('username','testcreator')->count() == 0) {
-    \\App\\Models\\User::create(['username'=>'testcreator','name'=>'Test Creator','email'=>'testcreator@staging.test','password'=>bcrypt('TestPass123!'),'role'=>'normal','status'=>'active','verified_id'=>'yes','free_subscription'=>'no','price'=>9.99]);
+    \\App\\Models\\User::create(['username'=>'testcreator','name'=>'Test Creator','email'=>'testcreator@staging.test','password'=>bcrypt('TestPass123!'),'role'=>'normal','status'=>'active','verified_id'=>'yes','free_subscription'=>'no','price'=>9.99,'age_verification'=>1]);
     echo 'Created testcreator';
+} else {
+    \\App\\Models\\User::where('username','testcreator')->update(['age_verification'=>1]);
 }
 " 2>&1 | tail -1
 
