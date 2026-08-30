@@ -585,6 +585,7 @@
       }
     @endauth
   </script>
+  @include('includes.json-ld')
 </head>
 <body>
   <header class="public-shell-topbar">
