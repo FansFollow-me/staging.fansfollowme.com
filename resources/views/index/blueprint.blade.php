@@ -125,6 +125,7 @@ a:hover { color: #fb923c; }
     <li><a href="#checklist">Design Checklist</a></li>
     <li><a href="#workflow">Workflow & Team</a></li>
     <li><a href="#status">Current Status</a></li>
+    <li><a href="#docs">Full Technical Docs</a></li>
   </ol>
 </div>
 </div>
@@ -1018,6 +1019,496 @@ Live at https://staging.fansfollowme.com
 </div>
 </div>
 </div>
+
+<!-- 21. FULL TECHNICAL DOCUMENTATION -->
+<h2 class="section-title" id="docs"><i class="bi bi-file-earmark-code"></i> 21. Full Technical Documentation <span class="badge bg-info ms-2">For Claude / Developers</span></h2>
+
+<p class="text-muted mb-3">Complete source documentation. Click each section to expand. These are the actual files from the repository — Claude can review, enhance, and follow these conventions.</p>
+
+<!-- AGENTS.md -->
+<div class="card mb-3">
+<div class="card-header" data-bs-toggle="collapse" data-bs-target="#agents-md" style="cursor: pointer;">
+<i class="bi bi-chevron-right me-2" id="agents-icon"></i>
+<strong>AGENTS.md</strong> — Project Architecture, Conventions & Rules
+<span class="badge bg-danger ms-2">MUST READ</span>
+</div>
+<div class="collapse" id="agents-md">
+<div class="card-body">
+<pre style="color: var(--ffm-text); background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; font-size: 0.8em; line-height: 1.6; max-height: 600px; overflow-y: auto; white-space: pre-wrap; word-wrap: break-word;"># AGENTS.md — FFM Sponzy Project Instructions
+
+## Project Overview
+FansFollow.me (FFM) is a creator platform for fitness, bodybuilding, and martial arts creators. Built on **Sponzy v7.9.2** (a commercial PHP/Laravel script), hosted on **Laravel Cloud**, with **Cloudflare R2** for file storage.
+
+**This is NOT a greenfield project.** Sponzy is a purchased script with its own conventions. Respect them.
+
+## Architecture
+
+### Stack
+- **Framework:** Laravel 12.46 / PHP 8.5
+- **Database:** MySQL 8.4 (tables use `stg_` prefix)
+- **Frontend:** Blade templates + Bootstrap 5 + vanilla JS (no React/Vue)
+- **Storage:** Cloudflare R2 (S3-compatible)
+- **Hosting:** Laravel Cloud (auto-deploy on push to main)
+- **Video/Audio:** Agora SDK
+- **Analytics:** GA4, Microsoft Clarity, Usebasin
+
+### Directory Structure
+app/
+├── Http/Controllers/    # All controllers (80+ files)
+├── Models/              # Eloquent models (66 files)
+├── Services/            # External service integrations
+├── Jobs/                # Queue jobs (video encoding, moderation)
+├── Events/              # Laravel events
+├── Listeners/           # Event listeners
+├── Notifications/       # Email/push notifications
+└── Helper.php           # Global helper class
+
+resources/views/
+├── index/               # Public pages (home, explore, creators, etc.)
+├── users/               # Authenticated user pages (dashboard, settings, etc.)
+├── admin/               # Admin panel pages (100+ files)
+├── includes/            # Shared partials (navbar, footer, modals)
+├── layouts/             # Master layouts (app.blade.php, appnew.blade.php)
+├── reels/               # Reels views
+├── shop/                # Shop views
+└── emails/              # Email templates
+
+routes/
+├── web.php              # ALL routes (public, auth, admin)
+├── api.php              # API routes (minimal)
+└── console.php          # Artisan commands
+
+### Key Patterns
+
+#### Table Prefix: `stg_`
+ALL database tables use the `stg_` prefix. When creating Eloquent models, ALWAYS set:
+  protected $table = 'stg_tablename';
+
+**Exception:** Some tables like `admin_settings`, `video_calls`, `audio_calls`, `vaults` do NOT have the prefix. Check the schema before assuming.
+
+#### Model Convention
+class ExampleModel extends Model
+{
+    protected $table = 'stg_examples';  // ALWAYS set this
+    protected $guarded = [];            // Sponzy uses guarded=[], not fillable
+    public $timestamps = false;         // Most Sponzy tables don't use timestamps
+}
+
+#### Controller Convention
+class ExampleController extends Controller
+{
+    protected $settings;  // Admin settings singleton
+    public function __construct()
+    {
+        $this->settings = config('settings');  // Always available
+    }
+}
+
+#### View Convention
+@extends('layouts.app')
+@section('title')Page Title @endsection
+@section('content')
+    {{-- Page content here --}}
+@endsection
+
+#### Route Convention
+// Public routes (no auth)
+Route::get('page', [Controller::class, 'method']);
+
+// Authenticated routes
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('dashboard', [UserController::class, 'dashboard']);
+});
+
+// Admin routes (role middleware)
+Route::group(['middleware' => ['role', 'nocache']], function () {
+    Route::prefix('panel/admin')->group(function () {
+        Route::get('/', [AdminController::class, 'admin']);
+    });
+});
+
+## Critical Rules
+
+### DO NOT
+1. DO NOT create new tables without the `stg_` prefix (unless it's a system table like `admin_settings`)
+2. DO NOT use React, Vue, or any SPA framework — this is Blade + vanilla JS
+3. DO NOT modify the Sponzy core files without documenting why
+4. DO NOT add Composer packages without checking if Sponzy already has the functionality
+5. DO NOT use `$fillable` — Sponzy uses `$guarded = []`
+6. DO NOT assume table names — always check `database/schema.sql` or the model
+7. DO NOT create new CSS files — use `public/css/ffm-brand.css` for FFM customizations
+8. DO NOT modify `public/css/core.min.css` or `public/css/bootstrap.min.css` — these are Sponzy vendor files
+9. DO NOT hardcode URLs — use `url()`, `route()`, or `asset()` helpers
+10. DO NOT skip the `stg_` prefix on joins — this caused the Reels 500 bug
+
+### ALWAYS
+1. ALWAYS check if a feature already exists in Sponzy before building it
+2. ALWAYS use `ffm-brand.css` for FFM-specific styling (53KB of overrides already exist)
+3. ALWAYS test with all 3 user roles: fan (testfan), creator (testcreator), admin (Admin)
+4. ALWAYS run `tests/qa-auth-test.sh` after changes
+5. ALWAYS commit to `main` branch (auto-deploys to staging)
+6. ALWAYS check `database/schema.sql` for table structure before writing queries
+7. ALWAYS use the dark theme (`data-bs-theme="dark"`) — FFM is dark by default
+8. ALWAYS use Inter font family — FFM brand font
+9. ALWAYS check `config('settings.*')` for feature flags before showing UI elements
+10. ALWAYS preserve existing Sponzy functionality when adding FFM branding
+
+## Design Tokens
+--ffm-bg: #0B0F1A;           /* Main background */
+--ffm-card: #111827;         /* Card/panel background */
+--ffm-border: #1f2937;       /* Borders */
+--ffm-orange: #f97316;       /* Primary CTA / brand color */
+--ffm-text: #e5e7eb;         /* Primary text */
+--ffm-muted: #9ca3af;        /* Secondary text */
+font-family: 'Inter', system-ui, sans-serif;
+navbar-height: 72px;
+
+## File Editing Rules
+- CSS: ONLY edit `public/css/ffm-brand.css`
+- Blade: index/ (public), users/ (auth), admin/ (admin), includes/ (partials)
+- PHP: Controllers in app/Http/Controllers/, Models in app/Models/
+- Routes: ALL in routes/web.php
+- Database: Schema in database/schema.sql, fixes in deploy.sh
+
+## Test Accounts
+| Admin | Admin | TestPass123! | Admin (full access) |
+| Fan | testfan | TestPass123! | Normal user |
+| Creator | testcreator | TestPass123! | Creator (verified) |
+
+## QA Scripts
+bash tests/qa-browser-test.sh    # Public page smoke test
+bash tests/qa-auth-test.sh       # Authenticated user flow test
+
+## Deployment
+git push origin main → Laravel Cloud auto-deploys → Live at staging.fansfollowme.com
+
+## Feature Flags
+@if(config('settings.allow_reels'))    {{-- Reels --}}
+@if(config('settings.allow_vault'))    {{-- Vault --}}
+@if(config('settings.gifts'))          {{-- Gifts --}}
+@if(config('settings.video_call_status'))  {{-- Video calls --}}
+@if(config('settings.audio_call_status'))  {{-- Audio calls --}}
+
+## Common Pitfalls
+1. Table prefix: The #1 bug source. Always use `stg_` prefix.
+2. CSRF tokens: Login uses AJAX with `X-Requested-With: XMLHttpRequest`
+3. Age verification: Redirects to `/age/verification` if `user->age_verification !== 1`
+4. Admin routes: Under `/panel/admin/`, NOT `/admin/`
+5. User routes: Under `/settings/`, `/my/`, etc. — NOT `/user/`
+6. View cache: Run `php artisan view:clear` after Blade changes
+7. Config cache: Run `php artisan config:clear` after settings changes
+
+## What Martin Needs
+Martin is the product owner. He creates tasks in Highrise, provides design feedback, signs off on designs BEFORE code changes. He does NOT write code.
+
+**Rule:** Do NOT touch the site or build anything until Martin provides design sign-off.</pre>
+</div>
+</div>
+</div>
+
+<!-- QA Browser Test Script -->
+<div class="card mb-3">
+<div class="card-header" data-bs-toggle="collapse" data-bs-target="#qa-browser" style="cursor: pointer;">
+<i class="bi bi-chevron-right me-2"></i>
+<strong>tests/qa-browser-test.sh</strong> — Public Page Smoke Test (No Auth)
+<span class="badge bg-success ms-2">56 tests</span>
+</div>
+<div class="collapse" id="qa-browser">
+<div class="card-body">
+<pre style="color: var(--ffm-text); background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; font-size: 0.8em; line-height: 1.6; max-height: 500px; overflow-y: auto; white-space: pre-wrap; word-wrap: break-word;">#!/bin/bash
+# FFM Staging Comprehensive Browser Test
+# Tests public, backend, admin, fan, and creator pages
+
+BASE_URL="https://staging.fansfollowme.com"
+
+# PUBLIC PAGES (17 tests)
+# Homepage, Explore, Creators, Fans, Celebrities, Casting, Business,
+# Support, FAQ, Privacy, Terms, Cookies, Contact, Blog, For Creators,
+# Sitemap, Robots
+
+# AUTH PAGES (3 tests)
+# Login, Signup, Password Reset
+
+# PROFILE PAGES (3 tests)
+# VikingSamurai, Ronsmoorenburg, TongPo
+
+# BACKEND PAGES (10 tests - should redirect to login)
+# /dashboard, /messages, /notifications, /settings/page, /my/posts,
+# /my/subscribers, /my/subscriptions, /my/wallet, /settings/withdrawals,
+# /my/referrals
+
+# ADMIN PAGES (15 tests - should redirect to login)
+# /panel/admin, /panel/admin/settings, /panel/admin/members,
+# /panel/admin/posts, /panel/admin/categories, /panel/admin/pages,
+# /panel/admin/blog, /panel/admin/subscriptions, /panel/admin/transactions,
+# /panel/admin/withdrawals, /panel/admin/reports,
+# /panel/admin/verification/members, /panel/admin/theme,
+# /panel/admin/billing, /panel/admin/storage
+
+# STATIC ASSETS (5 tests)
+# /css/ffm-brand.css, /css/bootstrap.min.css, /js/app.js,
+# /img/favicon.png, /fans-foloow-me-logo-final-file--png-version.png
+
+# Run: bash tests/qa-browser-test.sh
+# Output: tests/qa-results.md + tests/screenshots/</pre>
+</div>
+</div>
+</div>
+
+<!-- QA Auth Test Script -->
+<div class="card mb-3">
+<div class="card-header" data-bs-toggle="collapse" data-bs-target="#qa-auth" style="cursor: pointer;">
+<i class="bi bi-chevron-right me-2"></i>
+<strong>tests/qa-auth-test.sh</strong> — Authenticated User Flow Test
+<span class="badge bg-warning text-dark ms-2">54 tests</span>
+</div>
+<div class="collapse" id="qa-auth">
+<div class="card-body">
+<pre style="color: var(--ffm-text); background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; font-size: 0.8em; line-height: 1.6; max-height: 500px; overflow-y: auto; white-space: pre-wrap; word-wrap: break-word;">#!/bin/bash
+# FFM Staging Authenticated User Flow Test
+# Tests actual login + navigation for fan, creator, and admin
+
+BASE_URL="https://staging.fansfollowme.com"
+
+# FAN FLOW (15 tests - logs in as testfan)
+# Dashboard, Explore, Notifications, Messages, Settings, Password,
+# Bookmarks, Subscriptions, Purchases, Wallet, Likes,
+# Creator Profile, Creators, Reels, Shop
+
+# CREATOR FLOW (19 tests - logs in as testcreator)
+# Dashboard, Posts, Subscribers, Products, Sales, Stories, Reels,
+# Vault, Settings, Payout, Withdrawals, Referrals, Subscription,
+# Privacy, Messages, Notifications, Create Story,
+# Video Call Settings, Audio Call Settings
+
+# ADMIN FLOW (20 tests - logs in as Admin)
+# Dashboard, Settings, Members, Posts, Categories, Pages, Blog,
+# Subscriptions, Transactions, Withdrawals, Reports, Verification,
+# Theme, Billing, Storage, Payments, Social Login, Google,
+# Languages, Maintenance Mode
+
+# Login method: AJAX with X-Requested-With: XMLHttpRequest
+# Field name: username_email (NOT username)
+# Session: Cookie-based (fansfollowme_session)
+
+# Run: bash tests/qa-auth-test.sh
+# Output: tests/qa-auth-results.md + tests/screenshots/auth/</pre>
+</div>
+</div>
+</div>
+
+<!-- Feature Audit -->
+<div class="card mb-3">
+<div class="card-header" data-bs-toggle="collapse" data-bs-target="#feature-audit" style="cursor: pointer;">
+<i class="bi bi-chevron-right me-2"></i>
+<strong>tests/FFM-FEATURE-AUDIT.md</strong> — Complete Feature Inventory
+<span class="badge bg-info ms-2">All Features</span>
+</div>
+<div class="collapse" id="feature-audit">
+<div class="card-body">
+<pre style="color: var(--ffm-text); background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; font-size: 0.8em; line-height: 1.6; max-height: 500px; overflow-y: auto; white-space: pre-wrap; word-wrap: break-word;"># FFM Staging — Sponzy v7.9.2 Feature Audit
+
+## ENABLED FEATURES
+
+### Content & Creator Tools
+- Reels (short-form video)
+- Stories (24-hour disappearing content)
+- Vault (private file storage)
+- Scheduled Posts
+- EPUB Files
+- ZIP Files
+- Watermark
+- QR Codes
+
+### Monetization
+- Tips
+- Subscriptions
+- Pay-Per-View
+- Gifts
+- Earnings Simulator
+- Referral System
+- Wallet
+- Shop (physical + digital)
+
+### Communication
+- Video Calls (Agora)
+- Audio Calls (Agora)
+- Live Streaming
+- Private Live Streaming
+- Messages
+- Welcome Messages
+
+### User Experience
+- Dark Mode (default)
+- Featured Creators
+- Search by Gender
+- Creator Badges
+- Post Counters
+- Edit Posts
+- Delete Messages
+- Delete Account
+- Deactivate Profile
+
+### Security & Verification
+- Email Verification
+- Account Verification
+- Age Verification (disabled for testing)
+- 2FA
+- QR Code Login
+
+### Marketing & Growth
+- Blog
+- Custom Pages
+- Social Login
+- Push Notifications
+- PWA
+- Welcome Email
+
+## NEW IN SPONZY v7.9.2 (Not in old fansfollow.me)
+- Reels (TikTok-style)
+- Video/Audio Calls
+- Private Live Streaming
+- Vault (file storage)
+- Gifts
+- EPUB Support
+- Scheduled Posts
+- Age Verification
+- PWA
+- Push Notifications
+- Earnings Simulator
+- Stories (Enhanced)
+- Advertising System
+- Role & Permissions
+
+## NEEDS CONFIGURATION
+- Video/Audio Calls: Needs valid Agora credentials
+- Payment Gateways: Stripe, PayPal, etc. need API keys
+- Email/SMTP: For sending verification emails
+- Age Verification: Enable for production with Yoti/Didit</pre>
+</div>
+</div>
+</div>
+
+<!-- Deploy Script -->
+<div class="card mb-3">
+<div class="card-header" data-bs-toggle="collapse" data-bs-target="#deploy-script" style="cursor: pointer;">
+<i class="bi bi-chevron-right me-2"></i>
+<strong>deploy.sh</strong> — Deployment Script
+<span class="badge bg-secondary ms-2">Runs on every push</span>
+</div>
+<div class="collapse" id="deploy-script">
+<div class="card-body">
+<pre style="color: var(--ffm-text); background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; font-size: 0.8em; line-height: 1.6; max-height: 500px; overflow-y: auto; white-space: pre-wrap; word-wrap: break-word;">#!/bin/bash
+# FFM Staging Deploy Script
+# Runs on the persistent app container after each deploy
+
+set -e
+echo "=== FFM Deploy ==="
+
+# 1. Create storage directories
+mkdir -p storage/logs storage/framework/views storage/framework/cache storage/framework/sessions
+chmod -R 777 storage bootstrap/cache
+
+# 2. Create public/public symlink (for /public/uploads/ URLs)
+cd public && ln -sf . public && cd ..
+
+# 3. Uploads are on R2 (S3 driver)
+echo "Uploads: using R2 storage (FILESYSTEM_DRIVER=s3)"
+
+# 3b. Run pending migrations
+php artisan migrate --force 2>&1 | tail -3
+
+# 4. Fix missing database columns (idempotent)
+# Adds: post_views, scheduled_date, likes_extras, crowdfund_goal, etc.
+# Adds: captcha=off, disable_contact=0 to admin_settings
+
+# 4b. Create missing tables and columns
+# Creates: video_calls, audio_calls, vaults tables
+# Adds: allow_vault, allow_crowdfund, video_call_status, audio_call_status, etc.
+
+# 4c. Seed test accounts (idempotent)
+# Creates: testfan, testcreator (if not exist)
+# Sets: age_verification=1 for both
+
+# 5. Clear caches
+php artisan config:clear
+php artisan view:clear
+php artisan route:clear
+
+echo "=== Deploy complete ==="</pre>
+</div>
+</div>
+</div>
+
+<!-- STATUS.md -->
+<div class="card mb-3">
+<div class="card-header" data-bs-toggle="collapse" data-bs-target="#status-md" style="cursor: pointer;">
+<i class="bi bi-chevron-right me-2"></i>
+<strong>STATUS.md</strong> — Live System Status
+<span class="badge bg-success ms-2">All Systems Operational</span>
+</div>
+<div class="collapse" id="status-md">
+<div class="card-body">
+<pre style="color: var(--ffm-text); background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; font-size: 0.8em; line-height: 1.6; max-height: 500px; overflow-y: auto; white-space: pre-wrap; word-wrap: break-word;"># FFM Staging Status Report
+
+## ALL SYSTEMS OPERATIONAL
+
+### Infrastructure
+- URL: https://staging.fansfollowme.com
+- Platform: Laravel Cloud (Sponzy v7.9.2)
+- PHP 8.5, Laravel 12.46, MySQL 8.4
+- R2 Object Storage: 2131+ files, 6.08GB uploaded
+- Deploy: Auto on push to main
+- Zero 500 errors
+
+### All Pages (19/19 = 200)
+- /, /explore, /fans, /celebrities, /casting, /business
+- /support, /faq, /privacy, /terms, /cookies, /contact
+- /blog, /for-creators, /login, /signup, /password/reset
+- /sitemap.xml, /robots.txt
+
+### Profile Pages
+- All profile pages working
+- Avatar: 128px (CSS override)
+- Cover: 80px height
+- Tabs: Posts/About (tab switching working)
+
+### Logged-In Experience
+- Login: Admin / TestPass123!
+- Dashboard, Messages, Notifications, Settings, Explore: All working
+
+### Analytics & Tracking
+- GA4: G-SZRL69LXXS
+- Microsoft Clarity: xk78rrb386
+- Usebasin: 954d0d6e30da
+- Conversion Events: sign_up, login, generate_lead
+
+### Design Matching
+- Background: #0B0F1A
+- Font: Inter, system-ui
+- Branding: FansFollow.me
+- Navbar: 72px
+
+### Database
+- 17,546 users, 239 posts
+- All Sponzy v7.9.2 tables created
+- 53+ missing admin_settings columns added</pre>
+</div>
+</div>
+</div>
+
+<script>
+// Toggle chevron icons on collapse
+document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(el => {
+    el.addEventListener('click', function() {
+        const icon = this.querySelector('.bi-chevron-right, .bi-chevron-down');
+        if (icon) {
+            icon.classList.toggle('bi-chevron-right');
+            icon.classList.toggle('bi-chevron-down');
+        }
+    });
+});
+</script>
 
 <!-- FOOTER -->
 <div class="text-center py-4 mt-4" style="border-top: 1px solid var(--ffm-border);">
