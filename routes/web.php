@@ -695,6 +695,30 @@ Route::group(['middleware' => 'private.content'], function() {
 	// Category
 	Route::get('category/{slug}/{type?}',[HomeController::class, 'category'])->name('seo');
 
+	// Temp debug - REMOVE
+	Route::get('_debug', function () {
+		try {
+			$user = \App\Models\User::whereUsername('VikingSamurai')->firstOrFail();
+			$updates = $user->updates()->latest()->paginate(5);
+			$html = view('users.profile', [
+				'user' => $user, 'updates' => $updates, 'hasPages' => $updates->hasPages(),
+				'totalPosts' => $user->updates()->count(),
+				'totalPhotos' => 0, 'totalVideos' => 0, 'totalMusic' => 0,
+				'totalFiles' => 0, 'totalEpub' => 0, 'totalReels' => 0,
+				'reels' => null, '_stripe' => null, 'checkSubscription' => null,
+				'media' => null, 'mediaTitle' => null, 'sortPostByTypeMedia' => null,
+				'allPayment' => collect([]), 'paymentIncomplete' => null,
+				'likeCount' => 0, 'categories' => [],
+				'paymentGatewaySubscription' => null, 'subscriptionsActive' => 0,
+				'plans' => collect([]), 'userPlanMonthlyActive' => null,
+				'userProducts' => collect([]), 'shopCategories' => null
+			])->render();
+			return response()->json(['ok' => true, 'len' => strlen($html)]);
+		} catch (\Throwable $e) {
+			return response()->json(['error' => $e->getMessage(), 'file' => basename($e->getFile()), 'line' => $e->getLine()]);
+		}
+	});
+
 	// Profile User
 	Route::get('{slug}', [UserController::class, 'profile'])->where('slug','[A-Za-z0-9\_-]+')->name('profile');
 	Route::get('{slug}/{media}', [UserController::class, 'profile'])->where('media', '(photos|videos|audio|shop|files|epub|reels)$')->name('profile');
