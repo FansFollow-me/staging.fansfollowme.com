@@ -22,6 +22,12 @@
 </div>
 @endif
 
+@auth
+@if (! request()->is('messages/*') && ! request()->is('live/*'))
+@include('includes.menu-mobile')
+@endif
+@endauth
+
 @include('includes.navbar')
 <main role="main">
 @yield('content')
