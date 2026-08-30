@@ -22,6 +22,53 @@
 </div>
 @endif
 
+@if (auth()->guest() && $settings->alert_adult == 'on' && !$settings->age_verification_status)
+  <div class="modal fade" tabindex="-1" id="alertAdult">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body p-4">
+          <p>{{ __('general.alert_content_adult') }}</p>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <a href="https://google.com" class="btn e-none p-0 mr-3">{{trans('general.leave')}}</a>
+          <button type="button" class="btn btn-primary" id="btnAlertAdult">{{trans('general.i_am_age')}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+@endif
+
+@php
+  $countries = config('settings.age_verification_countries');
+  $shouldShowForCountry = $countries
+      ? in_array(Helper::userCountry(), explode(',', $countries))
+      : true;
+@endphp
+
+@if (auth()->guest()
+  && $settings->age_verification_status
+  && $settings->show_modal_age_verification
+  && !request()->is(['login', 'signup', 'password/reset*'])
+  && $shouldShowForCountry
+  )
+  <div class="modal fade" tabindex="-1" id="alertAgeVerification">
+    <div class="modal-dialog">
+      <div class="modal-content text-center">
+        <div class="modal-body pt-4 px-4 pb-0">
+          <h2><i class="fa fa-exclamation-triangle mb-2 text-warning"></i></h2>
+          <h4>{{ __('general.alert_age_verification_title') }}</h4>
+          <p>{{ __('general.alert_age_verification') }}</p>
+        </div>
+        <div class="modal-footer border-0 pt-0 pb-4 justify-content-center">
+          <button type="button" class="btn btn-primary toggleRegister" data-toggle="modal" data-target="#loginFormModal">
+            {{__('general.start_age_verification')}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+@endif
+
 @auth
 @if (! request()->is('messages/*') && ! request()->is('live/*'))
 @include('includes.menu-mobile')
