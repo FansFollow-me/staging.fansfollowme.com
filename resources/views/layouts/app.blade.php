@@ -6,6 +6,47 @@
 <title>@section('title')@show {{ $settings->title }}</title>
 @include('includes.css_general')
 @yield('css')
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FansFollow.me",
+  "url": "https://fansfollowme.com",
+  "description": "FansFollowMe is the global fitness and martial arts creator platform for subscriptions, coaching, direct fan access, and live creator discovery.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "url": "https://staging.fansfollowme.com/support"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "FansFollow.me",
+  "url": "https://fansfollowme.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://staging.fansfollowme.com/explore?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- GA4 Event Tracking -->
+<script>
+  function trackGA4Event(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  }
+</script>
 </head>
 <body>
 @if ($settings->google_tag_manager_body != '')
