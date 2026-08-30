@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class CommentReel extends Model
+    protected $table = 'stg_comment_reels';
 {
     protected $fillable = ['user_id', 'reels_id', 'reply'];
 

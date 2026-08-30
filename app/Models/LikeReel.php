@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class LikeReel extends Model
+    protected $table = 'stg_like_reels';
 {
     protected $fillable = ['user_id', 'reels_id'];
 
