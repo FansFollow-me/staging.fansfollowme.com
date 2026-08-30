@@ -1,3 +1,4 @@
+@verbatim
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
@@ -1654,3 +1655,4 @@ document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(el => {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+@endverbatim
