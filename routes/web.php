@@ -695,6 +695,17 @@ Route::group(['middleware' => 'private.content'], function() {
 	// Category
 	Route::get('category/{slug}/{type?}',[HomeController::class, 'category'])->name('seo');
 
+	// Temp debug
+	Route::get('_debug-check', function () {
+		try {
+			$user = \App\Models\User::whereUsername('VikingSamurai')->firstOrFail();
+			$updates = $user->updates()->latest()->paginate(5);
+			return response()->json(['ok' => true, 'count' => $updates->count()]);
+		} catch (\Throwable $e) {
+			return response()->json(['error' => $e->getMessage()]);
+		}
+	});
+
 	// Profile User
 	Route::get('{slug}', [UserController::class, 'profile'])->where('slug','[A-Za-z0-9\_-]+')->name('profile');
 	Route::get('{slug}/{media}', [UserController::class, 'profile'])->where('media', '(photos|videos|audio|shop|files|epub|reels)$')->name('profile');
@@ -1215,14 +1226,3 @@ Route::post('webhook/flow/card/registered', [FlowController::class, 'cardRegiste
 Route::post('subscription/flow/cancel/{id}', [FlowController::class, 'cancelSubscription'])->name('flow.cancel-subscription')->middleware('auth');
 // Subscription Flow
  Route::get('payment/flow', [FlowController::class, 'show'])->name('flow')->middleware('auth');
-
-// Temp debug
-Route::get('debug-check', function () {
-    try {
-        $user = \App\Models\User::whereUsername('VikingSamurai')->firstOrFail();
-        $updates = $user->updates()->latest()->paginate(5);
-        return response()->json(['ok' => true, 'count' => $updates->count()]);
-    } catch (\Throwable $e) {
-        return response()->json(['error' => $e->getMessage()]);
-    }
-});
