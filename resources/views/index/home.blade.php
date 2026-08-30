@@ -43,7 +43,7 @@
             <img src="{{url('img', $settings->home_index)}}" 
                  class="img-center img-fluid" 
                  alt="{{$settings->title}} Creator Platform"
-                 style="width: 75%; max-width: 400px; margin: 0 auto;">
+                 style="width: 85%; max-width: 480px; margin: 0 auto;">
           </div>
         </div>
       </div>

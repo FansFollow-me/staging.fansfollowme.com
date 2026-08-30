@@ -96,7 +96,7 @@
       justify-content: space-between;
       gap: 1rem;
     }
-    .public-shell-brand img { height: 30px; width: auto; }
+    .public-shell-brand img { height: 36px; width: auto; margin-top: -2px; }
     .public-shell-nav {
       display: flex;
       align-items: center;
@@ -391,7 +391,8 @@
       }
 
       .public-shell-brand img {
-        height: 26px;
+        height: 30px;
+        margin-top: -2px;
       }
 
       .public-shell-actions {

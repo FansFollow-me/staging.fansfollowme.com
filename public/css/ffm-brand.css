@@ -500,8 +500,8 @@ body .jumbotron.homepage,
   background-color: #0B0F1A !important;
   position: relative;
   overflow: hidden;
-  padding: 224px 0 112px !important;
-  min-height: 980px;
+  padding: 160px 0 80px !important;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   border-radius: 0 !important;
@@ -556,7 +556,7 @@ body .jumbotron.homepage h1,
 
 /* Hero image */
 .jumbotron.homepage .img-center {
-  max-height: 500px;
+  max-height: 600px;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
   transition: var(--ffm-transition);
 }
