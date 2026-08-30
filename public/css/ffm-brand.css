@@ -801,7 +801,7 @@ footer h3::after {
 }
 
 .link-footer {
-  color: #9ca3af !important;
+  color: #a0aec0 !important;
   transition: var(--ffm-transition);
   display: inline-block;
   padding: 0.25rem 0;

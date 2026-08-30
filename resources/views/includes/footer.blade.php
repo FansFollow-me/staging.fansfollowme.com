@@ -60,7 +60,7 @@
         @endif
 
           @if ($settings->tiktok != '')
-          <li class="list-inline-item"><a href="{{$settings->tiktok}}" target="_blank" class="ico-social"><i class="bi-tiktok"></i></a></li>
+          <li class="list-inline-item"><a href="{{$settings->tiktok}}" target="_blank" class="ico-social"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/></svg></a></li>
         @endif
 
           @if ($settings->snapchat != '')
@@ -98,7 +98,7 @@
     
     {{-- For Creators column --}}
     <div class="col-md-2">
-      <h6 class="text-uppercase">For Creators</h6>
+      <h6>For Creators</h6>
       <ul class="list-unstyled">
         <li><a class="link-footer" href="{{ url('signup') }}">Getting Started</a></li>
         <li><a class="link-footer" href="{{ url('creators') }}">Personal Video Messages</a></li>
@@ -107,7 +107,7 @@
     
     {{-- Revenue Streams column --}}
     <div class="col-md-2">
-      <h6 class="text-uppercase">Revenue Streams</h6>
+      <h6>Revenue Streams</h6>
       <ul class="list-unstyled">
         <li><a class="link-footer" href="{{ url('creators') }}">Content Monetization</a></li>
         <li><a class="link-footer" href="{{ url('creators') }}">Paid Phone Calls</a></li>
@@ -118,7 +118,7 @@
     
     {{-- Support column --}}
     <div class="col-md-2">
-      <h6 class="text-uppercase">Support</h6>
+      <h6>Support</h6>
       <ul class="list-unstyled">
         <li><a class="link-footer" href="{{ url('contact') }}">Help Center</a></li>
         <li><a class="link-footer" href="{{ url('contact') }}">Contact Us</a></li>
@@ -129,7 +129,7 @@
     
     {{-- Advanced column --}}
     <div class="col-md-2">
-      <h6 class="text-uppercase">Advanced</h6>
+      <h6>Advanced</h6>
       <ul class="list-unstyled">
         <li><a class="link-footer" href="{{ url('business') }}#tokens">Token Ecosystem</a></li>
         <li><a class="link-footer" href="{{ url('business') }}#presale">Presale Info</a></li>

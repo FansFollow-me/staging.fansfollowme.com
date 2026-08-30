@@ -31,7 +31,7 @@
   <meta name="twitter:title" content="{{ $ogTitle !== '' ? $ogTitle : $settings->title }}">
   <meta name="twitter:description" content="{{ $descriptionCustom !== '' ? $descriptionCustom : trans('seo.description') }}">
   <meta name="twitter:image" content="{{ $ogImage !== '' ? $ogImage : url('fans-foloow-me-logo-final-file--png-version-480.png') }}">
-  <title>{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show @if(isset($settings->title)){{ $settings->title }}@endif</title>
+  <title>{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')FansFollow.me - @show @if(isset($settings->title)){{ $settings->title }}@endif</title>
   <link rel="canonical" href="{{ url()->current() }}">
   <link href="/img/{{ $settings->favicon }}" rel="icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,7 +96,7 @@
       justify-content: space-between;
       gap: 1rem;
     }
-    .public-shell-brand img { height: 36px; width: auto; margin-top: -2px; }
+    .public-shell-brand img { height: 40px; width: auto; margin-top: -4px; }
     .public-shell-nav {
       display: flex;
       align-items: center;
