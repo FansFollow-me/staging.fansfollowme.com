@@ -123,6 +123,8 @@ a:hover { color: #fb923c; }
     <li><a href="#test-accounts">Test Accounts</a></li>
     <li><a href="#known-issues">Known Issues</a></li>
     <li><a href="#checklist">Design Checklist</a></li>
+    <li><a href="#workflow">Workflow & Team</a></li>
+    <li><a href="#status">Current Status</a></li>
   </ol>
 </div>
 </div>
@@ -814,6 +816,204 @@ Live at https://staging.fansfollowme.com
 <div class="form-check"><input class="form-check-input" type="checkbox" id="c34"><label class="form-check-label" for="c34">Settings / Members / Posts / Categories</label></div>
 <div class="form-check"><input class="form-check-input" type="checkbox" id="c35"><label class="form-check-label" for="c35">Payments / Subscriptions / Transactions</label></div>
 <div class="form-check"><input class="form-check-input" type="checkbox" id="c36"><label class="form-check-label" for="c36">Theme / Billing / Storage / Reports</label></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 19. WORKFLOW & TEAM -->
+<h2 class="section-title" id="workflow"><i class="bi bi-diagram-3"></i> 19. Workflow & Team Collaboration</h2>
+
+<div class="card mb-4">
+<div class="card-header"><i class="bi bi-people-fill me-2"></i>Who Does What</div>
+<div class="card-body">
+<div class="row">
+<div class="col-md-4">
+<div class="card bg-dark border-warning h-100">
+<div class="card-body text-center">
+<h5 class="text-warning"><i class="bi bi-person-fill me-2"></i>Martin</h5>
+<p class="small text-muted mb-2"><strong>Role:</strong> Product Owner / Designer</p>
+<ul class="list-unstyled small text-start">
+<li>✅ Creates tasks in <strong>Highrise</strong></li>
+<li>✅ Provides design feedback</li>
+<li>✅ Approves/rejects changes</li>
+<li>✅ Writes notes and emails (BCC'd to Highrise)</li>
+<li>✅ Signs off on features before build</li>
+<li>❌ Does NOT write code</li>
+<li>❌ Does NOT deploy</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card bg-dark border-primary h-100">
+<div class="card-body text-center">
+<h5 class="text-primary"><i class="bi bi-robot me-2"></i>Claude (AI)</h5>
+<p class="small text-muted mb-2"><strong>Role:</strong> Developer / QA</p>
+<ul class="list-unstyled small text-start">
+<li>✅ Monitors Highrise every 5-30 min</li>
+<li>✅ Reads Martin's tasks and feedback</li>
+<li>✅ Writes code and fixes bugs</li>
+<li>✅ Runs QA tests (automated)</li>
+<li>✅ Commits, pushes, deploys</li>
+<li>✅ Verifies in browser</li>
+<li>✅ Replies to Martin in Highrise</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card bg-dark border-success h-100">
+<div class="card-body text-center">
+<h5 class="text-success"><i class="bi bi-github me-2"></i>System</h5>
+<p class="small text-muted mb-2"><strong>Role:</strong> Infrastructure</p>
+<ul class="list-unstyled small text-start">
+<li>✅ <strong>GitHub:</strong> Source code, version control</li>
+<li>✅ <strong>Laravel Cloud:</strong> Hosting, auto-deploy</li>
+<li>✅ <strong>Cloudflare R2:</strong> File storage</li>
+<li>✅ <strong>Highrise:</strong> Task management</li>
+<li>✅ <strong>GA4/Clarity:</strong> Analytics</li>
+<li>✅ <strong>Usebasin:</strong> Form handling</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card mb-4">
+<div class="card-header"><i class="bi bi-arrow-repeat me-2"></i>Development Workflow</div>
+<div class="card-body">
+<pre class="mb-0" style="color: var(--ffm-text); background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; font-size: 0.85em; line-height: 1.8;">
+<span class="text-warning">Martin</span> creates task in <span class="text-info">Highrise</span>
+    ↓
+<span class="text-primary">Claude</span> monitors Highrise (every 5-30 minutes)
+    ↓
+<span class="text-primary">Claude</span> reads task, explores codebase, plans approach
+    ↓
+<span class="text-primary">Claude</span> implements changes (code, templates, settings)
+    ↓
+<span class="text-primary">Claude</span> runs <span class="text-success">QA tests</span> (automated browser tests)
+    ├── Public pages (17 URLs) — HTTP status + screenshots
+    ├── Auth pages (3 URLs) — Login flow verification
+    ├── Fan backend (15 URLs) — Logged-in user flow
+    ├── Creator backend (19 URLs) — Creator-specific pages
+    └── Admin panel (20 URLs) — Admin-only pages
+    ↓
+<span class="text-primary">Claude</span> commits to <span class="text-info">GitHub</span> (main branch)
+    ↓
+<span class="text-info">Laravel Cloud</span> auto-deploys to <span class="text-success">staging.fansfollowme.com</span>
+    ↓
+<span class="text-primary">Claude</span> verifies in browser (screenshots, behavior check)
+    ↓
+<span class="text-primary">Claude</span> replies to <span class="text-warning">Martin</span> in <span class="text-info">Highrise</span> with results
+    ↓
+<span class="text-warning">Martin</span> reviews, approves, or requests changes
+    ↓
+<span class="text-warning">Martin</span> signs off → Feature complete ✅
+</pre>
+</div>
+</div>
+
+<div class="card mb-4">
+<div class="card-header"><i class="bi bi-clipboard-check me-2"></i>QA Testing Scripts</div>
+<div class="card-body p-0">
+<table class="table table-sm mb-0">
+<thead><tr><th>Script</th><th>Purpose</th><th>What It Tests</th><th>Output</th></tr></thead>
+<tbody>
+<tr>
+<td><code>tests/qa-browser-test.sh</code></td>
+<td>Public page smoke test</td>
+<td>All 17 public pages, auth pages, profiles, backend redirects, admin redirects, static assets</td>
+<td><code>tests/qa-results.md</code> + screenshots</td>
+</tr>
+<tr>
+<td><code>tests/qa-auth-test.sh</code></td>
+<td>Authenticated user flow test</td>
+<td>Login as testfan/testcreator/Admin, test every backend page with real sessions</td>
+<td><code>tests/qa-auth-results.md</code> + screenshots</td>
+</tr>
+<tr>
+<td><code>tests/FFM-FEATURE-AUDIT.md</code></td>
+<td>Feature inventory</td>
+<td>Every Sponzy feature, what's enabled, what it does for FFM</td>
+<td>Markdown document</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="card mb-4">
+<div class="card-header"><i class="bi bi-envelope me-2"></i>Highrise Integration</div>
+<div class="card-body">
+<div class="row">
+<div class="col-md-6">
+<p class="fw-bold">How Martin Communicates</p>
+<ul class="small">
+<li><strong>Highrise Tasks:</strong> Creates tasks with descriptions, priorities, and deadlines</li>
+<li><strong>Highrise Notes:</strong> Adds feedback and context to existing tasks</li>
+<li><strong>Emails:</strong> BCC'd to Highrise so all communication is tracked</li>
+<li><strong>Design Sign-off:</strong> Martin must approve designs before code changes</li>
+</ul>
+</div>
+<div class="col-md-6">
+<p class="fw-bold">How Claude Responds</p>
+<ul class="small">
+<li><strong>Monitors:</strong> Checks Highrise every 5-30 minutes for new tasks/feedback</li>
+<li><strong>Implements:</strong> Reads task, writes code, runs tests</li>
+<li><strong>Deploys:</strong> Pushes to GitHub → auto-deploys to staging</li>
+<li><strong>Verifies:</strong> Tests in browser, takes screenshots</li>
+<li><strong>Reports:</strong> Replies in Highrise with results and screenshots</li>
+</ul>
+</div>
+</div>
+<div class="alert alert-warning mt-3 mb-0">
+<strong><i class="bi bi-exclamation-triangle me-2"></i>Important Rule:</strong> Claude does NOT touch the site or build anything until Martin provides design sign-off. Martin controls the "what" — Claude handles the "how".
+</div>
+</div>
+</div>
+
+<!-- 20. CURRENT STATUS -->
+<h2 class="section-title" id="status"><i class="bi bi-activity"></i> 20. Current Status & Next Steps</h2>
+
+<div class="row g-3 mb-4">
+<div class="col-md-6">
+<div class="card h-100">
+<div class="card-header bg-success text-white"><i class="bi bi-check-circle me-2"></i>Completed</div>
+<div class="card-body p-0">
+<table class="table table-sm mb-0">
+<tr><td>✅</td><td>Staging environment live and operational</td></tr>
+<tr><td>✅</td><td>All 17 public pages returning 200</td></tr>
+<tr><td>✅</td><td>Login/signup/password reset working</td></tr>
+<tr><td>✅</td><td>Fan backend (13/15 pages) working</td></tr>
+<tr><td>✅</td><td>Creator backend (16/19 pages) working</td></tr>
+<tr><td>✅</td><td>Admin panel (20/20 pages) working</td></tr>
+<tr><td>✅</td><td>All Sponzy v7.9.2 features enabled</td></tr>
+<tr><td>✅</td><td>GA4, Clarity, Usebasin tracking active</td></tr>
+<tr><td>✅</td><td>SEO (sitemap, robots, OG tags, JSON-LD)</td></tr>
+<tr><td>✅</td><td>Automated QA test scripts created</td></tr>
+<tr><td>✅</td><td>Platform Blueprint page created</td></tr>
+<tr><td>✅</td><td>Test accounts seeded (testfan, testcreator)</td></tr>
+</table>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card h-100">
+<div class="card-header bg-warning text-dark"><i class="bi bi-clock me-2"></i>Waiting On</div>
+<div class="card-body p-0">
+<table class="table table-sm mb-0">
+<tr><td>⏳</td><td><strong>Martin's design sign-off</strong> — before any UI/template work</td></tr>
+<tr><td>⏳</td><td>Settings page 500 fix (cache issue)</td></tr>
+<tr><td>⏳</td><td>Vault page 500 fix (table created, needs verification)</td></tr>
+<tr><td>⏳</td><td>Agora API credentials for video/audio calls</td></tr>
+<tr><td>⏳</td><td>Payment gateway API keys (Stripe, PayPal, etc.)</td></tr>
+<tr><td>⏳</td><td>SMTP/email configuration</td></tr>
+<tr><td>⏳</td><td>Age verification decision (enable for production?)</td></tr>
+<tr><td>⏳</td><td>Content seeding (sample posts, reels, products)</td></tr>
+</table>
 </div>
 </div>
 </div>
