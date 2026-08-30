@@ -20,22 +20,22 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="mb-4">
-          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">What is FansFollowMe?</h3>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; text-shadow: none; color: #fff;">What is FansFollowMe?</h3>
           <p style="color: var(--ffm-text-secondary);">FansFollowMe is a creator platform for fitness, martial arts, coaching, content, and direct fan access.</p>
         </div>
 
         <div class="mb-4">
-          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">How do fans join?</h3>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; text-shadow: none; color: #fff;">How do fans join?</h3>
           <p style="color: var(--ffm-text-secondary);">Fans can create an account, browse creators, and subscribe or interact with available creators.</p>
         </div>
 
         <div class="mb-4">
-          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">How do creators get started?</h3>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; text-shadow: none; color: #fff;">How do creators get started?</h3>
           <p style="color: var(--ffm-text-secondary);">Creators can sign up, complete their profile, and publish content once their account is ready.</p>
         </div>
 
         <div class="mb-4">
-          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">Where do I get help?</h3>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; text-shadow: none; color: #fff;">Where do I get help?</h3>
           <p style="color: var(--ffm-text-secondary);">Use the contact page or the support tools available inside the live account area.</p>
         </div>
       </div>

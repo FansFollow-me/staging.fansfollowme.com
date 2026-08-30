@@ -9,7 +9,7 @@
       position: relative;
       font-family: 'Inter', sans-serif;
       overflow: hidden;
-      min-height: calc(100svh - 76px);
+      min-height: 100vh;
       display: flex;
       align-items: center;
       background-color: #020617;
