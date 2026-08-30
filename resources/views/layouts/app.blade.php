@@ -78,7 +78,16 @@
 @include('includes.navbar')
 <main role="main">
 @yield('content')
-@include('includes.footer')
+
+@if (auth()->check() || $settings->who_can_see_content == 'all')
+  @if (auth()->guest() && $settings->who_can_see_content == 'users')
+    <div class="text-center py-3 px-3">
+      @include('includes.footer-tiny')
+    </div>
+  @else
+    @include('includes.footer')
+  @endif
+@endif
 
 @guest
 @if (Helper::showLoginFormModal())
