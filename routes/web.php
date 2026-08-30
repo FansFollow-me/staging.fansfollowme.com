@@ -135,6 +135,9 @@ Route::view('privacy', 'index.privacy');
 Route::view('terms', 'index.terms');
 Route::view('cookies', 'index.cookies');
 
+// Platform Blueprint (internal reference page)
+Route::view('blueprint', 'index.blueprint');
+
 // Blog
 Route::get('blog', [BlogController::class, 'blog']);
 Route::get('blog/post/{id}/{slug?}', [BlogController::class, 'post'])->name('seo');
