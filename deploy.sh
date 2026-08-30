@@ -44,6 +44,35 @@ echo 'Schema fixes applied';
 
 # 4b. Create missing tables and columns (moved from fix-laravel-cloud.php)
 php artisan tinker --execute="
+// Create vaults table if missing
+if (!Schema::hasTable('vaults')) {
+    Schema::create('vaults', function (\$t) {
+        \$t->id();
+        \$t->integer('user_id');
+        \$t->string('type')->nullable();
+        \$t->string('image')->nullable();
+        \$t->integer('width')->nullable();
+        \$t->integer('height')->nullable();
+        \$t->string('img_type')->nullable();
+        \$t->string('video')->nullable();
+        \$t->tinyInteger('encoded')->default(0);
+        \$t->string('video_poster')->nullable();
+        \$t->string('duration_video')->nullable();
+        \$t->string('quality_video')->nullable();
+        \$t->string('video_embed')->nullable();
+        \$t->string('music')->nullable();
+        \$t->string('file')->nullable();
+        \$t->string('file_name')->nullable();
+        \$t->integer('file_size')->nullable();
+        \$t->integer('bytes')->nullable();
+        \$t->string('mime')->nullable();
+        \$t->string('status')->default('active');
+        \$t->integer('job_id')->nullable();
+        \$t->timestamps();
+    });
+    echo "Created vaults table\n";
+}
+
 // Create video_calls and audio_calls tables if missing
 foreach (['video_calls', 'audio_calls'] as \$table) {
     if (!Schema::hasTable(\$table)) {
