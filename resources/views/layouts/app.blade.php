@@ -26,6 +26,47 @@
 <main role="main">
 @yield('content')
 @include('includes.footer')
+
+@guest
+@if (Helper::showLoginFormModal())
+  @include('includes.modal-login')
+@endif
+@endguest
+
+@auth
+@if ($settings->disable_tips == 'off')
+  @include('includes.modal-tip')
+@endif
+@if ($settings->gifts)
+  @include('includes.modal-gifts')
+@endif
+@include('includes.modal-payperview')
+@if ($settings->live_streaming_status == 'on')
+  @include('includes.modal-live-stream')
+@endif
+@if ($settings->allow_scheduled_posts)
+  @include('includes.modal-scheduled-posts')
+@endif
+@if ($settings->video_call_status)
+  @include('includes.modal-video-call-incoming')
+@endif
+@if ($settings->audio_call_status)
+  @include('includes.modal-audio-call-incoming')
+@endif
+@if ($settings->allow_vault)
+  @include('includes.modal-vault')
+@endif
+@if ($settings->allow_crowdfund)
+  @include('includes.modal-crowdfund')
+  @include('includes.modal-donate')
+  @include('includes.modal-donors')
+@endif
+@endauth
+
+@guest
+@include('includes.modal-2fa')
+@endguest
+
 </main>
 @include('includes.javascript_general')
 @yield('javascript')
