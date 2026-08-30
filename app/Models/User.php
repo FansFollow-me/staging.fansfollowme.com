@@ -256,19 +256,19 @@ class User extends Authenticatable implements HasLocalePreference
     $fetchSubscriptions = $this->fetchCretorsByIdSubscriptions();
 
     $reels = Reel::getRandomRecords(25, 100, function ($query) use ($fetchSubscriptions, $reelId) {
-      $query->join('users', 'reels.user_id', '=', 'users.id')
-        ->where('reels.status', 'active')
+      $query->join('users', 'stg_reels.user_id', '=', 'users.id')
+        ->where('stg_reels.status', 'active')
         ->where(function ($q) use ($fetchSubscriptions) {
-          $q->where('reels.type', 'public')
+          $q->where('stg_reels.type', 'public')
             ->orWhere(function ($q) use ($fetchSubscriptions) {
-              $q->where('reels.type', 'private')
-                ->whereIn('reels.user_id', $fetchSubscriptions);
+              $q->where('stg_reels.type', 'private')
+                ->whereIn('stg_reels.user_id', $fetchSubscriptions);
             });
         })
         ->when($reelId, function ($query) use ($reelId) {
-          $query->where('reels.id', '<>', $reelId);
+          $query->where('stg_reels.id', '<>', $reelId);
         })
-        ->select('reels.*');
+        ->select('stg_reels.*');
     }, [
       'user:id,name,username,avatar,cover,hide_name',
       'media'
