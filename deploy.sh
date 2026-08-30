@@ -73,6 +73,20 @@ foreach (['video_calls', 'audio_calls'] as \$table) {
     ['subscriptions', 'creator_id', fn(\$t) => \$t->integer('creator_id')->nullable()],
     ['updates', 'created_at', fn(\$t) => \$t->timestamp('created_at')->nullable()],
     ['updates', 'updated_at', fn(\$t) => \$t->timestamp('updated_at')->nullable()],
+    ['admin_settings', 'allow_vault', fn(\$t) => \$t->boolean('allow_vault')->default(0)],
+    ['admin_settings', 'allow_crowdfund', fn(\$t) => \$t->boolean('allow_crowdfund')->default(0)],
+    ['admin_settings', 'allow_scheduled_posts', fn(\$t) => \$t->boolean('allow_scheduled_posts')->default(0)],
+    ['admin_settings', 'video_call_status', fn(\$t) => \$t->string('video_call_status', 10)->default('off')],
+    ['admin_settings', 'audio_call_status', fn(\$t) => \$t->string('audio_call_status', 10)->default('off')],
+    ['admin_settings', 'gifts', fn(\$t) => \$t->boolean('gifts')->default(0)],
+    ['admin_settings', 'disable_creators_section', fn(\$t) => \$t->boolean('disable_creators_section')->default(0)],
+    ['admin_settings', 'google_tag_manager_head', fn(\$t) => \$t->text('google_tag_manager_head')->nullable()],
+    ['admin_settings', 'google_tag_manager_body', fn(\$t) => \$t->text('google_tag_manager_body')->nullable()],
+    ['admin_settings', 'theme_color_pwa', fn(\$t) => \$t->string('theme_color_pwa', 20)->default('#450ea7')],
+    ['admin_settings', 'age_verification_status', fn(\$t) => \$t->string('age_verification_status', 10)->default('0')],
+    ['admin_settings', 'age_verification', fn(\$t) => \$t->string('age_verification', 10)->default('18')],
+    ['admin_settings', 'websockets', fn(\$t) => \$t->boolean('websockets')->default(0)],
+    ['admin_settings', 'story_status', fn(\$t) => \$t->boolean('story_status')->default(0)],
 ];
 foreach (\$cols as [\$table, \$col, \$add]) {
     if (Schema::hasTable(\$table) && !Schema::hasColumn(\$table, \$col)) {
