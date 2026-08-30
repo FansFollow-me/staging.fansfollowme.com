@@ -169,7 +169,6 @@ class UserController extends Controller
 
   public function profile($slug, $media = null)
   {
-    try {
     $user = User::whereUsername($slug)
       ->whereStatus('active')
       ->orWhere('status', 'disabled')
@@ -428,10 +427,6 @@ class UserController extends Controller
       'userProducts' => $userProducts,
       'shopCategories' => $shopCategories ?? null
     ]);
-    } catch (\Throwable $e) {
-      \Log::error('PROFILE ERROR: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
-      abort(500, 'Profile error: ' . $e->getMessage());
-    }
   }
 
   public function postDetail($slug, $id)

@@ -71,6 +71,8 @@ foreach (['video_calls', 'audio_calls'] as \$table) {
     ['users', 'allow_comments', fn(\$t) => \$t->string('allow_comments', 10)->default('yes')],
     ['users', 'display_list_donors', fn(\$t) => \$t->string('display_list_donors', 10)->default('yes')],
     ['subscriptions', 'creator_id', fn(\$t) => \$t->integer('creator_id')->nullable()],
+    ['updates', 'created_at', fn(\$t) => \$t->timestamp('created_at')->nullable()],
+    ['updates', 'updated_at', fn(\$t) => \$t->timestamp('updated_at')->nullable()],
 ];
 foreach (\$cols as [\$table, \$col, \$add]) {
     if (Schema::hasTable(\$table) && !Schema::hasColumn(\$table, \$col)) {
@@ -78,6 +80,9 @@ foreach (\$cols as [\$table, \$col, \$add]) {
         echo \"Added \$col to \$table\n\";
     }
 }
+
+// Populate updates.created_at from date column if null
+DB::table('updates')->whereNull('created_at')->update(['created_at' => DB::raw('date'), 'updated_at' => DB::raw('date')]);
 
 // Ensure public access to profiles
 DB::table('admin_settings')->where('who_can_see_content', 'users')->update(['who_can_see_content' => 'all']);
