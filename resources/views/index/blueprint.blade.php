@@ -825,6 +825,129 @@ Live at https://staging.fansfollowme.com
 <!-- 19. WORKFLOW & TEAM -->
 <h2 class="section-title" id="workflow"><i class="bi bi-diagram-3"></i> 19. Workflow & Team Collaboration</h2>
 
+<!-- BOLT.NEW WORKFLOW -->
+<div class="alert alert-info border-info mb-4">
+<h5 class="text-info"><i class="bi bi-lightning-charge me-2"></i>Bolt.new → Sponzy Conversion Pipeline</h5>
+<p class="mb-2">Martin is redesigning fansfollowme.com using <strong>bolt.new</strong> (AI-powered web builder). The output gets converted to Sponzy Blade templates for Laravel Cloud deployment.</p>
+<p class="mb-0"><strong>Flow:</strong> Martin designs in bolt.new → Claude reviews output → Converts to Blade templates → Deploys to staging → Martin reviews → Sign-off</p>
+</div>
+
+<div class="card mb-4">
+<div class="card-header bg-info text-dark"><i class="bi bi-arrow-left-right me-2"></i>Bolt.new → Sponzy Conversion Guide</div>
+<div class="card-body">
+<div class="row">
+<div class="col-md-6">
+<p class="fw-bold text-info">For Martin & Bolt.new</p>
+<ul class="small">
+<li><strong>Use these exact colors:</strong> <code>#0B0F1A</code> (bg), <code>#111827</code> (cards), <code>#f97316</code> (CTA orange)</li>
+<li><strong>Use Inter font</strong> — matches FFM brand</li>
+<li><strong>Dark theme only</strong> — <code>data-bs-theme="dark"</code></li>
+<li><strong>Bootstrap 5 classes</strong> — bolt.new should use Bootstrap, not Tailwind</li>
+<li><strong>Navbar height:</strong> 72px</li>
+<li><strong>Mobile-first</strong> — responsive design is critical</li>
+<li><strong>No React/Vue</strong> — output must be plain HTML/CSS/JS</li>
+<li><strong>Include all states:</strong> empty, loading, error, success</li>
+<li><strong>Include all roles:</strong> logged out, fan, creator, admin</li>
+</ul>
+</div>
+<div class="col-md-6">
+<p class="fw-bold text-warning">For Claude (Conversion)</p>
+<ul class="small">
+<li><strong>Wrap in Blade:</strong> <code>@extends('layouts.app')</code> + <code>@section('content')</code></li>
+<li><strong>Use Sponzy variables:</strong> <code>$settings->title</code>, <code>auth()->user()</code>, etc.</li>
+<li><strong>Use Sponzy routes:</strong> <code>url('login')</code>, <code>route('profile', $user)</code></li>
+<li><strong>Use Sponzy helpers:</strong> <code>Helper::getFile()</code>, <code>__()</code> for translations</li>
+<li><strong>Preserve Sponzy functionality:</strong> AJAX forms, modals, real-time features</li>
+<li><strong>Test all 3 roles:</strong> fan, creator, admin after conversion</li>
+<li><strong>Run QA tests:</strong> <code>bash tests/qa-auth-test.sh</code></li>
+</ul>
+</div>
+</div>
+
+<div class="mt-3">
+<p class="fw-bold">Bolt.new Output Structure (Expected)</p>
+<pre style="color: var(--ffm-text); background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; font-size: 0.8em; line-height: 1.6; white-space: pre-wrap;">
+bolt-output/
+├── index.html          # Homepage design
+├── css/
+│   └── styles.css      # Custom styles (will merge into ffm-brand.css)
+├── js/
+│   └── main.js         # Custom JS (will merge into app JS)
+└── pages/
+    ├── explore.html    # Explore page
+    ├── creators.html   # Creators listing
+    ├── profile.html    # Profile page
+    ├── dashboard.html  # User dashboard
+    ├── messages.html   # Messages
+    ├── settings.html   # Settings
+    └── admin.html      # Admin panel
+</pre>
+</div>
+
+<div class="mt-3">
+<p class="fw-bold">Conversion Checklist</p>
+<div class="row">
+<div class="col-md-6">
+<div class="form-check"><input class="form-check-input" type="checkbox" id="b1"><label class="form-check-label" for="b1">bolt.new HTML → Blade template</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="b2"><label class="form-check-label" for="b2">Static text → Sponzy variables (<code>$settings->title</code>)</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="b3"><label class="form-check-label" for="b3">Hardcoded URLs → <code>url()</code> / <code>route()</code></label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="b4"><label class="form-check-label" for="b4">CSS → merge into <code>ffm-brand.css</code></label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="b5"><label class="form-check-label" for="b5">JS → merge into existing app JS</label></div>
+</div>
+<div class="col-md-6">
+<div class="form-check"><input class="form-check-input" type="checkbox" id="b6"><label class="form-check-label" for="b6">Add auth checks (<code>@auth</code> / <code>@guest</code>)</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="b7"><label class="form-check-label" for="b7">Add feature flags (<code>config('settings.*')</code>)</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="b8"><label class="form-check-label" for="b8">Add Sponzy AJAX endpoints</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="b9"><label class="form-check-label" for="b9">Test with all 3 roles</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="b10"><label class="form-check-label" for="b10">Run <code>qa-auth-test.sh</code></label></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card mb-4">
+<div class="card-header"><i class="bi bi-lightbulb me-2"></i>Suggestions for Bolt.new & Claude</div>
+<div class="card-body">
+<div class="row">
+<div class="col-md-6">
+<p class="fw-bold text-success">Bolt.new Best Practices</p>
+<ul class="small">
+<li><strong>Design all 54 pages</strong> — use the URL map in Section 2-7 above</li>
+<li><strong>Include empty states</strong> — "No posts yet", "No subscribers", etc.</li>
+<li><strong>Include error states</strong> — 404, 500, network error</li>
+<li><strong>Include loading states</strong> — skeleton screens, spinners</li>
+<li><strong>Mobile-first</strong> — design for phone, then tablet, then desktop</li>
+<li><strong>Use Bootstrap grid</strong> — <code>col-md-6</code>, <code>col-lg-4</code>, etc.</li>
+<li><strong>Use Bootstrap components</strong> — cards, modals, navs, forms</li>
+<li><strong>Match Sponzy modals</strong> — tip, subscribe, report, share</li>
+<li><strong>Include all form fields</strong> — login, signup, settings, post creation</li>
+<li><strong>Design for dark theme</strong> — no light backgrounds</li>
+</ul>
+</div>
+<div class="col-md-6">
+<p class="fw-bold text-primary">Claude Conversion Best Practices</p>
+<ul class="small">
+<li><strong>Don't rewrite Sponzy logic</strong> — only replace the HTML/CSS layer</li>
+<li><strong>Preserve AJAX endpoints</strong> — Sponzy uses fetch() for forms</li>
+<li><strong>Preserve modal system</strong> — Sponzy has specific modal patterns</li>
+<li><strong>Preserve notification system</strong> — real-time via WebSocket</li>
+<li><strong>Preserve payment flow</strong> — Sponzy handles all payment gateways</li>
+<li><strong>Use Sponzy's Helper class</strong> — <code>Helper::getFile()</code>, <code>Helper::userCountry()</code></li>
+<li><strong>Use Sponzy's translation system</strong> — <code>__('general.key')</code></li>
+<li><strong>Use Sponzy's settings</strong> — <code>config('settings.key')</code></li>
+<li><strong>Test incrementally</strong> — convert one page, test, then next</li>
+<li><strong>Document changes</strong> — note what was converted from bolt.new</li>
+</ul>
+</div>
+</div>
+
+<div class="alert alert-warning mt-3 mb-0">
+<strong><i class="bi bi-exclamation-triangle me-2"></i>Key Constraint:</strong> Bolt.new designs the <strong>visual layer only</strong>. All backend logic (auth, payments, messaging, notifications, file uploads) stays in Sponzy. Claude's job is to merge bolt.new's HTML/CSS into Sponzy's Blade templates without breaking existing functionality.
+</div>
+</div>
+</div>
+
 <div class="card mb-4">
 <div class="card-header"><i class="bi bi-people-fill me-2"></i>Who Does What</div>
 <div class="card-body">
@@ -887,13 +1010,22 @@ Live at https://staging.fansfollowme.com
 <div class="card-header"><i class="bi bi-arrow-repeat me-2"></i>Development Workflow</div>
 <div class="card-body">
 <pre class="mb-0" style="color: var(--ffm-text); background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; font-size: 0.85em; line-height: 1.8;">
-<span class="text-warning">Martin</span> creates task in <span class="text-info">Highrise</span>
+<span class="text-warning">Martin</span> designs in <span class="text-info">bolt.new</span> (visual design, all 54 pages)
+    ↓
+<span class="text-warning">Martin</span> creates task in <span class="text-info">Highrise</span> with bolt.new output
     ↓
 <span class="text-primary">Claude</span> monitors Highrise (every 5-30 minutes)
     ↓
-<span class="text-primary">Claude</span> reads task, explores codebase, plans approach
+<span class="text-primary">Claude</span> reads task, downloads bolt.new output
     ↓
-<span class="text-primary">Claude</span> implements changes (code, templates, settings)
+<span class="text-primary">Claude</span> converts bolt.new HTML → Sponzy Blade templates
+    ├── Wraps in @extends('layouts.app')
+    ├── Replaces static text with Sponzy variables
+    ├── Replaces hardcoded URLs with url()/route()
+    ├── Merges CSS into ffm-brand.css
+    ├── Adds auth checks (@auth/@guest)
+    ├── Adds feature flags (config('settings.*'))
+    └── Preserves Sponzy AJAX/modal/payment logic
     ↓
 <span class="text-primary">Claude</span> runs <span class="text-success">QA tests</span> (automated browser tests)
     ├── Public pages (17 URLs) — HTTP status + screenshots
@@ -910,7 +1042,7 @@ Live at https://staging.fansfollowme.com
     ↓
 <span class="text-primary">Claude</span> replies to <span class="text-warning">Martin</span> in <span class="text-info">Highrise</span> with results
     ↓
-<span class="text-warning">Martin</span> reviews, approves, or requests changes
+<span class="text-warning">Martin</span> reviews on staging, approves or requests changes
     ↓
 <span class="text-warning">Martin</span> signs off → Feature complete ✅
 </pre>
