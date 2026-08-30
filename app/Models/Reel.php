@@ -9,6 +9,8 @@ class Reel extends Model
 {
     use HasRandomSelection;
 
+    protected $table = 'stg_reels';
+
     protected $fillable = [
         'user_id',
         'title',
