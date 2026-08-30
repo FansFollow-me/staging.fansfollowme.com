@@ -127,44 +127,8 @@
   <main @if (request()->is('messages/*') || request()->is('live/*')) class="h-100" @endif role="main">
     @yield('content')
 
-    @if (auth()->guest() 
-          && ! request()->route()?->named('profile')
-          && ! request()->is(['creators', 'category/*', 'creators/*'])
-          || auth()->check()
-          && request()->path() != '/'
-          && ! request()->route()?->named('profile')
-          && ! request()->is([
-            'my/bookmarks', 
-            'my/likes', 
-            'my/purchases', 
-            'explore', 
-            'messages', 
-            'messages/*', 
-            'creators', 
-            'category/*', 
-            'creators/*', 
-            'live/*'
-            ])          
-          )
-
-          @if (auth()->guest() && request()->path() == '/' && $settings->home_style == 0
-                || auth()->guest() && request()->path() != '/' && $settings->home_style == 0
-                || auth()->guest() && request()->path() != '/' && $settings->home_style == 1
-                || auth()->guest() && request()->path() != '/' && $settings->home_style == 2
-                || auth()->check()
-                  )
-
-                  @if (auth()->guest() && $settings->who_can_see_content == 'users')
-                    <div class="text-center py-3 px-3">
-                      @include('includes.footer-tiny')
-                    </div>
-                  @else
-                    @include('includes.footer')
-                  @endif
-
-          @endif
-
-  @endif
+    {{-- Footer display logic removed for debugging --}}
+    @include('includes.footer')
 
   @guest
 
