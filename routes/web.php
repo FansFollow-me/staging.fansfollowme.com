@@ -1215,3 +1215,35 @@ Route::post('webhook/flow/card/registered', [FlowController::class, 'cardRegiste
 Route::post('subscription/flow/cancel/{id}', [FlowController::class, 'cancelSubscription'])->name('flow.cancel-subscription')->middleware('auth');
 // Subscription Flow
  Route::get('payment/flow', [FlowController::class, 'show'])->name('flow')->middleware('auth');
+// Temporary debug endpoint - REMOVE AFTER FIX
+Route::get('debug-profile/{slug}', function ($slug) {
+    try {
+        $user = \App\Models\User::whereUsername($slug)->whereStatus('active')->orWhere('status', 'disabled')->whereUsername($slug)->firstOrFail();
+        return response()->json(['user' => $user->username, 'id' => $user->id, 'status' => $user->status]);
+    } catch (\Throwable $e) {
+        return response()->json(['error' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine()]);
+    }
+});
+Route::get('debug-profile-view/{slug}', function ($slug) {
+    try {
+        $user = \App\Models\User::whereUsername($slug)->whereStatus('active')->orWhere('status', 'disabled')->whereUsername($slug)->firstOrFail();
+        $updates = $user->updates()->latest()->paginate(10);
+        return view('users.profile', [
+            'user' => $user,
+            'updates' => $updates,
+            'hasPages' => $updates->hasPages(),
+            'totalPosts' => $user->updates()->count(),
+            'totalPhotos' => 0, 'totalVideos' => 0, 'totalMusic' => 0,
+            'totalFiles' => 0, 'totalEpub' => 0, 'totalReels' => 0,
+            'reels' => null, '_stripe' => null, 'checkSubscription' => null,
+            'media' => null, 'mediaTitle' => null, 'sortPostByTypeMedia' => null,
+            'allPayment' => collect([]), 'paymentIncomplete' => null,
+            'likeCount' => 0, 'categories' => [],
+            'paymentGatewaySubscription' => null, 'subscriptionsActive' => 0,
+            'plans' => collect([]), 'userPlanMonthlyActive' => null,
+            'userProducts' => collect([]), 'shopCategories' => null
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json(['error' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine(), 'trace' => $e->getTraceAsString()]);
+    }
+});
