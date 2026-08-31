@@ -80,6 +80,7 @@
 <main role="main">
 @yield('content')
 
+@if (! request()->is('messages') && ! request()->is('messages/*') && ! request()->is('live/*'))
 @if (auth()->check() || $settings->who_can_see_content == 'all')
   @if (auth()->guest() && $settings->who_can_see_content == 'users')
     <div class="text-center py-3 px-3">
@@ -88,6 +89,7 @@
   @else
     @include('includes.footer')
   @endif
+@endif
 @endif
 
 @guest

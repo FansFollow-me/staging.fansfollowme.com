@@ -907,19 +907,66 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 .container-msg {position: relative; overflow: auto; overflow-x: hidden; flex: 2; -webkit-box-flex: 2;}
+
+/* ── Messages page layout fix ── */
 .section-msg {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: column;
-    flex-flow: column;
+    display: flex !important;
+    flex-flow: column !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    padding-top: 0 !important;
+    top: 0 !important;
     min-width: 0;
-    width: 100%;
+    flex-grow: 1;
+}
+.section-msg .container,
+.section-msg .container-full-w {
+    height: 100% !important;
+}
+.section-msg .row {
+    height: 100% !important;
+}
+.section-msg .card > .content,
+.section-msg #contentDIV {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    min-height: 0;
+}
+.section-msg .card-footer {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+@media (min-width: 768px) {
+    .section-msg .container,
+    .section-msg .container-full-w {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    .section-msg .wrapper-msg-inbox {
+        order: 0 !important;
+    }
+    .section-msg .first {
+        order: 0 !important;
+    }
+    .section-msg .col-md-8,
+    .section-msg .col-md-9 {
+        position: relative;
+        flex: 1 1 0%;
+    }
+    .section-msg .col-md-8 .card,
+    .section-msg .col-md-9 .card {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+    }
 }
 .container-media-msg {max-width: 100%;max-height: 100%;}
 .container-media-img {max-width: 100%;}
