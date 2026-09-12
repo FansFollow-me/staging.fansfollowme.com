@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Landing page - no DB required
 Route::get('/', function () {
-    return view('welcome');
+    return response()->view('welcome');
 });
