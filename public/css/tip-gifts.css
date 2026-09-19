@@ -1,0 +1,78 @@
+.tip-gift-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: .75rem;
+}
+
+.tip-gift-card {
+    background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 14px;
+    padding: .85rem .6rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .18s, transform .18s, background .18s, box-shadow .18s;
+    color: #e5e7eb;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .15rem;
+}
+.tip-gift-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.08) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform .45s ease;
+    pointer-events: none;
+}
+.tip-gift-card:hover::before { transform: translateX(100%); }
+.tip-gift-card .badge { margin-top: .25rem !important; }
+
+.tip-gift-card:hover {
+    border-color: rgba(249,115,22,.55);
+    transform: translateY(-2px);
+}
+
+.tip-gift-card.selected {
+    border-color: #f97316;
+    background: rgba(249,115,22,.12);
+    box-shadow: 0 0 0 1px rgba(249,115,22,.4);
+}
+
+.tip-gift-card .gift-emoji {
+    font-size: 1.75rem;
+    line-height: 1;
+    margin-bottom: .35rem;
+    display: block;
+}
+
+.tip-gift-card .gift-label {
+    font-weight: 700;
+    font-size: .8rem;
+    display: block;
+}
+
+.tip-gift-card .gift-price {
+    color: #fb923c;
+    font-size: .75rem;
+    font-weight: 700;
+    display: block;
+    margin-top: .15rem;
+}
+
+.tip-gift-card .gift-blurb {
+    color: #94a3b8;
+    font-size: .65rem;
+    display: block;
+    margin-top: .15rem;
+}
+
+.tip-gift-card input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}

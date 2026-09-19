@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FFM Gift FX — V3 vs V4 · Legend &amp; Icon</title>
+  <style>
+    :root {
+      --bg: #0B0F1A;
+      --card: #111827;
+      --border: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --orange: #f97316;
+      --purple: #a855f7;
+      --gold: #fbbf24;
+      --red: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+      padding: 28px 20px 48px;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; }
+    h1 { font-size: 1.55rem; margin: 0 0 6px; font-weight: 800; }
+    .sub { color: var(--muted); font-size: .95rem; margin-bottom: 22px; line-height: 1.55; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .panel h2 {
+      margin: 0 0 4px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+    .panel .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .tag.v3 { background: #334155; color: #e2e8f0; }
+    .tag.v4 { background: linear-gradient(135deg, var(--orange), var(--purple)); color: #fff; }
+    .panel p { color: var(--muted); font-size: .86rem; line-height: 1.55; margin: 0 0 14px; }
+    ul.notes { margin: 0 0 16px; padding-left: 1.1rem; color: var(--muted); font-size: .84rem; line-height: 1.65; }
+    ul.notes strong { color: var(--text); }
+    .gift-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .gift-btn, .play-btn {
+      border: 1px solid var(--border);
+      background: #0f172a;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font: inherit;
+      font-size: .84rem;
+      font-weight: 600;
+    }
+    .gift-btn.active {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold), 0 0 16px rgba(251,191,36,.2);
+    }
+    .gift-btn small { display: block; color: var(--muted); font-weight: 500; font-size: .72rem; margin-top: 2px; }
+    .play-btn {
+      width: 100%;
+      min-height: 46px;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+    .play-btn.v3 { border-color: #64748b; }
+    .play-btn.v4 {
+      border: none;
+      background: linear-gradient(135deg, var(--orange), #ec4899 48%, var(--purple));
+      color: #fff;
+    }
+    .play-btn:disabled { opacity: .5; cursor: wait; }
+    .compare-table {
+      margin-top: 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .compare-table h3 { margin: 0; padding: 14px 16px; font-size: .95rem; border-bottom: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    td:first-child { color: var(--muted); width: 22%; }
+    .hint {
+      margin-top: 18px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(251,191,36,.25);
+      background: rgba(251,191,36,.06);
+      color: #fde68a;
+      font-size: .84rem;
+      line-height: 1.55;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Gift FX comparison — Legend vs Icon</h1>
+    <p class="sub">
+      Side-by-side of <strong>V3</strong> (previous engine) vs <strong>V4</strong> (current) on the top two tiers only:
+      <strong>Legend</strong> (tier 9 — $10k–$25k) and <strong>Icon</strong> (tier 10 — $50k–$250k).
+      Pick a gift, fire each engine, watch impact timing, depth, camera punch, and how long the “moment” lasts.
+    </p>
+
+    <div class="gift-row" id="gift-picker"></div>
+
+    <div class="grid">
+      <div class="panel">
+        <span class="tag v3">OLD · V3</span>
+        <h2>Previous cinematic</h2>
+        <p>Shorter climax (~2.2s), flat particles, SFX slightly early (~80ms), both top tiers share “LEGENDARY”, limited hold beat.</p>
+        <ul class="notes">
+          <li><strong>Duration:</strong> ~9–10s</li>
+          <li><strong>Camera:</strong> flash + shake only</li>
+          <li><strong>Particles:</strong> single plane</li>
+          <li><strong>SFX:</strong> fire-and-forget near start</li>
+          <li><strong>Top tiers:</strong> same badge / similar arc</li>
+        </ul>
+        <button type="button" class="play-btn v3" id="play-v3">Play V3 (old)</button>
+      </div>
+      <div class="panel">
+        <span class="tag v4">NEW · V4</span>
+        <h2>Upgraded cinematic</h2>
+        <p>Multi-act timeline, depth-layered particles, camera zoom-punch on Power+, product aura on photos, beat-locked SFX, distinct Icon act.</p>
+        <ul class="notes">
+          <li><strong>Duration:</strong> Legend ~10s · Icon ~11.5s+</li>
+          <li><strong>Camera:</strong> scale punch + brightness on beats</li>
+          <li><strong>Particles:</strong> bg / mid / fg speeds</li>
+          <li><strong>SFX:</strong> locked to hero / action / climax / peak</li>
+          <li><strong>Top tiers:</strong> LEGENDARY vs ICON badges + longer acts</li>
+        </ul>
+        <button type="button" class="play-btn v4" id="play-v4">Play V4 (new)</button>
+      </div>
+    </div>
+
+    <div class="compare-table">
+      <h3>What to watch on the top 2 tiers</h3>
+      <table>
+        <thead>
+          <tr><th>Focus</th><th>V3 (old)</th><th>V4 (new)</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Motion easing</td>
+            <td>Decent springs; some stage jumps</td>
+            <td>Expo/quint in, quart settle, spring climax — continuous acceleration</td>
+          </tr>
+          <tr>
+            <td>Particle depth</td>
+            <td>Mostly one speed/size plane</td>
+            <td>Background soft/slow · mid · foreground large/fast with glow</td>
+          </tr>
+          <tr>
+            <td>Impact (Power+)</td>
+            <td>Flash + shake at ~100ms</td>
+            <td>Camera zoom-punch + brightness on hero &amp; climax frames; stronger on Icon</td>
+          </tr>
+          <tr>
+            <td>Photo glow</td>
+            <td>Basic drop-shadow</td>
+            <td>Tier-color aura behind product + breathing glow on photoreal PNGs</td>
+          </tr>
+          <tr>
+            <td>Legend (T9)</td>
+            <td>~9s, climax ~2.2s, LEGENDARY</td>
+            <td>~10s multi-act: enter → hero → action → build → climax → hold → peak</td>
+          </tr>
+          <tr>
+            <td>Icon (T10)</td>
+            <td>Same path as Legend, slightly longer</td>
+            <td>Longest arc, ICON badge, extra orbit/shock, denser fireworks, bigger punch</td>
+          </tr>
+          <tr>
+            <td>SFX timing</td>
+            <td>Roughly near motion (+80ms drift)</td>
+            <td>Scheduled on beat map — impact sounds hit climax/peak frames</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hint" id="status">
+      <strong>Ctrl+F5</strong> then open <code>http://127.0.0.1:8000/gift-fx-comparison.html</code>.
+      <strong>Premium rule:</strong> under $250 = clean product, no paper confetti.
+      <strong>$250+</strong> (Shoes and up, all Legend/Icon) = real fireworks rising <em>behind</em> the gift image.
+      V4 Legend/Icon also show letterbox + <code>FX V4</code> stamp + beat captions.
+    </div>
+  </div>
+
+  <script>
+    var META = {
+      diamond_bracelet: { emoji: '💎', label: 'Diamond Bracelet', amount: 10000, tier: 9, image: '/img/gifts/diamond_bracelet.png?v=cutout3' },
+      luxury_watch: { emoji: '⌚', label: 'Luxury Watch', amount: 25000, tier: 9, image: '/img/gifts/luxury_watch.png?v=cutout3' },
+      luxury_holiday: { emoji: '✈️', label: 'Luxury Holiday', amount: 50000, tier: 10, image: '/img/gifts/luxury_holiday.png?v=cutout3' },
+      sports_car: { emoji: '🏎️', label: 'Sports Car', amount: 100000, tier: 10, image: '/img/gifts/sports_car.png?v=cutout3' },
+      mystery_box: { emoji: '🎁', label: 'Mystery Box', amount: 250000, tier: 10, image: '/img/gifts/mystery_box.png?v=cutout3', mystery: true }
+    };
+    var ORDER = ['diamond_bracelet', 'luxury_watch', 'luxury_holiday', 'sports_car', 'mystery_box'];
+    var selected = 'sports_car';
+    var engines = { v3: false, v4: false };
+    window.FFM_GIFT_META = META;
+
+    var picker = document.getElementById('gift-picker');
+    ORDER.forEach(function (key) {
+      var m = META[key];
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'gift-btn' + (key === selected ? ' active' : '');
+      btn.dataset.key = key;
+      btn.innerHTML = m.emoji + ' ' + m.label + '<small>' + (m.tier === 10 ? 'Icon · T10' : 'Legend · T9') + ' · $' + (m.amount / 100).toLocaleString() + '</small>';
+      btn.addEventListener('click', function () {
+        selected = key;
+        picker.querySelectorAll('.gift-btn').forEach(function (b) { b.classList.toggle('active', b.dataset.key === key); });
+        setStatus('Selected <strong>' + m.label + '</strong> (' + (m.tier === 10 ? 'Icon' : 'Legend') + '). Play V3 then V4.');
+      });
+      picker.appendChild(btn);
+    });
+
+    function setStatus(html) {
+      document.getElementById('status').innerHTML = html + ' Open via Laravel public URL so <code>/js</code> assets resolve. Click a gift, then V3 or V4. Production uses <strong>V4</strong>.';
+    }
+
+    function loadScript(src) {
+      return new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = src;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+    function loadCss(href, id) {
+      if (document.getElementById(id)) return;
+      var l = document.createElement('link');
+      l.id = id;
+      l.rel = 'stylesheet';
+      l.href = href;
+      document.head.appendChild(l);
+    }
+
+    async function ensureEngine(ver) {
+      if (ver === 'v3') {
+        if (!engines.v3) {
+          await loadScript('/js/gif-gifts-v3.js?v=fx3');
+          engines.v3 = true;
+        }
+        return window.GiftFXV3;
+      }
+      if (!engines.v4) {
+        await loadScript('/js/gif-gifts.js?v=fx4d');
+        engines.v4 = true;
+      }
+      return window.GiftFX;
+    }
+
+    function playOpts() {
+      var m = META[selected];
+      return {
+        gift_key: selected,
+        emoji: m.emoji,
+        label: m.label,
+        amount: m.amount / 100,
+        amount_cents: m.amount,
+        tier: m.tier,
+        image: m.image,
+        from: (m.tier === 10 ? 'Icon' : 'Legend') + ' compare'
+      };
+    }
+
+    async function fire(ver, btn) {
+      btn.disabled = true;
+      try {
+        var fx = await ensureEngine(ver);
+        if (!fx) throw new Error('engine missing');
+        // CSS: V3 uses its own sheet when engine requests it; V4 uses current sheet
+        if (ver === 'v3') loadCss('/css/gif-gifts-v3.css?v=fx3', 'gif-gifts-css-v3');
+        else loadCss('/css/gif-gifts.css?v=fx4d', 'gif-gifts-css');
+        if (fx.unlockAudio) fx.unlockAudio();
+        fx.play(playOpts());
+        setStatus('Playing <strong>' + ver.toUpperCase() + '</strong> · ' + META[selected].label + '.');
+      } catch (e) {
+        setStatus('Failed to load ' + ver.toUpperCase() + ': ' + esc(e.message) + '. Open this page via the Laravel public URL so /js assets resolve.');
+      }
+      setTimeout(function () { btn.disabled = false; }, ver === 'v3' ? 9000 : 12000);
+    }
+
+    function esc(s) {
+      return String(s).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; });
+    }
+
+    document.getElementById('play-v3').addEventListener('click', function () { fire('v3', this); });
+    document.getElementById('play-v4').addEventListener('click', function () { fire('v4', this); });
+  </script>
+</body>
+</html>
