@@ -15,6 +15,7 @@ jobs:
       - name: Sync Cloudflare Artifacts ffm-backend onto martin-staging3
         env:
           ARTIFACTS_READ_TOKEN: ${{ secrets.ARTIFACTS_READ_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           if [ -z "${ARTIFACTS_READ_TOKEN:-}" ]; then
