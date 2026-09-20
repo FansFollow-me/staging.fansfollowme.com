@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (casting)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (casting)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -295,7 +295,7 @@
     margin-top: -72px; min-height: 100vh;
     display: flex; align-items: center; justify-content: center; text-align: center; color: #e5e7eb;
   }
-  .casting-hero::before { content: ''; position: absolute; inset: 0; background: url('{{ asset('img/marketing/travis-colbert-hero.jpg') }}') center 0%/cover no-repeat; z-index: 0; }
+  .casting-hero::before { content: ''; position: absolute; inset: 0; background: url('{{ asset('img/marketing/travis-colbert-fz2Am8mQfEw-unsplash.jpg') }}?v=travis1') center 0%/cover no-repeat; z-index: 0; }
   .casting-hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.5); z-index: 1; }
   .casting-hero > .container { position: relative; z-index: 2; }
   .casting-badge {

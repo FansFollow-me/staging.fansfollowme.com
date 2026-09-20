@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (celebrities)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (celebrities)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -894,7 +894,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: url('{{ asset('img/marketing/celebhero.jpg') }}') center 8%/cover no-repeat;
+    background: url('{{ asset('img/marketing/celebhero.png') }}?v=viking1') center 8%/cover no-repeat;
     z-index: 0;
   }
   .celeb-hero::after {
@@ -1788,18 +1788,18 @@
       <div class="film-tab" onclick="showTab('pre')">In Pre-Production / Upcoming</div>
     </div>
     <div id="tab-released" class="film-grid">
-      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/lastkumite.jpeg') }}');"></div><div class="film-info"><h4>The Last Kumite</h4><div class="film-year">2024</div><div class="film-role">Role: Marcus Gantz</div></div></div>
-      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/bloodstorm.jpeg') }}');"></div><div class="film-info"><h4>Bloodstorm</h4><div class="film-year">2025</div><div class="film-role">Role: Bennet (Lead Role)</div></div></div>
-      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/elitetarget.png') }}');"></div><div class="film-info"><h4>Elite Target</h4><div class="film-year">2025</div><div class="film-role">Role: Alpha Commando</div></div></div>
+      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/lastkumite.jpeg') }}?v=viking1');"></div><div class="film-info"><h4>The Last Kumite</h4><div class="film-year">2024</div><div class="film-role">Role: Marcus Gantz</div></div></div>
+      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/bloodstorm.jpeg') }}?v=viking1');"></div><div class="film-info"><h4>Bloodstorm</h4><div class="film-year">2025</div><div class="film-role">Role: Bennet (Lead Role)</div></div></div>
+      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/elitetarget.png') }}?v=viking1');"></div><div class="film-info"><h4>Elite Target</h4><div class="film-year">2025</div><div class="film-role">Role: Alpha Commando</div></div></div>
     </div>
     <div id="tab-post" class="film-grid" style="display:none;">
-      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/Order_of_the_dragon.png') }}');"></div><div class="film-info"><h4>Order of the Dragon</h4><div class="film-role">Role: Jean Pierre (Co-starring Steven Seagal)</div><div class="film-status status-post">In Post-Production</div></div></div>
-      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/Hard_redemption.png') }}');"></div><div class="film-info"><h4>Hard Redemption</h4><div class="film-role">Role: Solomon</div><div class="film-status status-post">In Post-Production</div></div></div>
-      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/Warrior_island.png') }}');"></div><div class="film-info"><h4>Warrior Island</h4><div class="film-role">Role: Viking Samurai</div><div class="film-status status-post">In Post-Production</div></div></div>
+      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/Order_of_the_dragon.png') }}?v=viking1');"></div><div class="film-info"><h4>Order of the Dragon</h4><div class="film-role">Role: Jean Pierre (Co-starring Steven Seagal)</div><div class="film-status status-post">In Post-Production</div></div></div>
+      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/Hard_redemption.png') }}?v=viking1');"></div><div class="film-info"><h4>Hard Redemption</h4><div class="film-role">Role: Solomon</div><div class="film-status status-post">In Post-Production</div></div></div>
+      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/Warrior_island.png') }}?v=viking1');"></div><div class="film-info"><h4>Warrior Island</h4><div class="film-role">Role: Viking Samurai</div><div class="film-status status-post">In Post-Production</div></div></div>
     </div>
     <div id="tab-pre" class="film-grid" style="display:none;">
       <div class="film-card"><div class="film-poster"><i data-lucide="film"></i><span class="coming-soon">COMING SOON</span></div><div class="film-info"><h4>Guardian Peacemaker</h4><div class="film-role">Main Actor: David Kurzhal, Main Actress: Shaina West</div><div class="film-status status-pre">In Pre-Production</div></div></div>
-      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/Warrior_island_darker_days.png') }}');"></div><div class="film-info"><h4>Warrior Island: Darker Days</h4><div class="film-role">Role: Viking Samurai</div><div class="film-status status-pre">In Pre-Production</div></div></div>
+      <div class="film-card"><div class="film-poster" style="background-image:url('{{ asset('img/marketing/Warrior_island_darker_days.png') }}?v=viking1');"></div><div class="film-info"><h4>Warrior Island: Darker Days</h4><div class="film-role">Role: Viking Samurai</div><div class="film-status status-pre">In Pre-Production</div></div></div>
       <div class="film-card"><div class="film-poster"><i data-lucide="film"></i><span class="coming-soon">COMING SOON</span></div><div class="film-info"><h4>The Magnetic Fighters</h4><div class="film-year">2026</div><div class="film-role">Role: Samurai Hayate</div><div class="film-status status-pre">Upcoming</div></div></div>
     </div>
   </div>
