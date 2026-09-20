@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (support)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (support)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -116,7 +116,7 @@
     .public-shell-footer .footer-bottom { align-items: center; text-align: center; }
   }
 
-  /* ── Support page styles ── */
+  /* â”€â”€ Support page styles â”€â”€ */
   .support-hero { text-align: center; padding: 3.5rem 1rem 2.5rem; }
   .support-hero-icon { width: 72px; height: 72px; border-radius: 50%; background: var(--cta-gradient-2); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.8rem; color: #fff; box-shadow: 0 12px 32px rgba(249,115,22,.3); }
   .support-hero h1 { font-size: 2rem; font-weight: 800; color: #fff; margin: 0 0 .5rem; }
@@ -341,9 +341,13 @@
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Community</a>
         </div>
         <div class="footer-links">
-          <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Advanced</h3>
-          <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a>
-          <a href='/business#presale' style='font-size: .9rem;'>Presale Info</a>
+          <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Coming Soon</h3>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Creator Competitions</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Gym Monster</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Mini Leagues</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Mobile App</span>
+          <!-- TOKEN-LINK-RESTORE: <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a> -->
+          <!-- PRESALE-LINK-RESTORE: <a href='/business#presale' style='font-size: .9rem;'>Presale Info</a> -->
         </div>
       </div>
       <div class="footer-bottomline"></div>

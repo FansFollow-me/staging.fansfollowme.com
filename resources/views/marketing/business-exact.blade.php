@@ -555,6 +555,7 @@
   </div>
 </section>
 
+<!-- FFM-TOKEN-SECTION-RESTORE
 <section class="token-section" id="token">
   <div class="container">
     <div class="token-panel">
@@ -568,12 +569,13 @@
         <div class="token-item"><div class="token-icon" style="background:linear-gradient(135deg,#10b981,#059669);"><i data-lucide="eye"></i></div><div><h5>Transparent</h5><p>Full documentation and real-time tracking.</p></div></div>
       </div>
       <div class="token-links">
-        <a href="https://ffmtoken.com/" target="_blank" rel="noopener">Visit FFM Token â†—</a>
-        <a href="https://ffmtoken.com/" target="_blank" rel="noopener">View Documentation â†—</a>
+        <!-- FFM-TOKEN-LINK-RESTORE: <a href="https://ffmtoken.com/" target="_blank" rel="noopener">Visit FFM Token â†—</a> -->
+        <!-- FFM-TOKEN-LINK-RESTORE: <a href="https://ffmtoken.com/" target="_blank" rel="noopener">View Documentation â†—</a> -->
       </div>
     </div>
   </div>
 </section>
+-->
 
 <section class="section-dark">
   <div class="container">
@@ -583,7 +585,7 @@
       <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What types of partnerships does FansFollow offer?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">We work with fitness brands, gyms, studios, media companies, and regional operators. Each partnership is customized to fit your business goals and market position.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do franchise rights work?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">Franchise operators gain exclusive regional rights to grow FansFollow in their territory, with full platform technology, marketing support, training, and ongoing technical assistance.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Are you open to acquisitions or investments?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">Yes. We explore strategic acquisitions of complementary fitness, wellness and creator platforms, and welcome inquiries from investors interested in FansFollow's growth.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the FFM Token?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">FFM Token is our payment infrastructure designed to reduce transaction fees and reward creators. We can discuss how it integrates with partnership models during your call.</div></div>
+      <!-- FFM-TOKEN-FAQ-RESTORE: <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the FFM Token?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">FFM Token is our payment infrastructure designed to reduce transaction fees and reward creators. We can discuss how it integrates with partnership models during your call.</div></div> -->
     </div>
   </div>
 </section>
@@ -644,9 +646,13 @@
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Community</a>
         </div>
         <div class="footer-links">
-          <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Advanced</h3>
-          <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a>
-          <a href="https://ffmtoken.com/" target="_blank" rel="noopener" style="font-size: .9rem;">Presale Info</a>
+          <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Coming Soon</h3>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Creator Competitions</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Gym Monster</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Mini Leagues</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Mobile App</span>
+          <!-- TOKEN-LINK-RESTORE: <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a> -->
+          <!-- FFM-TOKEN-LINK-RESTORE: <a href="https://ffmtoken.com/" target="_blank" rel="noopener" style="font-size: .9rem;">Presale Info</a> -->
         </div>
       </div>
       <div class="footer-bottomline"></div>

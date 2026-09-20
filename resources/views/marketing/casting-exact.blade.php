@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (casting)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (casting)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -656,22 +656,26 @@
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Community</a>
         </div>
         <div class="footer-links">
-          <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Advanced</h3>
-          <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a>
-          <a href='/business#presale' style='font-size: .9rem;'>Presale Info</a>
+          <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Coming Soon</h3>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Creator Competitions</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Gym Monster</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Mini Leagues</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Mobile App</span>
+          <!-- TOKEN-LINK-RESTORE: <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a> -->
+          <!-- PRESALE-LINK-RESTORE: <a href='/business#presale' style='font-size: .9rem;'>Presale Info</a> -->
         </div>
       </div>
       <div class="footer-bottomline"></div>
       <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: .75rem 0;">
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <span style="font-size: .85rem; color: #94a3b8;">Ã‚Â© 2026 FansFollow.me. All rights reserved.</span>
-          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">-Â¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
+          <span style="font-size: .85rem; color: #94a3b8;">Ãƒâ€šÃ‚Â© 2026 FansFollow.me. All rights reserved.</span>
+          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">-Ã‚Â¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
           <a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
-          <span style="color: #4b5563;">&#8212;Â¢</span>
+          <span style="color: #4b5563;">&#8212;Ã‚Â¢</span>
           <a href='{{ route('page.terms') }}' style='font-size: .85rem; color: #94a3b8;'>Terms of Service</a>
-          <span style="color: #4b5563;">&#8212;Â¢</span>
+          <span style="color: #4b5563;">&#8212;Ã‚Â¢</span>
           <a href='{{ route('page.cookies') }}' style='font-size: .85rem; color: #94a3b8;'>Cookie Policy</a>
-          <span style="color: #4b5563;">&#8212;Â¢</span>
+          <span style="color: #4b5563;">&#8212;Ã‚Â¢</span>
           <a href='{{ route('page.faq') }}' style='font-size: .85rem; color: #94a3b8;'>FAQ</a>
         </div>
         <div style="display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;">

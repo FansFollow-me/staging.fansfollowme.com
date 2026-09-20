@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (creators)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (creators)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -116,7 +116,7 @@
     .public-shell-footer .footer-bottom { align-items: center; text-align: center; }
   }
 
-  /* ── Creators page styles ── */
+  /* â”€â”€ Creators page styles â”€â”€ */
   .creators-shell { padding: 2rem 0 3rem; }
   .page-h1 { font-size: 1.75rem; font-weight: 800; color: #fff; margin: 0 0 .5rem; }
   .page-sub { color: var(--ffm-muted); font-size: .9rem; margin: 0 0 1.5rem; }
@@ -422,9 +422,13 @@
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Community</a>
         </div>
         <div class="footer-links">
-          <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Advanced</h3>
-          <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a>
-          <a href='/business#presale' style='font-size: .9rem;'>Presale Info</a>
+          <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Coming Soon</h3>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Creator Competitions</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Gym Monster</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Mini Leagues</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Mobile App</span>
+          <!-- TOKEN-LINK-RESTORE: <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a> -->
+          <!-- PRESALE-LINK-RESTORE: <a href='/business#presale' style='font-size: .9rem;'>Presale Info</a> -->
         </div>
       </div>
       <div class="footer-bottomline"></div>

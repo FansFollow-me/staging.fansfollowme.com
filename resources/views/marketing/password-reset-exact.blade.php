@@ -653,9 +653,13 @@
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Community</a>
         </div>
         <div class="footer-links">
-          <h2 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Advanced</h3>
-          <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a>
-          <a href='/business#presale' style='font-size: .9rem;'>Presale Info</a>
+          <h2 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Coming Soon</h3>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Creator Competitions</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Gym Monster</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Mini Leagues</span>
+          <span style="font-size: .9rem; color: #94a3b8; display: block;">Mobile App</span>
+          <!-- TOKEN-LINK-RESTORE: <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a> -->
+          <!-- PRESALE-LINK-RESTORE: <a href='/business#presale' style='font-size: .9rem;'>Presale Info</a> -->
         </div>
       </div>
       <div class="footer-bottomline"></div>
