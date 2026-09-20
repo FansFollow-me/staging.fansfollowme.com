@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (generic)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (generic)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -209,7 +209,7 @@
       display: flex;
       align-items: center;
       background-color: #020617;
-      background-image: url('https://fansfollow.me/ffmherobackground-1280.jpg');
+      background-image: url('{{ asset('img/marketing/ffmherobackground-1280.jpg') }}');
       background-position: center top;
       background-size: cover;
       background-repeat: no-repeat;
@@ -661,8 +661,8 @@
       <div class="footer-bottomline"></div>
       <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: .75rem 0;">
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
-          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">₿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
+          <span style="font-size: .85rem; color: #94a3b8;">Â© 2026 FansFollow.me. All rights reserved.</span>
+          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">â‚¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
           <a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&#8226;</span>
           <a href='{{ route('page.terms') }}' style='font-size: .85rem; color: #94a3b8;'>Terms of Service</a>

@@ -321,7 +321,7 @@
             </div>
             <div class="explore-post-body">Who knows what I'm talking about??<br>Kangdan water!!</div>
             <div class="explore-post-locked">
-              <div class="locked-bg" style="background-image: url('https://fansfollow.me/public/uploads/updates/videos/EbQQQsYNE3HcVbh5JVwJ665801589e5f31717043544-poster.jpg?w=960&h=980');"></div>
+              <div class="locked-bg" style="background-image: url('{{ asset('img/marketing/ffmherobackground.jpg') }}');"></div>
               <div class="locked-content">
                 <div class="locked-icon"><i class="fas fa-lock"></i></div>
                 <a class='locked-btn' href='{{ route('register') }}'>You must subscribe to view this post.</a>
@@ -364,7 +364,7 @@
             </div>
             <div class="explore-post-body">A hole in 1? A tough par 3, 70 ft elevated, OB left and right a sheer 40 ft drop. Miss the green and it's a Bogey plus! Did I make an Ace?</div>
             <div class="explore-post-locked">
-              <div class="locked-bg" style="background-image: url('https://fansfollow.me/public/uploads/updates/videos/S3ZsmDwLNgyuDrYMKvUc663744f03780c1714898160-poster.jpg');"></div>
+              <div class="locked-bg" style="background-image: url('{{ asset('img/marketing/film-poster.jpg') }}');"></div>
               <div class="locked-content">
                 <div class="locked-icon"><i class="fas fa-lock"></i></div>
                 <a class='locked-btn' href='{{ route('register') }}'>You must subscribe to view this post.</a>
@@ -389,7 +389,7 @@
             </div>
             <div class="explore-post-body">Can I play?</div>
             <div class="explore-post-locked">
-              <div class="locked-bg" style="background-image: url('https://fansfollow.me/public/uploads/updates/videos/vQNvKF5X8RdSiBugxTm26635bc79dac031714797689-poster.jpg');"></div>
+              <div class="locked-bg" style="background-image: url('{{ asset('img/marketing/film-poster.jpg') }}');"></div>
               <div class="locked-content">
                 <div class="locked-icon"><i class="fas fa-lock"></i></div>
                 <a class='locked-btn' href='{{ route('register') }}'>You must subscribe to view this post.</a>

@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (signup)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (signup)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -208,7 +208,7 @@
     justify-content: center;
     background:
       linear-gradient(180deg, rgba(11,15,26,.45), rgba(11,15,26,.75)),
-      image-set(url("{{ asset('img/ffmherobackground.jpg') }}") 1x, url('https://fansfollow.me/ffmherobackground-1280.jpg') 1.5x);
+      image-set(url("{{ asset('img/ffmherobackground.jpg') }}") 1x, url('{{ asset('img/marketing/ffmherobackground-1280.jpg') }}') 1.5x);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

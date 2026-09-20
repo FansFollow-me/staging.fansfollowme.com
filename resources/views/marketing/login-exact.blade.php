@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (login)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (login)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -209,7 +209,7 @@
       display: flex;
       align-items: center;
       background-color: #020617;
-      background-image: url('https://fansfollow.me/ffmherobackground-1280.jpg');
+      background-image: url('{{ asset('img/marketing/ffmherobackground-1280.jpg') }}');
       background-position: center top;
       background-size: cover;
       background-repeat: no-repeat;

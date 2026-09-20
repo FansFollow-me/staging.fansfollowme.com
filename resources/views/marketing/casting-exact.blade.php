@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (casting)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (casting)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -295,7 +295,7 @@
     margin-top: -72px; min-height: 100vh;
     display: flex; align-items: center; justify-content: center; text-align: center; color: #e5e7eb;
   }
-  .casting-hero::before { content: ''; position: absolute; inset: 0; background: url('https://fansfollow.me/travis-colbert-fz2Am8mQfEw-unsplash.jpg') center 0%/cover no-repeat; z-index: 0; }
+  .casting-hero::before { content: ''; position: absolute; inset: 0; background: url('{{ asset('img/marketing/travis-colbert-hero.jpg') }}') center 0%/cover no-repeat; z-index: 0; }
   .casting-hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.5); z-index: 1; }
   .casting-hero > .container { position: relative; z-index: 2; }
   .casting-badge {
@@ -664,14 +664,14 @@
       <div class="footer-bottomline"></div>
       <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: .75rem 0;">
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <span style="font-size: .85rem; color: #94a3b8;">Â© 2026 FansFollow.me. All rights reserved.</span>
-          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">-¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
+          <span style="font-size: .85rem; color: #94a3b8;">Ã‚Â© 2026 FansFollow.me. All rights reserved.</span>
+          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">-Â¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
           <a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
-          <span style="color: #4b5563;">&#8212;¢</span>
+          <span style="color: #4b5563;">&#8212;Â¢</span>
           <a href='{{ route('page.terms') }}' style='font-size: .85rem; color: #94a3b8;'>Terms of Service</a>
-          <span style="color: #4b5563;">&#8212;¢</span>
+          <span style="color: #4b5563;">&#8212;Â¢</span>
           <a href='{{ route('page.cookies') }}' style='font-size: .85rem; color: #94a3b8;'>Cookie Policy</a>
-          <span style="color: #4b5563;">&#8212;¢</span>
+          <span style="color: #4b5563;">&#8212;Â¢</span>
           <a href='{{ route('page.faq') }}' style='font-size: .85rem; color: #94a3b8;'>FAQ</a>
         </div>
         <div style="display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;">

@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (business)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (business)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -235,7 +235,7 @@
   :root { color-scheme: dark; --home-gradient: linear-gradient(135deg, #f97316 0%, #ec4899 48%, #a855f7 100%); }
 
   .biz-hero { position: relative; overflow: hidden; background: #0b0f1a; margin-top: -72px; padding: calc(72px + 5rem) 0 4rem; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #e5e7eb; }
-  .biz-hero::before { content: ''; position: absolute; inset: 0; background: url('https://fansfollow.me/business-hero.jpg') center/cover no-repeat; z-index: 0; }
+  .biz-hero::before { content: ''; position: absolute; inset: 0; background: url('{{ asset('img/marketing/business-hero.jpg') }}') center/cover no-repeat; z-index: 0; }
   .biz-hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.5); z-index: 1; }
   .biz-hero > .container { position: relative; z-index: 2; }
   .biz-badge { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem 1rem; border-radius: 999px; background: linear-gradient(135deg, rgba(245,158,11,.2), rgba(249,115,22,.2)); border: 1px solid rgba(245,158,11,.3); color: #fbbf24; font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1.5rem; }
@@ -568,8 +568,8 @@
         <div class="token-item"><div class="token-icon" style="background:linear-gradient(135deg,#10b981,#059669);"><i data-lucide="eye"></i></div><div><h5>Transparent</h5><p>Full documentation and real-time tracking.</p></div></div>
       </div>
       <div class="token-links">
-        <a href="https://ffmtoken.com/" target="_blank" rel="noopener">Visit FFM Token ↗</a>
-        <a href="https://ffmtoken.com/" target="_blank" rel="noopener">View Documentation ↗</a>
+        <a href="https://ffmtoken.com/" target="_blank" rel="noopener">Visit FFM Token â†—</a>
+        <a href="https://ffmtoken.com/" target="_blank" rel="noopener">View Documentation â†—</a>
       </div>
     </div>
   </div>
@@ -652,8 +652,8 @@
       <div class="footer-bottomline"></div>
       <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: .75rem 0;">
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
-          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">₿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
+          <span style="font-size: .85rem; color: #94a3b8;">Â© 2026 FansFollow.me. All rights reserved.</span>
+          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">â‚¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
           <a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&#8226;</span>
           <a href='{{ route('page.terms') }}' style='font-size: .85rem; color: #94a3b8;'>Terms of Service</a>

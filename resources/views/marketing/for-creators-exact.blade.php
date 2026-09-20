@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (for-creators)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (for-creators)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -203,7 +203,7 @@
     color: #cbd5e1 !important;
   }
 
-  /* ── Creator name in post cards ── */
+  /* â”€â”€ Creator name in post cards â”€â”€ */
   .card-updates h5 a,
   .card-updates .font-montserrat a {
     color: #f1f5f9 !important;
@@ -213,7 +213,7 @@
     color: #fff !important;
   }
 
-  /* ── Post image: maintain aspect ratio ── */
+  /* â”€â”€ Post image: maintain aspect ratio â”€â”€ */
   .img-video-wrap .post-image {
     object-fit: contain !important;
   }
@@ -229,7 +229,7 @@
     object-fit: cover;
   }
 
-  /* ── Broken image fallback ── */
+  /* â”€â”€ Broken image fallback â”€â”€ */
   .card-updates img,
   .update-media img {
     background: rgba(30, 41, 59, 0.6);
@@ -240,13 +240,13 @@
     display: none;
   }
 
-  /* ── Locked post grey bar fix ── */
+  /* â”€â”€ Locked post grey bar fix â”€â”€ */
   .content-locked {
     background: rgba(15, 23, 42, 0.82) !important;
     color: #e2e8f0 !important;
   }
 
-  /* ── Post caption text brightness ── */
+  /* â”€â”€ Post caption text brightness â”€â”€ */
   .update-text,
   .update-text p,
   .update-text span,
@@ -262,7 +262,7 @@
     filter: brightness(1.2);
   }
 
-  /* ── Navbar dark theme ── */
+  /* â”€â”€ Navbar dark theme â”€â”€ */
   .navbar_background_color,
   nav.navbar {
     background: rgba(15, 23, 42, 0.92) !important;
@@ -300,7 +300,7 @@
   }
   .icon-navbar { color: #94a3b8; }
 
-  /* ── Left sidebar (menu-left-home) ── */
+  /* â”€â”€ Left sidebar (menu-left-home) â”€â”€ */
   .menu-left-home {
     background: rgba(15, 23, 42, 0.84);
     border: 1px solid rgba(148, 163, 184, 0.12);
@@ -314,7 +314,7 @@
     z-index: auto !important;
   }
 
-  /* ── Right sidebar: prevent footer from hiding behind fixed bottom nav ── */
+  /* â”€â”€ Right sidebar: prevent footer from hiding behind fixed bottom nav â”€â”€ */
   .col-md-4 .sticky-top.d-lg-block {
     padding-bottom: 70px !important;
     z-index: auto !important;
@@ -342,7 +342,7 @@
     text-align: center;
   }
 
-  /* ── Notification cards dark theme ── */
+  /* â”€â”€ Notification cards dark theme â”€â”€ */
   .notifications-page .card,
   .notifications-page .list-group-item,
   .card-notification,
@@ -363,7 +363,7 @@
     border-color: rgba(96, 165, 250, 0.48) !important;
   }
 
-  /* ── General dark overrides for Sponzy pages ── */
+  /* â”€â”€ General dark overrides for Sponzy pages â”€â”€ */
   .section, .section-sm { background: transparent; }
   .jumbotron { background: transparent; }
   .shadow-custom {
@@ -371,7 +371,7 @@
   }
   .link-scroll { background: rgba(15, 23, 42, 0.92) !important; }
 
-  /* ── Form controls dark theme ── */
+  /* â”€â”€ Form controls dark theme â”€â”€ */
   .form-control,
   .form-select,
   select,
@@ -407,7 +407,7 @@
     color: #94a3b8 !important;
   }
 
-  /* ── Buttons ── */
+  /* â”€â”€ Buttons â”€â”€ */
   .btn-primary,
   .btn-success {
     background: linear-gradient(135deg, #f97316, #9333ea) !important;
@@ -422,7 +422,7 @@
   }
   .btn-danger { color: #fff !important; }
 
-  /* ── Tables dark theme ── */
+  /* â”€â”€ Tables dark theme â”€â”€ */
   .table {
     color: #e2e8f0 !important;
   }
@@ -434,7 +434,7 @@
     border-color: rgba(148, 163, 184, 0.08) !important;
   }
 
-  /* ── Messages page layout fix ── */
+  /* â”€â”€ Messages page layout fix â”€â”€ */
   .section-msg {
     width: 100vw !important;
     max-width: 100vw !important;
@@ -487,11 +487,11 @@
     }
   }
 
-  /* ── Links ── */
+  /* â”€â”€ Links â”€â”€ */
   a.link-border { color: #60a5fa; }
   a.link-border:hover { color: #93c5fd; }
 
-  /* ── Video player: poster(1) < logo(2) < video(3) < play-btn(4) < ctrl-bar(5) ── */
+  /* â”€â”€ Video player: poster(1) < logo(2) < video(3) < play-btn(4) < ctrl-bar(5) â”€â”€ */
   .video-js .vjs-logo {
     max-width: 80px !important;
     max-height: 40px !important;
@@ -522,7 +522,7 @@
     opacity: 0.4 !important;
   }
 
-  /* ── Messaging emoji dropdown fix ── */
+  /* â”€â”€ Messaging emoji dropdown fix â”€â”€ */
   .section-msg .dropdown-emoji {
     position: absolute !important;
     bottom: calc(100% + 8px) !important;
@@ -544,7 +544,7 @@
     display: block !important;
   }
 
-  /* ── Conversation list text contrast ── */
+  /* â”€â”€ Conversation list text contrast â”€â”€ */
   .msg-inbox .text-dark {
     color: #94a3b8 !important;
   }
@@ -558,7 +558,7 @@
     color: #94a3b8 !important;
   }
 
-  /* ── Message bubbles dark theme ── */
+  /* â”€â”€ Message bubbles dark theme â”€â”€ */
   .message.bg-light {
     background: rgba(30, 41, 59, 0.9) !important;
     color: #e2e8f0 !important;
@@ -568,7 +568,7 @@
     color: #e2e8f0 !important;
   }
 
-  /* ── Messages page cards ── */
+  /* â”€â”€ Messages page cards â”€â”€ */
   .section-msg .col-md-8 .card {
     background: rgba(15, 23, 42, 0.95) !important;
     border-left: 1px solid rgba(148, 163, 184, 0.12) !important;
@@ -586,7 +586,7 @@
     color: #e2e8f0 !important;
   }
 
-  /* ── Posts table dark theme ── */
+  /* â”€â”€ Posts table dark theme â”€â”€ */
   .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: rgba(30, 41, 59, 0.3) !important;
   }
@@ -599,7 +599,7 @@
     border-bottom-color: rgba(255, 255, 255, 0.15) !important;
   }
 
-  /* ── Global mobile section spacing ── */
+  /* â”€â”€ Global mobile section spacing â”€â”€ */
   @@media (max-width: 767.98px) {
     .section, .section-sm { padding: 1.5rem 0 !important; }
     .section-dark { padding: 1.25rem 0 !important; }
@@ -613,15 +613,15 @@
     .contact-section { padding: 2rem 0 !important; }
   }
 
-  /* ══════════════════════════════════════════════════════════
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      Trix toolbar &#8212; complete dark-theme rebuild
      Overrides core.min.css light-theme defaults.
      Icons: core.min.css provides bold/link/code/number-list;
             remaining 10 are defined here.
      All use black SVGs + filter:invert(1) for the dark theme.
-     ══════════════════════════════════════════════════════════ */
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-  /* ── Mobile menu: fix height + remove overlay that blocks taps ── */
+  /* â”€â”€ Mobile menu: fix height + remove overlay that blocks taps â”€â”€ */
   @@media (max-width: 991.98px) {
     .navbar-collapse.navbar-mobile.collapse.show {
       height: 100vh !important;
@@ -631,14 +631,14 @@
     display: none !important;
   }
 
-  /* ── 1. Container: prevent toolbar from forcing parent wider ── */
+  /* â”€â”€ 1. Container: prevent toolbar from forcing parent wider â”€â”€ */
   .media-body:has(trix-toolbar) {
     min-width: 0 !important;
     max-width: 100% !important;
     overflow-x: visible !important;
   }
 
-  /* ── 2. Toolbar shell ── */
+  /* â”€â”€ 2. Toolbar shell â”€â”€ */
   trix-toolbar {
     display: block !important;
     position: relative !important;
@@ -647,7 +647,7 @@
     contain: paint !important;
   }
 
-  /* ── 3. Button row: single line, even spacing ── */
+  /* â”€â”€ 3. Button row: single line, even spacing â”€â”€ */
   trix-toolbar .trix-button-row {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -676,7 +676,7 @@
     trix-toolbar .trix-button-row::-webkit-scrollbar { display: none !important; }
   }
 
-  /* ── 4. Button groups ── */
+  /* â”€â”€ 4. Button groups â”€â”€ */
   trix-toolbar .trix-button-group {
     flex-shrink: 0 !important;
     min-width: 0 !important;
@@ -690,7 +690,7 @@
     display: none !important;
   }
 
-  /* ── 5. Individual buttons: dark theme ── */
+  /* â”€â”€ 5. Individual buttons: dark theme â”€â”€ */
   trix-toolbar .trix-button {
     flex-shrink: 0 !important;
     color: rgba(229,231,235,.7) !important;
@@ -703,15 +703,15 @@
     text-indent: -9999px !important;
   }
 
-  /* ── 5b. Responsive button widths ── */
-  /* Desktop (≥1025px): all 14 fit without scroll */
+  /* â”€â”€ 5b. Responsive button widths â”€â”€ */
+  /* Desktop (â‰¥1025px): all 14 fit without scroll */
   trix-toolbar .trix-button--icon {
     width: 30px !important;
   }
   trix-toolbar .trix-button {
     padding: 0 5px !important;
   }
-  /* Mobile/tablet (≤1024px): larger buttons, scroll to reach all */
+  /* Mobile/tablet (â‰¤1024px): larger buttons, scroll to reach all */
   @@media (max-width: 1024.98px) {
     trix-toolbar .trix-button--icon {
       width: 36px !important;
@@ -733,7 +733,7 @@
     color: rgba(148,163,184,.25) !important;
   }
 
-  /* ── 6. Icon base: invert black SVGs → white ── */
+  /* â”€â”€ 6. Icon base: invert black SVGs â†’ white â”€â”€ */
   trix-toolbar .trix-button--icon::before {
     filter: invert(1) !important;
     opacity: .85 !important;
@@ -747,7 +747,7 @@
     opacity: .25 !important;
   }
 
-  /* ── 7. Icons missing from core.min.css ── */
+  /* â”€â”€ 7. Icons missing from core.min.css â”€â”€ */
   trix-toolbar .trix-button--icon-italic::before {
     background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 4h4l-1 16h-4l1-16z' fill='%23000'/%3E%3C/svg%3E") !important;
   }
@@ -789,7 +789,7 @@
     background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 10H11a5 5 0 000 10h10' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M17 6l4 4-4 4' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") !important;
   }
 
-  /* ── 8. Link dialog: fixed position to escape toolbar overflow ── */
+  /* â”€â”€ 8. Link dialog: fixed position to escape toolbar overflow â”€â”€ */
   trix-toolbar .trix-dialog {
     position: fixed !important;
     z-index: 100 !important;
@@ -821,7 +821,7 @@
     font-size: .875rem !important;
   }
 
-  /* ── 9. Mobile: dialog fills bottom ── */
+  /* â”€â”€ 9. Mobile: dialog fills bottom â”€â”€ */
   @@media (max-width: 767.98px) {
     trix-toolbar .trix-dialog {
       position: fixed !important;
@@ -835,7 +835,7 @@
     }
   }
 
-  /* ── Post creation toolbar mobile fix ── */
+  /* â”€â”€ Post creation toolbar mobile fix â”€â”€ */
   @@media (max-width: 767.98px) {
     /* Bottom icon row (image, tag, price, lock, live, Aa) */
     .card-footer .btn-upload,
@@ -900,7 +900,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(0,0,0,.4), rgba(11,15,26,.6)), url('https://fansfollow.me/creators-hero-bg.jpg') center 15%/cover no-repeat;
+    background: linear-gradient(rgba(0,0,0,.4), rgba(11,15,26,.6)), url('{{ asset('img/marketing/creators-hero-bg.jpg') }}') center 15%/cover no-repeat;
     z-index: 0;
   }
   .creator-hero::after {
@@ -1673,8 +1673,8 @@
       <div class="footer-bottomline"></div>
       <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: .75rem 0;">
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
-          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">₿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
+          <span style="font-size: .85rem; color: #94a3b8;">Â© 2026 FansFollow.me. All rights reserved.</span>
+          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">â‚¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
           <a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&#8226;</span>
           <a href='{{ route('page.terms') }}' style='font-size: .85rem; color: #94a3b8;'>Terms of Service</a>
