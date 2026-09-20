@@ -232,9 +232,39 @@
   }
 </style>
   <style>
-  .page-hero { padding: 2.25rem 0 1rem; text-align: center; background: transparent; }
+  /* Live Streams hero — short marketing band (like Celebrities), not full-viewport */
+  .page-hero {
+    position: relative;
+    overflow: hidden;
+    padding: calc(72px + 2.5rem) 0 2.25rem;
+    text-align: center;
+    background: #0b0f1a;
+    /* Fixed band: image cropped with cover, never stretched */
+    height: clamp(260px, 36vh, 380px);
+    max-height: 380px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* object-fit: cover equivalent — crop, don't distort */
+    background: url('{{ asset('img/marketing/livestreaming.webp') }}?v=live1') center 38%/cover no-repeat;
+    z-index: 0;
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(2,6,23,.62), rgba(15,23,42,.55));
+    z-index: 1;
+  }
+  .page-hero .container { position: relative; z-index: 2; width: 100%; }
   .page-hero h1 { font-size: clamp(1.65rem, 2.8vw, 2.35rem); color: #fff; font-weight: 800; margin-bottom: .45rem; }
-  .page-hero p { color: #94a3b8; max-width: 55rem; margin: 0 auto; line-height: 1.55; font-size: .95rem; }
+  .page-hero p { color: #e2e8f0; max-width: 55rem; margin: 0 auto; line-height: 1.55; font-size: .95rem; }
   .page-section { padding: .75rem 0 1rem; }
   /* Feature cards tightened ~25% — still 4 columns; more cards visible without scroll */
   .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .45rem; }
