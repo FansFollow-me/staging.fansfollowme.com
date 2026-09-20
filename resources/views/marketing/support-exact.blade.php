@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (support)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (support)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -117,10 +117,37 @@
   }
 
   /* â”€â”€ Support page styles â”€â”€ */
-  .support-hero { text-align: center; padding: 3.5rem 1rem 2.5rem; }
-  .support-hero-icon { width: 72px; height: 72px; border-radius: 50%; background: var(--cta-gradient-2); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.8rem; color: #fff; box-shadow: 0 12px 32px rgba(249,115,22,.3); }
-  .support-hero h1 { font-size: 2rem; font-weight: 800; color: #fff; margin: 0 0 .5rem; }
-  .support-hero p { font-size: 1rem; color: var(--ffm-muted); max-width: 540px; margin: 0 auto 1.5rem; line-height: 1.6; }
+  /* Support hero — short marketing band + cover-cropped support.png (like Live Streams) */
+  .support-hero {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    height: clamp(260px, 36vh, 380px);
+    max-height: 380px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(72px + 2rem) 1rem 2rem;
+  }
+  .support-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('{{ asset('img/marketing/support.png') }}?v=sup1') center 42%/cover no-repeat;
+    z-index: 0;
+  }
+  .support-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(2,6,23,.62), rgba(15,23,42,.55));
+    z-index: 1;
+  }
+  .support-hero > * { position: relative; z-index: 2; }
+  .support-hero-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--cta-gradient-2); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.6rem; color: #fff; box-shadow: 0 12px 32px rgba(249,115,22,.3); }
+  .support-hero h1 { font-size: clamp(1.65rem, 2.8vw, 2.35rem); font-weight: 800; color: #fff; margin: 0 0 .5rem; }
+  .support-hero p { font-size: .95rem; color: #e2e8f0; max-width: 540px; margin: 0 auto 1.25rem; line-height: 1.55; }
   .support-hero-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
   .support-btn { padding: .8rem 1.75rem; border-radius: 999px; font-weight: 700; font-size: .95rem; border: none; cursor: pointer; transition: filter .18s, transform .18s; min-height: 48px; display: inline-flex; align-items: center; gap: .5rem; text-decoration: none; }
   .support-btn--primary { background: var(--cta-gradient); color: #fff; box-shadow: 0 10px 28px rgba(249,115,22,.3); }
@@ -353,7 +380,7 @@
       <div class="footer-bottomline"></div>
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: .75rem 0;">
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <span style="font-size: .85rem; color: #94a3b8;">&copy; 2026 FansFollow.me. All rights reserved.</span>
+          <span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
           <span style="font-size: .85rem; color: #94a3b8;"><span style="color: #f97316; font-weight: 800;">&#8383;</span> <strong style="color: #fff;">BTC/ETH/USDT/SOL Accepted</strong></span>
           <a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&bull;</span>
