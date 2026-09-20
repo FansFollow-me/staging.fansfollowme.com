@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (for-creators)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (for-creators)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -900,7 +900,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(0,0,0,.4), rgba(11,15,26,.6)), url('{{ asset('img/marketing/creators-hero-bg.jpg') }}') center 15%/cover no-repeat;
+    background: linear-gradient(rgba(0,0,0,.4), rgba(11,15,26,.6)), url('{{ asset('img/marketing/creators-hero-bg.jpg') }}?v=pexels1') center 15%/cover no-repeat;
     z-index: 0;
   }
   .creator-hero::after {
