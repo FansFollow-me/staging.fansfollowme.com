@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (fans)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (fans)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -888,7 +888,7 @@
     overflow: hidden;
     background:
       linear-gradient(90deg, rgba(0,0,0,.75), rgba(15,23,42,.5) 50%, rgba(15,23,42,.3)),
-      url('{{ asset('img/marketing/fans-hero-bg.jpg') }}') center/cover no-repeat;
+      url('{{ asset('img/marketing/fans-hero-bg.jpg') }}?v=gym1') center/cover no-repeat;
     padding: 0 0 6rem;
     margin-top: -72px;
     padding-top: 5rem;
