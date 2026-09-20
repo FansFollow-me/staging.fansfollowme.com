@@ -1,0 +1,39 @@
+name: Mirror Artifacts to martin-staging3
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync Cloudflare Artifacts ffm-backend onto martin-staging3
+        env:
+          ARTIFACTS_READ_TOKEN: ${{ secrets.ARTIFACTS_READ_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${ARTIFACTS_READ_TOKEN:-}" ]; then
+            echo "ARTIFACTS_READ_TOKEN secret is missing"
+            exit 1
+          fi
+          ART_URL="https://0870b0bdbc14bcd31f43fe5e82c3ee8e.artifacts.cloudflare.net/git/martin/ffm-backend.git"
+          GH_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/FansFollow-me/staging.fansfollowme.com.git"
+          git config --global user.name "ffm-staging3-mirror"
+          git config --global user.email "hansakoch@users.noreply.github.com"
+          git -c http.extraHeader="Authorization: Bearer ${ARTIFACTS_READ_TOKEN}" clone --bare "$ART_URL" art.git
+          cd art.git
+          SRC="$(git rev-parse HEAD)"
+          DST="$(git ls-remote "$GH_URL" refs/heads/martin-staging3 | awk '{print $1}')"
+          echo "artifacts_HEAD=${SRC}"
+          echo "github_martin-staging3=${DST:-empty}"
+          if [ -n "$DST" ] && [ "$SRC" = "$DST" ]; then
+            echo "already in sync"
+            exit 0
+          fi
+          git push "$GH_URL" HEAD:refs/heads/martin-staging3 --force
+          echo "pushed ${SRC} to martin-staging3"
