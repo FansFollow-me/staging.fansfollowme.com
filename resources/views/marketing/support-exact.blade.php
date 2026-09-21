@@ -117,27 +117,28 @@
   }
 
   /* â”€â”€ Support page styles â”€â”€ */
-  /* Support hero — tall band + desk/support art; copy vertically centered */
+  /* Support hero — full-viewport band, same scale as Live Streams / marketing heroes */
   .support-hero {
     position: relative;
     overflow: hidden;
     margin-top: -72px;
-    min-height: min(72vh, 560px);
-    height: clamp(420px, 68vh, 560px);
+    min-height: min(100vh, 780px);
+    height: clamp(520px, 78vh, 780px);
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    background: #0b0f1a;
     padding: 72px 1.25rem 2rem;
   }
   .support-hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    /* Prefer compressed jpg (reliable CDN); png remains as fallback asset */
-    background-image: url('{{ asset('img/marketing/support.jpg') }}?v=sup2');
-    background-position: center 42%;
+    /* Martin Desktop support.png — lamp/desk/headset hero */
+    background-image: url('{{ asset('img/marketing/support-hero.jpg') }}?v=suphero1');
+    background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 0;
@@ -146,7 +147,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(2,6,23,.55), rgba(15,23,42,.5));
+    background: linear-gradient(rgba(2,6,23,.58), rgba(15,23,42,.5));
     z-index: 1;
   }
   .support-hero > * {
@@ -157,7 +158,7 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 36rem;
+    max-width: 40rem;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -165,9 +166,24 @@
     justify-content: center;
   }
   .support-hero-copy > * { position: relative; z-index: 2; }
+  .support-hero h1 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 .75rem;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .support-hero p {
+    font-size: 1.05rem;
+    color: #e2e8f0;
+    max-width: 40rem;
+    margin: 0 auto 1.25rem;
+    line-height: 1.7;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  }
   .support-hero-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--cta-gradient-2); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.6rem; color: #fff; box-shadow: 0 12px 32px rgba(249,115,22,.3); }
-  .support-hero h1 { font-size: clamp(1.65rem, 2.8vw, 2.35rem); font-weight: 800; color: #fff; margin: 0 0 .5rem; }
-  .support-hero p { font-size: .95rem; color: #e2e8f0; max-width: 540px; margin: 0 auto 1.25rem; line-height: 1.55; }
   .support-hero-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
   .support-btn { padding: .8rem 1.75rem; border-radius: 999px; font-weight: 700; font-size: .95rem; border: none; cursor: pointer; transition: filter .18s, transform .18s; min-height: 48px; display: inline-flex; align-items: center; gap: .5rem; text-decoration: none; }
   .support-btn--primary { background: var(--cta-gradient); color: #fff; box-shadow: 0 10px 28px rgba(249,115,22,.3); }
