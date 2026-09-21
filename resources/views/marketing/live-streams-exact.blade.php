@@ -274,8 +274,23 @@
     align-items: center;
     justify-content: center;
   }
-  .page-hero h1 { font-size: clamp(1.65rem, 2.8vw, 2.35rem); color: #fff; font-weight: 800; margin-bottom: .45rem; }
-  .page-hero p { color: #e2e8f0; max-width: 55rem; margin: 0 auto; line-height: 1.55; font-size: .95rem; }
+  .page-hero h1 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: .75rem;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .page-hero p {
+    font-size: 1.05rem;
+    color: #e2e8f0;
+    max-width: 40rem;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  }
   @@media (max-width: 767.98px) {
     .page-hero { min-height: min(100svh, 640px); height: clamp(420px, 72svh, 640px); }
   }
