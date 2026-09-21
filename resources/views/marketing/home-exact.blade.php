@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT homepage from signed-off https://fansfollowme.com
+{{-- PIXEL-EXACT homepage from signed-off https://fansfollowme.com
      Do NOT restyle. Only auth-aware nav + Laravel routes differ from static mockup. --}}
 <!doctype html>
 <html lang="en">
@@ -902,7 +902,8 @@
       display: flex;
       align-items: center;
       margin-top: -76px;
-      padding-top: 76px;
+      /* Equal vertical padding — flex center stays balanced under sticky nav */
+      padding: 76px 0 76px;
     }
     .home-hero .hero-grid {
       position: relative;
@@ -911,7 +912,7 @@
       grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
       gap: 1.5rem;
       align-items: center;
-      padding: 5rem 0 4rem;
+      padding: 2.5rem 0 2.5rem;
       max-width: 72rem;
       margin: 0 auto;
       text-align: left;
@@ -1121,7 +1122,7 @@
     .public-shell-nav { gap: 0.2rem !important; }
 
     @@media (max-width: 991.98px) {
-      .home-hero { min-height: calc(100svh + 76px); }
+      .home-hero { min-height: min(100svh, 760px); padding: 72px 0 72px; }
       .home-hero .hero-grid,
       .fans-grid,
       .grid-4 {
@@ -1130,8 +1131,14 @@
       .public-shell-nav { gap: 0.1rem !important; }
     }
     @@media (max-width: 767.98px) {
-      .home-hero { display: flex; align-items: center; }
-      .home-hero .hero-grid { padding: 1rem 0; }
+      .home-hero {
+        display: flex;
+        align-items: center;
+        min-height: min(92svh, 700px);
+        padding: calc(72px + 0.75rem) 0 calc(72px + 0.75rem);
+      }
+      .home-hero .hero-grid { padding: 1.25rem 0; }
+      .home-hero__image { margin-top: 1rem; }
       .section-dark { padding: 1.25rem 0; }
       .section-photo { padding: 1.25rem 0; }
     }
@@ -1674,7 +1681,7 @@
                                 <form method="POST" action="{{ route('logout') }}" class="m-0 d-inline">@csrf<button type="submit" class="btn btn-outline-primary public-shell-button">Logout</button></form>
                                 @endguest
               </div>
-              <button class="public-shell-hamburger onclick="document.querySelector('.mobile-menu-overlay').classList.add('is-open');document.querySelector('.mobile-menu-panel').classList.add('is-open')" aria-label="Open menu">
+              <button class="public-shell-hamburger" onclick="document.querySelector('.mobile-menu-overlay').classList.add('is-open');document.querySelector('.mobile-menu-panel').classList.add('is-open')" aria-label="Open menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
       </button>
     </div>

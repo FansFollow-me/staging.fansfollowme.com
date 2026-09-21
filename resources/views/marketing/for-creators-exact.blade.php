@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (for-creators)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (for-creators)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -611,6 +611,8 @@
     .support-options { gap: .75rem !important; margin-bottom: 1.5rem !important; }
     .form-card { padding: 1.25rem !important; }
     .contact-section { padding: 2rem 0 !important; }
+    .content-grid { gap: 1rem !important; }
+    .why-creators-card { position: static !important; margin-top: 0 !important; }
   }
 
   /* Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â
@@ -993,7 +995,19 @@
   .section-photo h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #fff; margin-bottom: .5rem; }
   .section-photo p { color: #d1d5db; font-size: 1rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
 
-  @@media (max-width: 768px) { .creators-grid, .steps-flow { grid-template-columns: 1fr; } .content-grid { grid-template-columns: 1fr; } .steps-flow::before { display: none; } }
+  @@media (max-width: 768px) {
+    .creators-grid, .steps-flow { grid-template-columns: 1fr; }
+    .content-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .why-creators-card {
+      position: static;
+      padding: 1.25rem 1.15rem;
+      margin-top: .25rem;
+    }
+    .why-creators-card h3 { margin-bottom: .9rem; font-size: 1.2rem; }
+    .content-left { margin-bottom: 0; }
+    .creators-grid { gap: .75rem; margin-bottom: 0; }
+    .steps-flow::before { display: none; }
+  }
   @@media (max-width: 767.98px) {
     .creator-hero { min-height: auto; padding: calc(72px + 1.5rem) 0 1.5rem; }
     .section-dark { padding: 1.25rem 0; }
@@ -1537,7 +1551,7 @@
                                 <form method="POST" action="{{ route('logout') }}" class="m-0 d-inline">@csrf<button type="submit" class="btn btn-outline-primary public-shell-button">Logout</button></form>
                                 @endguest
               </div>
-              <button class="public-shell-hamburger onclick="document.querySelector('.mobile-menu-overlay').classList.add('is-open');document.querySelector('.mobile-menu-panel').classList.add('is-open')" aria-label="Open menu">
+              <button class="public-shell-hamburger" onclick="document.querySelector('.mobile-menu-overlay').classList.add('is-open');document.querySelector('.mobile-menu-panel').classList.add('is-open')" aria-label="Open menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
       </button>
     </div>

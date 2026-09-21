@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (support)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (support)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -130,7 +130,18 @@
     justify-content: center;
     text-align: center;
     background: #0b0f1a;
-    padding: 72px 1.25rem 2rem;
+    /* Equal vertical padding so flex-centered copy isn't pushed low */
+    padding: 72px 1.25rem 72px;
+  }
+  @@media (max-width: 767.98px) {
+    .support-hero {
+      min-height: min(88svh, 620px);
+      height: auto;
+      padding: calc(72px + 0.85rem) 1rem calc(72px + 0.85rem);
+    }
+    .support-hero h1 { margin-bottom: .55rem; }
+    .support-hero-icon { margin-bottom: .75rem; }
+    .support-hero p { margin-bottom: 1rem; }
   }
   .support-hero::before {
     content: '';
@@ -258,7 +269,7 @@
                                 <form method="POST" action="{{ route('logout') }}" class="m-0 d-inline">@csrf<button type="submit" class="btn btn-outline-primary public-shell-button">Logout</button></form>
                                 @endguest
               </div>
-              <button class="public-shell-hamburger onclick="document.querySelector('.mobile-menu-overlay').classList.add('is-open');document.querySelector('.mobile-menu-panel').classList.add('is-open')" aria-label="Open menu">
+              <button class="public-shell-hamburger" onclick="document.querySelector('.mobile-menu-overlay').classList.add('is-open');document.querySelector('.mobile-menu-panel').classList.add('is-open')" aria-label="Open menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
       </button>
     </div>
