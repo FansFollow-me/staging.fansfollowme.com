@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (support)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (support)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -116,8 +116,8 @@
     .public-shell-footer .footer-bottom { align-items: center; text-align: center; }
   }
 
-  /* â”€â”€ Support page styles â”€â”€ */
-  /* Support hero — full-viewport band, same scale as Live Streams / marketing heroes */
+  /* Ã¢â€â‚¬Ã¢â€â‚¬ Support page styles Ã¢â€â‚¬Ã¢â€â‚¬ */
+  /* Support hero â€” full-viewport band, same scale as Live Streams / marketing heroes */
   .support-hero {
     position: relative;
     overflow: hidden;
@@ -136,7 +136,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    /* Martin Desktop support.png — lamp/desk/headset hero */
+    /* Martin Desktop support.png â€” lamp/desk/headset hero */
     background-image: url('{{ asset('img/marketing/support-hero.jpg') }}?v=suphero1');
     background-position: center center;
     background-size: cover;
@@ -239,7 +239,7 @@
             <a href='{{ route('page.casting') }}'>&#127912; <span>Movie Casting</span></a>
             <a href='{{ route('page.live-streams') }}'>&#128308; <span>Live Streams</span></a>
             <a href='{{ route('page.business') }}'>&#128188; <span>Business</span></a>
-            <a class='active' href='{{ route('page.contact') }}'>&#128172; <span>Support</span></a>
+            <a class='active' href='{{ route('page.support') }}'>&#128172; <span>Support</span></a>
           </div>
         </details>
       </nav>
@@ -281,7 +281,7 @@
     <a href='{{ route('page.casting') }}'>&#127912; Movie Casting</a>
     <a href='{{ route('page.live-streams') }}'>&#128308; Live Streams</a>
     <a href='{{ route('page.business') }}'>&#128188; Business</a>
-    <a href='{{ route('page.contact') }}'>&#128172; Support</a>
+    <a href='{{ route('page.support') }}'>&#128172; Support</a>
     <a href='{{ route('login') }}' style='margin-top:1rem;color:#94a3b8;font-weight:600'>Login</a>
     <a class='mobile-cta-btn' href='{{ route('register') }}'>Get Started</a>
   </div>
@@ -400,7 +400,7 @@
         </div>
         <div class="footer-links">
           <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Support</h3>
-          <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Help Center</a>
+          <a href='{{ route('page.support') }}' style='font-size: .9rem;'>Help Center</a>
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Contact Us</a>
           <a href='{{ route('page.for-creators') }}' style='font-size: .9rem;'>Creator Resources</a>
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Community</a>
@@ -418,7 +418,7 @@
       <div class="footer-bottomline"></div>
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: .75rem 0;">
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
+          <span style="font-size: .85rem; color: #94a3b8;">Â© 2026 FansFollow.me. All rights reserved.</span>
           <span style="font-size: .85rem; color: #94a3b8;"><span style="color: #f97316; font-weight: 800;">&#8383;</span> <strong style="color: #fff;">BTC/ETH/USDT/SOL Accepted</strong></span>
           <a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&bull;</span>

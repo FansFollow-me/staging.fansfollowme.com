@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (contact)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (contact)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -406,7 +406,7 @@
             <a href='{{ route('page.casting') }}'>&#127912; <span>Movie Casting</span></a>
             <a href='{{ route('page.live-streams') }}'>&#128308; <span>Live Streams</span></a>
             <a href='{{ route('page.business') }}'>&#128188; <span>Business</span></a>
-            <a href='{{ route('page.contact') }}'>&#128172; <span>Support</span></a>
+            <a href='{{ route('page.support') }}'>&#128172; <span>Support</span></a>
           </div>
         </details>
       </nav>
@@ -448,7 +448,7 @@
     <a href='{{ route('page.casting') }}'>&#127912; Movie Casting</a>
     <a href='{{ route('page.live-streams') }}'>&#128308; Live Streams</a>
     <a href='{{ route('page.business') }}'>&#128188; Business</a>
-    <a href='{{ route('page.contact') }}'>&#128172; Support</a>
+    <a href='{{ route('page.support') }}'>&#128172; Support</a>
           <a href='{{ route('login') }}' style='margin-top:1rem;color:#94a3b8;font-weight:600'>Login</a>
               <a class='mobile-cta-btn' href='{{ route('register') }}'>Get Started</a>
             </div>
@@ -481,7 +481,7 @@
         <div class="contact-option-icon" style="background:linear-gradient(135deg,#a855f7,#3b82f6);"><i data-lucide="help-circle"></i></div>
         <h4>Help Center</h4>
         <p>Browse guides and resources</p>
-        <a class="cta-btn" href="#" style="width:auto;font-size:.9rem;">View Guides</a>
+        <a class="cta-btn" href="{{ route('page.support') }}" style="width:auto;font-size:.9rem;">View Guides</a>
       </div>
       <div class="contact-option">
         <div class="contact-option-icon" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);"><i data-lucide="users"></i></div>
@@ -550,7 +550,7 @@
         </div>
         <div class="footer-links">
           <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Support</h3>
-          <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Help Center</a>
+          <a href='{{ route('page.support') }}' style='font-size: .9rem;'>Help Center</a>
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Contact Us</a>
           <a href='{{ route('page.for-creators') }}' style='font-size: .9rem;'>Creator Resources</a>
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Community</a>

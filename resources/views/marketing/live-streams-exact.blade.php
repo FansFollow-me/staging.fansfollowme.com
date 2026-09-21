@@ -1,4 +1,4 @@
-{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (live-streams)
+﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (live-streams)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -232,7 +232,7 @@
   }
 </style>
   <style>
-  /* Live Streams hero — tall/full-height band; copy centered vertically + horizontally */
+  /* Live Streams hero â€” tall/full-height band; copy centered vertically + horizontally */
   .page-hero {
     position: relative;
     overflow: hidden;
@@ -246,7 +246,7 @@
     justify-content: center;
     text-align: center;
     background: #0b0f1a;
-    /* Only top pad for sticky bar — vertical centering is flex, not padding */
+    /* Only top pad for sticky bar â€” vertical centering is flex, not padding */
     padding: 72px 1.25rem 2rem;
   }
   .page-hero::before {
@@ -295,7 +295,7 @@
     .page-hero { min-height: min(100svh, 640px); height: clamp(420px, 72svh, 640px); }
   }
   .page-section { padding: .75rem 0 1rem; }
-  /* Feature cards tightened ~25% — still 4 columns; more cards visible without scroll */
+  /* Feature cards tightened ~25% â€” still 4 columns; more cards visible without scroll */
   .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .45rem; }
   .card { background: #151b2c; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,.14); padding: .75rem; height: 100%; transition: all .3s ease; }
   .card:hover { border-color: rgba(249,115,22,.4); transform: scale(1.02); box-shadow: 0 18px 40px -12px rgba(249,115,22,.15); }
@@ -433,7 +433,7 @@
             <a href='{{ route('page.casting') }}'>&#127912; <span>Movie Casting</span></a>
             <a href='{{ route('page.live-streams') }}'>&#128308; <span>Live Streams</span></a>
             <a href='{{ route('page.business') }}'>&#128188; <span>Business</span></a>
-            <a href='{{ route('page.contact') }}'>&#128172; <span>Support</span></a>
+            <a href='{{ route('page.support') }}'>&#128172; <span>Support</span></a>
           </div>
         </details>
       </nav>
@@ -475,7 +475,7 @@
     <a href='{{ route('page.casting') }}'>&#127912; Movie Casting</a>
     <a href='{{ route('page.live-streams') }}'>&#128308; Live Streams</a>
     <a href='{{ route('page.business') }}'>&#128188; Business</a>
-    <a href='{{ route('page.contact') }}'>&#128172; Support</a>
+    <a href='{{ route('page.support') }}'>&#128172; Support</a>
           <a href='{{ route('login') }}' style='margin-top:1rem;color:#94a3b8;font-weight:600'>Login</a>
               <a class='mobile-cta-btn' href='{{ route('register') }}'>Get Started</a>
             </div>
@@ -521,7 +521,7 @@
         </div>
         <div class="footer-links">
           <h2 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Support</h3>
-          <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Help Center</a>
+          <a href='{{ route('page.support') }}' style='font-size: .9rem;'>Help Center</a>
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Contact Us</a>
           <a href='{{ route('page.for-creators') }}' style='font-size: .9rem;'>Creator Resources</a>
           <a href='{{ route('page.contact') }}' style='font-size: .9rem;'>Community</a>
@@ -539,8 +539,8 @@
       <div class="footer-bottomline"></div>
       <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: .75rem 0;">
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
-          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">₿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
+          <span style="font-size: .85rem; color: #94a3b8;">Â© 2026 FansFollow.me. All rights reserved.</span>
+          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">â‚¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span>
           <a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&#8226;</span>
           <a href='{{ route('page.terms') }}' style='font-size: .85rem; color: #94a3b8;'>Terms of Service</a>

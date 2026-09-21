@@ -17,7 +17,7 @@
             </div>
             <div class="footer-links">
                 <h3>Support</h3>
-                <a href="{{ route('page.contact') }}">Help Center</a>
+                <a href="{{ route('page.support') }}">Help Center</a>
                 <a href="{{ route('page.contact') }}">Contact Us</a>
                 <a href="{{ route('page.faq') }}">FAQ</a>
             </div>

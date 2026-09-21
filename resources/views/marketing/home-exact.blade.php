@@ -1655,7 +1655,7 @@
             <a href='/casting'>&#127912; <span>Movie Casting</span></a>
             <a href='/live-streams'>&#128308; <span>Live Streams</span></a>
             <a href='/business'>&#128188; <span>Business</span></a>
-            <a href='/contact'>&#128172; <span>Support</span></a>
+            <a href='/support'>&#128172; <span>Support</span></a>
           </div>
         </details>
       </nav>
@@ -1697,7 +1697,7 @@
     <a href='/casting'>&#127912; Movie Casting</a>
     <a href='/live-streams'>&#128308; Live Streams</a>
     <a href='/business'>&#128188; Business</a>
-    <a href='/contact'>&#128172; Support</a>
+    <a href='/support'>&#128172; Support</a>
           <a href='/login' style='margin-top:1rem;color:#94a3b8;font-weight:600'>Login</a>
               <a class='mobile-cta-btn' href='/signup'>Get Started</a>
             </div>
@@ -1836,7 +1836,7 @@
         </div>
         <div class="footer-links">
           <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Support</h3>
-          <a href='/contact' style='font-size: .9rem;'>Help Center</a>
+          <a href='/support' style='font-size: .9rem;'>Help Center</a>
           <a href='/contact' style='font-size: .9rem;'>Contact Us</a>
           <a href='/for-creators' style='font-size: .9rem;'>Creator Resources</a>
           <a href='/contact' style='font-size: .9rem;'>Community</a>
