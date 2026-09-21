@@ -539,8 +539,9 @@
     <div class="form-card">
       
       
-      <form method="POST" action="https://usebasin.com/f/954d0d6e30da">
+      <form method="POST" action="https://usebasin.com/f/954d0d6e30da" data-thanks-type="contact">
         <input type="hidden" name="_subject" value="Contact Form Submission">
+        <input type="hidden" name="_redirect" value="{{ route('form.thanks', ['type' => 'contact']) }}">
 
         <div class="form-grid-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
           <div class="form-group">
@@ -710,5 +711,6 @@ document.addEventListener('DOMContentLoaded', function() {
       onScroll();
     })();
   </script>
+  <script src="{{ asset('js/usebasin-form.js') }}?v=ffm1" defer></script>
 </body>
 </html>

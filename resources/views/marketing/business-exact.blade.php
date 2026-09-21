@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (business)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (business)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -596,8 +596,9 @@
     <p class="section-sub">Tell us about your business and let's explore how we can grow together.</p>
     <div class="contact-grid">
       <div class="form-card">
-        <form method="POST" action="https://usebasin.com/f/954d0d6e30da">
+        <form method="POST" action="https://usebasin.com/f/954d0d6e30da" data-thanks-type="business">
           <input type="hidden" name="_subject" value="Business Partnership Inquiry">
+          <input type="hidden" name="_redirect" value="{{ route('form.thanks', ['type' => 'business']) }}">
           <div class="form-grid-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
             <div class="form-group"><label>Full Name</label><input type="text" name="full_name" placeholder="Your name" required></div>
             <div class="form-group"><label>Company / Organization</label><input type="text" name="company" placeholder="Company name"></div>
@@ -762,5 +763,6 @@ document.addEventListener('DOMContentLoaded', function() {
       onScroll();
     })();
   </script>
+  <script src="{{ asset('js/usebasin-form.js') }}?v=ffm1" defer></script>
 </body>
 </html>

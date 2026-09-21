@@ -26,6 +26,43 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Branded confirmation after UseBasin marketing forms (contact / casting / business)
+Route::get('form-thanks', function (\Illuminate\Http\Request $request) {
+    $type = (string) $request->query('type', 'contact');
+    $map = [
+        'contact' => [
+            'title' => 'Thanks — message sent | FansFollow.me',
+            'headline' => 'Thanks, we got your message',
+            'lead' => 'Our team will review what you sent and get back to you as soon as we can. Usually within one business day.',
+            'primaryUrl' => route('home'),
+            'primaryLabel' => 'Back to home',
+            'secondaryUrl' => route('page.support'),
+            'secondaryLabel' => 'Visit Support Center',
+        ],
+        'casting' => [
+            'title' => 'Casting waitlist received | FansFollow.me',
+            'headline' => 'You’re on the casting waitlist',
+            'lead' => 'Thanks for applying. We’ll review your profile and reach out when casting calls open for your specialty.',
+            'primaryUrl' => route('page.casting'),
+            'primaryLabel' => 'Back to Casting',
+            'secondaryUrl' => route('register'),
+            'secondaryLabel' => 'Create your profile',
+        ],
+        'business' => [
+            'title' => 'Partnership inquiry sent | FansFollow.me',
+            'headline' => 'Thanks — partnership inquiry received',
+            'lead' => 'We’ll review your note and follow up within 24 hours about next steps on a partnership conversation.',
+            'primaryUrl' => route('page.business'),
+            'primaryLabel' => 'Back to Business',
+            'secondaryUrl' => route('home'),
+            'secondaryLabel' => 'Back to home',
+        ],
+    ];
+    $data = $map[$type] ?? $map['contact'];
+
+    return view('marketing.form-thanks', $data);
+})->name('form.thanks');
+
 // Public marketing pages (pretty URLs matching mockup)
 foreach ([
     'explore', 'creators', 'fans', 'celebrities', 'casting', 'business',
@@ -192,5 +229,5 @@ Route::post('coming-soon/feedback', [\App\Http\Controllers\ComingSoonController:
 
 // Public profile — LAST so it never shadows app routes like /dashboard
 Route::get('{username}', [HomeController::class, 'profile'])
-    ->where('username', '(?!dashboard|login|signup|logout|explore|creators|fans|celebrities|casting|business|for-creators|support|faq|contact|blog|privacy|terms|cookies|live-streams|posts|settings|panel|j|my|creator|wallet|follow|subscribe|tip|shop|add|messages|reels|stories|create|live|explore|vault|referrals|notifications|gifts|coming-soon)[A-Za-z0-9_]{3,30}')
+    ->where('username', '(?!dashboard|login|signup|logout|explore|creators|fans|celebrities|casting|business|for-creators|support|faq|contact|blog|privacy|terms|cookies|live-streams|form-thanks|posts|settings|panel|j|my|creator|wallet|follow|subscribe|tip|shop|add|messages|reels|stories|create|live|explore|vault|referrals|notifications|gifts|coming-soon)[A-Za-z0-9_]{3,30}')
     ->name('profile');

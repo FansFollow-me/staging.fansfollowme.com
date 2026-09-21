@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (casting)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (casting)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -604,8 +604,9 @@
         <h3>Join the casting waitlist</h3>
         <p>Be notified when casting calls open.</p>
         <p style="color:#fb923c;font-size:.8rem;font-style:italic;margin-bottom:.75rem;">Ready to audition? Submit your information and we'll review your profile. The best talent gets contacted directly.</p>
-        <form method="POST" action="https://usebasin.com/f/954d0d6e30da">
+        <form method="POST" action="https://usebasin.com/f/954d0d6e30da" data-thanks-type="casting">
           <input type="hidden" name="_subject" value="Casting Waitlist Application">
+          <input type="hidden" name="_redirect" value="{{ route('form.thanks', ['type' => 'casting']) }}">
           <div class="form-group"><label>Full Name</label><input type="text" name="full_name" placeholder="Your full name" required></div>
           <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="you@email.com" required></div>
           <div class="form-group"><label>Specialty</label><input type="text" name="specialty" placeholder="e.g., Martial Artist, Stunt Performer"></div>
@@ -772,6 +773,7 @@ document.addEventListener('DOMContentLoaded', function() {
       onScroll();
     })();
   </script>
+  <script src="{{ asset('js/usebasin-form.js') }}?v=ffm1" defer></script>
 </body>
 </html>
 
