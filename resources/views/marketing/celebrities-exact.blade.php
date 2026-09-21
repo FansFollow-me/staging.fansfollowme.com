@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (celebrities)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (celebrities)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -894,7 +894,8 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: url('{{ asset('img/marketing/celebhero.png') }}?v=viking1') center 8%/cover no-repeat;
+    /* Empty boxing ring (celebrities-celebhero.jpg) — ring sits right of frame */
+    background: url('{{ asset('img/marketing/celebrities-celebhero.jpg') }}?v=ring1') 72% center/cover no-repeat;
     z-index: 0;
   }
   .celeb-hero::after {

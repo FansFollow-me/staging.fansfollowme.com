@@ -117,34 +117,54 @@
   }
 
   /* â”€â”€ Support page styles â”€â”€ */
-  /* Support hero — short marketing band + cover-cropped support.png (like Live Streams) */
+  /* Support hero — tall band + desk/support art; copy vertically centered */
   .support-hero {
     position: relative;
     overflow: hidden;
-    text-align: center;
-    height: clamp(260px, 36vh, 380px);
-    max-height: 380px;
+    margin-top: -72px;
+    min-height: min(72vh, 560px);
+    height: clamp(420px, 68vh, 560px);
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: calc(72px + 2rem) 1rem 2rem;
+    text-align: center;
+    padding: 72px 1.25rem 2rem;
   }
   .support-hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: url('{{ asset('img/marketing/support.png') }}?v=sup1') center 42%/cover no-repeat;
+    /* Prefer compressed jpg (reliable CDN); png remains as fallback asset */
+    background-image: url('{{ asset('img/marketing/support.jpg') }}?v=sup2');
+    background-position: center 42%;
+    background-size: cover;
+    background-repeat: no-repeat;
     z-index: 0;
   }
   .support-hero::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(2,6,23,.62), rgba(15,23,42,.55));
+    background: linear-gradient(rgba(2,6,23,.55), rgba(15,23,42,.5));
     z-index: 1;
   }
-  .support-hero > * { position: relative; z-index: 2; }
+  .support-hero > * {
+    position: relative;
+    z-index: 2;
+  }
+  .support-hero-copy {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 36rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .support-hero-copy > * { position: relative; z-index: 2; }
   .support-hero-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--cta-gradient-2); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.6rem; color: #fff; box-shadow: 0 12px 32px rgba(249,115,22,.3); }
   .support-hero h1 { font-size: clamp(1.65rem, 2.8vw, 2.35rem); font-weight: 800; color: #fff; margin: 0 0 .5rem; }
   .support-hero p { font-size: .95rem; color: #e2e8f0; max-width: 540px; margin: 0 auto 1.25rem; line-height: 1.55; }
@@ -252,16 +272,18 @@
 
   <main class="public-shell-content">
     <section class="support-hero">
-      <div class="support-hero-icon"><i class="fas fa-headset"></i></div>
-      <h1>Support Center</h1>
-      <p>We're here to help. Get answers to your questions, browse our knowledge base, or start a live chat with our support team.</p>
-      <div class="support-hero-btns">
-        <a href="#" class="support-btn support-btn--primary" onclick="alert('This is a design preview &#8212; live chat is not functional here.');event.preventDefault()">
-          <i class="fas fa-comment-dots"></i> Start Chat
-        </a>
-        <a href="#faq" class="support-btn support-btn--outline">
-          <i class="fas fa-book-open"></i> Browse FAQ
-        </a>
+      <div class="support-hero-copy">
+        <div class="support-hero-icon"><i class="fas fa-headset"></i></div>
+        <h1>Support Center</h1>
+        <p>We're here to help. Get answers to your questions, browse our knowledge base, or start a live chat with our support team.</p>
+        <div class="support-hero-btns">
+          <a href="#" class="support-btn support-btn--primary" onclick="alert('This is a design preview &#8212; live chat is not functional here.');event.preventDefault()">
+            <i class="fas fa-comment-dots"></i> Start Chat
+          </a>
+          <a href="#faq" class="support-btn support-btn--outline">
+            <i class="fas fa-book-open"></i> Browse FAQ
+          </a>
+        </div>
       </div>
     </section>
 

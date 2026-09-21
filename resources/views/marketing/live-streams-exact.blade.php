@@ -232,39 +232,53 @@
   }
 </style>
   <style>
-  /* Live Streams hero — short marketing band (like Celebrities), not full-viewport */
+  /* Live Streams hero — tall/full-height band; copy centered vertically + horizontally */
   .page-hero {
     position: relative;
     overflow: hidden;
-    padding: calc(72px + 2.5rem) 0 2.25rem;
-    text-align: center;
-    background: #0b0f1a;
-    /* Fixed band: image cropped with cover, never stretched */
-    height: clamp(260px, 36vh, 380px);
-    max-height: 380px;
+    margin-top: -72px;
+    /* Pull under sticky nav so the full viewport height is usable */
+    min-height: min(100vh, 780px);
+    height: clamp(520px, 78vh, 780px);
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    background: #0b0f1a;
+    /* Only top pad for sticky bar — vertical centering is flex, not padding */
+    padding: 72px 1.25rem 2rem;
   }
   .page-hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    /* object-fit: cover equivalent — crop, don't distort */
-    background: url('{{ asset('img/marketing/livestreaming.webp') }}?v=live1') center 38%/cover no-repeat;
+    background: url('{{ asset('img/marketing/livestreaming.webp') }}?v=live2') center 38%/cover no-repeat;
     z-index: 0;
   }
   .page-hero::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(2,6,23,.62), rgba(15,23,42,.55));
+    background: linear-gradient(rgba(2,6,23,.58), rgba(15,23,42,.5));
     z-index: 1;
   }
-  .page-hero .container { position: relative; z-index: 2; width: 100%; }
+  .page-hero .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 48rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   .page-hero h1 { font-size: clamp(1.65rem, 2.8vw, 2.35rem); color: #fff; font-weight: 800; margin-bottom: .45rem; }
   .page-hero p { color: #e2e8f0; max-width: 55rem; margin: 0 auto; line-height: 1.55; font-size: .95rem; }
+  @@media (max-width: 767.98px) {
+    .page-hero { min-height: min(100svh, 640px); height: clamp(420px, 72svh, 640px); }
+  }
   .page-section { padding: .75rem 0 1rem; }
   /* Feature cards tightened ~25% — still 4 columns; more cards visible without scroll */
   .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .45rem; }
