@@ -234,11 +234,49 @@
   <style>
   :root { color-scheme: dark; --home-gradient: linear-gradient(135deg, #f97316 0%, #ec4899 48%, #a855f7 100%); }
 
-  .contact-hero { padding: 6rem 0 3rem; text-align: center; color: #e5e7eb; }
+  .contact-hero {
+    position: relative;
+    overflow: hidden;
+    margin-top: -72px;
+    min-height: min(100vh, 780px);
+    height: clamp(520px, 78vh, 780px);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #e5e7eb;
+    background: #0b0f1a;
+    padding: 72px 1.25rem 2.5rem;
+  }
+  .contact-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('{{ asset('img/marketing/support-hero.jpg') }}?v=suphero1');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .contact-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(2,6,23,.62), rgba(15,23,42,.55));
+    z-index: 1;
+  }
+  .contact-hero > .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
   .contact-badge { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem 1rem; border-radius: 999px; background: linear-gradient(135deg, rgba(245,158,11,.2), rgba(249,115,22,.2)); border: 1px solid rgba(245,158,11,.3); color: #fbbf24; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1.5rem; }
-  .contact-hero h1 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; color: #fff; margin-bottom: .25rem; }
+  .contact-hero h1 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; color: #fff; margin-bottom: .75rem; letter-spacing: -0.02em; line-height: 1.15; }
   .contact-hero .gradient { background: var(--home-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .contact-hero > p { font-size: 1.05rem; color: #94a3b8; max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; }
+  .contact-hero > .container > p { font-size: 1.05rem; color: #e2e8f0; max-width: 40rem; margin: 0 auto; line-height: 1.7; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
 
   .section-dark { padding: 2.5rem 0; }
   .section-gradient { background: linear-gradient(to bottom, rgba(15,23,42,.4), rgba(17,24,39,.6)); }
@@ -456,7 +494,7 @@
   <main class="public-shell-content">
     <section class="contact-hero">
   <div class="container">
-    <div class="contact-badge">ðŸ›Ÿ SUPPORT CENTER</div>
+    <div class="contact-badge">&#128737; SUPPORT CENTER</div>
     <h1>We're Here to Help <span class="gradient">Support Center</span></h1>
     <p>Get the support you need to succeed on FansFollow. Our team is available to help you maximize your earnings and grow your community.</p>
   </div>
