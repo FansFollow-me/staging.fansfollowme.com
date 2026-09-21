@@ -2,7 +2,7 @@
 
 @push('head')
 <link href="{{ asset('css/tip-gifts.css') }}" rel="stylesheet">
-<link href="{{ asset('css/gif-gifts.css') }}?v=palm1" rel="stylesheet" id="gif-gifts-css">
+<link href="{{ asset('css/gif-gifts.css') }}?v=palm2" rel="stylesheet" id="gif-gifts-css">
 @endpush
 
 @section('title', 'Gift Animations Showcase')
@@ -48,7 +48,7 @@
     </div>
 </div>
 
-<script src="{{ asset('js/gif-gifts.js') }}?v=palm1"></script>
+<script src="{{ asset('js/gif-gifts.js') }}?v=palm2"></script>
 <script>
 window.FFM_GIFT_META = @json($meta);
 document.getElementById('showcase-grid').addEventListener('click', function (e) {

@@ -113,14 +113,15 @@
 </head>
 <body>
   <div class="wrap">
-    <h1>Gift FX comparison — Legend vs Icon</h1>
+    <h1 style="margin-top:8px">Gift FX comparison — Low tier &amp; top tiers</h1>
     <p class="sub">
-      Side-by-side of <strong>V3</strong> (previous engine) vs <strong>V4</strong> (current) on the top two tiers only:
-      <strong>Legend</strong> (tier 9 — $10k–$25k) and <strong>Icon</strong> (tier 10 — $50k–$250k).
-      Pick a gift, fire each engine, watch impact timing, depth, camera punch, and how long the “moment” lasts.
+      Side-by-side of <strong>V3</strong> (previous engine) vs <strong>V4</strong> (current).
+      Includes <strong>low-tier gifts</strong> (High Five T1 · Protein Shake T1) plus Legend (T9) and Icon (T10).
+      Same V4 system everywhere — low tiers get a lighter punch, not the Legend intensity.
     </p>
 
     <div class="gift-row" id="gift-picker"></div>
+    <div class="gift-row" id="low-picker" style="margin-bottom:16px"></div>
 
     <div class="grid">
       <div class="panel">
@@ -142,10 +143,11 @@
         <p>Multi-act timeline, depth-layered particles, camera zoom-punch on Power+, product aura on photos, beat-locked SFX, distinct Icon act.</p>
         <ul class="notes">
           <li><strong>Duration:</strong> Legend ~10s · Icon ~11.5s+</li>
-          <li><strong>Camera:</strong> scale punch + brightness on beats</li>
-          <li><strong>Particles:</strong> bg / mid / fg speeds</li>
+          <li><strong>Camera:</strong> scale punch + brightness on beats (scaled by tier)</li>
+          <li><strong>Particles:</strong> bg / mid / fg speeds — also on T1–T2</li>
           <li><strong>SFX:</strong> locked to hero / action / climax / peak</li>
           <li><strong>Top tiers:</strong> LEGENDARY vs ICON badges + longer acts</li>
+          <li><strong>Low tiers:</strong> FX V4 stamp, glow pulse, micro-punch, depth burst</li>
         </ul>
         <button type="button" class="play-btn v4" id="play-v4">Play V4 (new)</button>
       </div>
@@ -207,32 +209,47 @@
 
   <script>
     var META = {
+      high_five: { emoji: '✋', label: 'High Five', amount: 200, tier: 1, image: '/img/gifts/high_five.png?v=palm2' },
+      protein_shake: { emoji: '🥤', label: 'Protein Shake', amount: 500, tier: 1, image: '/img/gifts/protein_shake.png?v=palm2' },
+      beer: { emoji: '🍺', label: 'Bottle of Beer', amount: 1000, tier: 2, image: '/img/gifts/beer_bottle.png?v=palm2', glass: '/img/gifts/glass_beer.png?v=cutout3', pour: 'beer' },
       diamond_bracelet: { emoji: '💎', label: 'Diamond Bracelet', amount: 10000, tier: 9, image: '/img/gifts/diamond_bracelet.png?v=cutout3' },
       luxury_watch: { emoji: '⌚', label: 'Luxury Watch', amount: 25000, tier: 9, image: '/img/gifts/luxury_watch.png?v=cutout3' },
       luxury_holiday: { emoji: '✈️', label: 'Luxury Holiday', amount: 50000, tier: 10, image: '/img/gifts/luxury_holiday.png?v=cutout3' },
       sports_car: { emoji: '🏎️', label: 'Sports Car', amount: 100000, tier: 10, image: '/img/gifts/sports_car.png?v=cutout3' },
       mystery_box: { emoji: '🎁', label: 'Mystery Box', amount: 250000, tier: 10, image: '/img/gifts/mystery_box.png?v=cutout3', mystery: true }
     };
+    var LOW_ORDER = ['high_five', 'protein_shake', 'beer'];
     var ORDER = ['diamond_bracelet', 'luxury_watch', 'luxury_holiday', 'sports_car', 'mystery_box'];
-    var selected = 'sports_car';
+    var selected = 'high_five';
     var engines = { v3: false, v4: false };
     window.FFM_GIFT_META = META;
 
     var picker = document.getElementById('gift-picker');
-    ORDER.forEach(function (key) {
+    var lowPicker = document.getElementById('low-picker');
+
+    function tierLabel(m) {
+      if (m.tier <= 2) return 'Low · T' + m.tier;
+      if (m.tier >= 10) return 'Icon · T10';
+      return 'Legend · T' + m.tier;
+    }
+
+    function addGiftBtn(container, key) {
       var m = META[key];
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'gift-btn' + (key === selected ? ' active' : '');
       btn.dataset.key = key;
-      btn.innerHTML = m.emoji + ' ' + m.label + '<small>' + (m.tier === 10 ? 'Icon · T10' : 'Legend · T9') + ' · $' + (m.amount / 100).toLocaleString() + '</small>';
+      btn.innerHTML = m.emoji + ' ' + m.label + '<small>' + tierLabel(m) + ' · $' + (m.amount / 100).toLocaleString() + '</small>';
       btn.addEventListener('click', function () {
         selected = key;
-        picker.querySelectorAll('.gift-btn').forEach(function (b) { b.classList.toggle('active', b.dataset.key === key); });
-        setStatus('Selected <strong>' + m.label + '</strong> (' + (m.tier === 10 ? 'Icon' : 'Legend') + '). Play V3 then V4.');
+        document.querySelectorAll('.gift-btn').forEach(function (b) { b.classList.toggle('active', b.dataset.key === key); });
+        setStatus('Selected <strong>' + m.label + '</strong> (' + tierLabel(m) + '). Play V3 then V4 — watch punch scale with tier.');
       });
-      picker.appendChild(btn);
-    });
+      container.appendChild(btn);
+    }
+
+    LOW_ORDER.forEach(function (key) { addGiftBtn(lowPicker, key); });
+    ORDER.forEach(function (key) { addGiftBtn(picker, key); });
 
     function setStatus(html) {
       document.getElementById('status').innerHTML = html + ' Open via Laravel public URL so <code>/js</code> assets resolve. Click a gift, then V3 or V4. Production uses <strong>V4</strong>.';
@@ -260,12 +277,14 @@
       if (ver === 'v3') {
         if (!engines.v3) {
           await loadScript('/js/gif-gifts-v3.js?v=fx3');
+          // V3 may overwrite window.GiftFX — keep a stable alias
+          if (window.GiftFX && !window.GiftFXV3) window.GiftFXV3 = window.GiftFX;
           engines.v3 = true;
         }
-        return window.GiftFXV3;
+        return window.GiftFXV3 || window.GiftFX;
       }
       if (!engines.v4) {
-        await loadScript('/js/gif-gifts.js?v=fx4d');
+        await loadScript('/js/gif-gifts.js?v=palm2low');
         engines.v4 = true;
       }
       return window.GiftFX;
@@ -281,7 +300,7 @@
         amount_cents: m.amount,
         tier: m.tier,
         image: m.image,
-        from: (m.tier === 10 ? 'Icon' : 'Legend') + ' compare'
+        from: 'Low-tier V4' + (m.tier <= 2 ? '' : (m.tier === 10 ? ' Icon' : ' Legend')) + ' compare'
       };
     }
 
@@ -290,16 +309,15 @@
       try {
         var fx = await ensureEngine(ver);
         if (!fx) throw new Error('engine missing');
-        // CSS: V3 uses its own sheet when engine requests it; V4 uses current sheet
         if (ver === 'v3') loadCss('/css/gif-gifts-v3.css?v=fx3', 'gif-gifts-css-v3');
-        else loadCss('/css/gif-gifts.css?v=fx4d', 'gif-gifts-css');
+        else loadCss('/css/gif-gifts.css?v=palm2', 'gif-gifts-css');
         if (fx.unlockAudio) fx.unlockAudio();
         fx.play(playOpts());
-        setStatus('Playing <strong>' + ver.toUpperCase() + '</strong> · ' + META[selected].label + '.');
+        setStatus('Playing <strong>' + ver.toUpperCase() + '</strong> · ' + META[selected].label + ' · T' + META[selected].tier + '.');
       } catch (e) {
         setStatus('Failed to load ' + ver.toUpperCase() + ': ' + esc(e.message) + '. Open this page via the Laravel public URL so /js assets resolve.');
       }
-      setTimeout(function () { btn.disabled = false; }, ver === 'v3' ? 9000 : 12000);
+      setTimeout(function () { btn.disabled = false; }, META[selected].tier <= 2 ? 4000 : (ver === 'v3' ? 9000 : 12000));
     }
 
     function esc(s) {

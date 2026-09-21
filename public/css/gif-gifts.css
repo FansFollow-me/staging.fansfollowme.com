@@ -9,6 +9,79 @@
   animation: gif-camera-punch .62s cubic-bezier(.2,.9,.25,1) both;
   --punch: 1;
 }
+.gif-medium.is-punch {
+  animation: gif-med-punch .52s cubic-bezier(.2,.9,.25,1) both;
+  --punch: 1;
+}
+.gif-cute.is-punch {
+  animation: gif-med-punch .42s cubic-bezier(.2,.9,.25,1) both;
+  --punch: 1;
+}
+@keyframes gif-med-punch {
+  0% { transform: scale(1); filter: brightness(1); }
+  22% { transform: scale(calc(1 + .042 * var(--punch, 1))); filter: brightness(1.1 + .06 * var(--punch, 1)); }
+  48% { transform: scale(calc(1 - .012 * var(--punch, 1))); filter: brightness(1.03); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+.gif-mini-fx {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9970;
+}
+.gif-v4-stamp,
+.gif-cute-v4-stamp {
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  color: #fbbf24;
+  opacity: .75;
+}
+.gif-cute-v4-stamp {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.gif-product-glow-pulse {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--glow-c, #60a5fa) 0%, transparent 68%);
+  opacity: 0;
+  z-index: 0;
+  animation: gif-glow-pulse 1.4s cubic-bezier(.45,0,.55,1) .2s both;
+}
+@keyframes gif-glow-pulse {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.55); }
+  35% { opacity: .55; transform: translate(-50%, -50%) scale(1.08); }
+  100% { opacity: .22; transform: translate(-50%, -50%) scale(1); }
+}
+.gif-cute.has-glow .gif-cute-glow {
+  animation: gif-glow-pulse 1.1s cubic-bezier(.45,0,.55,1) both;
+}
+.gif-cute-emoji.has-photo {
+  font-size: 0;
+  line-height: 0;
+}
+.gif-cute-photo {
+  width: min(42vw, 180px);
+  height: min(42vw, 180px);
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,.45)) drop-shadow(0 0 22px rgba(249,115,22,.35));
+  animation: gif-med-photo-in 1.2s cubic-bezier(.16,1,.3,1) both;
+}
+.gif-medium.is-v4 .gif-product-aura {
+  opacity: .65;
+}
 @keyframes gif-camera-punch {
   0% { transform: scale(1); filter: brightness(1) saturate(1); }
   18% { transform: scale(calc(1 + .07 * var(--punch, 1))); filter: brightness(1.18) saturate(1.15); }

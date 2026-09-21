@@ -589,7 +589,7 @@
   }
   function cameraPunch(root, intensity, ms) {
     if (!root) return;
-    var stage = root.querySelector('.gif-cine-stage') || root;
+    var stage = root.querySelector('.gif-cine-stage') || root.querySelector('.gif-medium') || root;
     stage.style.setProperty('--punch', String(intensity || 1));
     stage.classList.remove('is-punch');
     void stage.offsetWidth;
@@ -621,6 +621,82 @@
     if (depth === 0) return { size: 0.45, speed: 0.42, alpha: 0.38, blur: 6, trail: false, glow: 4 };
     if (depth === 1) return { size: 0.8, speed: 0.78, alpha: 0.72, blur: 2, trail: true, glow: 10 };
     return { size: 1.25, speed: 1.2, alpha: 1, blur: 0, trail: true, glow: 18 };
+  }
+
+  /** V4 intensity ladder — same system for every path; low tiers get a lighter touch. */
+  function tierFx(tier) {
+    var t = Math.min(10, Math.max(1, Number(tier) || 1));
+    if (t <= 2) return { punch: 0.32, particles: 12, shake: 2, glow: 0.12, ring: 0.35, holdMs: 2600, sfxLead: 0 };
+    if (t <= 4) return { punch: 0.52, particles: 20, shake: 4, glow: 0.16, ring: 0.5, holdMs: 3400, sfxLead: 30 };
+    if (t <= 6) return { punch: 0.85, particles: 32, shake: 8, glow: 0.22, ring: 0.7, holdMs: 4200, sfxLead: 50 };
+    if (t <= 8) return { punch: 1.45, particles: 52, shake: 14, glow: 0.3, ring: 0.9, holdMs: 6200, sfxLead: 60 };
+    if (t === 9) return { punch: 2.05, particles: 72, shake: 20, glow: 0.38, ring: 1, holdMs: 8800, sfxLead: 80 };
+    return { punch: 2.65, particles: 96, shake: 26, glow: 0.45, ring: 1, holdMs: 10000, sfxLead: 80 };
+  }
+
+  /** Lightweight depth-layered particle burst for cute/medium stages (V4). */
+  function miniDepthBurst(color, accent, count, strength) {
+    var n = Math.max(6, count || 12);
+    var s = strength == null ? 1 : strength;
+    var canvas = document.createElement('canvas');
+    canvas.className = 'gif-mini-fx';
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var ctx = canvas.getContext('2d');
+    var parts = [];
+    var W = canvas.width;
+    var H = canvas.height;
+    var cx = W * 0.5;
+    var cy = H * 0.42;
+    for (var i = 0; i < n; i++) {
+      var depth = pickDepth(false);
+      var prof = depthProfile(depth);
+      var a = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.6;
+      var sp = (3.2 + Math.random() * 5.5) * prof.speed * s;
+      parts.push({
+        x: cx + (Math.random() - 0.5) * 40,
+        y: cy + (Math.random() - 0.5) * 30,
+        vx: Math.cos(a) * sp,
+        vy: Math.sin(a) * sp,
+        r: (1.4 + Math.random() * 2.2) * prof.size * (0.7 + s * 0.35),
+        life: 1,
+        decay: 0.012 + Math.random() * 0.01 + (depth === 0 ? 0.004 : 0),
+        color: Math.random() > 0.45 ? color : accent,
+        depth: depth,
+        alpha: prof.alpha,
+        glow: prof.glow
+      });
+    }
+    document.body.appendChild(canvas);
+    var t0 = performance.now();
+    function frame(now) {
+      var el = now - t0;
+      ctx.clearRect(0, 0, W, H);
+      var alive = false;
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i];
+        if (p.life <= 0) continue;
+        alive = true;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.depth === 0 ? 0.045 : p.depth === 2 ? 0.09 : 0.065;
+        p.vx *= 0.985;
+        p.life -= p.decay;
+        if (p.life <= 0) continue;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.life) * p.alpha;
+        ctx.shadowBlur = p.glow;
+        ctx.shadowColor = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, Math.max(0.4, p.r * p.life), 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        ctx.restore();
+      }
+      if (alive && el < 1600) requestAnimationFrame(frame);
+      else canvas.remove();
+    }
+    requestAnimationFrame(frame);
   }
   function flash(color, ms) {
     var f = document.createElement('div');
@@ -659,28 +735,50 @@
     }
   }
 
-  /* ── TIER 1–2 cute ── */
+  /* ── TIER 1–2 cute — V4 light polish (depth particles, micro punch, beat SFX) ── */
   function playCute(opts) {
     ensureCss();
     var st = styleFor(opts.gift_key);
+    var meta = (global.FFM_GIFT_META && global.FFM_GIFT_META[opts.gift_key]) || {};
     var combo = bumpCombo(opts.gift_key || 'gift');
-    var emoji = opts.emoji || '✨';
-    playSfx('ding');
+    var emoji = opts.emoji || meta.emoji || '✨';
+    var tier = opts.tier || meta.tier || 1;
+    var fx = tierFx(tier);
+    var imageUrl = opts.image || meta.image || null;
+    var label = opts.label || meta.label || 'Gift';
+
+    // Beat-synced entry SFX (not fire-and-forget before paint)
+    requestAnimationFrame(function () {
+      setTimeout(function () { playSfx('ding'); }, fx.sfxLead);
+    });
 
     var el = document.createElement('div');
-    el.className = 'gif-cute';
+    el.className = 'gif-cute is-v4';
     el.innerHTML =
-      '<span class="gif-cute-glow" style="background:radial-gradient(circle,' + st.glow + '66,transparent 70%)"></span>' +
-      '<span class="gif-cute-ring" style="border-color:' + st.glow + '"></span>' +
-      '<span class="gif-cute-emoji">' + esc(emoji) + '</span>' +
+      '<span class="gif-cute-glow" style="background:radial-gradient(circle,' + st.glow + '66,transparent 70%);opacity:' + fx.glow + '"></span>' +
+      '<span class="gif-cute-ring" style="border-color:' + st.glow + ';opacity:' + fx.ring + '"></span>' +
+      '<span class="gif-cute-emoji' + (imageUrl ? ' has-photo' : '') + '">' +
+        (imageUrl ? '<img class="gif-cute-photo" src="' + esc(imageUrl) + '" alt="" draggable="false">' : esc(emoji)) +
+      '</span>' +
+      '<span class="gif-cute-v4-stamp">FX V4</span>' +
       (combo > 1 ? '<span class="gif-combo" style="color:' + st.accent + '">x' + combo + '</span>' : '');
     document.body.appendChild(el);
 
+    // Light camera micro-punch + product glow pulse
+    cameraPunch(el, fx.punch, 480);
+    el.classList.add('has-glow');
+    setTimeout(function () {
+      miniDepthBurst(st.glow, st.accent, fx.particles, 0.55 + tier * 0.08);
+      flash(hexA(st.glow, fx.glow * 0.7), 120);
+      if (fx.shake > 0 && tier >= 2) shake(fx.shake, 220);
+      playSfx('chime');
+    }, 220);
+
     giftTrain(emoji, 3 + Math.min(combo, 4), st.glow);
 
-    setTimeout(function () { el.remove(); }, 2200);
+    setTimeout(function () { el.remove(); }, Math.max(2200, fx.holdMs));
     if (opts.from || opts.label) {
-      toast((opts.from ? opts.from + ' · ' : '') + (opts.emoji || '') + ' ' + (opts.label || 'Gift') + (opts.amount ? ' · $' + opts.amount : '') + (combo > 1 ? '  ×' + combo : ''), 2400);
+      toast((opts.from ? opts.from + ' · ' : '') + (emoji) + ' ' + label + (opts.amount ? ' · $' + opts.amount : '') + (combo > 1 ? '  ×' + combo : ''), 2400);
     }
   }
 
@@ -792,16 +890,15 @@
     var t0 = performance.now();
     var raf;
 
-    // Mask liquid to the REAL glass art (PNG alpha) — never paints “behind” the glass
+    // Mask liquid ONLY to dedicated inner cutouts (beer/wine/flute) — never full glass PNG
+    // (full glass alpha includes stem/rim/base and caused liquid leaking outside the bowl)
     if (liquidShell) {
       var innerMask = isChampagne
         ? '/img/gifts/masks/flute-inner.png?v=fx4i'
         : isWine
           ? '/img/gifts/masks/wine-inner.png?v=fx4i'
           : '/img/gifts/masks/beer-inner.png?v=fx4i';
-      // Prefer the glass PNG itself so fill can only exist on glass pixels
-      var maskSrc = glassUrl || innerMask;
-      var maskUrl = 'url("' + maskSrc + '")';
+      var maskUrl = 'url("' + innerMask + '")';
       liquidShell.style.webkitMaskImage = maskUrl;
       liquidShell.style.maskImage = maskUrl;
       liquidShell.style.webkitMaskSize = '100% 100%';
@@ -1041,7 +1138,7 @@
     }, (duration + 1.2) * 1000);
   }
 
-  /* ── Medium stage — photoreal product, restrained premium motion ── */
+  /* ── Medium stage — photoreal product + V4 depth particles / beat SFX / scaled punch ── */
   function playMedium(opts) {
     ensureCss();
     var st = styleFor(opts.gift_key);
@@ -1052,21 +1149,44 @@
     }
     var combo = bumpCombo(opts.gift_key || 'gift');
     var amountCents = opts.amount_cents != null ? opts.amount_cents : (meta.amount || 0);
+    var tier = opts.tier || meta.tier || 2;
+    var fx = tierFx(Math.max(tier, 2));
     var big = wantsFireworks(amountCents);
     var isFlowers = !!meta.flowers || opts.gift_key === 'bouquet';
     var isPour = !!meta.pour;
     var imageUrl = opts.image || meta.image || null;
     var label = opts.label || meta.label || 'Gift';
     var emoji = opts.emoji || meta.emoji || '✨';
+    var isHighFive = opts.gift_key === 'high_five' || meta.scene === 'highfive';
+    var isShake = opts.gift_key === 'protein_shake' || opts.gift_key === 'rose';
 
+    // Beat-synced SFX — fire after paint so impact aligns with motion
     if (isPour) playSfx('pop');
-    else if (opts.gift_key === 'high_five' || (meta.scene === 'highfive')) {
-      // one palm toward camera; slap at impact
-      setTimeout(function () { playSfx('slap'); flash(hexA(st.glow, 0.3), 130); }, 560);
+    else if (isHighFive) {
+      setTimeout(function () {
+        playSfx('slap');
+        flash(hexA(st.glow, 0.28 + fx.glow * 0.4), 140);
+        cameraPunch(root, fx.punch, 420);
+        miniDepthBurst(st.glow, st.accent, Math.round(fx.particles * 0.7), 0.7);
+      }, 560);
     }
-    else if (opts.gift_key === 'protein_shake' || opts.gift_key === 'rose') playSfx('ding');
-    else if (isFlowers) playSfx('chime');
-    else playSfx('ding');
+    else if (isShake) {
+      setTimeout(function () {
+        playSfx('ding');
+        cameraPunch(root, fx.punch, 480);
+        miniDepthBurst(st.glow, st.accent, fx.particles, 0.65);
+      }, 380);
+    }
+    else if (isFlowers) {
+      setTimeout(function () { playSfx('chime'); }, fx.sfxLead);
+    }
+    else {
+      setTimeout(function () {
+        playSfx('ding');
+        cameraPunch(root, fx.punch, 480);
+        miniDepthBurst(st.glow, st.accent, fx.particles, 0.6);
+      }, 320);
+    }
 
     giftTrain(emoji, big ? 4 : 2, st.glow);
 
@@ -1075,23 +1195,31 @@
       : esc(emoji);
 
     var root = document.createElement('div');
-    root.className = 'gif-medium is-premium' + (FEVER > 0.5 ? ' is-fever' : '') + (isFlowers ? ' is-flowers' : '') + (imageUrl ? ' has-photo' : '') + ' scene-' + (meta.scene || st.scene || 'burst');
+    root.className = 'gif-medium is-premium is-v4' + (FEVER > 0.5 ? ' is-fever' : '') + (isFlowers ? ' is-flowers' : '') + (imageUrl ? ' has-photo' : '') + ' scene-' + (meta.scene || st.scene || 'burst');
     root.innerHTML =
-      '<div class="gif-medium-bg" style="background:radial-gradient(ellipse at 50% 42%,' + st.glow + '22,transparent 62%),radial-gradient(ellipse at 50% 50%,#0f172acc,transparent)"></div>' +
-      '<div class="gif-product-aura" style="--aura:' + st.glow + ';--aura2:' + st.accent + '"></div>' +
-      '<div class="gif-medium-ring r1" style="border-color:' + st.glow + '55"></div>' +
+      '<div class="gif-medium-bg" style="background:radial-gradient(ellipse at 50% 42%,' + st.glow + (big ? '33' : '28') + ',transparent 62%),radial-gradient(ellipse at 50% 50%,#0f172acc,transparent)"></div>' +
+      '<div class="gif-product-aura" style="--aura:' + st.glow + ';--aura2:' + st.accent + ';--aura-op:' + fx.glow + '"></div>' +
+      '<div class="gif-medium-ring r1" style="border-color:' + st.glow + (big ? '88' : '66') + '"></div>' +
+      '<div class="gif-medium-ring r2" style="border-color:' + st.accent + '55"></div>' +
       '<div class="gif-medium-emoji' + (imageUrl ? ' has-photo' : '') + '">' + productHtml + '</div>' +
+      '<div class="gif-product-glow-pulse" style="--glow-c:' + st.glow + '"></div>' +
       '<div class="gif-medium-label">' +
         '<div class="gif-from">' + esc(opts.from || '') + '</div>' +
         '<div class="gif-title">' + esc(label) + '</div>' +
         (opts.amount ? '<div class="gif-sub" style="color:' + st.accent + '">$' + esc(money(opts.amount)) + '</div>' : '') +
         (combo > 1 ? '<div class="gif-combo-med" style="color:' + st.glow + '">×' + combo + '</div>' : '') +
+        '<div class="gif-v4-stamp">FX V4 · T' + tier + '</div>' +
       '</div>';
     document.body.appendChild(root);
 
-    if (isFlowers) petalRain(st.glow, st.accent, 8);
-    flash(hexA(st.glow, big ? 0.2 : 0.1), 140);
-    setTimeout(function () { root.remove(); }, isPour ? 4800 : 3200);
+    // Entrance camera punch + product glow (scaled by tier)
+    cameraPunch(root, fx.punch * 0.75, 500);
+    if (isFlowers) petalRain(st.glow, st.accent, big ? 14 : 10);
+    if (!isHighFive && !isShake && !isPour) {
+      setTimeout(function () { miniDepthBurst(st.glow, st.accent, fx.particles, 0.55); }, 280);
+    }
+    flash(hexA(st.glow, big ? 0.22 : 0.08 + fx.glow * 0.5), 160);
+    setTimeout(function () { root.remove(); }, isPour ? 4800 : Math.max(3200, fx.holdMs));
   }
 
   /* ── TIER 5+ cinematic — V4 multi-act, beat-sync, depth particles ── */
@@ -1107,8 +1235,9 @@
     var st = styleFor(opts.gift_key);
     var isIcon = tier >= 10;          // top moment tier
     var isLegend = tier >= 9;         // second-top moment tier
-    var isPower = tier >= 7;          // camera punch threshold
+    var isPower = tier >= 7;          // strong camera punch threshold
     var isSpect = tier >= 7 && !isLegend && !isIcon;
+    var fx = tierFx(tier);
     var scene = st.scene || 'burst';
     var meta = (global.FFM_GIFT_META && global.FFM_GIFT_META[opts.gift_key]) || {};
     var isMystery = !!meta.mystery || opts.gift_key === 'mystery_box';
@@ -1210,17 +1339,19 @@
     setStage('enter');
     if (isLegend || isIcon) setBeatCaption(root, 'ARRIVAL');
     atBeat(beats.glow, function () {
-      cameraPunch(root, isIcon ? 1.7 : 1.45, 560);
+      // T5–6 get a lighter punch than Power/Legend/Icon — same system, scaled
+      cameraPunch(root, isIcon ? 1.7 : isLegend ? 1.45 : isPower ? 1.35 : fx.punch * 1.1, 560);
       if (isLegend || isIcon) setBeatCaption(root, 'CHARGE');
     });
     atBeat(beats.hero, function () {
       setStage('hero');
-      cameraPunch(root, isIcon ? 2.1 : isLegend ? 1.85 : 1.35, 680);
+      cameraPunch(root, isIcon ? 2.1 : isLegend ? 1.85 : isPower ? 1.35 : fx.punch * 1.25, 680);
       if (isLegend || isIcon) setBeatCaption(root, 'HERO');
       if (scene === 'diamond') playSfx('chime');
       else if (scene === 'watch') playSfx('tick');
       else if (scene === 'mystery') playSfx('tick');
       else if (isIcon || isLegend) playSfx('whoosh');
+      else if (!isPower) playSfx('whoosh');
     });
     atBeat(beats.action, function () {
       setStage('action');
@@ -1241,13 +1372,13 @@
     });
     atBeat(beats.climax, function () {
       setStage('climax');
-      var punch = isIcon ? 2.6 : isLegend ? 2.25 : isPower ? 1.55 : 1.2;
+      var punch = isIcon ? 2.6 : isLegend ? 2.25 : isPower ? 1.55 : Math.max(0.75, fx.punch * 1.35);
       cameraPunch(root, punch, 780);
       if (isLegend || isIcon) setBeatCaption(root, isIcon ? 'ICON IMPACT' : 'LEGEND IMPACT');
       if (isIcon) { flash('#ffffff', 380); shake(28, 800); }
       else if (isLegend) { flash(hexA(st.spark, 0.95), 340); shake(22, 720); }
       else if (isPower) { flash(hexA(st.glow, 0.6), 240); shake(14, 520); }
-      else { flash(hexA(st.glow, 0.32), 160); shake(8, 360); }
+      else { flash(hexA(st.glow, 0.22 + fx.glow), 160); shake(Math.max(4, fx.shake), 360); }
 
       // impact SFX ON the climax frame
       if (scene === 'car') { playSfx('engine'); playSfx('boom'); }
