@@ -91,7 +91,7 @@
                     @else
                         <div class="badge text-bg-success mb-2">Free to follow</div>
                     @endif
-                    <h2 class="h6 mb-2">Join {{ $profileUser->displayName() }} on FansFollow</h2>
+                    <h2 class="h6 mb-2">Join {{ $profileUser->displayName() }} on FansFollow.me</h2>
                     <form method="POST" action="{{ route('register.attempt') }}" class="row g-2 align-items-end">
                         @csrf
                         @if (!empty($joinLink))
@@ -128,6 +128,7 @@
                         By joining you confirm you are 18+.
                         Already have an account?
                         <a href="{{ route('login') }}{{ !empty($joinLink) ? '?join_code='.$joinLink->code : '' }}">Login</a>
+                        to test as a fan, creator, or admin.
                     </p>
                 </div>
             @else
@@ -144,13 +145,27 @@
             <div class="col-md-4">
                 <div class="card card-ffm p-3 h-100">
                     <div class="small text-secondary mb-2">{{ $post->type->value }} · {{ $post->published_at?->diffForHumans() }}</div>
-                    <p class="mb-2">{{ \Illuminate\Support\Str::limit($post->body, 120) }}</p>
-                    @if ($post->is_paid)
-                        <span class="badge text-bg-warning">Paid ${{ number_format($post->price / 100, 2) }}</span>
+                    @php $locked = $post->isLockedFor(auth()->user()); @endphp
+                    @if ($locked)
+                        <p class="mb-2 text-secondary">Exclusive for subscribers.</p>
+                        <span class="badge text-bg-warning">Locked ${{ number_format($post->price / 100, 2) }}</span>
+                        @guest
+                            <a class="btn btn-ffm btn-sm mt-2" href="{{ route('login') }}">Login to subscribe</a>
+                        @else
+                            <form method="POST" action="{{ route('subscribe', $profileUser) }}" class="mt-2">
+                                @csrf
+                                <button class="btn btn-ffm btn-sm" type="submit">Subscribe to unlock</button>
+                            </form>
+                        @endguest
                     @else
-                        <span class="badge text-bg-secondary">Free</span>
+                        <p class="mb-2">{{ \Illuminate\Support\Str::limit($post->body, 120) }}</p>
+                        @if ($post->is_paid)
+                            <span class="badge text-bg-warning">Paid ${{ number_format($post->price / 100, 2) }}</span>
+                        @else
+                            <span class="badge text-bg-secondary">Free</span>
+                        @endif
+                        <a class="small mt-2 d-block" href="{{ route('posts.show', $post) }}">View</a>
                     @endif
-                    <a class="small mt-2" href="{{ route('posts.show', $post) }}">View</a>
                 </div>
             </div>
         @endforeach

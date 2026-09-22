@@ -73,6 +73,31 @@ class DatabaseSeeder extends Seeder
             ['code' => 'testcreator', 'is_active' => true, 'follow_on_join' => true]
         );
 
+        $freeCreator = User::updateOrCreate(
+            ['email' => 'freecoach@fansfollow.test'],
+            [
+                'username' => 'freecoach',
+                'password' => $password,
+                'role' => UserRole::Creator,
+                'status' => 'active',
+                'email_verified_at' => now(),
+            ]
+        );
+        $freeCreator->profile()->updateOrCreate(
+            ['user_id' => $freeCreator->id],
+            ['display_name' => 'Free Coach', 'bio' => 'Free training tips. Follow with no paywall.']
+        );
+        $freeCreator->wallet()->updateOrCreate(['user_id' => $freeCreator->id], ['balance' => 0, 'currency' => 'USD']);
+        $freeCreator->creatorSettings()->updateOrCreate(
+            ['user_id' => $freeCreator->id],
+            [
+                'subscription_price' => 0,
+                'currency' => 'USD',
+                'accepts_subscriptions' => false,
+                'is_verified' => true,
+            ]
+        );
+
         $this->call(DemoContentSeeder::class);
     }
 }

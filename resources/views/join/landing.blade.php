@@ -11,7 +11,7 @@
     <div class="col-md-6">
         <div class="card card-ffm p-4 text-center">
             <img src="{{ $creator->profile?->avatar_path ? asset($creator->profile->avatar_path) : '/public/logo-monogram.png' }}" alt="" width="88" height="88" class="rounded-circle mx-auto mb-3">
-            <h1 class="h4 mb-1">Join {{ $creator->displayName() }} on FansFollow</h1>
+            <h1 class="h4 mb-1">Join {{ $creator->displayName() }} on FansFollow.me</h1>
             <p class="text-secondary mb-3">
                 @if ($creator->profile?->bio)
                     {{ \Illuminate\Support\Str::limit($creator->profile->bio, 120) }}

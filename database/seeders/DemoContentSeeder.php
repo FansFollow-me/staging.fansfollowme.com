@@ -26,6 +26,47 @@ class DemoContentSeeder extends Seeder
             ['username' => 'ringcraft', 'name' => 'Ringcraft', 'bio' => 'Boxing footwork & pad work programs.', 'cat' => 'Boxing', 'price' => 1199],
         ];
 
+        $testCreator = User::where('username', 'testcreator')->first();
+        if ($testCreator) {
+            foreach ([
+                ['body' => 'Open gym today. Drop in and train. Free for everyone following.', 'paid' => false, 'price' => 0],
+                ['body' => 'Footwork ladder you can film on your phone. Free drill.', 'paid' => false, 'price' => 0],
+                ['body' => 'Subscriber-only fight camp notes: 12-week peak week.', 'paid' => true, 'price' => 499],
+                ['body' => 'Paid film breakdown: last kumite pad round.', 'paid' => true, 'price' => 999],
+            ] as $post) {
+                Post::firstOrCreate(
+                    ['creator_id' => $testCreator->id, 'body' => $post['body']],
+                    [
+                        'type' => 'text',
+                        'is_paid' => $post['paid'],
+                        'price' => $post['price'],
+                        'status' => 'published',
+                        'published_at' => now()->subHours(rand(2, 48)),
+                    ]
+                );
+            }
+        }
+
+        $freeCreator = User::where('username', 'freecoach')->first();
+        if ($freeCreator) {
+            foreach ([
+                'Mobility flow you can do in 8 minutes. No paywall.',
+                'Bodyweight circuit: 4 rounds, rest as needed.',
+                'How I cue a jab without wrecking the shoulder.',
+            ] as $body) {
+                Post::firstOrCreate(
+                    ['creator_id' => $freeCreator->id, 'body' => $body],
+                    [
+                        'type' => 'text',
+                        'is_paid' => false,
+                        'price' => 0,
+                        'status' => 'published',
+                        'published_at' => now()->subHours(rand(1, 24)),
+                    ]
+                );
+            }
+        }
+
         $creatorIds = [];
 
         foreach ($creators as $c) {

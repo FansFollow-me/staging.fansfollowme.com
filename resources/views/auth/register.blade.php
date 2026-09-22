@@ -5,7 +5,7 @@
 <div class="row justify-content-center">
     <div class="col-md-6 col-lg-5">
         <div class="card card-ffm p-4">
-            <h1 class="h4 mb-3">Join FansFollow</h1>
+            <h1 class="h4 mb-3">Join FansFollow.me</h1>
             @if (session('join_code'))
                 <div class="alert alert-info alert-inline py-2 small">You joined via a creator QR code.</div>
             @endif

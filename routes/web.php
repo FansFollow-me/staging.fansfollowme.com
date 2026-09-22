@@ -17,6 +17,7 @@ use App\Http\Controllers\ReelController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\VaultController;
@@ -25,6 +26,13 @@ use App\Http\Middleware\EnsureUserHasRole;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
+Route::get('sitemaps.xml', [SitemapController::class, 'index']);
+Route::get('sitemap-pages.xml', [SitemapController::class, 'pages'])->name('sitemap.pages');
+Route::get('sitemap-creators.xml', [SitemapController::class, 'creators'])->name('sitemap.creators');
+Route::get('sitemap-fans.xml', [SitemapController::class, 'fans'])->name('sitemap.fans');
+Route::get('robots.txt', [SitemapController::class, 'robots'])->name('robots');
 
 // Branded confirmation after UseBasin marketing forms (contact / casting / business)
 Route::get('form-thanks', function (\Illuminate\Http\Request $request) {

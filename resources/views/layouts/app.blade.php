@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'FansFollow.me') — FansFollow</title>
+    <title>@yield('title', 'FansFollow.me') — FansFollow.me</title>
     <meta name="description" content="@yield('meta_description', 'FansFollow.me is the global fitness and martial arts creator platform for subscriptions, coaching, direct fan access, and live creator discovery.')">
     <link rel="icon" href="/public/logo-monogram.png">
     <link rel="manifest" href="/manifest.json">
