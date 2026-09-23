@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm1" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm2" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -1201,7 +1201,7 @@
       top: 0;
       z-index: 40;
       background: transparent;
-      border-bottom: 1px solid transparent;
+      border-bottom: 0;
       box-shadow: none;
       transition: background .3s, border-color .3s, box-shadow .3s;
     }

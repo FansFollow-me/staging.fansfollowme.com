@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm1" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm2" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -45,7 +45,7 @@
 
   .public-shell-topbar {
     position: sticky; top: 0; z-index: 40;
-    background: transparent; border-bottom: 1px solid transparent; box-shadow: none;
+    background: transparent; border-bottom: 0; box-shadow: none;
     transition: background .3s, border-color .3s, box-shadow .3s;
   }
   .public-shell-topbar.scrolled {

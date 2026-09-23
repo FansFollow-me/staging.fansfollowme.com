@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm1" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm2" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -322,7 +322,7 @@
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
-    .public-shell-topbar { position: sticky; top: 0; z-index: 40; background: transparent; border-bottom: 1px solid transparent; box-shadow: none; transition: background .3s, border-color .3s, box-shadow .3s; }
+    .public-shell-topbar { position: sticky; top: 0; z-index: 40; background: transparent; border-bottom: 0; box-shadow: none; transition: background .3s, border-color .3s, box-shadow .3s; }
     .public-shell-topbar.scrolled { background: rgba(11,15,26,0.82); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,.06); box-shadow: 0 4px 16px rgba(0,0,0,.15); }
     .public-shell-topbar .inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .public-shell-brand img { height: 30px; width: auto; }

@@ -15,14 +15,13 @@
   }
   .section-dark h2,
   .section-photo h2 {
-    margin-bottom: .35rem !important;
+    margin-bottom: 0.35rem !important;
   }
   .section-sub,
   .form-section-sub {
-    margin-bottom: .9rem !important;
+    margin-bottom: 0.9rem !important;
   }
 
-  /* Stacked card grids */
   .content-grid {
     gap: 0.85rem !important;
   }
@@ -47,7 +46,6 @@
     padding: 1.05rem !important;
   }
 
-  /* Side panels stacked under card grids */
   .why-fans-card,
   .why-creators-card {
     position: static !important;
@@ -64,7 +62,6 @@
     margin-bottom: 0.7rem !important;
   }
 
-  /* Casting / founder blocks */
   .film-tags {
     margin-bottom: 0.85rem !important;
   }
@@ -82,7 +79,6 @@
     padding: 1.15rem 0 !important;
   }
 
-  /* How-it-works → next section */
   .steps-flow {
     margin-bottom: 0.75rem !important;
   }
@@ -90,7 +86,6 @@
     margin-bottom: 1rem !important;
   }
 
-  /* Explore page: stop content hugging the left edge */
   .explore-shell {
     padding: 1.15rem 1rem 1.5rem !important;
   }
@@ -105,5 +100,52 @@
   }
   .explore-sidebar {
     margin-top: 0.85rem !important;
+  }
+}
+
+/* ── Header chrome: tighter bar, bigger FFM mark + hamburger ── */
+.public-shell-topbar {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+.public-shell-topbar.scrolled {
+  border-bottom: 0 !important;
+}
+.public-shell-topbar .inner {
+  min-height: 56px !important;
+  padding-top: 0.3rem !important;
+  padding-bottom: 0.3rem !important;
+  gap: 0.5rem !important;
+}
+.public-shell-brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 0 !important;
+}
+.public-shell-brand img {
+  height: 44px !important;
+  width: auto !important;
+}
+.public-shell-hamburger {
+  display: flex !important;
+  min-width: 52px !important;
+  min-height: 52px !important;
+  padding: 0.55rem !important;
+  margin: 0 !important;
+}
+.public-shell-hamburger svg,
+.public-shell-hamburger i {
+  width: 32px !important;
+  height: 32px !important;
+}
+@media (min-width: 992px) {
+  .public-shell-hamburger {
+    display: none !important;
+  }
+  .public-shell-topbar .inner {
+    min-height: 64px !important;
+  }
+  .public-shell-brand img {
+    height: 48px !important;
   }
 }
