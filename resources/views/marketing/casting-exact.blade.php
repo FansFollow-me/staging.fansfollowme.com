@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (casting)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (casting)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -25,6 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm1" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -365,8 +366,13 @@
 
   @@media (max-width: 768px) { .founder-section, .waitlist-grid { grid-template-columns: 1fr; } .talent-grid { grid-template-columns: repeat(2, 1fr); } .film-tags { grid-template-columns: 1fr; } .film-tag { white-space: normal; } .founder-follow { margin-left: 0; margin-right: 0; padding-left: 1rem; padding-right: 1rem; } }
   @@media (max-width: 767.98px) {
-    .casting-hero { min-height: auto; padding: calc(72px + 1.5rem) 0 2rem; }
-    .section-dark { padding: 1.5rem 0; }
+    .casting-hero { min-height: auto; padding: calc(72px + 1.5rem) 0 1.25rem; }
+    .section-dark { padding: 1rem 0; }
+    .film-tags { margin-bottom: .85rem; gap: .55rem; }
+    .quote-block { margin-bottom: .75rem; }
+    .founder-text p { margin-bottom: .85rem; }
+    .founder-follow { margin-top: .85rem; padding-top: .85rem; }
+    .social-strip { padding: 1.1rem 0; }
   }
 </style>
   <style>

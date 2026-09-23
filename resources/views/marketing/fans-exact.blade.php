@@ -1,4 +1,4 @@
-﻿{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (fans)
+{{-- PIXEL-EXACT port from signed-off https://fansfollowme.com (fans)
      Do NOT restyle. Auth forms/routes only. --}}
 <!doctype html>
 <html lang="en">
@@ -25,6 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm1" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -970,7 +971,13 @@
   .section-photo h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #fff; margin-bottom: .5rem; }
   .section-photo p { color: #d1d5db; font-size: 1rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
 
-  @@media (max-width: 768px) { .fans-grid, .steps-flow { grid-template-columns: 1fr; } .content-grid { grid-template-columns: 1fr; } .steps-flow::before { display: none; } }
+  @@media (max-width: 768px) {
+    .fans-grid, .steps-flow { grid-template-columns: 1fr; }
+    .content-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .why-fans-card { position: static; padding: 1.25rem 1.15rem; margin-top: .25rem; }
+    .fans-grid { gap: .75rem; }
+    .steps-flow::before { display: none; }
+  }
   @@media (max-width: 767.98px) {
     .fans-hero { padding-top: calc(72px + 1.5rem); min-height: auto; }
     .fans-hero .hero-text { padding-top: 1.5rem; }
