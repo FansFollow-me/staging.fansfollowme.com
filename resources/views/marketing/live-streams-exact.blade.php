@@ -293,7 +293,7 @@
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
   }
   .page-hero p.hero-sub {
-    max-width: min(32rem, 100%);
+    max-width: min(34rem, 100%); text-wrap: balance;
     text-wrap: balance;
   }
   @@media (max-width: 767.98px) {
