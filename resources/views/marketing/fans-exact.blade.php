@@ -922,7 +922,9 @@
   .fans-glow--orange { width: 420px; height: 420px; top: -120px; right: -80px; background: radial-gradient(circle, rgba(249,115,22,.22), transparent 70%); }
   .fans-glow--purple { width: 380px; height: 380px; bottom: -100px; left: -60px; background: radial-gradient(circle, rgba(168,85,247,.20), transparent 70%); }
   .fans-glow--pink { width: 300px; height: 300px; top: 40%; left: 50%; transform: translateX(-50%); background: radial-gradient(circle, rgba(236,72,153,.10), transparent 70%); }
+  #how-it-works { padding-top: 2.875rem !important; padding-bottom: 2.875rem !important; }
   #how-it-works .container { position: relative; z-index: 1; }
+  #how-it-works .steps-flow { margin-bottom: 0 !important; }
   .section-sub { text-align: center; color: #d1d5db; max-width: 600px; margin: 0 auto 2.5rem; font-size: 1rem; line-height: 1.7; }
   .section-badge {
     font-size: .75rem; font-weight: 700; color: #fb923c; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .75rem;
