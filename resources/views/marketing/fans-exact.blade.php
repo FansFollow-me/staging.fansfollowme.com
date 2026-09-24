@@ -614,13 +614,13 @@
     .contact-section { padding: 2rem 0 !important; }
   }
 
-  /* Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      Trix toolbar &#8212; complete dark-theme rebuild
      Overrides core.min.css light-theme defaults.
      Icons: core.min.css provides bold/link/code/number-list;
             remaining 10 are defined here.
      All use black SVGs + filter:invert(1) for the dark theme.
-     Ã¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•ÂÃ¢•Â */
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
   /* ── Mobile menu: fix height + remove overlay that blocks taps ── */
   @@media (max-width: 991.98px) {
@@ -705,14 +705,14 @@
   }
 
   /* ── 5b. Responsive button widths ── */
-  /* Desktop (Ã¢â€°Â¥1025px): all 14 fit without scroll */
+  /* Desktop (â"°¥1025px): all 14 fit without scroll */
   trix-toolbar .trix-button--icon {
     width: 30px !important;
   }
   trix-toolbar .trix-button {
     padding: 0 5px !important;
   }
-  /* Mobile/tablet (Ã¢â€°Â¤1024px): larger buttons, scroll to reach all */
+  /* Mobile/tablet (â"°¤1024px): larger buttons, scroll to reach all */
   @@media (max-width: 1024.98px) {
     trix-toolbar .trix-button--icon {
       width: 36px !important;
@@ -734,7 +734,7 @@
     color: rgba(148,163,184,.25) !important;
   }
 
-  /* ── 6. Icon base: invert black SVGs Ã¢â€ ’ white ── */
+  /* ── 6. Icon base: invert black SVGs â" ' white ── */
   trix-toolbar .trix-button--icon::before {
     filter: invert(1) !important;
     opacity: .85 !important;

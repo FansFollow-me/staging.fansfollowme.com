@@ -580,8 +580,8 @@
         <div class="token-item"><div class="token-icon" style="background:linear-gradient(135deg,#10b981,#059669);"><i data-lucide="eye"></i></div><div><h5>Transparent</h5><p>Full documentation and real-time tracking.</p></div></div>
       </div>
       <div class="token-links">
-        <!-- FFM-TOKEN-LINK-RESTORE: <a href="https://ffmtoken.com/" target="_blank" rel="noopener">Visit FFM Token â†’</a> -->
-        <!-- FFM-TOKEN-LINK-RESTORE: <a href="https://ffmtoken.com/" target="_blank" rel="noopener">View Documentation â†’</a> -->
+        <!-- FFM-TOKEN-LINK-RESTORE: <a href="https://ffmtoken.com/" target="_blank" rel="noopener">Visit FFM Token →</a> -->
+        <!-- FFM-TOKEN-LINK-RESTORE: <a href="https://ffmtoken.com/" target="_blank" rel="noopener">View Documentation →</a> -->
       </div>
     </div>
   </div>
@@ -675,7 +675,7 @@
       </div>
       <div class="footer-bottomline"></div>
       <div class="footer-bottom">
-        <div class="footer-legal"><span style="font-size: .85rem; color: #94a3b8;">Â© 2026 FansFollow.me. All rights reserved.</span>
+        <div class="footer-legal"><span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
           <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">â‚¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span></div>
         <div class="footer-policies"><a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&#8226;</span>

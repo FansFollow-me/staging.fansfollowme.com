@@ -614,13 +614,13 @@
     .contact-section { padding: 2rem 0 !important; }
   }
 
-  /* ÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚Â
+  /* Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚
      Trix toolbar &#8212; complete dark-theme rebuild
      Overrides core.min.css light-theme defaults.
      Icons: core.min.css provides bold/link/code/number-list;
             remaining 10 are defined here.
      All use black SVGs + filter:invert(1) for the dark theme.
-     ÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚ÂÃƒÂ¢â€¢Ã‚Â */
+     Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚Ãƒ¢•Ã‚ */
 
   /* â”€â”€ Mobile menu: fix height + remove overlay that blocks taps â”€â”€ */
   @@media (max-width: 991.98px) {
@@ -705,14 +705,14 @@
   }
 
   /* â”€â”€ 5b. Responsive button widths â”€â”€ */
-  /* Desktop (ÃƒÂ¢Ã¢â‚¬Â°Ã‚Â¥1025px): all 14 fit without scroll */
+  /* Desktop (Ãƒ¢"°Ã‚¥1025px): all 14 fit without scroll */
   trix-toolbar .trix-button--icon {
     width: 30px !important;
   }
   trix-toolbar .trix-button {
     padding: 0 5px !important;
   }
-  /* Mobile/tablet (ÃƒÂ¢Ã¢â‚¬Â°Ã‚Â¤1024px): larger buttons, scroll to reach all */
+  /* Mobile/tablet (Ãƒ¢"°Ã‚¤1024px): larger buttons, scroll to reach all */
   @@media (max-width: 1024.98px) {
     trix-toolbar .trix-button--icon {
       width: 36px !important;
@@ -734,7 +734,7 @@
     color: rgba(148,163,184,.25) !important;
   }
 
-  /* â”€â”€ 6. Icon base: invert black SVGs ÃƒÂ¢Ã¢â‚¬Â â€™ white â”€â”€ */
+  /* â”€â”€ 6. Icon base: invert black SVGs Ãƒ¢" ' white â”€â”€ */
   trix-toolbar .trix-button--icon::before {
     filter: invert(1) !important;
     opacity: .85 !important;
@@ -1803,7 +1803,7 @@
   <main class="public-shell-content">
     <section class="celeb-hero">
   <div class="container">
-    <div class="celeb-badge">â˜… CELEBRITY CONNECTIONS</div>
+    <div class="celeb-badge">★ CELEBRITY CONNECTIONS</div>
     <h1><span class="white">Chat Personally<br>With<br>Your </span><span class="gold">Favorite Champions</span></h1>
     <p>Connect directly with UFC fighters, Olympic champions, bodybuilding legends, and fitness icons. Build real friendships through personal chats, phone calls, and video hangouts.</p>
     <div class="hero-btns">
@@ -1846,7 +1846,7 @@
 
 <section class="section-dark" style="border-top: 1px solid rgba(255,255,255,.06);">
   <div class="container">
-    <div style="text-align:center;margin-bottom:1rem;"><div class="badge-glow">â˜… FFM FOUNDER'S ACCOLADES</div></div>
+    <div style="text-align:center;margin-bottom:1rem;"><div class="badge-glow">★ FFM FOUNDER'S ACCOLADES</div></div>
     <h2>David Kurzhal - The Viking Samurai</h2>
     <p class="section-sub">From martial arts champion to Hollywood action star &#8212; the expertise behind FFM.</p>
     <div class="founder-grid">
@@ -1862,7 +1862,7 @@
 
 <section class="section-dark" style="border-top: 1px solid rgba(255,255,255,.06);">
   <div class="container">
-    <div style="text-align:center;margin-bottom:1rem;"><div class="badge-glow">â˜… NOW SHOWING: FFM FOUNDER'S FEATURED FILMS</div></div>
+    <div style="text-align:center;margin-bottom:1rem;"><div class="badge-glow">★ NOW SHOWING: FFM FOUNDER'S FEATURED FILMS</div></div>
     <h2>From Martial Arts Champion to Hollywood Action Star</h2>
     <p class="section-sub" style="max-width:700px;">David Kurzhal's complete filmography - from released blockbusters to upcoming projects. Now we're creating opportunities for FFM creators to star in martial arts films.</p>
     <div class="film-tabs">
@@ -1939,7 +1939,7 @@ function showTab(tab) {
       </div>
       <div class="footer-bottomline"></div>
       <div class="footer-bottom">
-        <div class="footer-legal"><span style="font-size: .85rem; color: #94a3b8;">Â© 2026 FansFollow.me. All rights reserved.</span>
+        <div class="footer-legal"><span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
           <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">â‚¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span></div>
         <div class="footer-policies"><a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&#8226;</span>

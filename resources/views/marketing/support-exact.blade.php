@@ -117,8 +117,8 @@
     .public-shell-footer .footer-bottom { align-items: center; text-align: center; }
   }
 
-  /* Ã¢â€â‚¬Ã¢â€â‚¬ Support page styles Ã¢â€â‚¬Ã¢â€â‚¬ */
-  /* Support hero â€” full-viewport band, same scale as Live Streams / marketing heroes */
+  /* â”€â”€ Support page styles â”€â”€ */
+  /* Support hero — full-viewport band, same scale as Live Streams / marketing heroes */
   .support-hero {
     position: relative;
     overflow: hidden;
@@ -148,7 +148,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    /* Martin Desktop support.png â€” lamp/desk/headset hero */
+    /* Martin Desktop support.png — lamp/desk/headset hero */
     background-image: url('{{ asset('img/marketing/support-hero.jpg') }}?v=suphero1');
     background-position: center center;
     background-size: cover;
@@ -440,7 +440,7 @@
       </div>
       <div class="footer-bottomline"></div>
       <div class="footer-bottom">
-        <div class="footer-legal"><span style="font-size: .85rem; color: #94a3b8;">Â© 2026 FansFollow.me. All rights reserved.</span>
+        <div class="footer-legal"><span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
           <span style="font-size: .85rem; color: #94a3b8;"><span style="color: #f97316; font-weight: 800;">&#8383;</span> <strong style="color: #fff;">BTC/ETH/USDT/SOL Accepted</strong></span></div>
         <div class="footer-policies"><a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&bull;</span>

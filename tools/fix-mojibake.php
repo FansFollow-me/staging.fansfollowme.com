@@ -13,9 +13,9 @@ $pairs = [
     ['c3b0c5b8c5bdc2ac', '&#127912;'],
     // ðŸ”´ red circle
     ['c3b0c5b8e2809dc2ac', '&#128308;'],
-    // ðŸ’¼ briefcase
+    // ðŸ'¼ briefcase
     ['c3b0c5b8e2809ec2ac', '&#128188;'],
-    // ðŸ’¬ speech
+    // ðŸ'¬ speech
     ['c3b0c5b8e2809cc2ac', '&#128172;'],
     // ðŸ‘¤ person
     ['c3b0c5b8e28098c2ac', '&#128100;'],
@@ -23,19 +23,19 @@ $pairs = [
     ['c3a2e2809cc2be', '&#9662;'],
     // â–¾
     ['c3a2e2809bc2be', '&#9662;'],
-    // â€™ apostrophe
+    // ' apostrophe
     ['c3a2e28099', "'"],
-    // â€œ open quote
+    // “ open quote
     ['c3a2e2809c', '&#8220;'],
-    // â€ close quote
+    // " close quote
     ['c3a2e2809d', '&#8221;'],
-    // â€” em dash
+    // — em dash
     ['c3a2e28094', '&#8212;'],
-    // â€“ en dash
+    // – en dash
     ['c3a2e28093', '&#8211;'],
-    // â€¢ bullet
+    // • bullet
     ['c3a2e280a2', '&#8226;'],
-    // â€¦ ellipsis
+    // "¦ ellipsis
     ['c3a2e280a6', '&#8230;'],
 ];
 

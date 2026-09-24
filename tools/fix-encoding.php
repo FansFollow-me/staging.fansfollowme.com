@@ -34,14 +34,14 @@ $map = [
 $strMap = [
     'ðŸŽ¬' => '🎬',
     'ðŸ”´' => '🔴',
-    'ðŸ’¼' => '💼',
-    'ðŸ’¬' => '💬',
+    'ðŸ'¼' => '💼',
+    'ðŸ'¬' => '💬',
     'ðŸ‘¤' => '👤',
     'â†¾' => '▾',
     'â–¾' => '▾',
-    'â€™' => "'",
-    'â€œ' => '"',
-    'â€' => '—',
+    ''' => "'",
+    '“' => '"',
+    '"' => '—',
     'DYŸ¬' => '🎬',
 ];
 
@@ -57,7 +57,7 @@ foreach ($files as $file) {
     }
 
     // Normalize "More" summary arrow if present as literal UTF-8 trash
-    $raw = preg_replace('/More\s*Â?â[^\s<]{0,6}/u', 'More ▾', $raw);
+    $raw = preg_replace('/More\s*?â[^\s<]{0,6}/u', 'More ▾', $raw);
     $raw = preg_replace('/summary>More[^<]*/u', 'summary>More', $raw);
 
     if ($raw !== $orig) {

@@ -233,7 +233,7 @@
   }
 </style>
   <style>
-  /* Live Streams hero â€” tall/full-height band; copy centered vertically + horizontally */
+  /* Live Streams hero — tall/full-height band; copy centered vertically + horizontally */
   .page-hero {
     position: relative;
     overflow: hidden;
@@ -247,7 +247,7 @@
     justify-content: center;
     text-align: center;
     background: #0b0f1a;
-    /* Only top pad for sticky bar â€” vertical centering is flex, not padding */
+    /* Only top pad for sticky bar — vertical centering is flex, not padding */
     padding: 72px 1.25rem 2rem;
   }
   .page-hero::before {
@@ -286,17 +286,21 @@
   .page-hero p {
     font-size: 1.05rem;
     color: #e2e8f0;
-    max-width: 40rem;
+    max-width: min(28rem, 100%);
     margin: 0 auto;
-    line-height: 1.7;
+    line-height: 1.55;
     font-weight: 500;
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  }
+  .page-hero p.hero-sub {
+    max-width: min(32rem, 100%);
+    text-wrap: balance;
   }
   @@media (max-width: 767.98px) {
     .page-hero { min-height: min(100svh, 640px); height: clamp(420px, 72svh, 640px); }
   }
   .page-section { padding: .75rem 0 1rem; }
-  /* Feature cards tightened ~25% â€” still 4 columns; more cards visible without scroll */
+  /* Feature cards tightened ~25% — still 4 columns; more cards visible without scroll */
   .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .45rem; }
   .card { background: #151b2c; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,.14); padding: .75rem; height: 100%; transition: all .3s ease; }
   .card:hover { border-color: rgba(249,115,22,.4); transform: scale(1.02); box-shadow: 0 18px 40px -12px rgba(249,115,22,.15); }
@@ -495,7 +499,7 @@
     <section class="page-hero">
   <div class="container">
     <h1>Live Streams</h1>
-    <p>Go live to your audience from any device in stunning 4K quality on your very own channel.<br>Stream in real time, bring fans into the moment, and turn live sessions into a direct revenue channel.</p>
+    <p class="hero-sub">Stream live in 4K on your own channel.<br>Bring fans into the moment and earn as you go.</p>
   </div>
 </section>
 <section class="page-section">
@@ -555,7 +559,7 @@
       </div>
       <div class="footer-bottomline"></div>
       <div class="footer-bottom">
-        <div class="footer-legal"><span style="font-size: .85rem; color: #94a3b8;">Â© 2026 FansFollow.me. All rights reserved.</span>
+        <div class="footer-legal"><span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
           <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">â‚¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span></div>
         <div class="footer-policies"><a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&#8226;</span>
