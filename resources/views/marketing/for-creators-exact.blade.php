@@ -932,7 +932,10 @@
     margin-bottom: 1rem;
   }
   .creator-hero h1 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; color: #fff; margin-bottom: .75rem; max-width: 600px; }
-  .creator-hero .hero-sub { font-size: 1.05rem; color: #e2e8f0; max-width: 520px; margin: 0 0 2rem; line-height: 1.7; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+  /* desktop-only line breaks in hero subtext */
+  .hidden { display: none; }
+  @@media (min-width: 768px) { .hidden.md-inline, .md\:inline { display: inline !important; } }
+  .creator-hero .hero-sub { font-size: 1.05rem; color: #e2e8f0; max-width: 36rem; margin: 0 0 2rem; line-height: 1.7; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
 
   /* Shared section styles (matching For Fans) */
   .section-dark { padding: 2rem 0; background: linear-gradient(to right bottom, #111827, #1f2937, #111827); }
@@ -1593,7 +1596,9 @@
   <div class="container">
     <div class="creator-badge">FITNESS, NUTRITION, BODYBUILDING, MARTIAL ARTS, MARTIAL ART ACTORS & COMBAT SPORTS</div>
     <h1>Ready to grow your fitness brand?</h1>
-    <p class="hero-sub">Join fitness, martial arts and combat sports creators building loyal fan communities and new revenue streams on FansFollow.me.</p>
+    <p class="hero-sub">Join fitness, martial arts and combat sports creators<br class="hidden md:inline">
+building loyal fan communities and new revenue<br class="hidden md:inline">
+streams on FansFollow.me.</p>
     <a class='cta-btn' href='{{ route('register') }}?role=creator'>Create Your Profile Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
 </section>
