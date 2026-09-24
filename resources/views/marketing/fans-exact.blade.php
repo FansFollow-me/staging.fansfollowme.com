@@ -898,7 +898,7 @@
     display: flex;
     align-items: center;
   }
-  .fans-hero .container { width: fit-content; margin: 0 auto; }
+  .fans-hero .container { width: 100%; margin: 0 auto; max-width: 1280px; }
   .fans-hero::after {
     content: '';
     position: absolute;
@@ -981,6 +981,8 @@
   @@media (max-width: 767.98px) {
     .fans-hero { padding-top: calc(72px + 1.5rem); min-height: auto; }
     .fans-hero .hero-text { padding-top: 1.5rem; }
+    .fans-hero h1, .fans-hero p { text-align: center !important; }
+    .fans-hero .hero-text { margin-left: auto; margin-right: auto; }
     .section-dark { padding: 0.75rem 0; }
     .section-photo { padding: 1.5rem 0; }
   }
