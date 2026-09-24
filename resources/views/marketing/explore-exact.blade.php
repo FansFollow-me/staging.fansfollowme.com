@@ -118,7 +118,7 @@
     .public-shell-footer .footer-bottom { align-items: center; text-align: center; }
   }
 
-  /* â”€â”€ Explore page styles â”€â”€ */
+  /* -- Explore page styles -- */
   .explore-shell { padding: 2rem 1rem 3rem; background: transparent; }
   .explore-shell .explore-grid { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; max-width: 1280px; margin: 0 auto; }
   @@media (min-width: 640px) { .explore-shell { padding-left: 1.5rem; padding-right: 1.5rem; } }
@@ -150,7 +150,7 @@
   .explore-post-time { color: #64748b; font-size: .78rem; margin-left: auto; white-space: nowrap; }
   .explore-post-type { color: #94a3b8; font-size: .75rem; margin-left: .5rem; }
 
-  /* â”€â”€ Locked post preview &#8212; FIXED aspect ratio â”€â”€ */
+  /* -- Locked post preview &#8212; FIXED aspect ratio -- */
   .explore-post-locked {
     position: relative;
     border-radius: 12px;

@@ -560,7 +560,7 @@
       <div class="footer-bottomline"></div>
       <div class="footer-bottom">
         <div class="footer-legal"><span style="font-size: .85rem; color: #94a3b8;">© 2026 FansFollow.me. All rights reserved.</span>
-          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">â‚¿</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span></div>
+          <span style="font-size: .85rem; color: #94a3b8;"><span class="btc-mark">B</span> <strong>BTC/ETH/USDT/SOL Accepted</strong></span></div>
         <div class="footer-policies"><a href='{{ route('page.privacy') }}' style='font-size: .85rem; color: #94a3b8;'>Privacy Policy</a>
           <span style="color: #4b5563;">&#8226;</span>
           <a href='{{ route('page.terms') }}' style='font-size: .85rem; color: #94a3b8;'>Terms of Service</a>

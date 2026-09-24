@@ -117,7 +117,7 @@
     .public-shell-footer .footer-bottom { align-items: center; text-align: center; }
   }
 
-  /* â”€â”€ Support page styles â”€â”€ */
+  /* -- Support page styles -- */
   /* Support hero — full-viewport band, same scale as Live Streams / marketing heroes */
   .support-hero {
     position: relative;

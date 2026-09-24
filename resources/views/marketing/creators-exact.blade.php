@@ -117,7 +117,7 @@
     .public-shell-footer .footer-bottom { align-items: center; text-align: center; }
   }
 
-  /* â”€â”€ Creators page styles â”€â”€ */
+  /* -- Creators page styles -- */
   .creators-shell { padding: 2rem 0 3rem; }
   .page-h1 { font-size: 1.75rem; font-weight: 800; color: #fff; margin: 0 0 .5rem; }
   .page-sub { color: var(--ffm-muted); font-size: .9rem; margin: 0 0 1.5rem; }

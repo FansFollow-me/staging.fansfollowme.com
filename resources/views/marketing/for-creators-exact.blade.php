@@ -616,13 +616,13 @@
     .why-creators-card { position: static !important; margin-top: 0 !important; }
   }
 
-  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  /* ==========================================================
      Trix toolbar &#8212; complete dark-theme rebuild
      Overrides core.min.css light-theme defaults.
      Icons: core.min.css provides bold/link/code/number-list;
             remaining 10 are defined here.
      All use black SVGs + filter:invert(1) for the dark theme.
-     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+     ========================================================== */
 
   /* ── Mobile menu: fix height + remove overlay that blocks taps ── */
   @@media (max-width: 991.98px) {
@@ -707,14 +707,14 @@
   }
 
   /* ── 5b. Responsive button widths ── */
-  /* Desktop (â"°¥1025px): all 14 fit without scroll */
+  /* Desktop (-"°¥1025px): all 14 fit without scroll */
   trix-toolbar .trix-button--icon {
     width: 30px !important;
   }
   trix-toolbar .trix-button {
     padding: 0 5px !important;
   }
-  /* Mobile/tablet (â"°¤1024px): larger buttons, scroll to reach all */
+  /* Mobile/tablet (-"°¤1024px): larger buttons, scroll to reach all */
   @@media (max-width: 1024.98px) {
     trix-toolbar .trix-button--icon {
       width: 36px !important;
@@ -736,7 +736,7 @@
     color: rgba(148,163,184,.25) !important;
   }
 
-  /* ── 6. Icon base: invert black SVGs â" ' white ── */
+  /* ── 6. Icon base: invert black SVGs -" ' white ── */
   trix-toolbar .trix-button--icon::before {
     filter: invert(1) !important;
     opacity: .85 !important;

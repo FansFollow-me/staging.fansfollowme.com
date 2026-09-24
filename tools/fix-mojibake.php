@@ -9,19 +9,19 @@ $files = glob($dir.'/*-exact.blade.php');
 
 // [hex of broken UTF-8-as-Latin1 bytes] => HTML entity
 $pairs = [
-    // ðŸŽ¬  (C3 B0 C5 B8 C5 BD C2 AC) clapper
+    // eŽ¬  (C3 B0 C5 B8 C5 BD C2 AC) clapper
     ['c3b0c5b8c5bdc2ac', '&#127912;'],
-    // ðŸ”´ red circle
+    // e”´ red circle
     ['c3b0c5b8e2809dc2ac', '&#128308;'],
-    // ðŸ'¼ briefcase
+    // e'¼ briefcase
     ['c3b0c5b8e2809ec2ac', '&#128188;'],
-    // ðŸ'¬ speech
+    // e'¬ speech
     ['c3b0c5b8e2809cc2ac', '&#128172;'],
-    // ðŸ‘¤ person
+    // e‘¤ person
     ['c3b0c5b8e28098c2ac', '&#128100;'],
-    // â†¾ down triangle (c3 a2 e2 80 9c c2 be)
+    // v down triangle (c3 a2 e2 80 9c c2 be)
     ['c3a2e2809cc2be', '&#9662;'],
-    // â–¾
+    // v
     ['c3a2e2809bc2be', '&#9662;'],
     // ' apostrophe
     ['c3a2e28099', "'"],
@@ -54,10 +54,10 @@ foreach ($files as $file) {
         }
     }
 
-    // Catch-all: UTF-8 sequences that decode to U+00F0.. start of emoji mojibake "ðŸ..."
-    // Pattern in raw bytes: C3 B0 C5 B8 ... (ð + Ÿ + rest)
+    // Catch-all: UTF-8 sequences that decode to U+00F0.. start of emoji mojibake "e..."
+    // Pattern in raw bytes: C3 B0 C5 B8 ... ( + Ÿ + rest)
     $c = preg_replace('/\xc3\xb0\xc5\xb8[\x80-\xbf]{1,4}/', '&#127912;', $c);
-    // Pattern: C3 A2 E2 80 ... (â + € + ...) punctuation mojibake
+    // Pattern: C3 A2 E2 80 ... (- + € + ...) punctuation mojibake
     $c = preg_replace('/\xc3\xa2\xe2\x80[\x80-\xbf]{1,3}/', '-', $c);
 
     if ($c !== $orig) {
