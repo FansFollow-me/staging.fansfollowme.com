@@ -241,7 +241,7 @@
   .biz-hero > .container { position: relative; z-index: 2; }
   .biz-badge { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem 1rem; border-radius: 999px; background: linear-gradient(135deg, rgba(245,158,11,.2), rgba(249,115,22,.2)); border: 1px solid rgba(245,158,11,.3); color: #fbbf24; font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1.5rem; }
   .biz-hero h1 { font-size: clamp(2.25rem, 4vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: .75rem; max-width: 650px; margin-left: auto; margin-right: auto; }
-  .biz-hero p { font-size: 1.125rem; color: #e2e8f0; max-width: 900px; margin: 0 auto 2rem; line-height: 1.7; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+  .biz-hero p { font-size: 1.05rem; color: #e2e8f0; max-width: min(42rem, 100%); margin: 0 auto 2rem; line-height: 1.65; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.5); text-wrap: balance; }
   .hero-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
 
   .cta-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 2.25rem; border-radius: 12px; background: var(--home-gradient); color: #fff; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: all .3s; box-shadow: 0 14px 28px rgba(249,115,22,.24); }
@@ -519,7 +519,7 @@
   <div class="container">
     <div class="biz-badge">&#128188; BUSINESS PARTNERSHIPS</div>
     <h1>Grow with the fitness creator economy</h1>
-    <p>Partner with FansFollow.me to reach high-intent audiences across fitness, combat sports and film through a<br>premium creator platform built for long-term value.</p>
+    <p>Reach high-intent audiences in fitness, combat sports and film.<br>Partner with a premium creator platform built for long-term value.</p>
     <div class="hero-btns">
       <a class="cta-btn" href="#contact">Schedule Partnership Call <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg></a>
       <a class="cta-btn-outline" href="#models">Explore Models <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></a>
