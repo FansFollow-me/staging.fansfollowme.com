@@ -1,4 +1,320 @@
-/* FFM mobile vertical rhythm — keep section gaps tight and consistent sitewide */
+/* FFM sitewide layout polish — spacing, header, footer, hero alignment */
+
+/* ── 1) Page gutters (wider left/right margins) ── */
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  padding-left: 1.35rem !important;
+  padding-right: 1.35rem !important;
+}
+@media (min-width: 640px) {
+  .container,
+  .container-fluid,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    padding-left: 1.85rem !important;
+    padding-right: 1.85rem !important;
+  }
+}
+@media (min-width: 1024px) {
+  .container,
+  .container-fluid,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    padding-left: 2.75rem !important;
+    padding-right: 2.75rem !important;
+  }
+}
+.explore-shell {
+  padding-left: 1.35rem !important;
+  padding-right: 1.35rem !important;
+}
+@media (min-width: 640px) {
+  .explore-shell {
+    padding-left: 1.85rem !important;
+    padding-right: 1.85rem !important;
+  }
+}
+@media (min-width: 1024px) {
+  .explore-shell {
+    padding-left: 2.75rem !important;
+    padding-right: 2.75rem !important;
+  }
+}
+
+/* ── 2) Header: tighter bar, bigger FFM mark + hamburger ── */
+.public-shell-topbar {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+.public-shell-topbar.scrolled {
+  border-bottom: 0 !important;
+}
+.public-shell-topbar .inner {
+  min-height: 52px !important;
+  padding-top: 0.15rem !important;
+  padding-bottom: 0.15rem !important;
+  gap: 0.5rem !important;
+}
+.public-shell-brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 0 !important;
+}
+.public-shell-brand img {
+  height: 55px !important;
+  width: auto !important;
+}
+.public-shell-hamburger {
+  display: flex !important;
+  min-width: 58px !important;
+  min-height: 58px !important;
+  padding: 0.45rem !important;
+  margin: 0 !important;
+}
+.public-shell-hamburger svg,
+.public-shell-hamburger i {
+  width: 40px !important;
+  height: 40px !important;
+}
+@media (min-width: 992px) {
+  .public-shell-hamburger {
+    display: none !important;
+  }
+  .public-shell-topbar .inner {
+    min-height: 60px !important;
+  }
+  .public-shell-brand img {
+    height: 52px !important;
+  }
+}
+
+/* ── 3) Footer (mobile): centered stack — crypto, policies, follow ── */
+.public-shell-footer .footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+.public-shell-footer .footer-links {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.public-shell-footer .footer-links h3 {
+  margin-top: 0 !important;
+}
+.public-shell-footer .footer-links span {
+  display: block;
+  padding: 0.35rem 0;
+  color: #9ca3af;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+.public-shell-footer .footer-links a {
+  display: block;
+  padding: 0.35rem 0;
+  color: #9ca3af;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.footer-bottom,
+.public-shell-footer .footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+}
+
+@media (max-width: 767.98px) {
+  .public-shell-footer .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .footer-bottom,
+  .public-shell-footer .footer-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.85rem !important;
+    padding: 1rem 0 !important;
+  }
+  .footer-bottom > *,
+  .public-shell-footer .footer-bottom > * {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    gap: 0.35rem 0.55rem !important;
+  }
+  .footer-legal {
+    order: 1;
+  }
+  .footer-policies {
+    order: 2;
+  }
+  .footer-follow,
+  .public-shell-footer .footer-follow {
+    order: 3;
+  }
+  .footer-policies span[style*="#4b5563"],
+  .footer-bottom span[style*="4b5563"] {
+    display: inline !important;
+  }
+}
+
+/* ── 4) Hero copy: center on mobile, left on desktop ── */
+@media (max-width: 767.98px) {
+  .home-hero,
+  .home-hero .hero-grid,
+  .home-hero h1,
+  .home-hero p,
+  .home-hero .hero-eyebrow,
+  .home-hero .hero-text,
+  .fans-hero,
+  .fans-hero .hero-text,
+  .fans-hero h1,
+  .fans-hero p,
+  .celeb-hero,
+  .celeb-hero h1,
+  .celeb-hero p,
+  .casting-hero,
+  .casting-hero h1,
+  .casting-hero p,
+  .creator-hero,
+  .creator-hero h1,
+  .creator-hero .hero-sub,
+  .biz-hero,
+  .biz-hero h1,
+  .biz-hero p,
+  .contact-hero,
+  .contact-hero h1,
+  .contact-hero > .container > p,
+  .support-hero,
+  .support-hero h1,
+  .support-hero p,
+  .page-hero,
+  .page-hero h1,
+  .page-hero p,
+  .auth-hero,
+  .auth-hero h1,
+  .auth-hero p {
+    text-align: center !important;
+  }
+  .home-hero h1,
+  .fans-hero h1,
+  .celeb-hero h1,
+  .casting-hero h1,
+  .creator-hero h1,
+  .biz-hero h1,
+  .contact-hero h1,
+  .support-hero h1,
+  .page-hero h1 {
+    max-width: min(100%, 36rem) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .home-hero p,
+  .fans-hero p,
+  .celeb-hero p,
+  .casting-hero p,
+  .creator-hero .hero-sub,
+  .biz-hero p,
+  .contact-hero > .container > p,
+  .support-hero p,
+  .page-hero p {
+    max-width: min(100%, 34rem) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero-eyebrow {
+    display: inline-flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* Desktop heroes stay left-aligned (except already-centered page heroes) */
+@media (min-width: 768px) {
+  .celeb-hero h1,
+  .celeb-hero p,
+  .fans-hero h1,
+  .fans-hero p {
+    text-align: left !important;
+  }
+}
+
+/* ── 5) Celebrities / Fans: center icon & button rows on mobile ── */
+@media (max-width: 767.98px) {
+  .hero-btns,
+  .home-cta,
+  .support-hero-btns,
+  .founder-follow-icons,
+  .founder-follow,
+  .footer-social,
+  .contact-pill,
+  .film-tags,
+  .talent-grid,
+  .fans-card-icon,
+  .creator-card-icon {
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero-btns,
+  .home-cta,
+  .support-hero-btns {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+  }
+  .hero-btns .cta-btn,
+  .hero-btns .cta-btn-outline,
+  .home-cta .btn,
+  .support-hero-btns .support-btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .celeb-badge {
+    display: inline-flex !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .contact-badge {
+    display: inline-flex !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ── 6) Footer “Coming Soon” column balance ── */
+.public-shell-footer .footer-links:last-child {
+  justify-content: flex-start;
+}
+.public-shell-footer .footer-grid > .footer-links {
+  min-width: 0;
+}
+.public-shell-footer .footer-links h3 {
+  flex-shrink: 0;
+}
+
+/* ── Mobile section rhythm (previous pass) ── */
 @media (max-width: 767.98px) {
   .section,
   .section-sm {
@@ -21,7 +337,6 @@
   .form-section-sub {
     margin-bottom: 0.9rem !important;
   }
-
   .content-grid {
     gap: 0.85rem !important;
   }
@@ -45,7 +360,6 @@
   .step-merged {
     padding: 1.05rem !important;
   }
-
   .why-fans-card,
   .why-creators-card {
     position: static !important;
@@ -61,7 +375,6 @@
   .why-creators-item {
     margin-bottom: 0.7rem !important;
   }
-
   .film-tags {
     margin-bottom: 0.85rem !important;
   }
@@ -78,16 +391,11 @@
   .social-strip {
     padding: 1.15rem 0 !important;
   }
-
   .steps-flow {
     margin-bottom: 0.75rem !important;
   }
   .section-photo p {
     margin-bottom: 1rem !important;
-  }
-
-  .explore-shell {
-    padding: 1.15rem 1rem 1.5rem !important;
   }
   .explore-shell .explore-grid {
     gap: 1rem !important;
@@ -100,52 +408,5 @@
   }
   .explore-sidebar {
     margin-top: 0.85rem !important;
-  }
-}
-
-/* ── Header chrome: tighter bar, bigger FFM mark + hamburger ── */
-.public-shell-topbar {
-  border-bottom: 0 !important;
-  box-shadow: none !important;
-}
-.public-shell-topbar.scrolled {
-  border-bottom: 0 !important;
-}
-.public-shell-topbar .inner {
-  min-height: 56px !important;
-  padding-top: 0.3rem !important;
-  padding-bottom: 0.3rem !important;
-  gap: 0.5rem !important;
-}
-.public-shell-brand {
-  display: inline-flex !important;
-  align-items: center !important;
-  line-height: 0 !important;
-}
-.public-shell-brand img {
-  height: 44px !important;
-  width: auto !important;
-}
-.public-shell-hamburger {
-  display: flex !important;
-  min-width: 52px !important;
-  min-height: 52px !important;
-  padding: 0.55rem !important;
-  margin: 0 !important;
-}
-.public-shell-hamburger svg,
-.public-shell-hamburger i {
-  width: 32px !important;
-  height: 32px !important;
-}
-@media (min-width: 992px) {
-  .public-shell-hamburger {
-    display: none !important;
-  }
-  .public-shell-topbar .inner {
-    min-height: 64px !important;
-  }
-  .public-shell-brand img {
-    height: 48px !important;
   }
 }
