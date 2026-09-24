@@ -225,7 +225,9 @@
   .faq-item.open .faq-a { max-height: 200px; padding: 0 1.25rem 1rem; }
   .faq-a p { margin: 0; font-size: .85rem; color: #94a3b8; line-height: 1.6; }
 
-  .support-contact-bar { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; padding: 1.5rem 0 3rem; }
+  .support-contact-bar { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; padding: 1.8rem 0 1.8rem; }
+  #faq.support-section { padding-bottom: 0; }
+  #faq .faq-item:last-child { margin-bottom: 0; }
   .contact-pill { display: flex; align-items: center; gap: .6rem; padding: .75rem 1.25rem; border-radius: 999px; background: rgba(15,23,42,.6); border: 1px solid rgba(255,255,255,.08); color: #cbd5e1; font-size: .85rem; font-weight: 600; }
   .contact-pill i { color: #f97316; font-size: 1.1rem; }
   </style>
@@ -398,7 +400,6 @@
     <div class="support-contact-bar">
       <div class="contact-pill"><i class="fas fa-clock"></i> Avg response: under 24 hours</div>
       <div class="contact-pill"><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bccfc9ccccd3cec8fcdaddd2cfdad3d0d0d3cb92d1d9">[email&#160;protected]</a></div>
-      <div class="contact-pill"><i class="fas fa-comments"></i> Live chat available 9am-6pm GMT</div>
     </div>
   </main>
 
