@@ -954,9 +954,64 @@
   }
   .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
   
-  .founder-layout { max-width: 1100px; margin: 0 auto; }
+  .founder-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1.25rem;
+    align-items: stretch;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
   .founder-layout-main { width: 100%; }
-  .founder-layout-main .celeb-founder-strip { margin-top: 0; }
+  .founder-layout-main .celeb-founder-strip {
+    margin-top: 0;
+    height: 100%;
+  }
+  .founder-side-cards {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.25rem;
+    min-height: 100%;
+  }
+  .founder-side-card {
+    background: rgba(15,23,42,.6);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 16px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .founder-side-kicker {
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #fb923c;
+    margin-bottom: .35rem;
+  }
+  .founder-side-card h3 {
+    margin: 0 0 .45rem;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #fff;
+  }
+  .founder-side-card p {
+    margin: 0 0 .85rem;
+    color: #d1d5db;
+    font-size: .88rem;
+    line-height: 1.55;
+  }
+  .founder-side-card .cta-btn,
+  .founder-side-card .cta-btn-outline {
+    align-self: flex-start;
+    min-height: 42px;
+    padding: .55rem 1.15rem;
+    font-size: .88rem;
+  }
+  @@media (max-width: 768px) {
+    .founder-layout { grid-template-columns: 1fr; }
+  }
   .celeb-founder-strip {
     display: grid;
     grid-template-columns: 180px 1fr;
@@ -1844,6 +1899,21 @@
       </div>
     </div>
       </div>
+
+      <div class="founder-side-cards">
+        <div class="founder-side-card">
+          <div class="founder-side-kicker">NOW CASTING</div>
+          <h3>Now Casting</h3>
+          <p>David is casting martial artists, fighters and fitness creators for upcoming action films. Join the waitlist to be considered.</p>
+          <a class="cta-btn" href="{{ route('page.casting') }}#waitlist">Join Waitlist</a>
+        </div>
+        <div class="founder-side-card">
+          <div class="founder-side-kicker">FILM CREDITS</div>
+          <h3>8+ Feature Films</h3>
+          <p>The Last Kumite &middot; Bloodstorm &middot; Elite Target &middot; Warrior Island</p>
+          <a class="cta-btn-outline" href="#films">View Films</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1886,7 +1956,7 @@
     <div style="text-align:center;margin-bottom:1rem;"><div class="badge-glow">★ NOW SHOWING: FFM FOUNDER'S FEATURED FILMS</div></div>
     <h2>From Martial Arts Champion to Hollywood Action Star</h2>
     <p class="section-sub" style="max-width:700px;">David Kurzhal's complete filmography - from released blockbusters to upcoming projects. Now we're creating opportunities for FFM creators to star in martial arts films.</p>
-    <div class="film-tabs">
+    <div id="films" class="film-tabs">
       <div class="film-tab active" onclick="showTab('released')">Released</div>
       <div class="film-tab" onclick="showTab('post')">In Post-Production</div>
       <div class="film-tab" onclick="showTab('pre')">In Pre-Production / Upcoming</div>
