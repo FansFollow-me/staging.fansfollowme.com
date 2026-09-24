@@ -1731,20 +1731,8 @@
           <div class="home-cta">
             <a class='btn btn-light' href='/explore'><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Explore Creators</a>
             <a class='btn btn-outline-light' href='/signup'><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg> Get Started</a>
-            <a class='btn btn-light' href='/casting'>Movie Castings</a>
           </div>
-          <div class="celeb-founder-strip">
-            <img class="celeb-founder-photo" src="{{ asset('img/marketing/celebhero_copy.png') }}?v=david2" alt="David Kurzhal — The Viking Samurai" />
-            <div class="celeb-founder-copy">
-              <div class="celeb-founder-kicker">FFM Founder · The Viking Samurai</div>
-              <h2 class="celeb-founder-name">David Kurzhal</h2>
-              <p>Action star &amp; 5th Dan Black Belt — casting FFM creators for martial arts films.</p>
-              <div class="hero-btns">
-                <a class='cta-btn' href='/casting'>Movie Castings</a>
-                <a class='cta-btn-outline' href='/signup?role=creator'>Apply to be a Creator</a>
-              </div>
-            </div>
-          </div>
+          
           <div id="pwa-install" style="display:none;margin-top:1.25rem;">
             <button id="pwa-btn" onclick="installPWA()" style="display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .3s;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
