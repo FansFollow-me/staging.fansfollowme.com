@@ -889,6 +889,7 @@
       --home-panel: #151b2c;
       --home-bg: #0b0f1a;
       --home-gradient: linear-gradient(135deg, #f97316 0%, #a855f7 100%);
+    --home-footer-bg: linear-gradient(135deg, #111827, #1f2937, #111827);
     }
 
     /* ===== HERO ===== */
@@ -1013,15 +1014,15 @@
     .section-dark h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 900; color: #fff; text-align: center; margin-bottom: .5rem; line-height: 1.25; }
     .section-sub { text-align: center; color: #d1d5db; max-width: 48rem; margin: 0 auto 2rem; font-size: .95rem; line-height: 1.75; }
 
-    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; align-items: stretch; }
     .card {
-      background: rgba(255,255,255,.05);
+      background: var(--home-footer-bg);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 16px;
-      padding: 1.5rem;
+      padding: 1.2rem;
       height: 100%;
-      transition: all .3s ease;
+      transition: border-color .3s ease, box-shadow .3s ease;
     }
     .card:hover {
       border-color: rgba(249,115,22,.5);
@@ -1029,8 +1030,8 @@
       box-shadow: 0 20px 40px rgba(249,115,22,.15);
     }
     .feature-icon {
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
       display: inline-flex;
       align-items: center;
@@ -1046,7 +1047,7 @@
       height: 1.25rem;
     }
     .card:hover .feature-icon { transform: scale(1.1); }
-    .card h3 { margin: 0 0 .4rem; font-size: 1rem; font-weight: 700; color: #fff; }
+    .card h3 { margin: 0 0 .4rem; font-size: 0.9rem; font-weight: 700; color: #fff; }
     .card p { color: #d1d5db; line-height: 1.65; margin-bottom: 0; font-size: .9rem; }
 
     /* ===== SECTION 3: FOR FANS ===== */
