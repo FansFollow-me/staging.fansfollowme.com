@@ -46,8 +46,18 @@ class JoinLink extends Model
 
     public function url(): string
     {
-        $base = rtrim(config('app.qr_base_url', config('app.url')), '/');
+        // Prefer explicit QR_BASE_URL, then APP_URL (when not localhost), else current request host
+        $base = config('app.qr_base_url');
+        if (! $base || $base === 'http://localhost' || $base === 'https://localhost') {
+            $base = config('app.url');
+        }
+        if (! $base || str_contains((string) $base, 'localhost') || str_contains((string) $base, '127.0.0.1')) {
+            $request = request();
+            if ($request) {
+                $base = $request->getSchemeAndHttpHost();
+            }
+        }
 
-        return $base.'/j/'.$this->code;
+        return rtrim((string) $base, '/').'/j/'.$this->code;
     }
 }

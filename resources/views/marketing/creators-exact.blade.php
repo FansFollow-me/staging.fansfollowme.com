@@ -179,6 +179,11 @@
             <a href='{{ route('page.live-streams') }}'>&#128308; <span>Live Streams</span></a>
             <a href='{{ route('page.business') }}'>&#128188; <span>Business</span></a>
             <a href='{{ route('page.support') }}'>&#128172; <span>Support</span></a>
+@auth
+                            @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
+                            <a href='{{ route('join.my-qr') }}'>&#128241; <span>My QR code</span></a>
+                            @endif
+                            @endauth
           </div>
         </details>
       </nav>
@@ -221,6 +226,11 @@
     <a href='{{ route('page.live-streams') }}'>&#128308; Live Streams</a>
     <a href='{{ route('page.business') }}'>&#128188; Business</a>
     <a href='{{ route('page.support') }}'>&#128172; Support</a>
+@auth
+    @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
+    <a href='{{ route('join.my-qr') }}'>&#128241; My QR code</a>
+    @endif
+    @endauth
     <a href='{{ route('login') }}' style='margin-top:1rem;color:#94a3b8;font-weight:600'>Login</a>
     <a class='mobile-cta-btn' href='{{ route('register') }}'>Get Started</a>
   </div>

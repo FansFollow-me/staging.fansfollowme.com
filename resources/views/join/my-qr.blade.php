@@ -65,6 +65,7 @@
         <div class="card card-ffm p-4">
             <h2 class="h6 text-secondary">Join link</h2>
             <code class="d-block mb-3" id="join-url">{{ $link->url() }}</code>
+            <button class="btn btn-outline-primary btn-sm mb-3" type="button" id="copy-join-url">Copy link</button>
             <div class="row text-center">
                 <div class="col-6">
                     <div class="fs-3 fw-bold">{{ $stats['scans'] }}</div>
@@ -80,29 +81,62 @@
     </div>
 </div>
 
-<script src="{{ asset('js/qrcode.min.js') }}?v=qr1"></script>
+<script src="{{ asset('js/qrcode.min.js') }}?v=qr2"></script>
 <script>
 (function () {
   var url = @json($link->url());
   var box = document.getElementById('qr-canvas-wrap');
+  var fallback = document.getElementById('qr-fallback');
+  if (fallback) fallback.textContent = url;
+
+  function showFail() {
+    if (fallback) {
+      fallback.style.display = 'block';
+      fallback.innerHTML = '<strong>QR image unavailable</strong><br>Copy this link instead:<br>' + url;
+    }
+    console.warn('QR library missing or failed — showing URL fallback only');
+  }
+
   if (!box || !window.QRCode) {
-    console.warn('QR library missing — showing URL fallback only');
+    showFail();
     return;
   }
-  // Print-friendly: high contrast, generous quiet zone, ECC H (more scannable when printed small)
-  new QRCode(box, {
-    text: url,
-    width: 260,
-    height: 260,
-    colorDark: '#000000',
-    colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.H
-  });
-  // Mark generated graphic for tests / debugging
-  var img = box.querySelector('img');
-  var canvas = box.querySelector('canvas');
-  if (img) { img.id = 'qr-image'; img.alt = 'QR code for ' + url; }
-  if (canvas) { canvas.id = 'qr-canvas'; canvas.setAttribute('aria-label', 'QR code for ' + url); }
+
+  try {
+    box.innerHTML = '';
+    // Print-friendly: high contrast, ECC H (scannable when printed small)
+    new QRCode(box, {
+      text: url,
+      width: 260,
+      height: 260,
+      colorDark: '#000000',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.H
+    });
+    // qrcode.js may paint on canvas or img depending on browser
+    setTimeout(function () {
+      var img = box.querySelector('img');
+      var canvas = box.querySelector('canvas');
+      if (img) { img.id = 'qr-image'; img.alt = 'QR code for ' + url; }
+      if (canvas) { canvas.id = 'qr-canvas'; canvas.setAttribute('aria-label', 'QR code for ' + url); }
+      if (!img && !canvas) showFail();
+    }, 50);
+  } catch (e) {
+    showFail();
+    console.error('QR render error', e);
+  }
+
+  var copyBtn = document.getElementById('copy-join-url');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function () { copyBtn.textContent = 'Copy link'; }, 1500);
+        });
+      }
+    });
+  }
 })();
 </script>
 @endsection

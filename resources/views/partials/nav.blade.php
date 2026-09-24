@@ -72,6 +72,11 @@
     <a href="{{ route('page.live-streams') }}">🔴 Live Streams</a>
     <a href="{{ route('page.business') }}">💼 Business</a>
     <a href="{{ route('page.support') }}">💬 Support</a>
+    @auth
+        @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
+        <a href="{{ route('join.my-qr') }}">📱 My QR code</a>
+        @endif
+    @endauth
     @guest
         <a href="{{ route('login') }}" style="margin-top:1rem;color:#94a3b8;font-weight:600">Login</a>
         <a href="{{ route('register') }}" class="mobile-cta-btn">Get Started</a>

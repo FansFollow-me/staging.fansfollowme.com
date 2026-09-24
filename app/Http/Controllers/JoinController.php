@@ -60,6 +60,11 @@ class JoinController extends Controller
             ]
         );
 
+        // Ensure inactive legacy rows still render a working QR
+        if (! $link->is_active) {
+            $link->forceFill(['is_active' => true])->save();
+        }
+
         $stats = [
             'scans' => $link->events()->where('type', JoinEvent::TYPE_SCAN)->count(),
             'signups' => $link->events()->where('type', JoinEvent::TYPE_SIGNUP)->count(),
@@ -68,6 +73,7 @@ class JoinController extends Controller
         return view('join.my-qr', [
             'link' => $link,
             'stats' => $stats,
+            'joinUrl' => $link->url(),
         ]);
     }
 }

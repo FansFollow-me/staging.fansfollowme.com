@@ -7,7 +7,11 @@
                 <a href="{{ route('page.revenue-streams') }}">Revenue Streams</a>
                 <a href="{{ route('register') }}?role=creator">Getting Started</a>
                 <a href="{{ route('page.for-creators') }}">Personal Video Messages</a>
-                <a href="{{ route('page.for-creators') }}">In-Person QR Sign-Ups</a>
+                @if (auth()->check() && (auth()->user()->isCreator() || auth()->user()->isAdmin()))
+                <a href="{{ route('join.my-qr') }}">In-Person QR Sign-Ups</a>
+                @else
+                <a href="{{ route('register') }}?role=creator">In-Person QR Sign-Ups</a>
+                @endif
             </div>
             <div class="footer-links">
                 <h3>Revenue Streams</h3>
