@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm4" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -945,7 +945,7 @@
   .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
   .celeb-founder-strip {
     display: grid;
-    grid-template-columns: 140px 1fr;
+    grid-template-columns: 180px 1fr;
     gap: 1.25rem;
     align-items: center;
     margin-top: 2rem;
@@ -956,9 +956,10 @@
     backdrop-filter: blur(10px);
   }
   .celeb-founder-photo {
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 120px;
     object-fit: cover;
+    object-position: 50% 35%;
     border-radius: 14px;
     border: 2px solid rgba(249,115,22,.55);
     box-shadow: 0 0 28px rgba(249,115,22,.25);
@@ -992,8 +993,8 @@
       justify-items: center;
     }
     .celeb-founder-photo {
-      width: 120px;
-      height: 120px;
+      width: min(100%, 280px);
+      height: 150px;
     }
     .celeb-founder-copy p { text-align: center !important; }
   }
@@ -1803,7 +1804,7 @@
     </div>
     <!-- Above-the-fold founder strip -->
     <div class="celeb-founder-strip">
-      <img class="celeb-founder-photo" src="{{ asset('img/marketing/travis-colbert-hero.jpg') }}?v=david1" alt="David Kurzhal — The Viking Samurai" />
+      <img class="celeb-founder-photo" src="{{ asset('img/marketing/celebhero_copy.png') }}?v=david2" alt="David Kurzhal — The Viking Samurai" />
       <div class="celeb-founder-copy">
         <div class="celeb-founder-kicker">FFM Founder · The Viking Samurai</div>
         <h2 class="celeb-founder-name">David Kurzhal</h2>

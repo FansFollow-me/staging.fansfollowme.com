@@ -317,7 +317,7 @@
 /* ── Founder / movie-castings callout (shared) ── */
 .celeb-founder-strip {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 180px 1fr;
   gap: 1.25rem;
   align-items: center;
   margin-top: 1.75rem;
@@ -328,9 +328,10 @@
   backdrop-filter: blur(10px);
 }
 .celeb-founder-photo {
-  width: 140px;
-  height: 140px;
+  width: 180px;
+  height: 120px;
   object-fit: cover;
+  object-position: 50% 35%;
   border-radius: 14px;
   border: 2px solid rgba(249, 115, 22, 0.55);
   box-shadow: 0 0 28px rgba(249, 115, 22, 0.25);
@@ -362,8 +363,8 @@
     justify-items: center;
   }
   .celeb-founder-photo {
-    width: 120px;
-    height: 120px;
+    width: min(100%, 280px);
+    height: 150px;
   }
   .celeb-founder-copy p {
     text-align: center !important;

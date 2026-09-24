@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm4" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -1724,7 +1724,7 @@
             <a class='btn btn-light' href='/casting'>Movie Castings</a>
           </div>
           <div class="celeb-founder-strip">
-            <img class="celeb-founder-photo" src="{{ asset('img/marketing/travis-colbert-hero.jpg') }}?v=david1" alt="David Kurzhal — The Viking Samurai" />
+            <img class="celeb-founder-photo" src="{{ asset('img/marketing/celebhero_copy.png') }}?v=david2" alt="David Kurzhal — The Viking Samurai" />
             <div class="celeb-founder-copy">
               <div class="celeb-founder-kicker">FFM Founder · The Viking Samurai</div>
               <h2 class="celeb-founder-name">David Kurzhal</h2>
