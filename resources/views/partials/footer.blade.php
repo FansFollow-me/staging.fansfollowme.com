@@ -4,7 +4,8 @@
         <div class="footer-grid">
             <div class="footer-links">
                 <h3>For Creators</h3>
-                <a href="{{ route('register') }}">Getting Started</a>
+                <a href="{{ route('page.revenue-streams') }}">Revenue Streams</a>
+                <a href="{{ route('register') }}?role=creator">Getting Started</a>
                 <a href="{{ route('page.for-creators') }}">Personal Video Messages</a>
                 <a href="{{ route('page.for-creators') }}">In-Person QR Sign-Ups</a>
             </div>

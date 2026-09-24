@@ -75,7 +75,7 @@ Route::get('form-thanks', function (\Illuminate\Http\Request $request) {
 foreach ([
     'explore', 'creators', 'fans', 'celebrities', 'casting', 'business',
     'for-creators', 'support', 'faq', 'contact', 'blog', 'privacy',
-    'terms', 'cookies', 'live-streams',
+    'terms', 'cookies', 'live-streams', 'revenue-streams',
 ] as $page) {
     Route::get($page, function (\Illuminate\Http\Request $request) use ($page) {
         return app(HomeController::class)->page($request, $page);
@@ -237,5 +237,5 @@ Route::post('coming-soon/feedback', [\App\Http\Controllers\ComingSoonController:
 
 // Public profile — LAST so it never shadows app routes like /dashboard
 Route::get('{username}', [HomeController::class, 'profile'])
-    ->where('username', '(?!dashboard|login|signup|logout|explore|creators|fans|celebrities|casting|business|for-creators|support|faq|contact|blog|privacy|terms|cookies|live-streams|form-thanks|posts|settings|panel|j|my|creator|wallet|follow|subscribe|tip|shop|add|messages|reels|stories|create|live|explore|vault|referrals|notifications|gifts|coming-soon)[A-Za-z0-9_]{3,30}')
+    ->where('username', '(?!dashboard|login|signup|logout|explore|creators|fans|celebrities|casting|business|for-creators|support|faq|contact|blog|privacy|terms|cookies|live-streams|form-thanks|revenue-streams|posts|settings|panel|j|my|creator|wallet|follow|subscribe|tip|shop|add|messages|reels|stories|create|live|explore|vault|referrals|notifications|gifts|coming-soon)[A-Za-z0-9_]{3,30}')
     ->name('profile');

@@ -15,11 +15,11 @@
                     <label class="form-label">I am a</label>
                     <div class="d-flex gap-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="role-fan" value="fan" {{ old('role', 'fan') === 'fan' ? 'checked' : '' }}>
+                            <input class="form-check-input" type="radio" name="role" id="role-fan" value="fan" {{ old('role', request()->query('role') ?: 'fan') === 'fan' ? 'checked' : '' }}>
                             <label class="form-check-label" for="role-fan">Fan</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="role-creator" value="creator" {{ old('role') === 'creator' ? 'checked' : '' }}>
+                            <input class="form-check-input" type="radio" name="role" id="role-creator" value="creator" {{ old('role', request()->query('role') ?: 'fan') === 'creator' ? 'checked' : '' }}>
                             <label class="form-check-label" for="role-creator">Creator</label>
                         </div>
                     </div>

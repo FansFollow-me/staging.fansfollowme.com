@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm3" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm4" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -1721,6 +1721,19 @@
           <div class="home-cta">
             <a class='btn btn-light' href='/explore'><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Explore Creators</a>
             <a class='btn btn-outline-light' href='/signup'><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg> Get Started</a>
+            <a class='btn btn-light' href='/casting'>Movie Castings</a>
+          </div>
+          <div class="celeb-founder-strip">
+            <img class="celeb-founder-photo" src="{{ asset('img/marketing/travis-colbert-hero.jpg') }}?v=david1" alt="David Kurzhal — The Viking Samurai" />
+            <div class="celeb-founder-copy">
+              <div class="celeb-founder-kicker">FFM Founder · The Viking Samurai</div>
+              <h2 class="celeb-founder-name">David Kurzhal</h2>
+              <p>Action star &amp; 5th Dan Black Belt — casting FFM creators for martial arts films.</p>
+              <div class="hero-btns">
+                <a class='cta-btn' href='/casting'>Movie Castings</a>
+                <a class='cta-btn-outline' href='/signup?role=creator'>Apply to be a Creator</a>
+              </div>
+            </div>
           </div>
           <div id="pwa-install" style="display:none;margin-top:1.25rem;">
             <button id="pwa-btn" onclick="installPWA()" style="display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .3s;">
@@ -1832,6 +1845,9 @@
       <div class="footer-grid" style="gap: 2rem;">
         <div class="footer-links">
           <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">For Creators</h3>
+          <a href='/revenue-streams' style='font-size: .9rem;'>Revenue Streams</a>
+          <a href='/signup?role=creator' style='font-size: .9rem;'>Getting Started</a>
+          <a href='{{ route('page.revenue-streams') }}' style='font-size: .9rem;'>Revenue Streams</a>
           <a href='/signup' style='font-size: .9rem;'>Getting Started</a>
           <a href='/for-creators' style='font-size: .9rem;'>Personal Video Messages</a>
         </div>

@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm3" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm4" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
@@ -593,6 +593,7 @@
       <div class="footer-grid" style="gap: 2rem;">
         <div class="footer-links">
           <h2 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">For Creators</h3>
+          <a href='{{ route('page.revenue-streams') }}' style='font-size: .9rem;'>Revenue Streams</a>
           <a href='{{ route('register') }}' style='font-size: .9rem;'>Getting Started</a>
           <a href='{{ route('page.for-creators') }}' style='font-size: .9rem;'>Personal Video Messages</a>
         </div>

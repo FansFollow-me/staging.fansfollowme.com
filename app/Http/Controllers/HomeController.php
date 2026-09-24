@@ -19,7 +19,7 @@ class HomeController extends Controller
         $allowed = [
             'explore', 'creators', 'fans', 'celebrities', 'casting',
             'business', 'for-creators', 'support', 'faq', 'contact',
-            'blog', 'privacy', 'terms', 'cookies', 'live-streams',
+            'blog', 'privacy', 'terms', 'cookies', 'live-streams', 'revenue-streams',
         ];
 
         abort_unless(in_array($name, $allowed, true), 404);
@@ -46,6 +46,7 @@ class HomeController extends Controller
             'terms' => 'marketing.terms-exact',
             'cookies' => 'marketing.cookies-exact',
             'creators' => 'marketing.creators-exact',
+            'revenue-streams' => 'marketing.revenue-streams-exact',
         ];
 
         if (isset($exact[$name]) && view()->exists($exact[$name])) {

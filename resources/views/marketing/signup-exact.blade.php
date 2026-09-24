@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm3" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm4" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -611,18 +611,19 @@
                   @csrf
         <div class="signup-role-label">I want to join as:</div>
         <div class="signup-role-grid">
-          <div class="signup-role-card selected" onclick="selectRole('fan', this)" data-role="fan">
+          @php($initRole = request()->query('role') === 'creator' ? 'creator' : 'fan')
+          <div class="signup-role-card {{ $initRole === 'fan' ? 'selected' : '' }}" onclick="selectRole('fan', this)" data-role="fan">
             <div class="signup-role-icon">&#128100;</div>
             <div class="signup-role-name">Fan</div>
             <div class="signup-role-desc">Connect with creators</div>
           </div>
-          <div class="signup-role-card" onclick="selectRole('creator', this)" data-role="creator">
+          <div class="signup-role-card {{ $initRole === 'creator' ? 'selected' : '' }}" onclick="selectRole('creator', this)" data-role="creator">
             <div class="signup-role-icon">&#127912;</div>
             <div class="signup-role-name">Creator</div>
             <div class="signup-role-desc">Start earning money</div>
           </div>
         </div>
-        <input type="hidden" name="role" id="roleType" value="fan">
+        <input type="hidden" name="role" id="roleType" value="{{ $initRole }}">
 
         <div class="signup-field">
           <label class="signup-label">Full Name</label>
@@ -688,6 +689,15 @@ function selectRole(role, el) {
   var btn = document.getElementById('submitBtn');
   btn.textContent = role === 'creator' ? 'Create Creator Account' : 'Create Fan Account';
 }
+
+// Default Creator when arriving from "Apply to be a Creator" / creator CTAs
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('role') === 'creator') {
+    var card = document.querySelector('.signup-role-card[data-role="creator"]');
+    if (card) selectRole('creator', card);
+  }
+})();
 
 function togglePassword() {
   var input = document.getElementById('password');

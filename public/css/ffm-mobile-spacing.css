@@ -314,6 +314,62 @@
   flex-shrink: 0;
 }
 
+/* ── Founder / movie-castings callout (shared) ── */
+.celeb-founder-strip {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  margin-top: 1.75rem;
+  padding: 1.15rem 1.25rem;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+.celeb-founder-photo {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid rgba(249, 115, 22, 0.55);
+  box-shadow: 0 0 28px rgba(249, 115, 22, 0.25);
+}
+.celeb-founder-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fb923c;
+  margin-bottom: 0.25rem;
+}
+.celeb-founder-name {
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 0.4rem;
+}
+.celeb-founder-copy p {
+  color: #e2e8f0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0 0 0.85rem;
+}
+@media (max-width: 767.98px) {
+  .celeb-founder-strip {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+  .celeb-founder-photo {
+    width: 120px;
+    height: 120px;
+  }
+  .celeb-founder-copy p {
+    text-align: center !important;
+  }
+}
+
 /* ── Mobile section rhythm (previous pass) ── */
 @media (max-width: 767.98px) {
   .section,

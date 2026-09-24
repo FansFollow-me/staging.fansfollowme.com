@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm3" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm4" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -1577,7 +1577,7 @@
     <a href='{{ route('page.business') }}'>&#128188; Business</a>
     <a href='{{ route('page.support') }}'>&#128172; Support</a>
           <a href='{{ route('login') }}' style='margin-top:1rem;color:#94a3b8;font-weight:600'>Login</a>
-              <a class='mobile-cta-btn' href='{{ route('register') }}'>Get Started</a>
+              <a class='mobile-cta-btn' href='{{ route('register') }}?role=creator'>Get Started</a>
             </div>
 
   <main class="public-shell-content">
@@ -1586,7 +1586,7 @@
     <div class="creator-badge">FITNESS, NUTRITION, BODYBUILDING, MARTIAL ARTS, MARTIAL ART ACTORS & COMBAT SPORTS</div>
     <h1>Ready to grow your fitness brand?</h1>
     <p class="hero-sub">Join fitness, martial arts and combat sports creators building loyal fan communities and new revenue streams on FansFollow.me.</p>
-    <a class='cta-btn' href='{{ route('register') }}'>Create Your Profile Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <a class='cta-btn' href='{{ route('register') }}?role=creator'>Create Your Profile Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
 </section>
 
@@ -1651,7 +1651,7 @@
   <div class="container">
     <h2>Ready to start earning?</h2>
     <p>Join thousands of creators already making money on FansFollow</p>
-    <a class='cta-btn' href='{{ route('register') }}'>Create Your Profile Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <a class='cta-btn' href='{{ route('register') }}?role=creator'>Create Your Profile Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
 </section>
   </main>
@@ -1662,7 +1662,8 @@
       <div class="footer-grid" style="gap: 2rem;">
         <div class="footer-links">
           <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">For Creators</h3>
-          <a href='{{ route('register') }}' style='font-size: .9rem;'>Getting Started</a>
+          <a href='{{ route('page.revenue-streams') }}' style='font-size: .9rem;'>Revenue Streams</a>
+          <a href='{{ route('register') }}?role=creator' style='font-size: .9rem;'>Getting Started</a>
           <a href='{{ route('page.for-creators') }}' style='font-size: .9rem;'>Personal Video Messages</a>
         </div>
         <div class="footer-links">

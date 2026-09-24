@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm3" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm4" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -895,15 +895,16 @@
     content: '';
     position: absolute;
     inset: 0;
-    /* Empty boxing ring (celebrities-celebhero.jpg) â€” ring sits right of frame */
-    background: url('{{ asset('img/marketing/celebrities-celebhero.jpg') }}?v=ring1') 72% center/cover no-repeat;
+    /* Empty boxing ring — brighter crop for legibility */
+    background: url('{{ asset('img/marketing/celebrities-celebhero.jpg') }}?v=ring2') 72% center/cover no-repeat;
+    filter: brightness(1.35) contrast(1.05);
     z-index: 0;
   }
   .celeb-hero::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(0,0,0,.55), rgba(15,23,42,.45));
+    background: linear-gradient(rgba(0,0,0,.32), rgba(15,23,42,.28));
     z-index: 1;
   }
   .celeb-hero > .container { position: relative; z-index: 2; }
@@ -942,6 +943,60 @@
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
   }
   .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+  .celeb-founder-strip {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.25rem;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 1.15rem 1.25rem;
+    border-radius: 16px;
+    background: rgba(15,23,42,.72);
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(10px);
+  }
+  .celeb-founder-photo {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 2px solid rgba(249,115,22,.55);
+    box-shadow: 0 0 28px rgba(249,115,22,.25);
+  }
+  .celeb-founder-kicker {
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #fb923c;
+    margin-bottom: .25rem;
+  }
+  .celeb-founder-name {
+    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 .4rem;
+  }
+  .celeb-founder-copy p {
+    color: #e2e8f0;
+    font-size: .92rem;
+    line-height: 1.55;
+    margin: 0 0 .85rem;
+    text-align: left;
+    max-width: none;
+  }
+  @@media (max-width: 767.98px) {
+    .celeb-founder-strip {
+      grid-template-columns: 1fr;
+      text-align: center;
+      justify-items: center;
+    }
+    .celeb-founder-photo {
+      width: 120px;
+      height: 120px;
+    }
+    .celeb-founder-copy p { text-align: center !important; }
+  }
 
   .cta-btn {
     display: inline-flex;
@@ -1742,7 +1797,22 @@
     <p>Connect directly with UFC fighters, Olympic champions, bodybuilding legends, and fitness icons. Build real friendships through personal chats, phone calls, and video hangouts.</p>
     <div class="hero-btns">
       <a class='cta-btn' href='{{ route('page.explore') }}'>Explore Celebrities</a>
+      <a class='cta-btn' href='{{ route('page.casting') }}'>Movie Castings</a>
       <a class='cta-btn-outline' href='{{ route('register') }}'>Become a Fan</a>
+      <a class='cta-btn-outline' href='{{ route('page.casting') }}#waitlist'>Join Casting Waitlist</a>
+    </div>
+    <!-- Above-the-fold founder strip -->
+    <div class="celeb-founder-strip">
+      <img class="celeb-founder-photo" src="{{ asset('img/marketing/travis-colbert-hero.jpg') }}?v=david1" alt="David Kurzhal — The Viking Samurai" />
+      <div class="celeb-founder-copy">
+        <div class="celeb-founder-kicker">FFM Founder · The Viking Samurai</div>
+        <h2 class="celeb-founder-name">David Kurzhal</h2>
+        <p>Hollywood action star · 5th Dan Black Belt · 8+ feature films. Now casting FFM creators for martial arts movies.</p>
+        <div class="hero-btns">
+          <a class='cta-btn' href='{{ route('page.casting') }}'>Movie Castings</a>
+          <a class='cta-btn-outline' href='{{ route('page.casting') }}#waitlist'>Join Waitlist</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1759,7 +1829,7 @@
       <div class="card-item"><div class="card-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed);"><i data-lucide="users"></i></div><h4>High-quality audience</h4><p>Reach verified, paying fans who value your work, not bots or low-intent followers.</p></div>
       <div class="card-item"><div class="card-icon" style="background:linear-gradient(135deg,#f97316,#ea580c);"><i data-lucide="star"></i></div><h4>Built with industry experience</h4><p>Created by a founder with multiple film and media credits who understands how to protect long-term reputation and endorsements.</p></div>
     </div>
-    <div class="cta-center"><a class='cta-btn-home' href='{{ route('register') }}'>Apply for Celebrity Status <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    <div class="cta-center"><a class='cta-btn-home' href='{{ route('register') }}?role=creator'>Apply to be a Creator <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
   </div>
 </section>
 
@@ -1823,6 +1893,7 @@ function showTab(tab) {
       <div class="footer-grid" style="gap: 2rem;">
         <div class="footer-links">
           <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">For Creators</h3>
+          <a href='{{ route('page.revenue-streams') }}' style='font-size: .9rem;'>Revenue Streams</a>
           <a href='{{ route('register') }}' style='font-size: .9rem;'>Getting Started</a>
           <a href='{{ route('page.for-creators') }}' style='font-size: .9rem;'>Personal Video Messages</a>
         </div>
