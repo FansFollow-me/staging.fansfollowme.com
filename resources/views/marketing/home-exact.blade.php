@@ -1810,7 +1810,7 @@
         <div class="card"><div class="feature-icon"><i data-lucide="camera"></i></div><h3>Mobile Content Creation</h3><p>Create and upload content directly from your phone.</p></div>
         <div class="card"><div class="feature-icon"><i data-lucide="phone"></i></div><h3>Instant Messaging</h3><p>Chat privately with fans in real time.</p></div>
         <div class="card"><div class="feature-icon"><i data-lucide="video"></i></div><h3>Live Streaming</h3><p>Go live to your audience from any device.</p></div>
-        <div class="card"><div class="feature-icon"><i data-lucide="qr-code"></i></div><h3>In-Person QR Sign-Ups</h3><p>Let fans join and pay on the spot by scanning your unique QR code at events and gyms.</p></div>
+        <div class="card"><div class="feature-icon"><i data-lucide="qr-code"></i></div><h3><a href="{{ auth()->check() && (auth()->user()->isCreator() || auth()->user()->isAdmin()) ? route('join.my-qr') : route('register').'?role=creator' }}" style="color:inherit;text-decoration:none;">In-Person QR Sign-Ups</a></h3><p>Let fans join and pay on the spot by scanning your unique QR code at events and gyms.</p></div>
       </div>
     </div>
   </section>

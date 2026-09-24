@@ -244,6 +244,11 @@
         <div class="footer-links">
           <h3>For Creators</h3>
           <a href="{{ route('page.revenue-streams') }}">Revenue Streams</a>
+          @if (auth()->check() && (auth()->user()->isCreator() || auth()->user()->isAdmin()))
+                <a href="{{ route('join.my-qr') }}" style='font-size: .9rem;'>In-Person QR Sign-Ups</a>
+                @else
+                <a href="{{ route('register') }}?role=creator" style='font-size: .9rem;'>In-Person QR Sign-Ups</a>
+                @endif
           <a href="{{ route('register') }}?role=creator">Getting Started</a>
           <a href="{{ route('page.for-creators') }}">For Creators</a>
         </div>
