@@ -26,6 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -1595,8 +1596,8 @@
     <section class="creator-hero">
   <div class="container">
     <div class="creator-badge">FITNESS, NUTRITION, BODYBUILDING, MARTIAL ARTS, MARTIAL ART ACTORS & COMBAT SPORTS</div>
-    <h1>Ready to grow your fitness brand?</h1>
-    <p class="hero-sub">Join fitness, martial arts and combat sports creators<br class="hidden md:inline">
+    <h1 class="hero-title">Ready to grow your fitness brand?</h1>
+    <p class="hero-sub hero-subtext">Join fitness, martial arts and combat sports creators<br class="hidden md:inline">
 building loyal fan communities and new revenue<br class="hidden md:inline">
 streams on FansFollow.me.</p>
     <a class='cta-btn' href='{{ route('register') }}?role=creator'>Create Your Profile Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>

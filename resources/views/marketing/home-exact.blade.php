@@ -26,6 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -1724,9 +1725,9 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <h1>FansFollow.me &#8212; where fans become friends</h1>
+          <h1 class="hero-title">FansFollow.me &#8212; where fans become friends</h1>
           <div class="hero-eyebrow">For Fitness, Bodybuilding and Martial Arts Creators</div>
-          <p>Built for fitness coaches, bodybuilders, nutrition experts, martial artists and combat sports creators to earn from fans worldwide through content, coaching and direct fan access.</p>
+          <p class="hero-subtext">Built for fitness coaches, bodybuilders, nutrition experts, martial artists and combat sports creators to earn from fans worldwide through content, coaching and direct fan access.</p>
           <div class="home-cta">
             <a class='btn btn-light' href='/explore'><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Explore Creators</a>
             <a class='btn btn-outline-light' href='/signup'><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg> Get Started</a>

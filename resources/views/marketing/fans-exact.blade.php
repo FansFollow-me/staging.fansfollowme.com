@@ -26,6 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -1564,8 +1565,8 @@
     <section class="fans-hero">
   <div class="container">
     <div class="hero-text">
-      <h1>Discover and connect<br>with your favourite<br>fitness creators</h1>
-      <p>Find fighters, coaches, bodybuilders and fitness influencers in one place and get closer access through chats, exclusive content, calls and video sessions.</p>
+      <h1 class="hero-title">Discover and connect<br>with your favourite<br>fitness creators</h1>
+      <p class="hero-subtext">Find fighters, coaches, bodybuilders and fitness influencers in one place and get closer access through chats, exclusive content, calls and video sessions.</p>
       <a class='cta-btn' href='{{ route('register') }}'>Sign Up as Fan &#8211; It's Free <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div>
   </div>

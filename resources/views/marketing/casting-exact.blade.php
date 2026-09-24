@@ -26,6 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -561,8 +562,8 @@
     <section class="casting-hero">
   <div class="container">
     <div class="casting-badge">&#127912; FFM STUDIOS</div>
-    <h1>Where creators and<br>performers move into film</h1>
-    <p>We're developing film projects and creating opportunities for athletes, models, martial artists, actors and performers with real on-screen potential.</p>
+    <h1 class="hero-title">Where creators and<br>performers move into film</h1>
+    <p class="hero-subtext">We're developing film projects and creating opportunities for athletes, models, martial artists, actors and performers with real on-screen potential.</p>
     <div class="hero-btns">
       <a class="cta-btn" href="#waitlist">Join Casting Waitlist <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></a>
       <a class="cta-btn-outline" href="#status">See Current Projects <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>

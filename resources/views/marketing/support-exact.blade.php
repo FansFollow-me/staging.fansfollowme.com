@@ -17,6 +17,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -309,8 +310,8 @@
     <section class="support-hero">
       <div class="support-hero-copy">
         <div class="support-hero-icon"><i class="fas fa-headset"></i></div>
-        <h1>Support Center</h1>
-        <p>We're here to help. Get answers to your questions, browse our knowledge base, or start a live chat with our support team.</p>
+        <h1 class="hero-title">Support Center</h1>
+        <p class="hero-subtext">We're here to help. Get answers to your questions, browse our knowledge base, or start a live chat with our support team.</p>
         <div class="support-hero-btns">
           <a href="#" class="support-btn support-btn--primary" onclick="alert('This is a design preview &#8212; live chat is not functional here.');event.preventDefault()">
             <i class="fas fa-comment-dots"></i> Start Chat

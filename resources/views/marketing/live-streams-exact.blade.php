@@ -26,6 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -496,8 +497,8 @@
 <main class="public-shell-content">
     <section class="page-hero">
   <div class="container">
-    <h1>Live Streams</h1>
-    <p class="hero-sub">Stream live in 4K on your own channel.<br>Bring fans into the moment and earn as you go.</p>
+    <h1 class="hero-title">Live Streams</h1>
+    <p class="hero-sub hero-subtext">Stream live in 4K on your own channel.<br>Bring fans into the moment and earn as you go.</p>
   </div>
 </section>
 <section class="page-section">

@@ -26,6 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -1802,8 +1803,8 @@
     <section class="celeb-hero">
   <div class="container">
     <div class="celeb-badge">★ CELEBRITY CONNECTIONS</div>
-    <h1><span class="white">Chat Personally<br>With<br>Your </span><span class="gold">Favorite Champions</span></h1>
-    <p>Connect directly with UFC fighters, Olympic champions, bodybuilding legends, and fitness icons. Build real friendships through personal chats, phone calls, and video hangouts.</p>
+    <h1 class="hero-title"><span class="white">Chat Personally<br>With<br>Your </span><span class="gold">Favorite Champions</span></h1>
+    <p class="hero-subtext">Connect directly with UFC fighters, Olympic champions, bodybuilding legends, and fitness icons. Build real friendships through personal chats, phone calls, and video hangouts.</p>
     <div class="hero-btns">
       <a class='cta-btn' href='{{ route('page.explore') }}'>Explore Celebrities</a>
       <a class='cta-btn' href='{{ route('page.casting') }}'>Movie Castings</a>

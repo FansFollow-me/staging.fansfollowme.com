@@ -26,6 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -504,8 +505,8 @@
     <section class="contact-hero">
   <div class="container">
     <div class="contact-badge">&#128737; SUPPORT CENTER</div>
-    <h1>We're Here to Help <span class="gradient">Support Center</span></h1>
-    <p>Get the support you need to succeed on FansFollow. Our team is available to help you maximize your earnings and grow your community.</p>
+    <h1 class="hero-title">We're Here to Help <span class="gradient">Support Center</span></h1>
+    <p class="hero-subtext">Get the support you need to succeed on FansFollow. Our team is available to help you maximize your earnings and grow your community.</p>
   </div>
 </section>
 
