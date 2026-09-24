@@ -889,8 +889,17 @@
     overflow: hidden;
     background: #0b0f1a;
     margin-top: -72px;
-    padding: calc(72px + 6rem) 0 5rem;
+    padding: 72px 0 2.5rem;
     color: #e5e7eb;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+  .celeb-hero > .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
   }
   .celeb-hero::before {
     content: '';
@@ -944,6 +953,10 @@
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
   }
   .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+  
+  .founder-layout { max-width: 1100px; margin: 0 auto; }
+  .founder-layout-main { width: 100%; }
+  .founder-layout-main .celeb-founder-strip { margin-top: 0; }
   .celeb-founder-strip {
     display: grid;
     grid-template-columns: 180px 1fr;
@@ -1222,7 +1235,7 @@
 
   @@media (max-width: 768px) { .card-grid, .founder-grid, .film-grid { grid-template-columns: 1fr; } }
   @@media (max-width: 767.98px) {
-    .celeb-hero { padding: calc(72px + 1.5rem) 0 2rem; }
+    .celeb-hero { min-height: auto; padding: calc(72px + 1.25rem) 0 1.5rem; display: block; }
     .section-dark { padding: 2rem 0; }
   }
 </style>
@@ -1811,8 +1824,14 @@
       <a class='cta-btn-outline' href='{{ route('register') }}'>Become a Fan</a>
       <a class='cta-btn-outline' href='{{ route('page.casting') }}#waitlist'>Join Casting Waitlist</a>
     </div>
-    <!-- Above-the-fold founder strip -->
-    <div class="celeb-founder-strip">
+
+  </div>
+</section>
+<section class="section-dark celeb-founder-section" id="founder">
+  <div class="container">
+    <div class="founder-layout">
+      <div class="founder-layout-main">
+        <div class="celeb-founder-strip">
       <img class="celeb-founder-photo" src="{{ asset('img/marketing/celebhero_copy.png') }}?v=david2" alt="David Kurzhal — The Viking Samurai" />
       <div class="celeb-founder-copy">
         <div class="celeb-founder-kicker">FFM Founder · The Viking Samurai</div>
@@ -1824,8 +1843,11 @@
         </div>
       </div>
     </div>
+      </div>
+    </div>
   </div>
 </section>
+
 
 <section class="section-dark">
   <div class="container">
