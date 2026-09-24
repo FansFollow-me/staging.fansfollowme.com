@@ -249,12 +249,12 @@
   .cta-btn-outline { display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 2.25rem; border-radius: 12px; background: rgba(30,41,59,.6); border: 1px solid rgba(255,255,255,.15); color: #e2e8f0; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: all .3s; }
   .cta-btn-outline:hover { background: rgba(51,65,85,.6); }
 
-  .section-dark { padding: 2.5rem 0; }
+  .section-dark { padding: 2.25rem 0; }
   .section-dark h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: #fff; text-align: center; margin-bottom: .5rem; }
-  .section-sub { text-align: center; color: #94a3b8; max-width: 650px; margin: 0 auto 2rem; font-size: 1rem; line-height: 1.7; }
+  .section-sub { text-align: center; color: #94a3b8; max-width: 650px; margin: 0 auto 1.5rem; font-size: 1rem; line-height: 1.7; }
   .section-gradient { background: linear-gradient(to bottom, rgba(15,23,42,.4), rgba(17,24,39,.6)); }
 
-  .partner-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 1100px; margin: 0 auto 1.5rem; }
+  .partner-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 1100px; margin: 0 auto; }
   .partner-card { background: linear-gradient(135deg, rgba(31,41,55,.7), rgba(15,23,42,.8)); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 1.5rem; transition: all .3s ease; box-shadow: 0 10px 15px -3px rgba(0,0,0,.15), 0 4px 6px -4px rgba(0,0,0,.1), 0 0 20px rgba(249,115,22,.06); }
   .partner-card:hover { transform: translateY(-4px) scale(1.02); border-color: rgba(249,115,22,.4); box-shadow: 0 20px 40px rgba(0,0,0,.3), 0 0 30px rgba(249,115,22,.2); }
   .partner-card-icon { width: 48px; height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; margin-bottom: .75rem; color: #fff; }
@@ -279,7 +279,7 @@
   .model-btn.blue { background: linear-gradient(135deg, #3b82f6, #60a5fa); box-shadow: 0 8px 20px rgba(59,130,246,.25); }
   .model-btn.blue:hover { box-shadow: 0 12px 28px rgba(59,130,246,.35); }
 
-  .token-section { background: linear-gradient(to right bottom, rgba(31,41,55,.6), rgba(17,24,39,.6)); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); padding: 2.5rem 0; }
+  .token-section { background: linear-gradient(to right bottom, rgba(31,41,55,.6), rgba(17,24,39,.6)); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); padding: 2.25rem 0; }
   .token-panel { max-width: 900px; margin: 0 auto; }
   .token-panel h3 { color: #fff; font-size: 1.3rem; font-weight: 700; margin-bottom: .5rem; }
   .token-panel > p { color: #94a3b8; font-size: .95rem; line-height: 1.7; margin-bottom: 1.5rem; }
