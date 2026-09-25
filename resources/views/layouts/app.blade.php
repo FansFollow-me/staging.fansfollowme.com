@@ -16,6 +16,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ffm-app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=3" rel="stylesheet">
     @stack('head')
     <style>
         :root {

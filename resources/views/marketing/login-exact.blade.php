@@ -242,13 +242,15 @@
       margin-bottom: 1.2rem;
     }
     .auth-home-link {
-      display: inline-flex;
+      display: flex;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto .75rem;
       align-items: center;
       gap: .45rem;
       color: #fb923c;
       font-size: .84rem;
       font-weight: 700;
-      margin-bottom: .75rem;
     }
     .auth-home-link .auth-home-arrow {
       color: #f97316;
@@ -365,20 +367,6 @@
       font-weight: 600;
     }
     .auth-login-meta a:hover {
-      color: #fff;
-    }
-    .auth-forgot-btn {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.12);
-      color: #f8fafc;
-      font-size: .8rem;
-      min-height: 44px;
-      padding: .35rem .85rem;
-      border-radius: 999px;
-    }
-    .auth-forgot-btn:hover {
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.2);
       color: #fff;
     }
     .auth-inline-error {
@@ -647,7 +635,7 @@
 
               <div class="auth-login-meta">
                 <span>Don't have an account? <a href='{{ route('register') }}'>Sign up here</a></span>
-                <a class='btn btn-outline-primary btn-sm auth-forgot-btn' href='{{ route('password.request') }}'>Forgot Password?</a>
+                <a href='{{ route('password.request') }}'>Forgot Password?</a>
               </div>
             </div>
           </div>
