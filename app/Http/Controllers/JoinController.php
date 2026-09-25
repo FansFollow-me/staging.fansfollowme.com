@@ -65,15 +65,19 @@ class JoinController extends Controller
             $link->forceFill(['is_active' => true])->save();
         }
 
+        $since = now()->subDays(30);
         $stats = [
             'scans' => $link->events()->where('type', JoinEvent::TYPE_SCAN)->count(),
             'signups' => $link->events()->where('type', JoinEvent::TYPE_SIGNUP)->count(),
+            'scans_30d' => $link->events()->where('type', JoinEvent::TYPE_SCAN)->where('created_at', '>=', $since)->count(),
+            'signups_30d' => $link->events()->where('type', JoinEvent::TYPE_SIGNUP)->where('created_at', '>=', $since)->count(),
         ];
 
         return view('join.my-qr', [
             'link' => $link,
             'stats' => $stats,
             'joinUrl' => $link->url(),
+            'profileUser' => $user,
         ]);
     }
 }

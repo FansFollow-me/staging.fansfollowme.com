@@ -66,7 +66,7 @@
         <div class="card card-ffm p-3 h-100">
             <h2 class="h6 text-secondary">QR join</h2>
             <p class="small text-secondary mb-2">In-person signups</p>
-            <a class="btn btn-sm btn-ffm" href="{{ route('join.my-qr') }}">My QR</a>
+            <a class="btn btn-sm btn-ffm" href="{{ route('join.my-qr') }}">My QR Code</a>
         </div>
     </div>
     <div class="col-md-3">

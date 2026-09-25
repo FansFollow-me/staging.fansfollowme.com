@@ -122,6 +122,13 @@ class HomeController extends Controller
                 ->exists();
         }
 
+        $shareJoinLink = $joinLink;
+        if (! $shareJoinLink && $user->isCreator()) {
+            $shareJoinLink = \App\Models\JoinLink::where('creator_id', $user->id)
+                ->where('is_active', true)
+                ->first();
+        }
+
         return view('profiles.show', [
             'profileUser' => $user,
             'posts' => $user->posts()
@@ -131,6 +138,7 @@ class HomeController extends Controller
             'recentTips' => $recentTips,
             'giftTotals' => $giftTotals,
             'joinLink' => $joinLink,
+            'shareJoinUrl' => $shareJoinLink?->url(),
             'isSubscribed' => $isSubscribed,
         ]);
     }

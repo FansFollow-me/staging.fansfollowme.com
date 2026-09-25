@@ -61,6 +61,18 @@
             @if ($profileUser->profile?->bio)
                 <p class="mt-2 mb-0">{{ $profileUser->profile->bio }}</p>
             @endif
+            <div class="d-flex flex-wrap gap-2 mt-2">
+                @auth
+                    @if (auth()->id() === $profileUser->id && (auth()->user()->isCreator() || auth()->user()->isAdmin()))
+                        <a class="btn btn-sm btn-ffm" href="{{ route('join.my-qr') }}">My QR Code</a>
+                    @endif
+                @endauth
+                @if (!empty($shareJoinUrl))
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-share-qr-btn>
+                        <i class="fas fa-share-nodes"></i> Share
+                    </button>
+                @endif
+            </div>
         </div>
         @auth
             @if (auth()->id() !== $profileUser->id && $profileUser->isCreator())
@@ -228,6 +240,100 @@
             @endforeach
         </ul>
     </div>
+@endif
+
+@php
+    $shareQrUrl = $shareJoinUrl ?? null;
+    $shareQrLabel = $profileUser->displayName();
+    $shareQrHandle = $profileUser->username;
+@endphp
+@if (!empty($shareQrUrl))
+<div id="profile-share-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(2,6,23,.72);align-items:center;justify-content:center;padding:1rem;">
+  <div class="card card-ffm p-4 text-center" style="width:min(420px,100%);position:relative;">
+    <button type="button" id="profile-share-close" class="btn btn-sm btn-outline-secondary" style="position:absolute;top:10px;right:10px;" aria-label="Close">&times;</button>
+    <img src="{{ $profileUser->profile?->avatar_path ? asset($profileUser->profile->avatar_path) : '/public/logo-monogram.png' }}" alt="" width="64" height="64" class="rounded-circle mx-auto mb-2">
+    <h2 class="h5 mb-1">{{ $shareQrLabel }}</h2>
+    <div class="text-secondary mb-3">{{ '@'.$shareQrHandle }}</div>
+    <div id="profile-share-qr" class="mx-auto" style="width:220px;height:220px;background:#fff;padding:10px;border-radius:12px;"></div>
+    <p class="small text-secondary mt-2 mb-2">Scan to follow me on FansFollow.me</p>
+    <code class="d-block small mb-3 text-break" id="profile-share-url">{{ $shareQrUrl }}</code>
+    <div class="d-flex gap-2">
+      <button type="button" class="btn btn-outline-primary flex-fill" id="profile-share-copy">Copy Link</button>
+      <button type="button" class="btn btn-ffm flex-fill" id="profile-share-native">Share</button>
+    </div>
+  </div>
+</div>
+<script src="{{ asset('js/qrcode.min.js') }}?v=qr3"></script>
+<script>
+(function () {
+  var url = @json($shareQrUrl);
+  var modal = document.getElementById('profile-share-modal');
+  var qrEl = document.getElementById('profile-share-qr');
+  var openBtn = document.querySelector('[data-share-qr-btn]');
+  var closeBtn = document.getElementById('profile-share-close');
+  var copyBtn = document.getElementById('profile-share-copy');
+  var nativeBtn = document.getElementById('profile-share-native');
+
+  function render() {
+    if (!window.QRCode || !qrEl) return;
+    qrEl.innerHTML = '';
+    new QRCode(qrEl, {
+      text: url,
+      width: 200,
+      height: 200,
+      colorDark: '#000000',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  }
+
+  function open() {
+    if (!modal) return;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    render();
+  }
+  function close() {
+    if (!modal) return;
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  if (openBtn) openBtn.addEventListener('click', open);
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  if (modal) modal.addEventListener('click', function (e) {
+    if (e.target === modal) close();
+  });
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function () { copyBtn.textContent = 'Copy Link'; }, 1500);
+        });
+      } else {
+        window.prompt('Copy this link:', url);
+      }
+    });
+  }
+
+  if (nativeBtn) {
+    nativeBtn.addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share({ title: @json($shareQrLabel) + ' on FansFollow.me', url: url }).catch(function () {});
+      } else if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          nativeBtn.textContent = 'Copied!';
+          setTimeout(function () { nativeBtn.textContent = 'Share'; }, 1500);
+        });
+      } else {
+        window.prompt('Copy this link:', url);
+      }
+    });
+  }
+})();
+</script>
 @endif
 @endsection
 
