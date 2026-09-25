@@ -26,7 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
-  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=2" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -495,7 +495,7 @@
     <a class='mobile-cta-btn' href="{{ route('register') }}">Get Started</a>
   </div>
 <main class="public-shell-content">
-    <section class="page-hero">
+    <section class="page-hero hero--centered">
   <div class="container">
     <h1 class="hero-title">Live Streams</h1>
     <p class="hero-sub hero-subtext">Stream live in 4K on your own channel.<br>Bring fans into the moment and earn as you go.</p>

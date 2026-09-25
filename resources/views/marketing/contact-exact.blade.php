@@ -26,7 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
-  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=2" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -502,7 +502,7 @@
     <a class='mobile-cta-btn' href="{{ route('register') }}">Get Started</a>
   </div>
 <main class="public-shell-content">
-    <section class="contact-hero">
+    <section class="contact-hero hero--centered">
   <div class="container">
     <div class="contact-badge">&#128737; SUPPORT CENTER</div>
     <h1 class="hero-title">We're Here to Help <span class="gradient">Support Center</span></h1>

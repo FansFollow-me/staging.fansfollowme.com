@@ -26,7 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
-  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=2" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -308,13 +308,6 @@
   .casting-hero h1 { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: .75rem; max-width: 900px; margin-left: auto; margin-right: auto; }
   .casting-hero p { font-size: 1.05rem; color: #e2e8f0; max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
   .hero-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
-  /* Casting hero is centred (exception to shared left-aligned heroes) */
-  .casting-hero .hero-title,
-  .casting-hero .hero-subtext {
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
   .casting-hero p.hero-subtext { max-width: 40rem !important; }
   /* desktop-only line breaks in hero subtext */
   .hidden { display: none; }
@@ -570,7 +563,7 @@
     <a class='mobile-cta-btn' href="{{ route('register') }}">Get Started</a>
   </div>
 <main class="public-shell-content">
-    <section class="casting-hero">
+    <section class="casting-hero hero--centered">
   <div class="container">
     <div class="casting-badge">&#127912; FFM STUDIOS</div>
     <h1 class="hero-title">Where creators and<br>performers move into film</h1>

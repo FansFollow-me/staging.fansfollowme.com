@@ -34,6 +34,23 @@
   margin-left: 0 !important;
   margin-right: auto !important;
 }
+/* Centred hero variant (More-menu pages) */
+.hero--centered {
+  text-align: center;
+}
+.hero--centered .hero-title,
+.hero--centered .hero-subtext {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.hero--centered .hero-btns,
+.hero--centered .hero-actions,
+.hero--centered .support-hero-btns {
+  display: flex !important;
+  justify-content: center !important;
+  flex-wrap: wrap;
+}
 @media (max-width: 767.98px) {
   .hero-title, .hero-subtext {
     text-align: center !important;

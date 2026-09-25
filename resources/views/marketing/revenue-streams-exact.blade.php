@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
-  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=2" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
@@ -192,7 +192,7 @@
   </header>
 
   <main>
-    <section class="page-hero">
+    <section class="page-hero hero--centered">
       <div class="container">
         <h1 class="hero-title">Creator Revenue Streams</h1>
         <p class="hero-subtext">Keep <strong>80%+</strong> of what you earn. Stack subscriptions, tips, paid content, shop sales and more — all on one platform built for fitness, martial arts and combat sports creators.</p>

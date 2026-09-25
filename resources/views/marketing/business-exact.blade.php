@@ -26,7 +26,7 @@
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
-  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=2" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -244,13 +244,6 @@
   .biz-hero h1 { font-size: clamp(2.25rem, 4vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: .75rem; max-width: 650px; margin-left: auto; margin-right: auto; }
   .biz-hero p { font-size: 1.05rem; color: #e2e8f0; max-width: min(42rem, 100%); margin: 0 auto 2rem; line-height: 1.65; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.5); text-wrap: balance; }
   .hero-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
-  /* Business hero is centred (exception to shared left-aligned heroes) */
-  .biz-hero .hero-title,
-  .biz-hero .hero-subtext {
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
   /* desktop-only line breaks in hero heading */
   .hidden { display: none; }
   @media (min-width: 768px) { .hidden.md-inline, .md\:inline { display: inline !important; } }
@@ -524,7 +517,7 @@
     <a class='mobile-cta-btn' href="{{ route('register') }}">Get Started</a>
   </div>
 <main class="public-shell-content">
-    <section class="biz-hero">
+    <section class="biz-hero hero--centered">
   <div class="container">
     <div class="biz-badge">&#128188; BUSINESS PARTNERSHIPS</div>
     <h1 class="hero-title">Grow with the fitness<br class="hidden md:inline">

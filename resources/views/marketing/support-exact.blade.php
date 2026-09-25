@@ -17,7 +17,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
-  <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
+  <link href="{{ asset('css/ffm-hero.css') }}?v=2" rel="stylesheet">
   <style>
   :root {
     color-scheme: dark;
@@ -309,7 +309,7 @@
     <a class='mobile-cta-btn' href="{{ route('register') }}">Get Started</a>
   </div>
 <main class="public-shell-content">
-    <section class="support-hero">
+    <section class="support-hero hero--centered">
       <div class="support-hero-copy">
         <div class="support-hero-icon"><i class="fas fa-headset"></i></div>
         <h1 class="hero-title">Support Center</h1>
