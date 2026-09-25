@@ -6,10 +6,10 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="FansFollow.me Support Center &#8212; get help with your account, payments, subscriptions, and creator tools. Start a live chat or browse our knowledge base.">
+  <meta name="description" content="Turn every event into new fans with your unique FansFollow.me QR code. Fans scan at gyms, fight nights and seminars and join your page in seconds.">
   <link rel="canonical" href="https://fansfollowme.com/support.html">
   <meta name="theme-color" content="#f97316">
-  <title>Support Center - FansFollow.me</title>
+  <title>QR Sign-Ups - FansFollow.me</title>
   <link href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%230d1119%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-size=%2736%27 font-weight=%27bold%27 text-anchor=%27middle%27 fill=%27%23f97316%27 font-family=%27Arial,sans-serif%27%3EF%3C/text%3E%3C/svg%3E" rel="icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -235,7 +235,87 @@
 <meta property="og:description" content="FansFollow.me Support Center &#8212; get help with your account, payments, subscriptions, and creator tools. Start a live chat or browse our knowledge base.">
 <meta property="og:image" content="/public/logo-full-lockup.png">
 <meta property="og:url" content="https://fansfollowme.com/support.html">
-<meta property="og:type" content="website"></head>
+<meta property="og:type" content="website">
+  <style>
+  .qr-hero {
+    position: relative; overflow: hidden; background: #0b0f1a;
+    margin-top: -72px; padding: calc(72px + 4.5rem) 0 4rem;
+    min-height: min(100vh, 720px); display: flex; align-items: center;
+    justify-content: center; text-align: center; color: #e5e7eb;
+  }
+  .qr-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('{{ asset('img/marketing/support-hero.jpg') }}?v=suphero1') center/cover no-repeat;
+    filter: brightness(.75); z-index: 0;
+  }
+  .qr-hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(rgba(11,15,26,.72), rgba(15,23,42,.78));
+    z-index: 1;
+  }
+  .qr-hero > .container { position: relative; z-index: 2; width: 100%; }
+  .qr-badge {
+    display: inline-flex; align-items: center; gap: .45rem;
+    padding: .45rem 1.05rem; border-radius: 999px;
+    background: linear-gradient(135deg, rgba(245,158,11,.2), rgba(249,115,22,.2));
+    border: 1px solid rgba(245,158,11,.35); color: #fbbf24;
+    font-size: .75rem; font-weight: 800; letter-spacing: .1em;
+    text-transform: uppercase; margin-bottom: 1.35rem;
+  }
+  .qr-hero-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+  .qr-section { padding: 3.5rem 0; }
+  .qr-section h2 { text-align: center; font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 900; color: #fff; margin: 0 0 .55rem; }
+  .qr-section .section-sub { text-align: center; color: #94a3b8; max-width: 640px; margin: 0 auto 2rem; line-height: 1.7; }
+  .qr-steps {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    max-width: 1100px; margin: 0 auto; position: relative;
+  }
+  .qr-step {
+    background: rgba(15,23,42,.6); border: 1px solid rgba(255,255,255,.06);
+    border-radius: 16px; padding: 1.5rem;
+  }
+  .qr-step-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+  .qr-step-badge {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, #f97316, #a855f7); color: #fff;
+    font-weight: 800; font-size: .95rem; display: flex; align-items: center; justify-content: center;
+  }
+  .qr-step h4 { margin: 0; color: #fff; font-size: 1.05rem; font-weight: 800; }
+  .qr-step p { margin: 0; color: #d1d5db; font-size: .92rem; line-height: 1.6; }
+  .qr-uses {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.15rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .qr-use {
+    background: rgba(15,23,42,.6); border: 1px solid rgba(255,255,255,.06);
+    border-radius: 16px; padding: 1.35rem 1.15rem; text-align: center;
+  }
+  .qr-use-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: .85rem; color: #fff; font-size: 1.2rem;
+  }
+  .qr-use h4 { margin: 0 0 .35rem; color: #fff; font-size: .98rem; font-weight: 800; }
+  .qr-use p { margin: 0; color: #94a3b8; font-size: .82rem; line-height: 1.5; }
+  .qr-cta {
+    padding: 4.5rem 0; text-align: center;
+    background: linear-gradient(rgba(0,0,0,.55), rgba(15,23,42,.55)),
+      url("{{ asset('img/ffmherobackground.jpg') }}") center/cover no-repeat;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+  .qr-cta h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #fff; margin: 0 0 1.35rem; }
+  @media (max-width: 900px) {
+    .qr-steps { grid-template-columns: 1fr; }
+    .qr-uses { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .qr-hero { min-height: auto; padding: calc(72px + 1.5rem) 0 1.75rem; }
+    .qr-uses { grid-template-columns: 1fr; }
+    .qr-section { padding: 2rem 0; }
+    .qr-cta { padding: 2.25rem 0; }
+  }
+  </style>
+</head>
 <body>
   <header class="public-shell-topbar">
     <div class="container inner">
@@ -309,100 +389,77 @@
     <a href="{{ route('login') }}" style='margin-top:1rem;color:#94a3b8;font-weight:600'>Login</a>
     <a class='mobile-cta-btn' href="{{ route('register') }}">Get Started</a>
   </div>
+
 <main class="public-shell-content">
-    <section class="support-hero hero--centered">
-      <div class="support-hero-copy">
-        <div class="support-hero-icon"><i class="fas fa-headset"></i></div>
-        <h1 class="hero-title">Support Center</h1>
-        <p class="hero-subtext">We're here to help. Get answers to your questions, browse our knowledge base, or start a live chat with our support team.</p>
-        <div class="support-hero-btns">
-          <a href="#" class="support-btn support-btn--primary" onclick="alert('This is a design preview &#8212; live chat is not functional here.');event.preventDefault()">
-            <i class="fas fa-comment-dots"></i> Start Chat
-          </a>
-          <a href="#faq" class="support-btn support-btn--outline">
-            <i class="fas fa-book-open"></i> Browse FAQ
-          </a>
-        </div>
+  <section class="qr-hero hero--centered">
+    <div class="container">
+      <div class="qr-badge">IN-PERSON SIGN-UPS</div>
+      <h1 class="hero-title">Turn every event into new fans</h1>
+      <p class="hero-subtext">Get your own unique QR code. Fans scan it at events, gyms and seminars and join your page in seconds.</p>
+      <div class="hero-btns">
+        <a class="cta-btn" href="{{ auth()->check() && (auth()->user()->isCreator() || auth()->user()->isAdmin()) ? route('join.my-qr') : route('register').'?role=creator' }}">Get Your QR Code</a>
+        <a class="cta-btn-outline" href="#how-it-works">How It Works</a>
       </div>
-    </section>
-
-    <section class="support-section">
-      <div class="container">
-        <h2 class="support-section-title">How can we help?</h2>
-        <div class="support-cards">
-          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}'">
-            <div class="support-card-icon"><i class="fas fa-user-circle"></i></div>
-            <h3>Account & Profile</h3>
-            <p>Setting up your account, verifying your identity, changing your username, and managing your profile.</p>
-            <span class="support-card-link">View articles <i class="fas fa-arrow-right"></i></span>
-          </div>
-          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}'">
-            <div class="support-card-icon"><i class="fas fa-credit-card"></i></div>
-            <h3>Payments & Payouts</h3>
-            <p>Subscription billing, tips, payouts, withdrawal methods, and transaction history.</p>
-            <span class="support-card-link">View articles <i class="fas fa-arrow-right"></i></span>
-          </div>
-          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}'">
-            <div class="support-card-icon"><i class="fas fa-shield-alt"></i></div>
-            <h3>Privacy & Security</h3>
-            <p>Blocking users, restricting countries, two-factor authentication, and data privacy.</p>
-            <span class="support-card-link">View articles <i class="fas fa-arrow-right"></i></span>
-          </div>
-          <div class="support-card" onclick="window.location.href='{{ route('page.for-creators') }}'">
-            <div class="support-card-icon"><i class="fas fa-video"></i></div>
-            <h3>Creator Tools</h3>
-            <p>Posting content, setting subscription prices, video calls, live streaming, and your shop.</p>
-            <span class="support-card-link">View articles <i class="fas fa-arrow-right"></i></span>
-          </div>
-          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}'">
-            <div class="support-card-icon"><i class="fas fa-flag"></i></div>
-            <h3>Reporting & Moderation</h3>
-            <p>Reporting content, community guidelines, content removal, and appeals.</p>
-            <span class="support-card-link">View articles <i class="fas fa-arrow-right"></i></span>
-          </div>
-          <div class="support-card" onclick="window.location.href='{{ route('page.contact') }}'">
-            <div class="support-card-icon"><i class="fas fa-envelope"></i></div>
-            <h3>Contact Us</h3>
-            <p>Can't find what you need? Send us a message and we'll get back to you within 24 hours.</p>
-            <span class="support-card-link">Get in touch <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="support-section" id="faq">
-      <div class="container">
-        <h2 class="support-section-title">Frequently Asked Questions</h2>
-        <div class="support-faq">
-          <div class="faq-item">
-            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I verify my account? <span class="faq-chevron">&#9662;</span></div>
-            <div class="faq-a"><p>Go to your settings and look for the "Verified account" option. You'll need to submit a photo ID. Verification typically takes 24-48 hours.</p></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do payouts work? <span class="faq-chevron">&#9662;</span></div>
-            <div class="faq-a"><p>Earnings from subscriptions, tips, and calls accumulate in your wallet. You can request a payout to your linked bank account or crypto wallet once you reach the minimum withdrawal threshold.</p></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I block users from certain countries? <span class="faq-chevron">&#9662;</span></div>
-            <div class="faq-a"><p>Yes. Go to Privacy & Security settings and use the "Block Countries" option to prevent users in specific regions from viewing your content.</p></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I set up video call pricing? <span class="faq-chevron">&#9662;</span></div>
-            <div class="faq-a"><p>Navigate to your settings and select "Video Call" to set your per-minute rate and toggle call availability on or off. You can change your rate at any time.</p></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What payment methods are supported? <span class="faq-chevron">&#9662;</span></div>
-            <div class="faq-a"><p>We support major credit cards, BTC, ETH, USDT, and SOL for payments. Creators can receive payouts via bank transfer or supported cryptocurrencies.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="support-contact-bar">
-      <div class="contact-pill"><i class="fas fa-clock"></i> Avg response: under 24 hours</div>
-      <div class="contact-pill"><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bccfc9ccccd3cec8fcdaddd2cfdad3d0d0d3cb92d1d9">[email&#160;protected]</a></div>
     </div>
-  </main>
+  </section>
+
+  <section class="qr-section section-dark" id="how-it-works" style="background:linear-gradient(160deg,#0b0f1a 0%,#111827 55%,#151b2c 100%);border-top:1px solid rgba(255,255,255,.06);">
+    <div class="container">
+      <h2>How it works</h2>
+      <p class="section-sub">Three simple steps to turn real-world meetups into lasting fan relationships.</p>
+      <div class="qr-steps">
+        <div class="qr-step">
+          <div class="qr-step-header"><div class="qr-step-badge">1</div><h4>Get your code</h4></div>
+          <p>Sign up as a creator and download your unique QR code.</p>
+        </div>
+        <div class="qr-step">
+          <div class="qr-step-header"><div class="qr-step-badge">2</div><h4>Share it anywhere</h4></div>
+          <p>Print it on posters or banners, or show it on your phone at events and gyms.</p>
+        </div>
+        <div class="qr-step">
+          <div class="qr-step-header"><div class="qr-step-badge">3</div><h4>Fans join instantly</h4></div>
+          <p>They scan, sign up and follow you, and every sign-up is linked to you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="qr-section" style="background:#0b0f1a;">
+    <div class="container">
+      <h2>Where to use it</h2>
+      <p class="section-sub">Bring your code anywhere your audience already gathers.</p>
+      <div class="qr-uses">
+        <div class="qr-use">
+          <div class="qr-use-icon" style="background:linear-gradient(135deg,#f97316,#ea580c);"><i class="fas fa-dumbbell"></i></div>
+          <h4>Gyms &amp; classes</h4>
+          <p>Post it at reception, on equipment, or in your class check-in.</p>
+        </div>
+        <div class="qr-use">
+          <div class="qr-use-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed);"><i class="fas fa-medal"></i></div>
+          <h4>Fight nights &amp; competitions</h4>
+          <p>Put it on your corner banner, walkout shirt, or event booth.</p>
+        </div>
+        <div class="qr-use">
+          <div class="qr-use-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb);"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h4>Seminars &amp; workshops</h4>
+          <p>Share it on slides, handouts and the door as people arrive.</p>
+        </div>
+        <div class="qr-use">
+          <div class="qr-use-icon" style="background:linear-gradient(135deg,#ec4899,#db2777);"><i class="fas fa-handshake"></i></div>
+          <h4>Expos &amp; meet-and-greets</h4>
+          <p>Turn every handshake into a follow, subscription or booking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="qr-cta">
+    <div class="container">
+      <h2>Ready to grow in person?</h2>
+      <a class="cta-btn" href="{{ route('register') }}?role=creator">Create Your Profile Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </section>
+</main>
 
   <footer class="public-shell-footer">
     <div class="container">

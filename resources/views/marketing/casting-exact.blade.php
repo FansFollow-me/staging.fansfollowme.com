@@ -508,6 +508,7 @@
             <a href="{{ route('page.live-streams') }}">&#128308; <span>Live Streams</span></a>
             <a href="{{ route('page.business') }}">&#128188; <span>Business</span></a>
             <a href="{{ route('page.support') }}">&#128172; <span>Support</span></a>
+            <a href="{{ route('page.qr-signups') }}">&#128241; <span>QR Sign-Ups</span></a>
             @auth
               @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
               <a href="{{ route('join.my-qr') }}">&#128241; <span>My QR code</span></a>
@@ -661,11 +662,7 @@ with real on-screen potential.</p>
         <div class="footer-links">
           <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">For Creators</h3>
           <a href="{{ route('page.revenue-streams') }}" style='font-size: .9rem;'>Revenue Streams</a>
-          @if (auth()->check() && (auth()->user()->isCreator() || auth()->user()->isAdmin()))
-          <a href="{{ route('join.my-qr') }}" style='font-size: .9rem;'>In-Person QR Sign-Ups</a>
-          @else
-          <a href="{{ route('register') }}?role=creator" style='font-size: .9rem;'>In-Person QR Sign-Ups</a>
-          @endif
+          <a href="{{ route('page.qr-signups') }}" style='font-size: .9rem;'>In-Person QR Sign-Ups</a>
           <a href="{{ route('register') }}?role=creator" style='font-size: .9rem;'>Getting Started</a>
           <a href="{{ route('page.for-creators') }}" style='font-size: .9rem;'>Personal Video Messages</a>
         </div>

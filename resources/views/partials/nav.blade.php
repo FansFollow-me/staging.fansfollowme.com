@@ -22,6 +22,7 @@
                     <a href="{{ route('page.live-streams') }}">🔴 <span>Live Streams</span></a>
                     <a href="{{ route('page.business') }}">💼 <span>Business</span></a>
                     <a href="{{ route('page.support') }}">💬 <span>Support</span></a>
+                    <a href="{{ route('page.qr-signups') }}">📱 <span>QR Sign-Ups</span></a>
                     @auth
                         @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
                             <a href="{{ route('join.my-qr') }}">📱 <span>My QR code</span></a>
@@ -72,6 +73,7 @@
     <a href="{{ route('page.live-streams') }}">🔴 Live Streams</a>
     <a href="{{ route('page.business') }}">💼 Business</a>
     <a href="{{ route('page.support') }}">💬 Support</a>
+    <a href="{{ route('page.qr-signups') }}">📱 QR Sign-Ups</a>
     @auth
         @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
         <a href="{{ route('join.my-qr') }}">📱 My QR code</a>

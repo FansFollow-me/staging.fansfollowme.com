@@ -20,6 +20,7 @@ class HomeController extends Controller
             'explore', 'creators', 'fans', 'celebrities', 'casting',
             'business', 'for-creators', 'support', 'faq', 'contact',
             'blog', 'privacy', 'terms', 'cookies', 'live-streams', 'revenue-streams',
+            'qr-signups',
         ];
 
         abort_unless(in_array($name, $allowed, true), 404);
@@ -47,6 +48,7 @@ class HomeController extends Controller
             'cookies' => 'marketing.cookies-exact',
             'creators' => 'marketing.creators-exact',
             'revenue-streams' => 'marketing.revenue-streams-exact',
+            'qr-signups' => 'marketing.qr-signups-exact',
         ];
 
         if (isset($exact[$name]) && view()->exists($exact[$name])) {

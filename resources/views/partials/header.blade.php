@@ -15,6 +15,7 @@
             <a href="{{ route('page.live-streams') }}">&#128308; <span>Live Streams</span></a>
             <a href="{{ route('page.business') }}">&#128188; <span>Business</span></a>
             <a href="{{ route('page.support') }}">&#128172; <span>Support</span></a>
+            <a href="{{ route('page.qr-signups') }}">&#128241; <span>QR Sign-Ups</span></a>
             @auth
               @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
               <a href="{{ route('join.my-qr') }}">&#128241; <span>My QR code</span></a>

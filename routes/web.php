@@ -75,7 +75,7 @@ Route::get('form-thanks', function (\Illuminate\Http\Request $request) {
 foreach ([
     'explore', 'creators', 'fans', 'celebrities', 'casting', 'business',
     'for-creators', 'support', 'faq', 'contact', 'blog', 'privacy',
-    'terms', 'cookies', 'live-streams', 'revenue-streams',
+    'terms', 'cookies', 'live-streams', 'revenue-streams', 'qr-signups',
 ] as $page) {
     Route::get($page, function (\Illuminate\Http\Request $request) use ($page) {
         return app(HomeController::class)->page($request, $page);
