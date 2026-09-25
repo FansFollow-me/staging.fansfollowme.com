@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm6" rel="stylesheet">
   <link href="{{ asset('css/ffm-hero.css') }}?v=2" rel="stylesheet">
   <style>
   :root {
@@ -237,6 +237,7 @@
 <meta property="og:url" content="https://fansfollowme.com/support.html">
 <meta property="og:type" content="website">
   <style>
+  /* Page-specific hero only — all other components come from shared marketing CSS */
   .qr-hero {
     position: relative; overflow: hidden; background: #0b0f1a;
     margin-top: -72px; padding: calc(72px + 4.5rem) 0 4rem;
@@ -246,73 +247,38 @@
   .qr-hero::before {
     content: ''; position: absolute; inset: 0;
     background: url('{{ asset('img/marketing/support-hero.jpg') }}?v=suphero1') center/cover no-repeat;
-    filter: brightness(.75); z-index: 0;
+    filter: brightness(.95); z-index: 0;
   }
+  /* Subtle gradient keeps type readable without muddying the photo */
   .qr-hero::after {
     content: ''; position: absolute; inset: 0;
-    background: linear-gradient(rgba(11,15,26,.72), rgba(15,23,42,.78));
+    background: linear-gradient(rgba(11,15,26,.42), rgba(15,23,42,.55));
     z-index: 1;
   }
   .qr-hero > .container { position: relative; z-index: 2; width: 100%; }
-  .qr-badge {
-    display: inline-flex; align-items: center; gap: .45rem;
-    padding: .45rem 1.05rem; border-radius: 999px;
-    background: linear-gradient(135deg, rgba(245,158,11,.2), rgba(249,115,22,.2));
-    border: 1px solid rgba(245,158,11,.35); color: #fbbf24;
-    font-size: .75rem; font-weight: 800; letter-spacing: .1em;
-    text-transform: uppercase; margin-bottom: 1.35rem;
-  }
   .qr-hero-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
-  .qr-section { padding: 3.5rem 0; }
-  .qr-section h2 { text-align: center; font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 900; color: #fff; margin: 0 0 .55rem; }
-  .qr-section .section-sub { text-align: center; color: #94a3b8; max-width: 640px; margin: 0 auto 2rem; line-height: 1.7; }
-  .qr-steps {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
-    max-width: 1100px; margin: 0 auto; position: relative;
+  .qr-steps-section {
+    position: relative; overflow: hidden;
+    background: linear-gradient(160deg, #0b0f1a 0%, #111827 45%, #1a1240 100%);
+    border-top: 1px solid rgba(255,255,255,.06);
   }
-  .qr-step {
-    background: rgba(15,23,42,.6); border: 1px solid rgba(255,255,255,.06);
-    border-radius: 16px; padding: 1.5rem;
+  .qr-uses-section {
+    position: relative; overflow: hidden;
+    background: linear-gradient(to right bottom, #111827, #1f2937, #111827);
+    border-top: 1px solid rgba(255,255,255,.06);
   }
-  .qr-step-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
-  .qr-step-badge {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: linear-gradient(135deg, #f97316, #a855f7); color: #fff;
-    font-weight: 800; font-size: .95rem; display: flex; align-items: center; justify-content: center;
-  }
-  .qr-step h4 { margin: 0; color: #fff; font-size: 1.05rem; font-weight: 800; }
-  .qr-step p { margin: 0; color: #d1d5db; font-size: .92rem; line-height: 1.6; }
+  .qr-uses-section .container { position: relative; z-index: 1; }
   .qr-uses {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.15rem;
     max-width: 1100px; margin: 0 auto;
   }
-  .qr-use {
-    background: rgba(15,23,42,.6); border: 1px solid rgba(255,255,255,.06);
-    border-radius: 16px; padding: 1.35rem 1.15rem; text-align: center;
-  }
-  .qr-use-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    display: inline-flex; align-items: center; justify-content: center;
-    margin-bottom: .85rem; color: #fff; font-size: 1.2rem;
-  }
-  .qr-use h4 { margin: 0 0 .35rem; color: #fff; font-size: .98rem; font-weight: 800; }
-  .qr-use p { margin: 0; color: #94a3b8; font-size: .82rem; line-height: 1.5; }
-  .qr-cta {
-    padding: 4.5rem 0; text-align: center;
-    background: linear-gradient(rgba(0,0,0,.55), rgba(15,23,42,.55)),
-      url("{{ asset('img/ffmherobackground.jpg') }}") center/cover no-repeat;
-    border-top: 1px solid rgba(255,255,255,.06);
-  }
-  .qr-cta h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #fff; margin: 0 0 1.35rem; }
   @media (max-width: 900px) {
-    .qr-steps { grid-template-columns: 1fr; }
     .qr-uses { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
     .qr-hero { min-height: auto; padding: calc(72px + 1.5rem) 0 1.75rem; }
     .qr-uses { grid-template-columns: 1fr; }
-    .qr-section { padding: 2rem 0; }
-    .qr-cta { padding: 2.25rem 0; }
+    .qr-uses-section, .qr-steps-section { padding: 1.5rem 0; }
   }
   </style>
 </head>
@@ -393,7 +359,7 @@
 <main class="public-shell-content">
   <section class="qr-hero hero--centered">
     <div class="container">
-      <div class="qr-badge">IN-PERSON SIGN-UPS</div>
+      <div class="creator-badge">IN-PERSON SIGN-UPS</div>
       <h1 class="hero-title">Turn every event into new fans</h1>
       <p class="hero-subtext">Get your own unique QR code. Fans scan it at events, gyms and seminars and join your page in seconds.</p>
       <div class="hero-btns">
@@ -403,49 +369,54 @@
     </div>
   </section>
 
-  <section class="qr-section section-dark" id="how-it-works" style="background:linear-gradient(160deg,#0b0f1a 0%,#111827 55%,#151b2c 100%);border-top:1px solid rgba(255,255,255,.06);">
+  <section class="section-dark qr-steps-section" id="how-it-works">
+    <div class="fans-glow fans-glow--orange"></div>
+    <div class="fans-glow fans-glow--purple"></div>
+    <div class="fans-glow fans-glow--pink"></div>
     <div class="container">
       <h2>How it works</h2>
       <p class="section-sub">Three simple steps to turn real-world meetups into lasting fan relationships.</p>
-      <div class="qr-steps">
-        <div class="qr-step">
-          <div class="qr-step-header"><div class="qr-step-badge">1</div><h4>Get your code</h4></div>
-          <p>Sign up as a creator and download your unique QR code.</p>
+      <div class="steps-flow">
+        <div class="step-merged">
+          <div class="step-header"><div class="step-badge">1</div><h4>Get your code</h4></div>
+          <div class="step-body"><p>Sign up as a creator and download your unique QR code.</p></div>
         </div>
-        <div class="qr-step">
-          <div class="qr-step-header"><div class="qr-step-badge">2</div><h4>Share it anywhere</h4></div>
-          <p>Print it on posters or banners, or show it on your phone at events and gyms.</p>
+        <div class="step-merged">
+          <div class="step-header"><div class="step-badge">2</div><h4>Share it anywhere</h4></div>
+          <div class="step-body"><p>Print it on posters or banners, or show it on your phone at events and gyms.</p></div>
         </div>
-        <div class="qr-step">
-          <div class="qr-step-header"><div class="qr-step-badge">3</div><h4>Fans join instantly</h4></div>
-          <p>They scan, sign up and follow you, and every sign-up is linked to you.</p>
+        <div class="step-merged">
+          <div class="step-header"><div class="step-badge">3</div><h4>Fans join instantly</h4></div>
+          <div class="step-body"><p>They scan, sign up and follow you, and every sign-up is linked to you.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="qr-section" style="background:#0b0f1a;">
+  <section class="section-dark qr-uses-section">
+    <div class="fans-glow fans-glow--orange"></div>
+    <div class="fans-glow fans-glow--purple"></div>
     <div class="container">
       <h2>Where to use it</h2>
       <p class="section-sub">Bring your code anywhere your audience already gathers.</p>
       <div class="qr-uses">
-        <div class="qr-use">
-          <div class="qr-use-icon" style="background:linear-gradient(135deg,#f97316,#ea580c);"><i class="fas fa-dumbbell"></i></div>
+        <div class="creator-card" style="text-align:center;">
+          <div class="creator-card-icon" style="background:linear-gradient(135deg,#f97316,#ea580c); margin-left:auto; margin-right:auto;"><i class="fas fa-dumbbell"></i></div>
           <h4>Gyms &amp; classes</h4>
           <p>Post it at reception, on equipment, or in your class check-in.</p>
         </div>
-        <div class="qr-use">
-          <div class="qr-use-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed);"><i class="fas fa-medal"></i></div>
+        <div class="creator-card" style="text-align:center;">
+          <div class="creator-card-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed); margin-left:auto; margin-right:auto;"><i class="fas fa-medal"></i></div>
           <h4>Fight nights &amp; competitions</h4>
           <p>Put it on your corner banner, walkout shirt, or event booth.</p>
         </div>
-        <div class="qr-use">
-          <div class="qr-use-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb);"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="creator-card" style="text-align:center;">
+          <div class="creator-card-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb); margin-left:auto; margin-right:auto;"><i class="fas fa-chalkboard-teacher"></i></div>
           <h4>Seminars &amp; workshops</h4>
           <p>Share it on slides, handouts and the door as people arrive.</p>
         </div>
-        <div class="qr-use">
-          <div class="qr-use-icon" style="background:linear-gradient(135deg,#ec4899,#db2777);"><i class="fas fa-handshake"></i></div>
+        <div class="creator-card" style="text-align:center;">
+          <div class="creator-card-icon" style="background:linear-gradient(135deg,#ec4899,#db2777); margin-left:auto; margin-right:auto;"><i class="fas fa-handshake"></i></div>
           <h4>Expos &amp; meet-and-greets</h4>
           <p>Turn every handshake into a follow, subscription or booking.</p>
         </div>
@@ -453,9 +424,10 @@
     </div>
   </section>
 
-  <section class="qr-cta">
+  <section class="section-photo">
     <div class="container">
       <h2>Ready to grow in person?</h2>
+      <p>Bring your QR code to every event and turn real-world energy into lasting fans.</p>
       <a class="cta-btn" href="{{ route('register') }}?role=creator">Create Your Profile Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div>
   </section>

@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm6" rel="stylesheet">
   <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
   <style>
   :root {

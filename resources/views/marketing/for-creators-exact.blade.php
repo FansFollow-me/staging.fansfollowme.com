@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#f97316">
   <link rel="apple-touch-icon" href="/public/logo-monogram.png">
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm5" rel="stylesheet">
+  <link href="{{ asset('css/ffm-mobile-spacing.css') }}?v=ffm6" rel="stylesheet">
   <link href="{{ asset('css/ffm-hero.css') }}?v=1" rel="stylesheet">
   <style>
   :root {
@@ -945,25 +945,10 @@
   #how-it-works .steps-flow { margin-bottom: 1.25rem; }
   #how-it-works.section-dark { padding-bottom: 1.25rem; }
 
-  .fans-glow { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
-  .fans-glow--orange { width: 420px; height: 420px; top: -120px; right: -80px; background: radial-gradient(circle, rgba(249,115,22,.22), transparent 70%); }
-  .fans-glow--purple { width: 380px; height: 380px; bottom: -100px; left: -60px; background: radial-gradient(circle, rgba(168,85,247,.20), transparent 70%); }
-  .fans-glow--pink { width: 300px; height: 300px; top: 40%; left: 50%; transform: translateX(-50%); background: radial-gradient(circle, rgba(236,72,153,.10), transparent 70%); }
   #how-it-works .container { position: relative; z-index: 1; }
-  .section-sub { text-align: center; color: #d1d5db; max-width: 600px; margin: 0 auto 2.5rem; font-size: 1rem; line-height: 1.7; }
-  .section-badge {
-    font-size: .75rem; font-weight: 700; color: #fb923c; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem;
-  }
 
   /* Content grid: cards left + sidebar right (matching For Fans) */
   .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; max-width: 1140px; margin: 0 auto; align-items: start; }
-  .creators-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; align-items: stretch; }
-  .creator-card { background: rgba(31,41,55,.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(55,65,81,.3); border-radius: 12px; padding: 1.4rem; transition: all .3s; box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1); }
-  .creator-card:hover { border-color: rgba(249,115,22,.5); }
-  .creator-card-icon { width: 48px; height: 48px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; margin-bottom: .75rem; color: #fff; }
-  .creator-card-icon i, .creator-card-icon svg.lucide { width: 1.25rem; height: 1.25rem; color: #fff; }
-  .creator-card h4 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: .25rem; }
-  .creator-card p { color: #d1d5db; font-size: .875rem; line-height: 1.45; margin: 0; }
 
   /* Sidebar glass panel (matching For Fans' why-fans-card) */
   .why-creators-card { background: rgba(31,41,55,.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(55,65,81,.4); border-radius: 16px; padding: 2rem 1.75rem; position: sticky; top: 8rem; }
@@ -974,34 +959,10 @@
   .why-creators-item p { color: #d1d5db; font-size: .85rem; line-height: 1.45; margin: 0; }
 
   /* How it works steps (matching For Fans) */
-  .steps-flow {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto 2rem; position: relative;
-  }
-  .steps-flow::before {
-    content: ''; position: absolute; top: 3rem; left: 16.66%; right: 16.66%; height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(249,115,22,.3), rgba(168,85,247,.3), transparent); z-index: 0;
-  }
-  .step-merged {
-    position: relative; z-index: 1; background: rgba(255,255,255,.04); border-radius: 16px; padding: 1.5rem;
-    display: flex; flex-direction: column; gap: .75rem;
-  }
-  .step-header { display: flex; align-items: center; gap: .75rem; }
-  .step-badge {
-    width: 40px; height: 40px; border-radius: 50%; background: var(--home-gradient); color: #fff;
-    font-weight: 800; font-size: .95rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .step-header h4 { color: #fff; font-size: 1rem; font-weight: 700; margin: 0; }
-  .step-body { padding-left: 3.25rem; }
-  .step-body p { color: #d1d5db; font-size: .85rem; line-height: 1.55; margin: 0; }
 
   /* CTA */
-  .cta-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.75rem; border-radius: 12px; background: var(--home-gradient); color: #fff; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all .3s; box-shadow: 0 14px 28px rgba(249,115,22,.3); }
-  .cta-btn:hover { transform: scale(1.05); box-shadow: 0 20px 30px rgba(249,115,22,.4); }
 
   /* Final CTA photo section */
-  .section-photo { position: relative; overflow: hidden; background: linear-gradient(rgba(0,0,0,.5), rgba(15,23,42,.5)), url("{{ asset('img/ffmherobackground.jpg') }}") center/cover no-repeat; padding: 3.5rem 0 5rem; text-align: center; }
-  .section-photo h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #fff; margin-bottom: .5rem; }
-  .section-photo p { color: #d1d5db; font-size: 1rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
 
   @@media (max-width: 768px) {
     .creators-grid, .steps-flow { grid-template-columns: 1fr; }
