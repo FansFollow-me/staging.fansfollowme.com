@@ -314,10 +314,10 @@
       <div class="support-hero-copy">
         <div class="support-hero-icon"><i class="fas fa-headset"></i></div>
         <h1 class="hero-title">Support Center</h1>
-        <p class="hero-subtext">We're here to help. Get answers to your questions, browse our knowledge base, or start a live chat with our support team.</p>
+        <p class="hero-subtext">We're here to help. Get answers to your questions, browse our knowledge base, or contact our support team.</p>
         <div class="support-hero-btns">
-          <a href="#" class="support-btn support-btn--primary" onclick="alert('This is a design preview &#8212; live chat is not functional here.');event.preventDefault()">
-            <i class="fas fa-comment-dots"></i> Start Chat
+          <a href="{{ route('page.contact') }}" class="support-btn support-btn--primary">
+            <i class="fas fa-envelope"></i> Contact Us
           </a>
           <a href="#faq" class="support-btn support-btn--outline">
             <i class="fas fa-book-open"></i> Browse FAQ
