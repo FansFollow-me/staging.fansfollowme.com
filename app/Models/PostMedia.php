@@ -25,14 +25,7 @@ class PostMedia extends Model
 
     public function url(): string
     {
-        $path = (string) $this->path;
-        if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://') || str_starts_with($path, '/')) {
-            return $path;
-        }
-        if ($this->disk === 'public' && ! str_starts_with($path, 'img/') && ! str_starts_with($path, 'posts/')) {
-            return asset('storage/'.$path);
-        }
-
-        return asset($path);
+        // Always go through the gated media route (lock check + no guessable storage URL)
+        return route('posts.media', ['postMedia' => $this->id]);
     }
 }

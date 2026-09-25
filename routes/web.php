@@ -105,6 +105,8 @@ Route::get('j/{code}', [JoinController::class, 'show'])
 
 // Post detail — public shell, paid body locked until unlock
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
+// Gated post media (lock check; not a public /storage URL)
+Route::get('media/posts/{postMedia}', [\App\Http\Controllers\PostMediaController::class, 'show'])->name('posts.media');
 
 // Shop (public browse; buy requires auth)
 Route::get('shop', [ShopController::class, 'index'])->name('shop.index');
