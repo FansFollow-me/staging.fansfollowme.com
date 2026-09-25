@@ -26,15 +26,20 @@
     }
   }
   #qr-box {
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     margin: 0 auto;
+    background: #ffffff !important;
+    padding: 16px !important;
+    border-radius: 12px;
   }
   #qr-box img, #qr-box canvas {
-    width: 100% !important;
-    height: 100% !important;
+    width: 288px !important;
+    height: 288px !important;
     display: block;
+    margin: 0 auto;
     image-rendering: pixelated;
+    background: #ffffff;
   }
   #qr-fallback {
     font-family: ui-monospace, monospace;

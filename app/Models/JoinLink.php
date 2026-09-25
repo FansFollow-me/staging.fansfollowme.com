@@ -46,18 +46,73 @@ class JoinLink extends Model
 
     public function url(): string
     {
-        // Prefer explicit QR_BASE_URL, then APP_URL (when not localhost), else current request host
-        $base = config('app.qr_base_url');
-        if (! $base || $base === 'http://localhost' || $base === 'https://localhost') {
-            $base = config('app.url');
-        }
-        if (! $base || str_contains((string) $base, 'localhost') || str_contains((string) $base, '127.0.0.1')) {
-            $request = request();
-            if ($request) {
-                $base = $request->getSchemeAndHttpHost();
+        return rtrim($this->baseUrl(), '/').'/j/'.$this->code;
+    }
+
+    /**
+     * Public origin for QR links: current request host when available,
+     * otherwise APP_URL / QR_BASE_URL. Never localhost, never relative.
+     */
+    protected function baseUrl(): string
+    {
+        $request = request();
+        if ($request) {
+            $host = strtolower((string) $request->getHost());
+            if ($host !== '' && ! $this->isLocalHost($host)) {
+                // Phones must open a secure public URL
+                return 'https://'.$host;
             }
         }
 
-        return rtrim((string) $base, '/').'/j/'.$this->code;
+        foreach ([config('app.qr_base_url'), config('app.url')] as $candidate) {
+            $base = $this->sanitizeBase($candidate);
+            if ($base !== null) {
+                return $base;
+            }
+        }
+
+        if ($request) {
+            return 'https://'.strtolower((string) $request->getHost());
+        }
+
+        return '';
+    }
+
+    protected function sanitizeBase(mixed $value): ?string
+    {
+        $value = trim((string) $value);
+        if ($value === '') {
+            return null;
+        }
+
+        $parts = parse_url($value);
+        if (! is_array($parts) || empty($parts['host'])) {
+            return null;
+        }
+
+        $host = strtolower($parts['host']);
+        if ($this->isLocalHost($host)) {
+            return null;
+        }
+
+        $scheme = strtolower($parts['scheme'] ?? 'https');
+        if ($scheme !== 'https') {
+            $scheme = 'https';
+        }
+
+        $port = isset($parts['port']) && ! in_array((int) $parts['port'], [80, 443], true)
+            ? ':'.$parts['port']
+            : '';
+
+        return $scheme.'://'.$host.$port;
+    }
+
+    protected function isLocalHost(string $host): bool
+    {
+        return $host === 'localhost'
+            || $host === '127.0.0.1'
+            || $host === '::1'
+            || str_ends_with($host, '.localhost')
+            || str_starts_with($host, '127.');
     }
 }

@@ -78,7 +78,7 @@ class AuthController extends Controller
     public function showRegister(Request $request): View
     {
         if ($request->query('join_code')) {
-            $request->session()->flash('join_code', $request->query('join_code'));
+            $request->session()->put('join_code', $request->query('join_code'));
         }
 
         return view('marketing.signup-exact');

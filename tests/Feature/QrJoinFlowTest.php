@@ -39,7 +39,7 @@ class QrJoinFlowTest extends TestCase
         [$creator, $link] = $this->paidCreator('qrpaid2');
 
         $this->get('/j/'.$link->code)
-            ->assertRedirect('/'.$creator->username);
+            ->assertRedirect(route('register', ['join_code' => $link->code]));
 
         $this->get('/'.$creator->username)
             ->assertOk()
@@ -52,7 +52,7 @@ class QrJoinFlowTest extends TestCase
     {
         [$creator, $link] = $this->paidCreator('qrpaid3');
 
-        $this->get('/j/'.$link->code)->assertRedirect('/'.$creator->username);
+        $this->get('/j/'.$link->code)->assertRedirect(route('register', ['join_code' => $link->code]));
 
         $this->post('/signup', [
             'username' => 'qrfan1',
