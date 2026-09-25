@@ -46,6 +46,12 @@ class JoinLink extends Model
 
     public function url(): string
     {
+        $this->loadMissing('creator');
+        $username = $this->creator?->username;
+        if ($username) {
+            return rtrim($this->baseUrl(), '/').'/'.$username.($this->code ? '?ref='.rawurlencode($this->code) : '');
+        }
+
         return rtrim($this->baseUrl(), '/').'/j/'.$this->code;
     }
 

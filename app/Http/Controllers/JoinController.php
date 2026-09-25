@@ -42,8 +42,10 @@ class JoinController extends Controller
                 ->with('status', 'You joined via QR — follow and subscribe to get closer');
         }
 
-        // Guests: fan signup with this creator's referral attached
-        return redirect()->route('register', ['join_code' => $link->code]);
+        return redirect()->route('profile', [
+            'username' => $link->creator->username,
+            'ref' => $link->code,
+        ]);
     }
 
     public function myQr(Request $request): View
