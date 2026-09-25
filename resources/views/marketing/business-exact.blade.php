@@ -244,6 +244,16 @@
   .biz-hero h1 { font-size: clamp(2.25rem, 4vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: .75rem; max-width: 650px; margin-left: auto; margin-right: auto; }
   .biz-hero p { font-size: 1.05rem; color: #e2e8f0; max-width: min(42rem, 100%); margin: 0 auto 2rem; line-height: 1.65; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.5); text-wrap: balance; }
   .hero-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+  /* Business hero is centred (exception to shared left-aligned heroes) */
+  .biz-hero .hero-title,
+  .biz-hero .hero-subtext {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  /* desktop-only line breaks in hero heading */
+  .hidden { display: none; }
+  @media (min-width: 768px) { .hidden.md-inline, .md\:inline { display: inline !important; } }
 
   .cta-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 2.25rem; border-radius: 12px; background: var(--home-gradient); color: #fff; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: all .3s; box-shadow: 0 14px 28px rgba(249,115,22,.24); }
   .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 30px rgba(249,115,22,.3); }
@@ -517,7 +527,8 @@
     <section class="biz-hero">
   <div class="container">
     <div class="biz-badge">&#128188; BUSINESS PARTNERSHIPS</div>
-    <h1 class="hero-title">Grow with the fitness creator economy</h1>
+    <h1 class="hero-title">Grow with the fitness<br class="hidden md:inline">
+creator economy</h1>
     <p class="hero-subtext">Reach high-intent audiences in fitness, combat sports and film.<br>Partner with a premium creator platform built for long-term value.</p>
     <div class="hero-btns">
       <a class="cta-btn" href="#contact">Schedule Partnership Call <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg></a>
