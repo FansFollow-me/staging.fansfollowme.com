@@ -26,12 +26,13 @@ class ProductNavMenuTest extends TestCase
 
         $response = $this->actingAs($fan)->get('/dashboard')->assertOk();
 
-        $response->assertSee('Home / Explore')
+        $response->assertSee('Home')
             ->assertSee('My profile')
             ->assertSee('Dashboard')
             ->assertSee('Messages')
-            ->assertSee('Notifications')
+            ->assertSee('Alerts')
             ->assertSee('Settings')
+            ->assertSee('Wallet')
             ->assertSee('Log out');
 
         $response->assertDontSee('href="'.route('creator.dashboard').'"')
@@ -44,12 +45,13 @@ class ProductNavMenuTest extends TestCase
 
         $response = $this->actingAs($creator)->get('/creator/dashboard')->assertOk();
 
-        $response->assertSee('Home / Explore')
+        $response->assertSee('Home')
             ->assertSee('My profile')
             ->assertSee('Studio')
             ->assertSee('Dashboard')
             ->assertSee('Messages')
-            ->assertSee('Settings');
+            ->assertSee('Settings')
+            ->assertSee('Wallet');
 
         $response->assertDontSee('href="'.route('admin.dashboard').'"');
     }
@@ -60,12 +62,13 @@ class ProductNavMenuTest extends TestCase
 
         $response = $this->actingAs($admin)->get('/panel/admin')->assertOk();
 
-        $response->assertSee('Home / Explore')
+        $response->assertSee('Home')
             ->assertSee('My profile')
             ->assertSee('Admin')
-            ->assertSee('Dashboard')
-            ->assertSee('Settings');
+            ->assertSee('Settings')
+            ->assertSee('Wallet');
 
-        $response->assertDontSee('href="'.route('creator.dashboard').'"');
+        $response->assertDontSee('href="'.route('creator.dashboard').'"')
+            ->assertDontSee('href="'.route('dashboard').'"');
     }
 }

@@ -2,9 +2,8 @@
 @auth
 @php
     $me = auth()->user();
-    $homeExploreHref = route('page.explore');
+    $homeHref = route('page.explore');
     $profileHref = route('profile', $me->username);
-    $dashboardHref = $me->isAdmin() ? route('admin.dashboard') : route('dashboard');
 @endphp
 <header class="public-shell-topbar">
     <div class="container inner">
@@ -30,15 +29,18 @@
         </button>
     </div>
     <div class="mobile-menu-section-label">Menu</div>
-    <a href="{{ $homeExploreHref }}">Home / Explore</a>
+    <a href="{{ $homeHref }}">Home</a>
     <a href="{{ $profileHref }}">My profile</a>
     @if ($me->isCreator())
         <a href="{{ route('creator.dashboard') }}">Studio</a>
     @endif
-    <a href="{{ $dashboardHref }}">Dashboard</a>
+    @if (! $me->isAdmin())
+        <a href="{{ route('dashboard') }}">Dashboard</a>
+    @endif
     <a href="{{ route('messages.index') }}">Messages</a>
-    <a href="{{ route('notifications.index') }}">Notifications</a>
+    <a href="{{ route('notifications.index') }}">Alerts</a>
     <a href="{{ route('settings.page') }}">Settings</a>
+    <a href="{{ route('wallet.show') }}">Wallet</a>
     @if ($me->isAdmin())
         <a href="{{ route('admin.dashboard') }}">Admin</a>
     @endif
