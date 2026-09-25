@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class SettingsController extends Controller
@@ -19,14 +20,75 @@ class SettingsController extends Controller
         $data = $request->validate([
             'display_name' => ['required', 'string', 'max:80'],
             'bio' => ['nullable', 'string', 'max:1000'],
+            'avatar' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'cover' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+        ], [
+            'avatar.image' => 'Profile photo must be an image.',
+            'avatar.mimes' => 'Profile photo must be a JPG, PNG, or WebP file.',
+            'avatar.max' => 'Profile photo must be 5MB or smaller.',
+            'cover.image' => 'Cover image must be an image.',
+            'cover.mimes' => 'Cover image must be a JPG, PNG, or WebP file.',
+            'cover.max' => 'Cover image must be 5MB or smaller.',
         ]);
 
-        $request->user()->profile()->updateOrCreate(
-            ['user_id' => $request->user()->id],
-            $data
+        $user = $request->user();
+        $profile = $user->profile()->first();
+
+        $avatarPath = $profile?->avatar_path;
+        $coverPath = $profile?->cover_path;
+
+        if ($request->boolean('remove_avatar')) {
+            $this->deletePublicImage($avatarPath);
+            $avatarPath = null;
+        }
+        if ($request->boolean('remove_cover')) {
+            $this->deletePublicImage($coverPath);
+            $coverPath = null;
+        }
+
+        if ($request->hasFile('avatar')) {
+            $this->deletePublicImage($avatarPath);
+            $avatarPath = $this->storePublicImage($request->file('avatar'));
+        }
+        if ($request->hasFile('cover')) {
+            $this->deletePublicImage($coverPath);
+            $coverPath = $this->storePublicImage($request->file('cover'));
+        }
+
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            [
+                'display_name' => $data['display_name'],
+                'bio' => $data['bio'] ?? null,
+                'avatar_path' => $avatarPath,
+                'cover_path' => $coverPath,
+            ]
         );
 
         return back()->with('status', 'Profile updated');
+    }
+
+    private function storePublicImage($file): string
+    {
+        $stored = $file->store('profiles', 'public');
+
+        // Pages render via asset($path); keep the public/storage/ prefix in the column.
+        return 'storage/'.$stored;
+    }
+
+    private function deletePublicImage(?string $path): void
+    {
+        if (!$path) {
+            return;
+        }
+
+        $relative = str_starts_with($path, 'storage/')
+            ? substr($path, strlen('storage/'))
+            : ltrim($path, '/');
+
+        if (str_starts_with($relative, 'profiles/') && Storage::disk('public')->exists($relative)) {
+            Storage::disk('public')->delete($relative);
+        }
     }
 
     /** Creator video-message pricing (3 tiers + brand toggle) */
