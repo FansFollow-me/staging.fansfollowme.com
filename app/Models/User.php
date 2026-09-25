@@ -113,4 +113,28 @@ class User extends Authenticatable
     {
         return $this->profile?->display_name ?: $this->username;
     }
+
+    public function avatarUrl(): string
+    {
+        $path = $this->profile?->avatar_path;
+
+        return $this->publicAssetUrl($path) ?: asset('logo-monogram.png');
+    }
+
+    public function coverUrl(): ?string
+    {
+        return $this->publicAssetUrl($this->profile?->cover_path);
+    }
+
+    private function publicAssetUrl(?string $path): ?string
+    {
+        if (! $path) {
+            return null;
+        }
+        if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://') || str_starts_with($path, '/')) {
+            return $path;
+        }
+
+        return asset($path);
+    }
 }

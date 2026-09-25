@@ -73,8 +73,22 @@ class PostController extends Controller
             ->with('status', 'Post published');
     }
 
-    public function show(Request $request, Post $post): View
+    public function show(Request $request, Post $post): View|RedirectResponse
     {
+        $post->load(['creator.profile', 'media']);
+
+        if ($request->routeIs('posts.show')) {
+            return redirect()->route('profile.post', [
+                'username' => $post->creator->username,
+                'post' => $post,
+            ], 301);
+        }
+
+        $username = (string) $request->route('username');
+        if ($username !== '' && strcasecmp($username, $post->creator->username) !== 0) {
+            abort(404);
+        }
+
         $user = $request->user();
         $locked = $post->isLockedFor($user);
 

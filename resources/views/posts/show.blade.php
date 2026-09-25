@@ -1,36 +1,28 @@
 @extends('layouts.app')
-@section('title', 'Post')
+@section('title', $post->creator->displayName())
 
 @section('content')
 @if (session('status'))
     <div class="alert alert-success alert-inline">{{ session('status') }}</div>
 @endif
 
-<div class="card card-ffm p-4 col-lg-8">
-    <div class="d-flex justify-content-between align-items-start mb-3">
-        <div>
-            <div class="text-secondary small">{{ $post->type->value }} · {{ $post->published_at?->diffForHumans() }}</div>
-            <a href="{{ route('profile', $post->creator->username) }}" class="fw-semibold">{{ $post->creator->displayName() }}</a>
+<div class="card card-ffm overflow-hidden col-lg-8 p-0">
+    <div class="p-3 d-flex justify-content-between align-items-start">
+        <div class="d-flex gap-2 align-items-center">
+            <img src="{{ $post->creator->avatarUrl() }}" alt="" width="40" height="40" class="rounded-circle" style="object-fit:cover;">
+            <div>
+                <a href="{{ route('profile', $post->creator->username) }}" class="fw-semibold text-decoration-none">{{ $post->creator->displayName() }}</a>
+                <div class="text-secondary small">{{ '@'.$post->creator->username }} · {{ $post->published_at?->diffForHumans() }}</div>
+            </div>
         </div>
         @if ($post->is_paid)
             <span class="badge text-bg-warning">Paid ${{ number_format($post->price / 100, 2) }}</span>
-        @else
-            <span class="badge text-bg-secondary">Free</span>
         @endif
     </div>
 
-    @if ($post->media->isNotEmpty())
-        @foreach ($post->media as $media)
-            @if ($media->type === 'image')
-                <img src="{{ asset('storage/'.$media->path) }}" alt="" class="img-fluid rounded-3 mb-3">
-            @else
-                <p class="text-secondary small">Media: {{ $media->path }}</p>
-            @endif
-        @endforeach
-    @endif
-
     @if ($locked)
-        <div class="alert alert-warning">
+        <div class="p-5 text-center" style="min-height:280px;background:#0f172a;">
+            <i class="fas fa-lock mb-2"></i>
             <p class="mb-2">This post is locked.</p>
             @auth
                 <form method="POST" action="{{ route('posts.unlock', $post) }}" class="d-inline">
@@ -39,13 +31,20 @@
                         Unlock for ${{ number_format($post->price / 100, 2) }} (wallet)
                     </button>
                 </form>
-                <span class="small text-secondary ms-2">or subscribe to {{ $post->creator->username }}</span>
+                <div class="small text-secondary mt-2">or subscribe to {{ '@'.$post->creator->username }}</div>
             @else
-                <a href="{{ route('login') }}">Log in</a> to unlock.
+                <a class="btn btn-ffm" href="{{ route('login') }}">Log in to unlock</a>
             @endauth
         </div>
     @else
-        <div class="fs-5" style="white-space: pre-wrap;">{{ $post->body }}</div>
+        @foreach ($post->media as $media)
+            @if ($media->type === 'image')
+                <img src="{{ $media->url() }}" alt="" class="w-100" style="max-height:640px;object-fit:cover;">
+            @endif
+        @endforeach
+        @if ($post->body)
+            <div class="p-3 fs-5" style="white-space: pre-wrap;">{{ $post->body }}</div>
+        @endif
     @endif
 
     @auth

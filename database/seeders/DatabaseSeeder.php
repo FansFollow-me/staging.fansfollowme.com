@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Enums\UserRole;
 use App\Models\CreatorSetting;
 use App\Models\JoinLink;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\UserProfile;
 use App\Models\Wallet;
@@ -112,9 +113,13 @@ class DatabaseSeeder extends Seeder
                     'category' => 'Founder',
                     'role' => UserRole::Creator,
                     'verified' => true,
+                    'price' => 1499,
+                    'avatar' => 'img/casting/viking-avatar.jpg',
+                    'cover' => 'img/casting/founder-viking.jpg',
                     'posts' => [
-                        'Building FansFollow.me in public. Exclusive drops and fight-camp notes here.',
-                        'Martial arts film casting calls are open for FFM creators.',
+                        ['body' => 'On set. Last Kumite still hits.', 'image' => 'img/casting/viking-post.jpg', 'paid' => false, 'price' => 0],
+                        ['body' => 'Building FansFollow.me in public. Exclusive drops and fight-camp notes here.', 'image' => 'img/marketing/Viking.png', 'paid' => false, 'price' => 0],
+                        ['body' => 'Subscriber-only fight camp notes from this week.', 'image' => 'img/marketing/lastkumite.jpeg', 'paid' => true, 'price' => 499],
                     ],
                 ],
                 [
@@ -125,9 +130,12 @@ class DatabaseSeeder extends Seeder
                     'category' => 'Ambassador',
                     'role' => UserRole::Creator,
                     'verified' => false,
+                    'price' => 999,
+                    'avatar' => 'img/marketing/elitetarget.png',
+                    'cover' => 'img/marketing/magnetic_fighters.png',
                     'posts' => [
-                        'I am proud to be chosen as an Ambassador for this platform!',
-                        'Exclusive training footage and fight prep coming to my page.',
+                        ['body' => 'I am proud to be chosen as an Ambassador for this platform!', 'image' => 'img/marketing/magnetic_fighters.png', 'paid' => false, 'price' => 0],
+                        ['body' => 'Pad work from this morning. Full round is for subscribers.', 'image' => 'img/marketing/Hard_redemption.png', 'paid' => true, 'price' => 499],
                     ],
                 ],
                 [
@@ -135,12 +143,15 @@ class DatabaseSeeder extends Seeder
                     'email' => 'ffmmartin@fansfollow.test',
                     'name' => 'FFM-Martin',
                     'bio' => 'FFM admin and creator. Platform updates, golf content, and community highlights.',
-                    'category' => null,
+                    'category' => 'Admin',
                     'role' => UserRole::Admin,
                     'verified' => true,
+                    'price' => 0,
+                    'avatar' => 'logo-monogram.png',
+                    'cover' => 'img/marketing/ffmherobackground.jpg',
                     'posts' => [
-                        'Welcome to FansFollow.me — fitness, martial arts and combat sports creators.',
-                        'New features shipping this week. Stay tuned.',
+                        ['body' => 'Welcome to FansFollow.me — fitness, martial arts and combat sports creators.', 'image' => 'img/marketing/creators-hero-bg.jpg', 'paid' => false, 'price' => 0],
+                        ['body' => 'New features shipping this week. Stay tuned.', 'image' => 'img/marketing/livestreaming.webp', 'paid' => false, 'price' => 0],
                     ],
                 ],
             ];
@@ -162,6 +173,8 @@ class DatabaseSeeder extends Seeder
                         'display_name' => $row['name'],
                         'bio' => $row['bio'],
                         'category' => $row['category'],
+                        'avatar_path' => $row['avatar'] ?? null,
+                        'cover_path' => $row['cover'] ?? null,
                     ]
                 );
                 $account->wallet()->updateOrCreate(
@@ -172,7 +185,7 @@ class DatabaseSeeder extends Seeder
                     $account->creatorSettings()->updateOrCreate(
                         ['user_id' => $account->id],
                         [
-                            'subscription_price' => 0,
+                            'subscription_price' => (int) ($row['price'] ?? 0),
                             'currency' => 'USD',
                             'accepts_subscriptions' => true,
                             'is_verified' => $row['verified'],
@@ -183,17 +196,23 @@ class DatabaseSeeder extends Seeder
                         ['code' => str_replace('-', '', strtolower($row['username'])), 'is_active' => true, 'follow_on_join' => true]
                     );
                 }
-                foreach ($row['posts'] as $body) {
-                    \App\Models\Post::firstOrCreate(
-                        ['creator_id' => $account->id, 'body' => $body],
+                foreach ($row['posts'] as $postRow) {
+                    $post = Post::updateOrCreate(
+                        ['creator_id' => $account->id, 'body' => $postRow['body']],
                         [
-                            'type' => 'text',
-                            'is_paid' => false,
-                            'price' => 0,
+                            'type' => ! empty($postRow['image']) ? 'photo' : 'text',
+                            'is_paid' => (bool) ($postRow['paid'] ?? false),
+                            'price' => (int) ($postRow['price'] ?? 0),
                             'status' => 'published',
                             'published_at' => now()->subHours(rand(2, 72)),
                         ]
                     );
+                    if (! empty($postRow['image'])) {
+                        $post->media()->updateOrCreate(
+                            ['path' => $postRow['image']],
+                            ['disk' => 'public', 'type' => 'image', 'sort_order' => 0]
+                        );
+                    }
                 }
             }
         }

@@ -132,6 +132,7 @@ class HomeController extends Controller
         return view('profiles.show', [
             'profileUser' => $user,
             'posts' => $user->posts()
+                ->with('media')
                 ->where('status', 'published')
                 ->latest('published_at')
                 ->paginate(12),
@@ -140,6 +141,8 @@ class HomeController extends Controller
             'joinLink' => $joinLink,
             'shareJoinUrl' => $shareJoinLink?->url(),
             'isSubscribed' => $isSubscribed,
+            'followerCount' => $user->followers()->count(),
+            'postCount' => $user->posts()->where('status', 'published')->count(),
         ]);
     }
 }
