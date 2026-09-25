@@ -953,6 +953,9 @@
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
   }
   .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+  /* desktop-only line breaks in hero heading */
+  .hidden { display: none; }
+  @media (min-width: 768px) { .hidden.md-inline, .md\:inline { display: inline !important; } }
   
   .founder-layout {
     display: grid;
@@ -1871,13 +1874,12 @@
     <section class="celeb-hero">
   <div class="container">
     <div class="celeb-badge">★ CELEBRITY CONNECTIONS</div>
-    <h1 class="hero-title"><span class="white">Chat Personally<br>With<br>Your </span><span class="gold">Favorite Champions</span></h1>
+    <h1 class="hero-title"><span class="white">Chat Personally With<br class="hidden md:inline">
+Your </span><span class="gold">Favorite Champions</span></h1>
     <p class="hero-subtext">Connect directly with UFC fighters, Olympic champions, bodybuilding legends, and fitness icons. Build real friendships through personal chats, phone calls, and video hangouts.</p>
     <div class="hero-btns">
       <a class='cta-btn' href='{{ route('page.explore') }}'>Explore Celebrities</a>
-      <a class='cta-btn' href='{{ route('page.casting') }}'>Movie Castings</a>
       <a class='cta-btn-outline' href='{{ route('register') }}'>Become a Fan</a>
-      <a class='cta-btn-outline' href='{{ route('page.casting') }}#waitlist'>Join Casting Waitlist</a>
     </div>
 
   </div>
