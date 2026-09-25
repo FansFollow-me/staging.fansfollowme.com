@@ -308,6 +308,17 @@
   .casting-hero h1 { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: .75rem; max-width: 900px; margin-left: auto; margin-right: auto; }
   .casting-hero p { font-size: 1.05rem; color: #e2e8f0; max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
   .hero-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+  /* Casting hero is centred (exception to shared left-aligned heroes) */
+  .casting-hero .hero-title,
+  .casting-hero .hero-subtext {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .casting-hero p.hero-subtext { max-width: 40rem !important; }
+  /* desktop-only line breaks in hero subtext */
+  .hidden { display: none; }
+  @media (min-width: 768px) { .hidden.md-inline, .md\:inline { display: inline !important; } }
 
   .cta-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .85rem 2rem; border-radius: 12px; background: var(--home-gradient); color: #fff; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all .3s; box-shadow: 0 14px 28px rgba(249,115,22,.24); }
   .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 30px rgba(249,115,22,.3); }
@@ -563,7 +574,9 @@
   <div class="container">
     <div class="casting-badge">&#127912; FFM STUDIOS</div>
     <h1 class="hero-title">Where creators and<br>performers move into film</h1>
-    <p class="hero-subtext">We're developing film projects and creating opportunities for athletes, models, martial artists, actors and performers with real on-screen potential.</p>
+    <p class="hero-subtext">We're developing film projects and creating opportunities<br class="hidden md:inline">
+for athletes, models, martial artists, actors and performers<br class="hidden md:inline">
+with real on-screen potential.</p>
     <div class="hero-btns">
       <a class="cta-btn" href="#waitlist">Join Casting Waitlist <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></a>
       <a class="cta-btn-outline" href="#status">See Current Projects <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
