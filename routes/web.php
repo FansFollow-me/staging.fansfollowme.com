@@ -98,6 +98,9 @@ Route::post('logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
+Route::post('stripe/webhook', [\App\Http\Controllers\StripeWebhookController::class, 'handle'])
+    ->name('stripe.webhook');
+
 // QR join
 Route::get('j/{code}', [JoinController::class, 'show'])
     ->middleware([\App\Http\Middleware\TrackJoinScan::class])
@@ -139,6 +142,7 @@ Route::middleware('auth')->group(function () {
 
     // Money (wallet demo + follow/subscribe/tip/ppv)
     Route::get('my/wallet', [MoneyController::class, 'wallet'])->name('wallet.show');
+    Route::get('my/wallet/stripe-return', [MoneyController::class, 'stripeReturn'])->name('wallet.stripe-return');
     Route::post('wallet/add-funds', [MoneyController::class, 'addFunds'])->name('wallet.add-funds');
     Route::post('follow/{creator}', [MoneyController::class, 'follow'])->name('follow');
     Route::delete('follow/{creator}', [MoneyController::class, 'unfollow'])->name('unfollow');

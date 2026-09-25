@@ -212,16 +212,32 @@ class MoneyController extends Controller
             'amount' => ['required', 'integer', 'min:100', 'max:10000000'],
         ]);
 
-        $this->wallets->credit(
-            $request->user(),
-            (int) $data['amount'],
-            'deposit',
-            null,
-            null,
-            ['source' => 'demo_topup']
-        );
+        $amount = (int) $data['amount'];
+        $stripe = app(\App\Services\StripeService::class);
 
-        return back()->with('status', 'Funds added (demo top-up)');
+        if (! $stripe->enabled()) {
+            return back()->withErrors(['amount' => 'Card payments are not configured yet']);
+        }
+
+        try {
+            $url = $stripe->createWalletCheckout(
+                $request->user()->id,
+                $amount,
+                route('wallet.stripe-return').'?session_id={CHECKOUT_SESSION_ID}',
+                route('wallet.show')
+            );
+        } catch (\Throwable $e) {
+            return back()->withErrors(['amount' => $e->getMessage()]);
+        }
+
+        return redirect()->away($url);
+    }
+
+    public function stripeReturn(Request $request): RedirectResponse
+    {
+        return redirect()
+            ->route('wallet.show')
+            ->with('status', 'Payment received — balance updates in a few seconds');
     }
 
     public function wallet(Request $request): View
