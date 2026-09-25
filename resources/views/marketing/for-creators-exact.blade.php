@@ -941,6 +941,9 @@
   /* Shared section styles (matching For Fans) */
   .section-dark { padding: 2rem 0; background: linear-gradient(to right bottom, #111827, #1f2937, #111827); }
   .section-dark h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 900; color: #fff; text-align: left; margin-bottom: 1rem; }
+  #how-it-works h2 { text-align: center; }
+  #how-it-works .steps-flow { margin-bottom: 1.25rem; }
+  #how-it-works.section-dark { padding-bottom: 1.25rem; }
 
   .fans-glow { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
   .fans-glow--orange { width: 420px; height: 420px; top: -120px; right: -80px; background: radial-gradient(circle, rgba(249,115,22,.22), transparent 70%); }
@@ -996,7 +999,7 @@
   .cta-btn:hover { transform: scale(1.05); box-shadow: 0 20px 30px rgba(249,115,22,.4); }
 
   /* Final CTA photo section */
-  .section-photo { position: relative; overflow: hidden; background: linear-gradient(rgba(0,0,0,.5), rgba(15,23,42,.5)), url("{{ asset('img/ffmherobackground.jpg') }}") center/cover no-repeat; padding: 5rem 0; text-align: center; }
+  .section-photo { position: relative; overflow: hidden; background: linear-gradient(rgba(0,0,0,.5), rgba(15,23,42,.5)), url("{{ asset('img/ffmherobackground.jpg') }}") center/cover no-repeat; padding: 3.5rem 0 5rem; text-align: center; }
   .section-photo h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #fff; margin-bottom: .5rem; }
   .section-photo p { color: #d1d5db; font-size: 1rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
 
