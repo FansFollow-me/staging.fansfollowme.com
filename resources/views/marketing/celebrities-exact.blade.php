@@ -1118,6 +1118,8 @@
   .cta-btn-home:hover { transform: scale(1.05); }
 
   .section-dark { padding: 4rem 0 2rem; background: transparent; }
+  .section-dark:has(+ .section-dark) { padding-bottom: 1.5rem; }
+  .section-dark + .section-dark { padding-top: 3rem; }
   .section-dark h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #fff; text-align: center; margin-bottom: .5rem; }
   .section-sub { text-align: center; color: #d1d5db; max-width: 650px; margin: 0 auto 2.5rem; font-size: 1rem; line-height: 1.7; }
 
