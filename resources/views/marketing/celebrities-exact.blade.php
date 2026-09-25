@@ -1884,43 +1884,6 @@ Your </span><span class="gold">Favorite Champions</span></h1>
 
   </div>
 </section>
-<section class="section-dark celeb-founder-section" id="founder">
-  <div class="container">
-    <div class="founder-layout">
-      <div class="founder-layout-main">
-        <div class="celeb-founder-strip">
-      <img class="celeb-founder-photo" src="{{ asset('img/marketing/celebhero_copy.png') }}?v=david2" alt="David Kurzhal — The Viking Samurai" />
-      <div class="celeb-founder-copy">
-        <div class="celeb-founder-kicker">FFM Founder · The Viking Samurai</div>
-        <h2 class="celeb-founder-name">David Kurzhal</h2>
-        <p>Hollywood action star · 5th Dan Black Belt · 8+ feature films. Now casting FFM creators for martial arts movies.</p>
-        <div class="hero-btns">
-          <a class='cta-btn' href='{{ route('page.casting') }}'>Movie Castings</a>
-          <a class='cta-btn-outline' href='{{ route('page.casting') }}#waitlist'>Join Waitlist</a>
-        </div>
-      </div>
-    </div>
-      </div>
-
-      <div class="founder-side-cards">
-        <div class="founder-side-card">
-          <div class="founder-side-kicker">NOW CASTING</div>
-          <h3>Now Casting</h3>
-          <p>David is casting martial artists, fighters and fitness creators for upcoming action films. Join the waitlist to be considered.</p>
-          <a class="cta-btn" href="{{ route('page.casting') }}#waitlist">Join Waitlist</a>
-        </div>
-        <div class="founder-side-card">
-          <div class="founder-side-kicker">FILM CREDITS</div>
-          <h3>8+ Feature Films</h3>
-          <p>The Last Kumite &middot; Bloodstorm &middot; Elite Target &middot; Warrior Island</p>
-          <a class="cta-btn-outline" href="#films">View Films</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <section class="section-dark">
   <div class="container">
     <h2>Why Celebrities Choose FansFollow</h2>
