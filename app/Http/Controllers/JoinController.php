@@ -26,6 +26,8 @@ class JoinController extends Controller
             'ip_hash' => hash('sha256', $request->ip() ?? ''),
             'user_agent' => substr((string) $request->userAgent(), 0, 255),
         ]);
+        // Prevent double-count when we bounce to /{username}?ref=…
+        $request->session()->put('qr_scan_for', $link->code);
 
         // Remember creator so signup/login lands on their page
         $request->session()->put('join_creator_id', $link->creator_id);

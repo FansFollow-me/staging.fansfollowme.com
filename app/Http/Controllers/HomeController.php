@@ -94,9 +94,14 @@ class HomeController extends Controller
             ->map(fn ($g) => ['count' => $g->count(), 'amount' => (int) $g->sum('amount')]);
 
         // QR / referral context for inline guest signup
-        $joinCode = $request->session()->get('join_code')
+        $joinCode = $request->query('ref')
             ?? $request->query('join_code')
-            ?? $request->query('ref');
+            ?? $request->session()->get('join_code');
+
+        // Persist ref so signup/login on this profile still credits the creator
+        if ($request->query('ref') || $request->query('join_code')) {
+            $request->session()->put('join_code', $request->query('ref') ?? $request->query('join_code'));
+        }
 
         $joinLink = null;
         if ($joinCode) {
@@ -109,6 +114,18 @@ class HomeController extends Controller
             $joinLink = \App\Models\JoinLink::where('creator_id', $user->id)
                 ->where('is_active', true)
                 ->first();
+        }
+
+        // Count a scan when the share URL (profile?ref=…) is opened (skip /j/ double-count)
+        if ($joinLink && $request->query('ref') && $request->session()->get('qr_scan_for') !== $joinLink->code) {
+            $request->session()->put('qr_scan_for', $joinLink->code);
+            \App\Models\JoinEvent::create([
+                'join_link_id' => $joinLink->id,
+                'type' => \App\Models\JoinEvent::TYPE_SCAN,
+                'user_id' => auth()->id(),
+                'ip_hash' => hash('sha256', $request->ip() ?? ''),
+                'user_agent' => substr((string) $request->userAgent(), 0, 255),
+            ]);
         }
 
         $isSubscribed = false;
@@ -129,7 +146,14 @@ class HomeController extends Controller
                 ->first();
         }
 
+        $refCode = $joinLink?->code;
+        $loginUrl = route('login', array_filter(['ref' => $refCode]));
+        $signupUrl = route('register', array_filter(['ref' => $refCode]));
+
         return view('profiles.show', [
+            'loginUrl' => $loginUrl,
+            'signupUrl' => $signupUrl,
+            'refCode' => $refCode,
             'profileUser' => $user,
             'posts' => $user->posts()
                 ->with('media')

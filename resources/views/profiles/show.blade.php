@@ -7,8 +7,8 @@
     $isPaidCreator = $profileUser->isCreator() && $subPrice > 0;
     $cover = $profileUser->coverUrl();
     $avatar = $profileUser->avatarUrl();
-    $loginUrl = route('login');
-    $signupUrl = route('register');
+    $loginUrl = $loginUrl ?? route('login');
+    $signupUrl = $signupUrl ?? route('register');
 @endphp
 
 @push('head')
