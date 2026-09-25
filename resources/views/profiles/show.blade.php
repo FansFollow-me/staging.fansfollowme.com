@@ -41,6 +41,23 @@
         <div class="flex-grow-1">
             <h1 class="h3 mb-1">{{ $profileUser->displayName() }}</h1>
             <div class="text-secondary">{{ '@'.$profileUser->username }}</div>
+            @php
+                $profileBadges = collect($profileUser->profile?->badges ?? []);
+                if ($profileUser->profile?->category) {
+                    $profileBadges->push($profileUser->profile->category);
+                }
+                if ($profileUser->creatorSettings?->is_verified) {
+                    $profileBadges->push('Verified');
+                }
+                $profileBadges = $profileBadges->map(fn ($b) => trim((string) $b))->filter()->unique()->values();
+            @endphp
+            @if ($profileBadges->isNotEmpty())
+                <div class="d-flex flex-wrap gap-1 mt-2">
+                    @foreach ($profileBadges as $badgeLabel)
+                        <span class="badge text-bg-warning">{{ $badgeLabel }}</span>
+                    @endforeach
+                </div>
+            @endif
             @if ($profileUser->profile?->bio)
                 <p class="mt-2 mb-0">{{ $profileUser->profile->bio }}</p>
             @endif

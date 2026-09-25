@@ -98,6 +98,106 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        // Staging-only showcase accounts shown on /explore (never production)
+        $stagingHost = (string) config('app.url');
+        $isStagingLike = app()->environment(['local', 'staging', 'testing'])
+            || str_contains($stagingHost, 'staging');
+        if ($isStagingLike) {
+            $showcase = [
+                [
+                    'username' => 'VikingSamurai',
+                    'email' => 'vikingsamurai@fansfollow.test',
+                    'name' => 'David Kurzhal',
+                    'bio' => 'Founder of FansFollow.me. Martial artist, bodybuilder, and entrepreneur building the creator economy.',
+                    'category' => 'Founder',
+                    'role' => UserRole::Creator,
+                    'verified' => true,
+                    'posts' => [
+                        'Building FansFollow.me in public. Exclusive drops and fight-camp notes here.',
+                        'Martial arts film casting calls are open for FFM creators.',
+                    ],
+                ],
+                [
+                    'username' => 'JusticeJimmy',
+                    'email' => 'justicejimmy@fansfollow.test',
+                    'name' => 'Justice Jimmy Millar',
+                    'bio' => 'Pro fighter and ambassador. Sharing exclusive training footage, fight prep, and behind-the-scenes content.',
+                    'category' => 'Ambassador',
+                    'role' => UserRole::Creator,
+                    'verified' => false,
+                    'posts' => [
+                        'I am proud to be chosen as an Ambassador for this platform!',
+                        'Exclusive training footage and fight prep coming to my page.',
+                    ],
+                ],
+                [
+                    'username' => 'FFM-Martin',
+                    'email' => 'ffmmartin@fansfollow.test',
+                    'name' => 'FFM-Martin',
+                    'bio' => 'FFM admin and creator. Platform updates, golf content, and community highlights.',
+                    'category' => null,
+                    'role' => UserRole::Admin,
+                    'verified' => true,
+                    'posts' => [
+                        'Welcome to FansFollow.me — fitness, martial arts and combat sports creators.',
+                        'New features shipping this week. Stay tuned.',
+                    ],
+                ],
+            ];
+
+            foreach ($showcase as $row) {
+                $account = User::updateOrCreate(
+                    ['email' => $row['email']],
+                    [
+                        'username' => $row['username'],
+                        'password' => $password,
+                        'role' => $row['role'],
+                        'status' => 'active',
+                        'email_verified_at' => now(),
+                    ]
+                );
+                $account->profile()->updateOrCreate(
+                    ['user_id' => $account->id],
+                    [
+                        'display_name' => $row['name'],
+                        'bio' => $row['bio'],
+                        'category' => $row['category'],
+                    ]
+                );
+                $account->wallet()->updateOrCreate(
+                    ['user_id' => $account->id],
+                    ['balance' => 0, 'currency' => 'USD']
+                );
+                if ($row['role'] === UserRole::Creator || $row['role'] === UserRole::Admin) {
+                    $account->creatorSettings()->updateOrCreate(
+                        ['user_id' => $account->id],
+                        [
+                            'subscription_price' => 0,
+                            'currency' => 'USD',
+                            'accepts_subscriptions' => true,
+                            'is_verified' => $row['verified'],
+                        ]
+                    );
+                    JoinLink::firstOrCreate(
+                        ['creator_id' => $account->id],
+                        ['code' => str_replace('-', '', strtolower($row['username'])), 'is_active' => true, 'follow_on_join' => true]
+                    );
+                }
+                foreach ($row['posts'] as $body) {
+                    \App\Models\Post::firstOrCreate(
+                        ['creator_id' => $account->id, 'body' => $body],
+                        [
+                            'type' => 'text',
+                            'is_paid' => false,
+                            'price' => 0,
+                            'status' => 'published',
+                            'published_at' => now()->subHours(rand(2, 72)),
+                        ]
+                    );
+                }
+            }
+        }
+
         $this->call(DemoContentSeeder::class);
     }
 }

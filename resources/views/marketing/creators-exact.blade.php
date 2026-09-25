@@ -281,7 +281,7 @@
                 <span><i class="fas fa-image"></i> 48</span>
                 <span><i class="fas fa-video"></i> 22</span>
               </div>
-              <a class='creator-card-btn creator-card-btn--primary' href='/creator-profile-populated'>View Profile</a>
+              <a class='creator-card-btn creator-card-btn--primary' href='{{ route('profile', 'JusticeJimmy') }}'>View Profile</a>
             </div>
           </div>
 
@@ -298,7 +298,7 @@
                 <span><i class="fas fa-image"></i> 35</span>
                 <span><i class="fas fa-video"></i> 18</span>
               </div>
-              <a class='creator-card-btn creator-card-btn--primary' href='/creator-profile-populated'>View Profile</a>
+              <a class='creator-card-btn creator-card-btn--primary' href='{{ route('profile', 'FFM-Martin') }}'>View Profile</a>
             </div>
           </div>
 
@@ -315,7 +315,7 @@
                 <span><i class="fas fa-image"></i> 20</span>
                 <span><i class="fas fa-video"></i> 10</span>
               </div>
-              <a class='creator-card-btn creator-card-btn--primary' href='{{ route('register') }}'>View Profile</a>
+              <a class='creator-card-btn creator-card-btn--primary' href='{{ route('profile', 'VikingSamurai') }}'>View Profile</a>
             </div>
           </div>
 

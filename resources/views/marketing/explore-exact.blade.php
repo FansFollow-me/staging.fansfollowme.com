@@ -420,7 +420,7 @@
         <aside class="explore-sidebar">
           <div class="explore-sidebar-title">Explore Creators</div>
 
-          <a class='explore-creator-card' href='/creator-profile-populated'>
+          <a class='explore-creator-card' href='{{ route('profile', 'JusticeJimmy') }}'>
             <div class="creator-placeholder">JJ</div>
             <div class="creator-info">
               <div class="creator-name">Justice Jimmy Millar</div>
@@ -429,7 +429,7 @@
             </div>
           </a>
 
-          <a class='explore-creator-card' href='/creator-profile-populated'>
+          <a class='explore-creator-card' href='{{ route('profile', 'FFM-Martin') }}'>
             <div class="creator-placeholder">FM</div>
             <div class="creator-info">
               <div class="creator-name">FFM-Martin</div>
@@ -438,7 +438,7 @@
             </div>
           </a>
 
-          <a class='explore-creator-card' href='{{ route('register') }}'>
+          <a class='explore-creator-card' href='{{ route('profile', 'VikingSamurai') }}'>
             <div class="creator-placeholder">DK</div>
             <div class="creator-info">
               <div class="creator-name">David Kurzhal</div>
