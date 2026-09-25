@@ -39,7 +39,7 @@ class StoryController extends Controller
 
         $mediaPath = null;
         if ($request->hasFile('media')) {
-            $mediaPath = $request->file('media')->store('stories', 'public');
+            $mediaPath = \App\Support\UploadStorage::storePublic($request->file('media'), 'stories');
         }
 
         Story::create([

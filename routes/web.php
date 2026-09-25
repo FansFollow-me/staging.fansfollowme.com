@@ -107,6 +107,11 @@ Route::get('j/{code}', [JoinController::class, 'show'])
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
 // Gated post media (lock check; not a public /storage URL)
 Route::get('media/posts/{postMedia}', [\App\Http\Controllers\PostMediaController::class, 'show'])->name('posts.media');
+// Public upload stream (avatars, covers, free media) — cacheable, no auth
+Route::get('media/{path}', [\App\Http\Controllers\UploadStreamController::class, 'public'])
+    ->where('path', '.*')
+    ->name('uploads.public');
+
 
 // Shop (public browse; buy requires auth)
 Route::get('shop', [ShopController::class, 'index'])->name('shop.index');

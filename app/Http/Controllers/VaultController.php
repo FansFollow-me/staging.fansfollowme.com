@@ -27,7 +27,7 @@ class VaultController extends Controller
         ]);
 
         $file = $request->file('file');
-        $path = $file->store('vault/'.$request->user()->id, 'public');
+        $path = \App\Support\UploadStorage::storePrivate($file, 'vault/'.$request->user()->id);
 
         VaultItem::create([
             'creator_id' => $request->user()->id,
@@ -41,23 +41,22 @@ class VaultController extends Controller
         return back()->with('status', 'File saved to vault');
     }
 
-    public function download(Request $request, VaultItem $item): StreamedResponse
+    public function download(Request $request, VaultItem $item): \Symfony\Component\HttpFoundation\Response
     {
         abort_unless($item->creator_id === $request->user()->id || $request->user()->isAdmin(), 403);
 
-        $absolute = storage_path('app/public/'.$item->path);
-        abort_unless(is_file($absolute), 404);
-
-        return response()->streamDownload(function () use ($absolute) {
-            readfile($absolute);
-        }, $item->original_name ?: basename($item->path));
+        return \App\Support\UploadStorage::response(
+            $item->path,
+            $item->original_name ?: basename($item->path),
+            private: true
+        );
     }
 
     public function destroy(Request $request, VaultItem $item): RedirectResponse
     {
         abort_unless($item->creator_id === $request->user()->id || $request->user()->isAdmin(), 403);
 
-        \Storage::disk('public')->delete($item->path);
+        \App\Support\UploadStorage::delete($item->path);
         $item->delete();
 
         return back()->with('status', 'File deleted');

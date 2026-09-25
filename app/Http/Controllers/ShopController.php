@@ -59,7 +59,7 @@ class ShopController extends Controller
 
         $path = null;
         if ($request->hasFile('file')) {
-            $path = $request->file('file')->store('products', 'public');
+            $path = \App\Support\UploadStorage::storePrivate($request->file('file'), 'products');
         }
 
         Product::create([
@@ -146,7 +146,7 @@ class ShopController extends Controller
         ]);
     }
 
-    public function download(Request $request, Sale $sale): StreamedResponse
+    public function download(Request $request, Sale $sale): \Symfony\Component\HttpFoundation\Response
     {
         abort_unless($sale->buyer_id === $request->user()->id, 403);
         abort_unless($sale->status === 'completed', 403);
@@ -154,14 +154,13 @@ class ShopController extends Controller
         $product = $sale->product;
         abort_unless($product && $product->file_path, 404);
 
-        $absolute = storage_path('app/public/'.$product->file_path);
-        abort_unless(is_file($absolute), 404);
-
         $sale->forceFill(['downloaded_at' => now()])->save();
 
-        return response()->streamDownload(function () use ($absolute) {
-            readfile($absolute);
-        }, basename($product->file_path));
+        return \App\Support\UploadStorage::response(
+            $product->file_path,
+            basename($product->file_path),
+            private: true
+        );
     }
 
     public function myPurchases(Request $request): View

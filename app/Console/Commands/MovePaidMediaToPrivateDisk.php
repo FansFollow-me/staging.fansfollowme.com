@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\PostMedia;
+use App\Support\UploadStorage;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,11 +11,11 @@ class MovePaidMediaToPrivateDisk extends Command
 {
     protected $signature = 'ffm:move-paid-media-to-private';
 
-    protected $description = 'Move paid post media from the public disk to the private local disk. Safe to run twice.';
+    protected $description = 'Copy paid post media to persistent S3 as PRIVATE. Safe to run twice; source deleted only after verify.';
 
     public function handle(): int
     {
-        $private = 'local';
+        $target = UploadStorage::disk();
         $moved = 0;
         $skipped = 0;
         $missing = 0;
@@ -38,37 +39,28 @@ class MovePaidMediaToPrivateDisk extends Command
                 continue;
             }
 
-            $relative = str_starts_with($path, 'storage/')
-                ? substr($path, strlen('storage/'))
-                : ltrim($path, '/');
+            $relative = UploadStorage::normalize($path);
 
-            if ($media->disk === $private && Storage::disk($private)->exists($relative)) {
+            // Already on persistent private storage
+            if ($media->disk === $target && Storage::disk($target)->exists($relative)) {
                 $skipped++;
                 continue;
             }
 
-            if (Storage::disk($private)->exists($relative)) {
-                $media->update(['disk' => $private, 'path' => $relative]);
-                $moved++;
-                continue;
-            }
-
+            // Find source object
             $fromDisk = null;
             $fromPath = null;
-            foreach (array_unique(array_filter([$media->disk, 'public'])) as $disk) {
-                if ($disk === $private) {
+            foreach (array_unique(array_filter([$media->disk, 'public', 'local', $target])) as $disk) {
+                if ($disk === $target) {
                     continue;
                 }
                 try {
-                    if (Storage::disk($disk)->exists($relative)) {
-                        $fromDisk = $disk;
-                        $fromPath = $relative;
-                        break;
-                    }
-                    if ($path !== $relative && Storage::disk($disk)->exists($path)) {
-                        $fromDisk = $disk;
-                        $fromPath = $path;
-                        break;
+                    foreach ([$relative, $path] as $candidate) {
+                        if ($candidate && Storage::disk($disk)->exists($candidate)) {
+                            $fromDisk = $disk;
+                            $fromPath = $candidate;
+                            break 2;
+                        }
                     }
                 } catch (\Throwable) {
                     continue;
@@ -76,30 +68,39 @@ class MovePaidMediaToPrivateDisk extends Command
             }
 
             if ($fromDisk === null) {
+                // Already only on S3 but row not marked — just retag
+                if (Storage::disk($target)->exists($relative)) {
+                    $media->update(['disk' => $target, 'path' => $relative]);
+                    $moved++;
+                    continue;
+                }
                 $this->warn("missing #{$media->id} disk={$media->disk} path={$path}");
                 $missing++;
                 continue;
             }
 
-            Storage::disk($private)->put($relative, Storage::disk($fromDisk)->get($fromPath));
+            // Copy to private S3, verify, then delete source
+            Storage::disk($target)->put($relative, Storage::disk($fromDisk)->get($fromPath), [
+                'visibility' => 'private',
+            ]);
 
-            if (! Storage::disk($private)->exists($relative)) {
+            if (! Storage::disk($target)->exists($relative)) {
                 $this->error("write failed #{$media->id}");
 
                 return self::FAILURE;
             }
 
-            $media->update(['disk' => $private, 'path' => $relative]);
+            $media->update(['disk' => $target, 'path' => $relative]);
 
-            if (Storage::disk($fromDisk)->exists($fromPath)) {
+            if ($fromDisk !== $target && Storage::disk($fromDisk)->exists($fromPath)) {
                 Storage::disk($fromDisk)->delete($fromPath);
             }
 
-            $this->info("moved #{$media->id} {$fromDisk}:{$fromPath} -> {$private}:{$relative}");
+            $this->info("moved #{$media->id} {$fromDisk}:{$fromPath} -> {$target}:{$relative} (private)");
             $moved++;
         }
 
-        $this->info("moved={$moved} skipped={$skipped} missing={$missing}");
+        $this->info("moved={$moved} skipped={$skipped} missing={$missing} target_disk={$target}");
 
         return self::SUCCESS;
     }

@@ -134,7 +134,10 @@ class User extends Authenticatable
         if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://') || str_starts_with($path, '/')) {
             return $path;
         }
+        if (str_starts_with($path, 'img/') || str_starts_with($path, 'public/img/')) {
+            return asset($path);
+        }
 
-        return asset($path);
+        return \App\Support\UploadStorage::publicUrl($path);
     }
 }

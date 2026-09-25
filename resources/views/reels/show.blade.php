@@ -4,7 +4,7 @@
 @section('content')
 <div class="card card-ffm p-4 col-lg-8">
     <video controls class="w-100 rounded mb-3" style="max-height:70vh;">
-        <source src="{{ asset('storage/'.$reel->video_path) }}" type="video/mp4">
+        <source src="{{ \App\Support\UploadStorage::publicUrl($reel->video_path) }}" type="video/mp4">
     </video>
     <div class="d-flex justify-content-between align-items-start">
         <div>

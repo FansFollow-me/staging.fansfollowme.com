@@ -21,7 +21,7 @@
             <div class="col-md-3">
                 <div class="card card-ffm p-2 h-100">
                     @if ($reel->thumbnail_path)
-                        <img src="{{ asset('storage/'.$reel->thumbnail_path) }}" class="img-fluid rounded" alt="">
+                        <img src="{{ \App\Support\UploadStorage::publicUrl($reel->thumbnail_path) }}" class="img-fluid rounded" alt="">
                     @else
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-center" style="height:200px;">
                             <i class="fas fa-video fa-2x text-white"></i>

@@ -6,6 +6,10 @@
  */
 
 return [
+    // Uploads — persistent disk (R2/S3). local/public are wiped on deploy.
+    'upload_disk' => env('FFM_UPLOAD_DISK', 's3'),
+    'upload_private_disk' => env('FFM_UPLOAD_DISK', 's3'),
+
     // Uploads
     'max_file_mb' => (int) env('FFM_MAX_FILE_MB', 30),
 

@@ -28,7 +28,7 @@
 
     @if ($videoRequest->status === 'completed' && $videoRequest->video_path)
         <video controls class="w-100 rounded mb-3" style="max-height:420px;">
-            <source src="{{ asset('storage/'.$videoRequest->video_path) }}" type="video/mp4">
+            <source src="{{ route('video-messages.download', $videoRequest) }}" type="video/mp4">
         </video>
         <a class="btn btn-ffm" href="{{ route('video-messages.download', $videoRequest) }}">Download video</a>
     @elseif (auth()->id() === $videoRequest->creator_id && in_array($videoRequest->status, ['pending', 'accepted'], true))

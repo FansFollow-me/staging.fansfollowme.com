@@ -59,10 +59,10 @@ class PostController extends Controller
         ]);
 
         if ($request->hasFile('media')) {
-            // Private disk so paid media is not world-readable at /storage/...
-            $path = $request->file('media')->store('posts', 'local');
+            // Persistent private storage (paid media must never be a guessable public URL)
+            $path = \App\Support\UploadStorage::storePrivate($request->file('media'), 'posts');
             $post->media()->create([
-                'disk' => 'local',
+                'disk' => \App\Support\UploadStorage::disk(),
                 'path' => $path,
                 'type' => str_starts_with($request->file('media')->getMimeType() ?? '', 'video') ? 'video' : 'image',
                 'sort_order' => 0,

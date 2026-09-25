@@ -15,10 +15,10 @@
         @if ($story->media_path)
             @if (str_contains($story->media_path, '.mp4') || str_contains($story->media_path, '.webm'))
                 <video controls class="w-100 rounded">
-                    <source src="{{ asset('storage/'.$story->media_path) }}" type="video/mp4">
+                    <source src="{{ \App\Support\UploadStorage::publicUrl($story->media_path) }}" type="video/mp4">
                 </video>
             @else
-                <img src="{{ asset('storage/'.$story->media_path) }}" class="img-fluid rounded" alt="">
+                <img src="{{ \App\Support\UploadStorage::publicUrl($story->media_path) }}" class="img-fluid rounded" alt="">
             @endif
         @endif
         @if ($story->body)

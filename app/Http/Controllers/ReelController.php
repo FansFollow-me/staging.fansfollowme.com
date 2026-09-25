@@ -33,9 +33,9 @@ class ReelController extends Controller
             'thumbnail' => ['nullable', 'image', 'max:5120'],
         ]);
 
-        $videoPath = $request->file('video')->store('reels', 'public');
+        $videoPath = \App\Support\UploadStorage::storePublic($request->file('video'), 'reels');
         $thumbPath = $request->hasFile('thumbnail')
-            ? $request->file('thumbnail')->store('reels/thumbs', 'public')
+            ? \App\Support\UploadStorage::storePublic($request->file('thumbnail'), 'reels/thumbs')
             : null;
 
         Reel::create([

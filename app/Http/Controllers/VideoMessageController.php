@@ -175,7 +175,7 @@ class VideoMessageController extends Controller
             'video' => ['required', 'file', 'mimes:mp4,webm,mov', 'max:204800'],
         ]);
 
-        $path = $request->file('video')->store('video-messages/'.$videoRequest->id, 'public');
+        $path = \App\Support\UploadStorage::storePrivate($request->file('video'), 'video-messages/'.$videoRequest->id);
 
         $videoRequest->update([
             'video_path' => $path,
@@ -234,9 +234,10 @@ class VideoMessageController extends Controller
         );
         abort_unless($videoRequest->status === VideoRequest::STATUS_COMPLETED && $videoRequest->video_path, 404);
 
-        $absolute = storage_path('app/public/'.$videoRequest->video_path);
-        abort_unless(is_file($absolute), 404);
-
-        return response()->download($absolute, 'video-message-'.$videoRequest->id.'.mp4');
+        return \App\Support\UploadStorage::response(
+            $videoRequest->video_path,
+            'video-message-'.$videoRequest->id.'.mp4',
+            private: true
+        );
     }
 }

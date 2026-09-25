@@ -70,10 +70,7 @@ class SettingsController extends Controller
 
     private function storePublicImage($file): string
     {
-        $stored = $file->store('profiles', 'public');
-
-        // Pages render via asset($path); keep the public/storage/ prefix in the column.
-        return 'storage/'.$stored;
+        return \App\Support\UploadStorage::storePublic($file, 'profiles');
     }
 
     private function deletePublicImage(?string $path): void
@@ -82,12 +79,9 @@ class SettingsController extends Controller
             return;
         }
 
-        $relative = str_starts_with($path, 'storage/')
-            ? substr($path, strlen('storage/'))
-            : ltrim($path, '/');
-
-        if (str_starts_with($relative, 'profiles/') && Storage::disk('public')->exists($relative)) {
-            Storage::disk('public')->delete($relative);
+        $relative = \App\Support\UploadStorage::normalize($path);
+        if (str_starts_with($relative, 'profiles/')) {
+            \App\Support\UploadStorage::delete($relative);
         }
     }
 
