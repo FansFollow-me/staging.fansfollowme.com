@@ -241,7 +241,7 @@ Route::get('creator-profile-populated', function () {
 })->name('profile.populated-legacy');
 
 // Public profile — LAST so it never shadows app routes like /dashboard
-Route::get('{username}/p/{post}', [PostController::class, 'show'])
+Route::get('{username}/p/{post}', [PostController::class, 'showOnProfile'])
     ->where('username', '[A-Za-z0-9_-]{3,30}')
     ->name('profile.post');
 
