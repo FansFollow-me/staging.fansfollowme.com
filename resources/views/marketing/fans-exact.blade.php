@@ -914,6 +914,10 @@
   .fans-hero .hero-text { max-width: 48rem; padding-top: 5rem; }
   .fans-hero h1 { font-size: clamp(1.75rem, 5vw, 3.75rem); font-weight: 900; color: #fff; margin-bottom: 2rem; line-height: 1; max-width: none; text-align: left; }
   .fans-hero p { font-size: 1.25rem; color: #d1d5db; max-width: 48rem; margin: 0 0 3rem; line-height: 1.625; text-align: left; }
+  /* desktop-only line breaks in hero subtext */
+  .hidden { display: none; }
+  @media (min-width: 768px) { .hidden.md-inline, .md\:inline { display: inline !important; } }
+  .fans-hero p.hero-subtext { max-width: 42rem !important; }
 
   .section-dark { padding: 4rem 0; background: linear-gradient(to right bottom, #111827, #1f2937, #111827); }
   .section-dark h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 900; color: #fff; text-align: left; margin-bottom: 2rem; }
@@ -1568,7 +1572,9 @@
   <div class="container">
     <div class="hero-text">
       <h1 class="hero-title">Discover and connect<br>with your favourite<br>fitness creators</h1>
-      <p class="hero-subtext">Find fighters, coaches, bodybuilders and fitness influencers in one place and get closer access through chats, exclusive content, calls and video sessions.</p>
+      <p class="hero-subtext">Find fighters, coaches, bodybuilders and fitness influencers<br class="hidden md:inline">
+in one place and get closer access through chats,<br class="hidden md:inline">
+exclusive content, calls and video sessions.</p>
       <a class='cta-btn' href='{{ route('register') }}'>Sign Up as Fan &#8211; It's Free <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div>
   </div>
