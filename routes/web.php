@@ -262,5 +262,5 @@ Route::get('{username}/p/{post}', function (string $username, \App\Models\Post $
 })->where('username', '[A-Za-z0-9_-]{3,30}')->where('post', '[0-9]+');
 
 Route::get('{username}', [HomeController::class, 'profile'])
-    ->where('username', '(?!dashboard|login|signup|logout|explore|creators|fans|celebrities|casting|business|for-creators|support|faq|contact|blog|privacy|terms|cookies|live-streams|form-thanks|revenue-streams|posts|settings|panel|j|my|creator|wallet|follow|subscribe|tip|shop|add|messages|reels|stories|create|live|explore|vault|referrals|notifications|gifts|coming-soon|creator-profile-populated)[A-Za-z0-9_-]{3,30}')
+    ->where('username', '(?!dashboard|login|signup|logout|explore|creators|fans|celebrities|casting|business|for-creators|support|faq|contact|blog|privacy|terms|cookies|live-streams|form-thanks|revenue-streams|posts|settings|panel|j|my|creator|wallet|follow|subscribe|tip|shop|add|messages|reels|stories|create|live|explore|vault|referrals|notifications|gifts|coming-soon|creator-profile-populated|stripe|media)[A-Za-z0-9_-]{3,30}')
     ->name('profile');
