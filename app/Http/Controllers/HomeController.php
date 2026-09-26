@@ -101,6 +101,8 @@ class HomeController extends Controller
         // Persist ref so signup/login on this profile still credits the creator
         if ($request->query('ref') || $request->query('join_code')) {
             $request->session()->put('join_code', $request->query('ref') ?? $request->query('join_code'));
+            // Return the guest to this profile (with ref) after Log in / Join
+            $request->session()->put('join_creator_username', $user->username);
         }
 
         $joinLink = null;

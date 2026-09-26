@@ -182,10 +182,13 @@
                             @if ($locked)
                                 <div class="ffm-post-locked">
                                     <i class="fas fa-lock mb-2"></i>
-                                    <div class="fw-bold">Exclusive for subscribers</div>
+                                    <div class="fw-bold">Subscribe to unlock</div>
                                     <div class="small text-secondary mb-3">${{ number_format($post->price / 100, 2) }} · {{ $post->published_at?->diffForHumans() }}</div>
                                     @guest
-                                        <a class="btn btn-ffm" href="{{ $loginUrl }}">Log in to subscribe</a>
+                                        <div class="d-flex flex-wrap gap-2 justify-content-center">
+                                            <a class="btn btn-ffm" href="{{ $loginUrl }}">Log in</a>
+                                            <a class="btn btn-outline-primary" href="{{ $signupUrl }}">Join</a>
+                                        </div>
                                     @else
                                         <form method="POST" action="{{ route('subscribe', $profileUser) }}">
                                             @csrf
@@ -233,20 +236,18 @@
     </div>
 
     @guest
-        @if ($profileUser->isCreator())
-            <div class="ffm-guest-bar">
-                <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
-                    <div>
-                        <div class="fw-bold">Follow {{ $profileUser->displayName() }} on FansFollow.me</div>
-                        <div class="small text-secondary">Log in as a fan to follow, subscribe, and unlock posts.</div>
-                    </div>
-                    <div class="d-flex gap-2">
-                        <a class="btn btn-outline-primary" href="{{ $loginUrl }}">Log in</a>
-                        <a class="btn btn-ffm" href="{{ $signupUrl }}">Join</a>
-                    </div>
+        <div class="ffm-guest-bar">
+            <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+                <div>
+                    <div class="fw-bold">{{ $isPaidCreator ? 'Subscribe to' : 'Follow' }} {{ $profileUser->displayName() }} on FansFollow.me</div>
+                    <div class="small text-secondary">Log in or join to follow, subscribe, and unlock posts.</div>
+                </div>
+                <div class="d-flex gap-2">
+                    <a class="btn btn-outline-primary" href="{{ $loginUrl }}">Log in</a>
+                    <a class="btn btn-ffm" href="{{ $signupUrl }}">Join</a>
                 </div>
             </div>
-        @endif
+        </div>
     @endguest
 </div>
 

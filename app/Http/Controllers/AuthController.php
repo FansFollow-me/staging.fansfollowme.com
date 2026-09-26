@@ -20,8 +20,13 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function showLogin(): View
+    public function showLogin(Request $request): View
     {
+        $refCode = $request->query('ref') ?? $request->query('join_code');
+        if ($refCode) {
+            $request->session()->put('join_code', $refCode);
+        }
+
         return view('marketing.login-exact');
     }
 
@@ -68,8 +73,11 @@ class AuthController extends Controller
 
         if ($joinUsername) {
             return redirect()
-                ->route('profile', $joinUsername)
-                ->with('status', 'Welcome back — subscribe to get closer');
+                ->route('profile', array_filter([
+                    'username' => $joinUsername,
+                    'ref' => $request->session()->get('join_code'),
+                ]))
+                ->with('status', 'Welcome back â€” subscribe to get closer');
         }
 
         return redirect()->intended($this->homeFor($user));
@@ -206,12 +214,18 @@ class AuthController extends Controller
 
         Auth::login($user);
         $joinUsername = $request->session()->get('join_creator_username');
+        $joinRef = $request->session()->get('join_code')
+            ?: $request->input('ref')
+            ?: $request->input('join_code');
         $request->session()->forget(['join_code']);
         $request->session()->regenerate();
 
         if ($joinUsername) {
             return redirect()
-                ->route('profile', $joinUsername)
+                ->route('profile', array_filter([
+                    'username' => $joinUsername,
+                    'ref' => $joinRef,
+                ]))
                 ->with('status', 'Account ready — subscribe to unlock full access');
         }
 
