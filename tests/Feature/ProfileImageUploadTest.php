@@ -85,7 +85,7 @@ class ProfileImageUploadTest extends TestCase
         $this->actingAs($creator)
             ->put('/settings/page', [
                 'display_name' => 'David Kurzhal',
-                'avatar' => UploadedFile::fake()->create('big.jpg', 5121, 'image/jpeg'),
+                'avatar' => UploadedFile::fake()->create('big.jpg', 20481, 'image/jpeg'),
             ])
             ->assertSessionHasErrors('avatar');
     }

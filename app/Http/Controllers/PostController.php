@@ -67,13 +67,40 @@ class PostController extends Controller
             'published_at' => now(),
         ]);
 
+        if (\App\Support\ImageUpload::hasFailedUpload($request->file('media'))) {
+            return back()
+                ->withErrors(['media' => \App\Support\ImageUpload::uploadErrorMessage($request->file('media'))])
+                ->withInput();
+        }
+
         if ($request->hasFile('media')) {
-            // Persistent private storage (paid media must never be a guessable public URL)
-            $path = \App\Support\UploadStorage::storePrivate($request->file('media'), 'posts');
+            $file = $request->file('media');
+            $mime = strtolower((string) ($file->getMimeType() ?: ''));
+            $isVideo = str_starts_with($mime, 'video');
+
+            // Photos are resized / GPS-stripped; only the processed JPEG is stored.
+            // Videos are stored as-is on the private upload disk.
+            if ($isVideo) {
+                $path = \App\Support\UploadStorage::storePrivate($file, 'posts');
+            } else {
+                try {
+                    $path = \App\Support\ImageUpload::store(
+                        $file,
+                        'posts',
+                        \App\Support\ImageUpload::KIND_POST,
+                        'private'
+                    );
+                } catch (\Throwable $e) {
+                    return back()
+                        ->withErrors(['media' => $e->getMessage()])
+                        ->withInput();
+                }
+            }
+
             $post->media()->create([
                 'disk' => \App\Support\UploadStorage::disk(),
                 'path' => $path,
-                'type' => str_starts_with($request->file('media')->getMimeType() ?? '', 'video') ? 'video' : 'image',
+                'type' => $isVideo ? 'video' : 'image',
                 'sort_order' => 0,
             ]);
         }

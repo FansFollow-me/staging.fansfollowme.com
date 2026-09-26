@@ -38,7 +38,7 @@
                alt="Profile photo" width="80" height="80" class="rounded-circle"
                style="object-fit:cover; border:2px solid rgba(249,115,22,.5);">
           <div class="flex-grow-1">
-            <div class="small text-secondary mb-2">JPG, PNG, or WebP · max 5MB</div>
+            <div class="small text-secondary mb-2">JPG, PNG, WebP, or HEIC · max 20MB</div>
             <div class="d-flex flex-wrap gap-2">
               <label class="btn btn-ffm-outline mb-0">
                 Replace
@@ -64,7 +64,7 @@
                alt="Cover" class="w-100 h-100"
                style="object-fit:cover; {{ $coverSrc ? '' : 'display:none;' }}">
         </div>
-        <div class="small text-secondary mb-2">JPG, PNG, or WebP · max 5MB</div>
+        <div class="small text-secondary mb-2">JPG, PNG, WebP, or HEIC · max 20MB</div>
         <div class="d-flex flex-wrap gap-2">
           <label class="btn btn-ffm-outline mb-0">
             Replace

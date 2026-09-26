@@ -21,9 +21,9 @@ class SettingsController extends Controller
         // instead of reporting success and leaving the old image in place.
         foreach (['avatar' => 'Profile photo', 'cover' => 'Cover image'] as $field => $label) {
             $file = $request->file($field);
-            if ($file && ! $file->isValid()) {
+            if (\App\Support\ImageUpload::hasFailedUpload($file)) {
                 return back()
-                    ->withErrors([$field => $label.' upload failed: '.$file->getErrorMessage()])
+                    ->withErrors([$field => \App\Support\ImageUpload::uploadErrorMessage($file)])
                     ->withInput();
             }
         }
@@ -31,15 +31,13 @@ class SettingsController extends Controller
         $data = $request->validate([
             'display_name' => ['required', 'string', 'max:80'],
             'bio' => ['nullable', 'string', 'max:1000'],
-            'avatar' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
-            'cover' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'avatar' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp,heic,heif', 'max:20480'],
+            'cover' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp,heic,heif', 'max:20480'],
         ], [
-            'avatar.image' => 'Profile photo must be an image.',
-            'avatar.mimes' => 'Profile photo must be a JPG, PNG, or WebP file.',
-            'avatar.max' => 'Profile photo must be 5MB or smaller.',
-            'cover.image' => 'Cover image must be an image.',
-            'cover.mimes' => 'Cover image must be a JPG, PNG, or WebP file.',
-            'cover.max' => 'Cover image must be 5MB or smaller.',
+            'avatar.mimes' => 'Profile photo must be a JPG, PNG, WebP, or HEIC file.',
+            'avatar.max' => 'Profile photo must be 20MB or smaller.',
+            'cover.mimes' => 'Cover image must be a JPG, PNG, WebP, or HEIC file.',
+            'cover.max' => 'Cover image must be 20MB or smaller.',
         ]);
 
         $user = $request->user();
@@ -59,12 +57,12 @@ class SettingsController extends Controller
             }
 
             if ($request->hasFile('avatar')) {
-                $newAvatar = $this->storePublicImage($request->file('avatar'));
+                $newAvatar = $this->storePublicImage($request->file('avatar'), \App\Support\ImageUpload::KIND_AVATAR);
                 $this->deletePublicImage($avatarPath);
                 $avatarPath = $newAvatar;
             }
             if ($request->hasFile('cover')) {
-                $newCover = $this->storePublicImage($request->file('cover'));
+                $newCover = $this->storePublicImage($request->file('cover'), \App\Support\ImageUpload::KIND_COVER);
                 $this->deletePublicImage($coverPath);
                 $coverPath = $newCover;
             }
@@ -119,9 +117,9 @@ class SettingsController extends Controller
         return back()->with('status', 'Profile updated');
     }
 
-    private function storePublicImage($file): string
+    private function storePublicImage($file, string $kind = 'avatar'): string
     {
-        return \App\Support\UploadStorage::storePublic($file, 'profiles');
+        return \App\Support\ImageUpload::store($file, 'profiles', $kind, 'public');
     }
 
     private function deletePublicImage(?string $path): void
