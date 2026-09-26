@@ -30,11 +30,11 @@
     color: #64748b; font-size: .95rem; margin: .15rem 0 .85rem;
   }
   #qr-box {
-    width: min(320px, 86vw);
+    width: min(248px, 86vw);
     aspect-ratio: 1;
     margin: 0 auto;
     background: #fff;
-    padding: 14px;
+    padding: 12px;
     border-radius: 14px;
     border: 1px solid #e5e7eb;
     display: flex; align-items: center; justify-content: center;
@@ -68,6 +68,8 @@
   }
   .qr-actions .btn { min-height: 48px; font-weight: 700; }
   .qr-actions .btn-span { grid-column: 1 / -1; }
+  .qr-layout { display: grid; gap: 1rem; }
+  @media (min-width: 992px) { .qr-layout { grid-template-columns: 1fr 1fr; align-items: stretch; } .qr-layout > * { height: 100%; } }
   .qr-stats-box {
     background: rgba(15,23,42,.55);
     border: 1px solid rgba(255,255,255,.08);
@@ -147,10 +149,10 @@
         <h1 class="h3 mb-0">My QR Code</h1>
         <p class="text-secondary small mb-0">Show this at events so fans can follow you instantly.</p>
     </div>
-    <a class="btn btn-outline-primary" href="{{ route('creator.dashboard') }}">Back to studio</a>
+    <a class="btn btn-ffm-outline" href="{{ route('creator.dashboard') }}">Back to studio</a>
 </div>
 
-<div class="row g-3">
+<div class="row g-3 qr-layout">
     <div class="col-lg-6">
         <div class="qr-hero-card" id="qr-print-card">
             <img class="qr-avatar" src="{{ $avatarUrl }}" alt="{{ $displayName }}">
@@ -165,13 +167,13 @@
                 <button type="button" class="btn btn-ffm" id="btn-fullscreen">
                     <i class="fas fa-expand"></i> Show Full Screen
                 </button>
-                <button type="button" class="btn btn-outline-primary" id="btn-download-png">
+                <button type="button" class="btn btn-ffm-outline" id="btn-download-png">
                     <i class="fas fa-download"></i> Download QR (PNG)
                 </button>
-                <button type="button" class="btn btn-outline-primary" id="btn-download-poster">
+                <button type="button" class="btn btn-ffm-outline" id="btn-download-poster">
                     <i class="fas fa-file-pdf"></i> Download Poster (PDF)
                 </button>
-                <button type="button" class="btn btn-outline-primary" id="btn-copy-link">
+                <button type="button" class="btn btn-ffm-outline" id="btn-copy-link">
                     <i class="fas fa-copy"></i> <span>Copy Link</span>
                 </button>
                 <button type="button" class="btn btn-ffm btn-span" id="btn-share">
@@ -277,7 +279,7 @@
   }
 
   // Primary QR (high contrast, white quiet zone via padding)
-  renderQr(box, 288);
+  renderQr(box, 248);
   if (!window.QRCode && fallback) {
     fallback.innerHTML = '<strong>QR image unavailable</strong><br>Copy this link instead:<br>' + url;
   }

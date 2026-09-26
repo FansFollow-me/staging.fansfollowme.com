@@ -246,8 +246,13 @@
   }
   .qr-hero::before {
     content: ''; position: absolute; inset: 0;
-    background: url('{{ asset('img/marketing/support-hero.jpg') }}?v=suphero1') center/cover no-repeat;
+    background: url('{{ asset('img/marketing/qr-signups-hero.jpg') }}?v=qrhero1') center 75%/cover no-repeat;
     filter: brightness(.95); z-index: 0;
+  }
+  @media (max-width: 767.98px) {
+    .qr-hero::before {
+      background-position: center 70%;
+    }
   }
   /* Subtle gradient keeps type readable without muddying the photo */
   .qr-hero::after {
