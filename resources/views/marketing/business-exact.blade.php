@@ -283,6 +283,7 @@
   .model-btn.blue { background: linear-gradient(135deg, #3b82f6, #60a5fa); box-shadow: 0 8px 20px rgba(59,130,246,.25); }
   .model-btn.blue:hover { box-shadow: 0 12px 28px rgba(59,130,246,.35); }
 
+{{-- TOKEN-RESTORE: start — FFM token section CSS (business) --}}
   .token-section { background: linear-gradient(to right bottom, rgba(31,41,55,.6), rgba(17,24,39,.6)); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); padding: 2.25rem 0; }
   .token-panel { max-width: 900px; margin: 0 auto; }
   .token-panel h3 { color: #fff; font-size: 1.3rem; font-weight: 700; margin-bottom: .5rem; }
@@ -296,6 +297,7 @@
   .token-links { display: flex; gap: 1rem; }
   .token-links a { color: #60a5fa; font-weight: 600; font-size: .9rem; text-decoration: none; }
   .token-links a:hover { color: #93c5fd; }
+{{-- TOKEN-RESTORE: end --}}
 
   .faq-grid { max-width: 800px; margin: 0 auto; }
   .faq-item { background: rgba(15,23,42,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; margin-bottom: .5rem; overflow: hidden; transition: border-color .3s; }
@@ -571,7 +573,7 @@ creator economy</h1>
   </div>
 </section>
 
-<!-- FFM-TOKEN-SECTION-RESTORE
+{{-- TOKEN-RESTORE: start — FFM Token section (business, Payment infrastructure) --}}
 <section class="token-section" id="token">
   <div class="container">
     <div class="token-panel">
@@ -591,7 +593,7 @@ creator economy</h1>
     </div>
   </div>
 </section>
--->
+{{-- TOKEN-RESTORE: end --}}
 
 <section class="section-dark">
   <div class="container">
@@ -601,7 +603,9 @@ creator economy</h1>
       <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What types of partnerships does FansFollow offer?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">We work with fitness brands, gyms, studios, media companies, and regional operators. Each partnership is customized to fit your business goals and market position.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do franchise rights work?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">Franchise operators gain exclusive regional rights to grow FansFollow in their territory, with full platform technology, marketing support, training, and ongoing technical assistance.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Are you open to acquisitions or investments?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">Yes. We explore strategic acquisitions of complementary fitness, wellness and creator platforms, and welcome inquiries from investors interested in FansFollow's growth.</div></div>
-      <!-- FFM-TOKEN-FAQ-RESTORE: <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the FFM Token?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">FFM Token is our payment infrastructure designed to reduce transaction fees and reward creators. We can discuss how it integrates with partnership models during your call.</div></div> -->
+{{-- TOKEN-RESTORE: start — FFM Token FAQ (business) --}}
+      <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the FFM Token?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">FFM Token is our payment infrastructure designed to reduce transaction fees and reward creators. We can discuss how it integrates with partnership models during your call.</div></div>
+{{-- TOKEN-RESTORE: end --}}
     </div>
   </div>
 </section>

@@ -1596,7 +1596,9 @@ streams on FansFollow.me.</p>
         <div class="why-creators-item"><strong>Secure & professional</strong><p>Encrypted messaging and automated billing for your brand.</p></div>
         <div class="why-creators-item"><strong>Track your success</strong><p>Dashboard for earnings, fans and content performance.</p></div>
         <div class="why-creators-item"><strong>Built for your niche</strong><p>Made for fitness, martial arts and combat sports creators.</p></div>
-        <!-- FFM-REWARD-TOKEN-RESTORE: <div class="why-creators-item"><strong>Earn FFM reward tokens</strong><p>Earn extra tokens as fans engage on the platform.</p></div> -->
+        {{-- TOKEN-RESTORE: start — FFM reward tokens (for-creators, Why creators choose us) --}}
+<div class="why-creators-item"><strong>Earn FFM reward tokens</strong><p>Earn extra tokens as fans engage on the platform.</p></div>
+{{-- TOKEN-RESTORE: end --}}
         <div class="why-creators-item"><strong>Negotiate higher rates</strong><p>Large creators can discuss custom terms above 80%+.</p></div>
       </div>
     </div>
