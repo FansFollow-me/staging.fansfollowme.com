@@ -348,7 +348,7 @@
   .status-banner { display: flex; align-items: center; justify-content: space-between; background: rgba(15,23,42,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: .75rem 1.25rem; margin-bottom: .75rem; flex-wrap: wrap; gap: .75rem; }
   .status-badge { display: inline-block; padding: .3rem .8rem; border-radius: 999px; background: rgba(249,115,22,.15); color: #fb923c; font-size: .8rem; font-weight: 700; }
 
-  .talent-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; margin-bottom: .25rem; }
+  .talent-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; margin-bottom: .25rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
   .talent-card { background: rgba(15,23,42,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: .5rem; text-align: center; }
   .talent-card-icon { width: 40px; height: 40px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; margin-bottom: .3rem; color: #fff; }
   .talent-card-icon i, .talent-card-icon svg.lucide { width: 1rem; height: 1rem; color: #fff; }
@@ -364,7 +364,9 @@
   .waitlist-card input, .waitlist-card textarea { width: 100%; padding: .5rem .75rem; border-radius: 10px; border: 1px solid rgba(148,163,184,.18); background: rgba(15,23,42,.6); color: #e2e8f0; font-size: .85rem; }
   .waitlist-card input::placeholder, .waitlist-card textarea::placeholder { color: #64748b; }
   .waitlist-card textarea { min-height: 50px; resize: vertical; }
-  .waitlist-card .note { color: #64748b; font-size: .8rem; margin-top: .5rem; }
+    .waitlist-card .note { color: #64748b; font-size: .8rem; margin-top: .5rem; }
+  /* Form sits beside this card on desktop; keep the jump CTA on mobile only */
+  @@media (min-width: 769px) { .waitlist-inline-cta { display: none; } }
 
   .social-strip { text-align: center; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,.06); color: #94a3b8; font-size: .9rem; }
   .social-strip a { color: #fb923c; margin-left: .5rem; }
@@ -642,9 +644,9 @@ with real on-screen potential.</p>
         <div class="status-banner" style="margin-bottom:0;flex-direction:column;align-items:center;text-align:center;">
           <div class="status-badge">PRE-PRODUCTION PHASE</div>
           <p style="color:#94a3b8;font-size:.85rem;margin:.5rem 0;">Casting calls will open soon.<br>Be the first to know when opportunities become available.</p>
-          <a class="cta-btn" href="#waitlist" style="white-space:nowrap;">Join Casting Waitlist</a>
+          <a class="cta-btn waitlist-inline-cta" href="#waitlist" style="white-space:nowrap;">Join Casting Waitlist</a>
         </div>
-        <div class="waitlist-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:1;">
+        <div class="waitlist-card" style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;flex:1;">
           <i data-lucide="film" style="font-size:2.5rem;color:#fb923c;margin-bottom:.75rem;"></i>
           <h3>Start Your Film Journey</h3>
           <p>FansFollow.me is where fitness creators get discovered for real film roles. Build your audience, showcase your skills, and let casting directors find you.</p>
