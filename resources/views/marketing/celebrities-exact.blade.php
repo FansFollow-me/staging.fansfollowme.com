@@ -1814,7 +1814,7 @@
         <details class="public-shell-more">
           <summary>More</summary>
           <div class="public-shell-nav-panel">
-            <a href="{{ route('page.casting') }}">&#127912; <span>Movie Casting</span></a>
+            <a href="{{ route('page.casting') }}">&#127916; <span>Movie Casting</span></a>
             <a href="{{ route('page.live-streams') }}">&#128308; <span>Live Streams</span></a>
             <a href="{{ route('page.business') }}">&#128188; <span>Business</span></a>
             <a href="{{ route('page.support') }}">&#128172; <span>Support</span></a>
@@ -1861,7 +1861,7 @@
     <a href="{{ route('page.celebrities') }}">Celebrities</a>
     <a href="{{ route('page.explore') }}">Explore</a>
     <div class="mobile-menu-section-label" style="margin-top:.5rem">More</div>
-    <a href="{{ route('page.casting') }}">&#127912; Movie Casting</a>
+    <a href="{{ route('page.casting') }}">&#127916; Movie Casting</a>
     <a href="{{ route('page.live-streams') }}">&#128308; Live Streams</a>
     <a href="{{ route('page.business') }}">&#128188; Business</a>
     <a href="{{ route('page.support') }}">&#128172; Support</a>

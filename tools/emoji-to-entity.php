@@ -6,7 +6,7 @@ $files = glob($dir.'/*-exact.blade.php');
 
 // Correct UTF-8 emoji => entity
 $map = [
-    "\xF0\x9F\x8E\xAC" => '&#127912;', // 🎬 clapper
+    "\xF0\x9F\x8E\xAC" => '&#127916;', // 🎬 clapper
     "\xF0\x9F\x94\xB4" => '&#128308;', // 🔴 red circle
     "\xF0\x9F\x92\xBC" => '&#128188;', // 💼 briefcase
     "\xF0\x9F\x92\xAC" => '&#128172;', // 💬 speech

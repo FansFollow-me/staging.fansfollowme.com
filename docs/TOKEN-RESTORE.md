@@ -174,4 +174,11 @@ Original text is preserved **word for word** between the markers.
 5. Optional mockup — unwrap `preview-home.html` footer links (item 5).
 6. If a pre-sale page/section is added later, link `Presale Info` → that URL and document it here.
 
-No routes, config, or seeders referenced FFM token / reward token / tokenomics / pre-sale (search of `resources/`, `app/`, `config/`, `database/`, `routes/`, `public/js`).
+## Search scope (full codebase)
+
+Searched: `resources/` (views + Blade), `public/` (HTML, CSS, JS), `app/` (controllers, models, services), `config/`, `database/` (seeders, migrations), `routes/`, `tools/`, `tests/`, `docs/`.
+
+**Hits outside this inventory:** none for FFM token / reward token / tokenomics / pre-sale  
+(unrelated `csrf-token`, password-reset `token`, `remember_token`, shop `download_token` remain in the product as designed).
+
+**Tools note:** `tools/emoji-to-entity.php` and `tools/fix-mojibake.php` used to map mojibake to `&#127912;` (palette) while commenting it as the clapper; that entity is now `&#127916;` (🎬) for Movie Casting. Not FFM-token content.
