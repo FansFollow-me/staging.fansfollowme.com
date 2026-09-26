@@ -122,9 +122,9 @@ class SettingsController extends Controller
         abort_unless($user->isCreator() || $user->isAdmin(), 403);
 
         $data = $request->validate([
-            'video_tier1_price' => ['required', 'numeric', 'min:1', 'max:100000'],
-            'video_tier2_price' => ['required', 'numeric', 'min:1', 'max:100000'],
-            'video_tier3_price' => ['required', 'numeric', 'min:1', 'max:100000'],
+            'video_tier1_price' => ['required', 'numeric', 'min:1', 'max:500'],
+            'video_tier2_price' => ['required', 'numeric', 'min:1', 'max:500'],
+            'video_tier3_price' => ['required', 'numeric', 'min:1', 'max:500'],
             'video_messages_enabled' => ['nullable', 'boolean'],
             'brand_promo_enabled' => ['nullable', 'boolean'],
         ]);
@@ -132,9 +132,9 @@ class SettingsController extends Controller
         $user->creatorSettings()->updateOrCreate(
             ['user_id' => $user->id],
             [
-                'video_tier1_price' => (int) $data['video_tier1_price'] * 100,
-                'video_tier2_price' => (int) $data['video_tier2_price'] * 100,
-                'video_tier3_price' => (int) $data['video_tier3_price'] * 100,
+                'video_tier1_price' => \App\Support\Money::dollarsToCents($data['video_tier1_price']),
+                'video_tier2_price' => \App\Support\Money::dollarsToCents($data['video_tier2_price']),
+                'video_tier3_price' => \App\Support\Money::dollarsToCents($data['video_tier3_price']),
                 'video_messages_enabled' => $request->boolean('video_messages_enabled', true),
                 'brand_promo_enabled' => $request->boolean('brand_promo_enabled', true),
             ]

@@ -46,7 +46,7 @@ class PostTest extends TestCase
                 'type' => 'text',
                 'is_paid' => '1',
             'access' => 'ppv',
-                'price' => '999',
+                'price' => '9.99',
             ])
             ->assertRedirect('/my/posts');
 
@@ -64,7 +64,7 @@ class PostTest extends TestCase
             'body' => 'Secret premium content body',
             'type' => 'text',
             'access' => 'ppv',
-            'price' => '499',
+            'price' => '4.99',
         ]);
 
         $post = $creator->posts()->first();

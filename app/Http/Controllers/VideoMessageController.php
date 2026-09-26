@@ -49,7 +49,7 @@ class VideoMessageController extends Controller
             'occasion' => ['required', 'in:'.implode(',', array_keys(self::OCCASIONS))],
             'tier' => ['nullable', 'in:1,2,3'],
             'brief' => ['required', 'string', 'max:500'],
-            'custom_price' => ['nullable', 'integer', 'min:500', 'max:10000000'],
+            'custom_price' => ['nullable', 'numeric', 'min:50', 'max:1000'],
             'brand_mode' => ['nullable', 'in:set_price,negotiate'],
         ]);
 

@@ -98,7 +98,7 @@ class LiveRoomTest extends TestCase
             'fan_id' => $fan->id,
             'creator_id' => $creator->id,
             'status' => 'active',
-            'price' => 999,
+            'price' => 9.99,
             'started_at' => now(),
             'ends_at' => now()->addMonth(),
         ]);
@@ -115,7 +115,7 @@ class LiveRoomTest extends TestCase
             'title' => 'Paid seminar',
             'mode' => 'group',
             'access' => 'ppv',
-            'price' => 2500,
+            'price' => 25,
             'status' => 'live',
         ]);
 

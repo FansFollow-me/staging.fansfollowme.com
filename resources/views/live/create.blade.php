@@ -32,8 +32,12 @@
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-label">Ticket price (cents, if paid)</label>
-            <input class="form-control" type="number" name="price" min="0" value="{{ old('price', 1000) }}">
+            <label class="form-label">Ticket price (USD, if paid)</label>
+            <div class="input-group" style="max-width:220px;">
+                <span class="input-group-text">$</span>
+                <input class="form-control" type="number" name="price" min="0" max="500" step="0.01"
+                       value="{{ old('price', '10.00') }}">
+            </div>
             @error('price')<div class="text-danger small">{{ $message }}</div>@enderror
         </div>
         <div class="form-check mb-3">

@@ -57,9 +57,14 @@
         </div>
 
         <div class="mb-3" id="ppv-price-wrap" style="display:{{ old('access') === 'ppv' ? 'block' : 'none' }};">
-            <label class="form-label" for="price">Price (USD cents, minimum 100 = $1.00)</label>
-            <input class="form-control" type="number" name="price" id="price" min="100" step="1"
-                   value="{{ old('price', 499) }}">
+            <label class="form-label" for="price">Price (USD)</label>
+            <div class="input-group" style="max-width:220px;">
+                <span class="input-group-text">$</span>
+                <input class="form-control" type="number" name="price" id="price"
+                       min="1" max="500" step="0.01"
+                       value="{{ old('price', '4.99') }}" placeholder="4.99">
+            </div>
+            <div class="form-text">Minimum $1.00 · Maximum $500.00 · Stored as cents.</div>
             <div class="form-text">Charged once per fan via wallet. Subscribers still pay for PPV.</div>
             @error('price')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
         </div>

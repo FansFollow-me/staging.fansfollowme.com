@@ -209,10 +209,10 @@ class MoneyController extends Controller
     public function addFunds(Request $request): RedirectResponse
     {
         $data = $request->validate([
-            'amount' => ['required', 'integer', 'min:100', 'max:10000000'],
+            'amount' => ['required', 'numeric', 'min:1', 'max:100000'],
         ]);
 
-        $amount = (int) $data['amount'];
+        $amount = \App\Support\Money::dollarsToCents($data['amount']);
         $stripe = app(\App\Services\StripeService::class);
 
         if (! $stripe->enabled()) {

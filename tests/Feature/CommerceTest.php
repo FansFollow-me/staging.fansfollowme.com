@@ -63,7 +63,7 @@ class CommerceTest extends TestCase
             ], 200),
         ]);
 
-        $this->actingAs($fan)->post('/wallet/add-funds', ['amount' => 5000])
+        $this->actingAs($fan)->post('/wallet/add-funds', ['amount' => 50])
             ->assertRedirect('https://checkout.stripe.com/test/session_abc');
 
         // Checkout does not credit the wallet until the webhook confirms payment
@@ -75,7 +75,7 @@ class CommerceTest extends TestCase
         $fan = $this->makeFan(0);
         config(['services.stripe.secret' => null]);
 
-        $this->actingAs($fan)->post('/wallet/add-funds', ['amount' => 5000])
+        $this->actingAs($fan)->post('/wallet/add-funds', ['amount' => 50])
             ->assertSessionHasErrors('amount');
 
         $this->assertSame(0, $fan->fresh()->wallet->balance);

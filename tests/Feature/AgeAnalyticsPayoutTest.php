@@ -85,7 +85,7 @@ class AgeAnalyticsPayoutTest extends TestCase
         $creator->wallet()->create(['balance' => 50000, 'currency' => 'USD']);
 
         $this->actingAs($creator)->post('/my/withdrawals', [
-            'amount' => 10000,
+            'amount' => 100,
             'method' => 'bank',
             'details' => 'IBAN1',
         ]);
@@ -106,7 +106,7 @@ class AgeAnalyticsPayoutTest extends TestCase
         $admin->wallet()->create(['balance' => 0, 'currency' => 'USD']);
 
         $this->actingAs($creator)->post('/my/withdrawals', [
-            'amount' => 10000,
+            'amount' => 100,
             'method' => 'bank',
         ]);
         $w = \App\Models\WithdrawalRequest::first();

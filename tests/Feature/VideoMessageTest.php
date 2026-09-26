@@ -90,7 +90,7 @@ class VideoMessageTest extends TestCase
         $this->actingAs($fan)->post('/video-messages/request/'.$creator->id, [
             'occasion' => 'promote_brand',
             'brand_mode' => 'set_price',
-            'custom_price' => 25000,
+            'custom_price' => 250,
             'brief' => 'Promote our gym brand',
         ])->assertSessionHas('status');
 

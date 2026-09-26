@@ -20,8 +20,11 @@
                 <label class="form-label">Tier {{ $n }} — {{ $meta['label'] }} <span class="text-secondary">({{ $meta['words'] }})</span></label>
                 <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input class="form-control" type="number" name="video_tier{{ $n }}_price" min="1" step="1"
-                           value="{{ old('video_tier'.$n.'_price', ($user->creatorSettings->{'video_tier'.$n.'_price'} ?? [5000,10000,20000][$n-1]) / 100) }}">
+                    <div class="input-group" style="max-width:180px;">
+                        <span class="input-group-text">$</span>
+                        <input class="form-control" type="number" name="video_tier{{ $n }}_price" min="1" max="500" step="0.01"
+                               value="{{ old('video_tier'.$n.'_price', \App\Support\Money::centsToInput($user->creatorSettings->{'video_tier'.$n.'_price'} ?? [5000,10000,20000][$n-1])) }}">
+                    </div>
                 </div>
                 @error('video_tier'.$n.'_price')<div class="text-danger small">{{ $message }}</div>@enderror
             </div>

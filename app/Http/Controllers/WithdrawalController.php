@@ -30,28 +30,29 @@ class WithdrawalController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
-            'amount' => ['required', 'integer', 'min:1000', 'max:100000000'],
+            'amount' => ['required', 'numeric', 'min:10', 'max:100000'],
             'method' => ['required', 'in:bank,paypal,other'],
             'details' => ['nullable', 'string', 'max:255'],
         ]);
 
+        $amountCents = \App\Support\Money::dollarsToCents($data['amount']);
         $user = $request->user();
         $balance = $user->wallet?->balance ?? 0;
 
-        if ($data['amount'] > $balance) {
+        if ($amountCents > $balance) {
             return back()->withErrors(['amount' => 'Amount exceeds wallet balance']);
         }
 
         // Hold funds + create request atomically so a create failure cannot orphan a debit
         try {
             DB::transaction(function () use ($user, $data) {
-                $this->wallets->debit($user, (int) $data['amount'], 'withdrawal_hold', null, null, [
+                $this->wallets->debit($user, $amountCents, 'withdrawal_hold', null, null, [
                     'method' => $data['method'],
                 ]);
 
                 WithdrawalRequest::create([
                     'creator_id' => $user->id,
-                    'amount' => (int) $data['amount'],
+                    'amount' => $amountCents,
                     'currency' => 'USD',
                     'method' => $data['method'],
                     'payout_method' => $data['method'],

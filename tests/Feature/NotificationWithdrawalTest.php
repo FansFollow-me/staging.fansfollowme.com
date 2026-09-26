@@ -45,7 +45,7 @@ class NotificationWithdrawalTest extends TestCase
         $creator = $this->creatorWithBalance(50000);
 
         $this->actingAs($creator)->post('/my/withdrawals', [
-            'amount' => 20000,
+            'amount' => 200,
             'method' => 'bank',
             'details' => 'IBAN123',
         ])->assertSessionHas('status');
@@ -66,7 +66,7 @@ class NotificationWithdrawalTest extends TestCase
         $admin->wallet()->create(['balance' => 0, 'currency' => 'USD']);
 
         $this->actingAs($creator)->post('/my/withdrawals', [
-            'amount' => 10000,
+            'amount' => 100,
             'method' => 'paypal',
             'details' => 'pay@x.com',
         ]);
@@ -79,7 +79,7 @@ class NotificationWithdrawalTest extends TestCase
         $this->assertSame('paid', $w->fresh()->status);
 
         $this->actingAs($creator)->post('/my/withdrawals', [
-            'amount' => 5000,
+            'amount' => 50,
             'method' => 'bank',
             'details' => 'IBAN9',
         ]);
@@ -123,7 +123,7 @@ class NotificationWithdrawalTest extends TestCase
 
         $this->actingAs($fan)->get('/my/withdrawals')->assertForbidden();
         $this->actingAs($fan)->post('/my/withdrawals', [
-            'amount' => 10000,
+            'amount' => 100,
             'method' => 'bank',
         ])->assertForbidden();
 

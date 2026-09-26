@@ -23,8 +23,13 @@
             <form method="POST" action="{{ route('withdrawals.store') }}">
                 @csrf
                 <div class="mb-3">
-                    <label class="form-label">Amount (USD cents, min $10)</label>
-                    <input class="form-control" type="number" name="amount" min="1000" max="{{ $balance }}" value="{{ old('amount', min(5000, max(1000, $balance))) }}" required>
+                    <label class="form-label">Amount (USD)</label>
+                    <div class="input-group" style="max-width:220px;">
+                        <span class="input-group-text">$</span>
+                        <input class="form-control" type="number" name="amount" min="10" step="0.01"
+                               value="{{ old('amount', \App\Support\Money::centsToInput(min(5000, max(1000, $balance)))) }}" required>
+                    </div>
+                    <div class="form-text">Minimum $10.00 · Available ${{ number_format($balance / 100, 2) }}</div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Payout method</label>

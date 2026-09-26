@@ -42,7 +42,7 @@ class PostAccessTypesTest extends TestCase
             'fan_id' => $fan->id,
             'creator_id' => $creator->id,
             'status' => 'active',
-            'price' => 1499,
+            'price' => 14.99,
             'currency' => 'USD',
             'provider' => 'wallet',
             'started_at' => now(),
@@ -56,7 +56,7 @@ class PostAccessTypesTest extends TestCase
             'body' => 'Access demo',
             'type' => 'text',
             'access' => $access,
-            'price' => $price,
+            'price' => number_format($price / 100, 2, '.', ''),
         ])->assertRedirect('/my/posts');
 
         return Post::where('creator_id', $creator->id)->latest('id')->firstOrFail();

@@ -35,7 +35,7 @@ class PostController extends Controller
             'body' => ['required', 'string', 'max:5000'],
             'type' => ['required', 'in:text,photo,video,audio,reel'],
             'access' => ['required', 'in:free,subscribers,ppv'],
-            'price' => ['nullable', 'integer', 'min:0', 'max:1000000'],
+            'price' => ['nullable', 'numeric', 'min:0', 'max:500'],
             'media' => ['nullable', 'file', 'max:51200'],
         ]);
 
@@ -43,10 +43,15 @@ class PostController extends Controller
         $price = 0;
 
         if ($access === Post::ACCESS_PPV) {
-            $price = (int) ($data['price'] ?? 0);
+            $price = \App\Support\Money::dollarsToCents($data['price'] ?? 0);
             if ($price < 100) {
                 return back()
                     ->withErrors(['price' => 'Pay-per-view posts must be at least $1.00'])
+                    ->withInput();
+            }
+            if ($price > 50000) {
+                return back()
+                    ->withErrors(['price' => 'Pay-per-view posts cannot exceed $500.00'])
                     ->withInput();
             }
         }

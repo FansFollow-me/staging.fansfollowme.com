@@ -58,7 +58,7 @@ class CreatorPostMediaAccessTest extends TestCase
                 'body' => $paid ? 'Locked drop' : 'Free photo drop',
                 'type' => 'photo',
                 'access' => $paid ? 'ppv' : 'free',
-                'price' => $paid ? (string) $price : '0',
+                'price' => $paid ? number_format($price / 100, 2, '.', '') : '0',
                 'media' => UploadedFile::fake()->create('shot.jpg', 120, 'image/jpeg'),
             ])
             ->assertRedirect('/my/posts');
@@ -112,7 +112,7 @@ class CreatorPostMediaAccessTest extends TestCase
             'fan_id' => $subscriber->id,
             'creator_id' => $creator->id,
             'status' => 'active',
-            'price' => 1499,
+            'price' => 14.99,
             'currency' => 'USD',
             'provider' => 'wallet',
             'started_at' => now(),

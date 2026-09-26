@@ -43,13 +43,13 @@ class ShopTest extends TestCase
         $this->actingAs($creator)->post('/add/product', [
             'title' => '8-Week Fight Camp',
             'description' => 'PDF program',
-            'price' => 2999,
+            'price' => 29.99,
         ])->assertRedirect('/my/products');
 
         $this->assertDatabaseHas('products', [
             'creator_id' => $creator->id,
             'title' => '8-Week Fight Camp',
-            'price' => 2999,
+            'price' => 29.99,
             'is_active' => true,
         ]);
     }
@@ -62,7 +62,7 @@ class ShopTest extends TestCase
         $product = Product::create([
             'creator_id' => $creator->id,
             'title' => 'Meal Plan',
-            'price' => 1999,
+            'price' => 19.99,
             'currency' => 'USD',
             'type' => 'digital',
             'is_active' => true,
@@ -88,7 +88,7 @@ class ShopTest extends TestCase
         $product = Product::create([
             'creator_id' => $creator->id,
             'title' => 'Expensive',
-            'price' => 9999,
+            'price' => 99.99,
             'type' => 'digital',
             'is_active' => true,
         ]);
@@ -108,7 +108,7 @@ class ShopTest extends TestCase
         $product = Product::create([
             'creator_id' => $creator->id,
             'title' => 'Mine',
-            'price' => 500,
+            'price' => 5,
             'type' => 'digital',
             'is_active' => true,
         ]);

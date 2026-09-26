@@ -45,12 +45,12 @@ class LiveController extends Controller
             'description' => ['nullable', 'string', 'max:500'],
             'mode' => ['required', 'in:public,group,one_to_one'],
             'access' => ['required', 'in:free,subscribers_only,ppv'],
-            'price' => ['nullable', 'integer', 'min:0', 'max:10000000'],
+            'price' => ['nullable', 'numeric', 'min:0', 'max:500'],
             'allow_4k' => ['nullable', 'boolean'],
         ]);
 
         $access = $data['access'];
-        $price = $access === 'ppv' ? (int) ($data['price'] ?? 0) : 0;
+        $price = $access === 'ppv' ? \App\Support\Money::dollarsToCents($data['price'] ?? 0) : 0;
 
         if ($access === 'ppv' && $price < 100) {
             return back()

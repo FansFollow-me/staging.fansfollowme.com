@@ -21,10 +21,10 @@
     <div class="col-md-8">
         <div class="card card-ffm p-4">
             <h2 class="h6">Add funds</h2>
-            <p class="small text-secondary">Test card: 4242 4242 4242 4242 &middot; any future date &middot; any CVC. Amount is in cents (1000 = $10).</p>
+            <p class="small text-secondary">Test card: 4242 4242 4242 4242 &middot; any future date &middot; any CVC. Enter the amount in dollars.</p>
             <form method="POST" action="{{ route('wallet.add-funds') }}" class="d-flex gap-2 flex-wrap">
                 @csrf
-                <input class="form-control" style="max-width:160px" type="number" name="amount" min="100" step="100" value="1000" required>
+                <div class="input-group" style="max-width:180px;"><span class="input-group-text">$</span><input class="form-control" type="number" name="amount" min="1" step="0.01" value="10.00" required></div>
                 <button class="btn btn-ffm" type="submit">Pay with card</button>
             </form>
             @error('amount')<div class="text-danger small mt-2">{{ $message }}</div>@enderror

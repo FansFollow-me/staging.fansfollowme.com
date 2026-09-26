@@ -16,8 +16,12 @@
             <textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
         </div>
         <div class="mb-3">
-            <label class="form-label">Price (USD cents, 1999 = $19.99)</label>
-            <input class="form-control" type="number" name="price" min="100" value="{{ old('price', 1999) }}" required>
+            <label class="form-label">Price (USD)</label>
+            <div class="input-group" style="max-width:220px;">
+                <span class="input-group-text">$</span>
+                <input class="form-control" type="number" name="price" min="1" max="10000" step="0.01"
+                       value="{{ old('price', '19.99') }}" required>
+            </div>
             @error('price')<div class="text-danger small">{{ $message }}</div>@enderror
         </div>
         <div class="mb-3">

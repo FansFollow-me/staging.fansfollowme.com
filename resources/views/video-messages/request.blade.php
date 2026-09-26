@@ -82,7 +82,7 @@
             </div>
             <div id="vm-custom-price">
                 <label class="form-label">Your brand budget (USD)</label>
-                <input class="form-control" type="number" name="custom_price" min="500" step="100" value="{{ old('custom_price', 25000) }}">
+                <div class="input-group" style="max-width:200px;"><span class="input-group-text">$</span><input class="form-control" type="number" name="custom_price" min="50" max="1000" step="0.01" value="{{ old('custom_price', '250.00') }}"></div>
                 <div class="form-text">Min $50. Creator can accept or message you.</div>
             </div>
         </div>

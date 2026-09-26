@@ -53,7 +53,7 @@ class ShopController extends Controller
         $data = $request->validate([
             'title' => ['required', 'string', 'max:120'],
             'description' => ['nullable', 'string', 'max:2000'],
-            'price' => ['required', 'integer', 'min:100', 'max:10000000'],
+            'price' => ['required', 'numeric', 'min:1', 'max:10000'],
             'file' => ['nullable', 'file', 'max:51200'],
         ]);
 
@@ -66,7 +66,7 @@ class ShopController extends Controller
             'creator_id' => $request->user()->id,
             'title' => $data['title'],
             'description' => $data['description'] ?? null,
-            'price' => (int) $data['price'],
+            'price' => \App\Support\Money::dollarsToCents($data['price']),
             'currency' => 'USD',
             'type' => 'digital',
             'file_path' => $path,
