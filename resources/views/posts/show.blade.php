@@ -1,6 +1,27 @@
 @extends('layouts.app')
 @section('title', $post->creator->displayName())
 
+@push('head')
+<style>
+/* Full post photo: never crop — whole image, letterboxed on dark */
+.ffm-post-full-media {
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+}
+.ffm-post-full-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 85vh;
+    object-fit: contain;
+    object-position: center;
+}
+</style>
+@endpush
+
 @section('content')
 @if (session('status'))
     <div class="alert alert-success alert-inline">{{ session('status') }}</div>
@@ -39,7 +60,9 @@
     @else
         @foreach ($post->media as $media)
             @if ($media->type === 'image')
-                <img src="{{ $media->url() }}" alt="" class="w-100" style="max-height:640px;object-fit:cover;">
+                <div class="ffm-post-full-media">
+                    <img src="{{ $media->url() }}" alt="">
+                </div>
             @endif
         @endforeach
         @if ($post->body)

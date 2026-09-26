@@ -31,7 +31,15 @@
 .ffm-profile-stats { color: #94a3b8; font-size: .9rem; gap: 1.25rem; }
 .ffm-profile-stats strong { color: #fff; }
 .ffm-post { overflow: hidden; }
-.ffm-post-media { width: 100%; max-height: 520px; object-fit: cover; background: #0f172a; display: block; }
+.ffm-post-media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    max-height: 520px;
+    object-fit: cover;
+    object-position: top center;
+    background: #0f172a;
+    display: block;
+}
 .ffm-post-locked {
     min-height: 240px;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
