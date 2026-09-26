@@ -251,6 +251,35 @@
     border-color: #f97316;
     box-shadow: 0 0 0 0.2rem rgba(249, 115, 22, 0.15);
 }
+.auth-form .form-control,
+.card-ffm .form-control,
+.card-ffm .form-select,
+.card-ffm .input-group-text {
+    background: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    color: #e5e7eb;
+}
+.card-ffm .input-group-text {
+    background: rgba(15, 23, 42, 0.9);
+    color: #94a3b8;
+}
+.card-ffm .form-label {
+    color: #e5e7eb;
+    font-weight: 600;
+    margin-bottom: .4rem;
+}
+.card-ffm .form-text,
+.card-ffm .text-muted {
+    color: #94a3b8;
+}
+.card-ffm .form-check-label {
+    color: #cbd5e1;
+}
+.auth-form .form-control,
+.card-ffm .form-control {
+    min-height: 44px;
+}
 
 .btn-ffm {
     background: linear-gradient(135deg, #f97316 0%, #ec4899 48%, #a855f7 100%);
