@@ -244,28 +244,35 @@
     height: clamp(520px, 78vh, 780px);
     box-sizing: border-box;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     text-align: center;
     color: #e5e7eb;
     background: #0b0f1a;
-    padding: 72px 1.25rem 2.5rem;
+    padding: 72px 1.25rem 3.25rem;
   }
   .contact-hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('{{ asset('img/marketing/support-hero.jpg') }}?v=suphero1');
-    background-position: center center;
+    background-image: url('{{ asset('img/marketing/contact-hero-neon.jpg') }}?v=neon1');
+    /* Keep wall/sign above the copy */
+    background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 0;
   }
+  /* Lighter at top (sign glow), darker only under the text */
   .contact-hero::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(2,6,23,.62), rgba(15,23,42,.55));
+    background: linear-gradient(
+      rgba(2,6,23,.18) 0%,
+      rgba(2,6,23,.28) 42%,
+      rgba(11,15,26,.62) 72%,
+      rgba(15,23,42,.78) 100%
+    );
     z-index: 1;
   }
   .contact-hero > .container {
@@ -274,6 +281,27 @@
     width: 100%;
     max-width: 40rem;
     margin: 0 auto;
+    padding-top: 1.5rem;
+  }
+  @@media (max-width: 767.98px) {
+    .contact-hero {
+      min-height: auto;
+      height: auto;
+      align-items: flex-end;
+      padding: calc(72px + 1.25rem) 1rem 1.75rem;
+    }
+    .contact-hero::before {
+      background-position: center 20%;
+    }
+    .contact-hero::after {
+      background: linear-gradient(
+        rgba(2,6,23,.12) 0%,
+        rgba(2,6,23,.22) 40%,
+        rgba(11,15,26,.58) 75%,
+        rgba(15,23,42,.72) 100%
+      );
+    }
+    .contact-hero > .container { padding-top: 2.5rem; }
   }
   .contact-badge { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem 1rem; border-radius: 999px; background: linear-gradient(135deg, rgba(245,158,11,.2), rgba(249,115,22,.2)); border: 1px solid rgba(245,158,11,.3); color: #fbbf24; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1.5rem; }
   .contact-hero h1 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; color: #fff; margin-bottom: .75rem; letter-spacing: -0.02em; line-height: 1.15; }
