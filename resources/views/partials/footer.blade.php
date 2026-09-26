@@ -29,6 +29,13 @@
           <span style="font-size: .9rem; color: #94a3b8; display: block;">Mini Leagues</span>
           <span style="font-size: .9rem; color: #94a3b8; display: block;">Mobile App</span>
         </div>
+        {{-- TOKEN-RESTORE: start — Advanced footer column (recovered from pre-35c3bbe marketing footers; hidden in 70fbdfb then dropped when shared footer replaced duplicates) --}}
+        <div class="footer-links">
+          <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Advanced</h3>
+          <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a>
+          <a href='/business#presale' style='font-size: .9rem;'>Presale Info</a>
+        </div>
+        {{-- TOKEN-RESTORE: end --}}
       </div>
       <div class="footer-bottomline"></div>
       <div class="footer-bottom footer-bottom--2row">

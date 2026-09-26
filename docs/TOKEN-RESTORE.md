@@ -172,7 +172,35 @@ Original text is preserved **word for word** between the markers.
 3. `/business` — unwrap `FFM-TOKEN-LINK-RESTORE` anchors (item 3a).
 4. `/business` — remove `TOKEN-RESTORE` comments around the FAQ row (item 4).
 5. Optional mockup — unwrap `preview-home.html` footer links (item 5).
+6. Shared footer — unwrap the recovered **Advanced** column (item 6).
 6. If a pre-sale page/section is added later, link `Presale Info` → that URL and document it here.
+
+
+---
+
+## 6. Shared footer — Advanced column (recovered from git history)
+
+| Field | Value |
+|-------|--------|
+| **File** | `resources/views/partials/footer.blade.php` |
+| **Lines** | after Coming Soon column (~lines 32–39) |
+| **Site location** | Every marketing page footer (shared partial) → fourth column, labeled **Advanced** |
+| **History** | Present as live links in `5c19364` and earlier marketing footers. In `70fbdfb` the two links were commented (`TOKEN-LINK-RESTORE` / `PRESALE-LINK-RESTORE`) and the heading was renamed to **Coming Soon**. When `35c3bbe` replaced the duplicate page footers with `partials/footer.blade.php`, those hidden comments were **dropped** and were not on the shared footer until this recovery. |
+| **Original text (verbatim)** | |
+
+```html
+<div class="footer-links">
+  <h3 style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .75rem;">Advanced</h3>
+  <a href='/business#token' style='font-size: .9rem;'>Token Ecosystem</a>
+  <a href='/business#presale' style='font-size: .9rem;'>Presale Info</a>
+</div>
+```
+
+| Field | Value |
+|-------|--------|
+| **Marker** | `{{-- TOKEN-RESTORE: start — Advanced footer column (recovered from pre-35c3bbe marketing footers; hidden in 70fbdfb then dropped when shared footer replaced duplicates) --}}` … `{{-- TOKEN-RESTORE: end --}}` |
+| **How to restore** | Remove the two `TOKEN-RESTORE` Blade comments around the `div.footer-links` Advanced block. The visible **Coming Soon** column (Creator Competitions, Gym Monster, Mini Leagues, Mobile App) stays as-is. |
+| **Headers** | No token / presale / Advanced items were found in any historical `partials/header` or `partials/nav`. |
 
 ## Search scope (full codebase)
 
