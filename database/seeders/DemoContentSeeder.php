@@ -39,6 +39,7 @@ class DemoContentSeeder extends Seeder
                     [
                         'type' => 'text',
                         'is_paid' => $post['paid'],
+                'access' => $post['paid'] ? 'ppv' : 'free',
                         'price' => $post['price'],
                         'status' => 'published',
                         'published_at' => now()->subHours(rand(2, 48)),
@@ -59,6 +60,7 @@ class DemoContentSeeder extends Seeder
                     [
                         'type' => 'text',
                         'is_paid' => false,
+                'access' => 'free',
                         'price' => 0,
                         'status' => 'published',
                         'published_at' => now()->subHours(rand(1, 24)),
@@ -128,6 +130,7 @@ class DemoContentSeeder extends Seeder
                     [
                         'type' => 'text',
                         'is_paid' => $paid,
+                    'access' => $paid ? 'ppv' : 'free',
                         'price' => $paid ? 499 : 0,
                         'status' => 'published',
                         'published_at' => now()->subHours(rand(1, 72)),

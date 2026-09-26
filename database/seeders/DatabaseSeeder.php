@@ -202,6 +202,7 @@ class DatabaseSeeder extends Seeder
                         [
                             'type' => ! empty($postRow['image']) ? 'photo' : 'text',
                             'is_paid' => (bool) ($postRow['paid'] ?? false),
+                            'access' => ((bool) ($postRow['paid'] ?? false)) ? 'ppv' : 'free',
                             'price' => (int) ($postRow['price'] ?? 0),
                             'status' => 'published',
                             'published_at' => now()->subHours(rand(2, 72)),

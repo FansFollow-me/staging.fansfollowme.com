@@ -46,8 +46,10 @@
             <div class="card card-ffm p-3 h-100">
                 <div class="small text-secondary mb-1">{{ '@'.$post->creator?->username }} · {{ $post->published_at?->diffForHumans() }}</div>
                 <p class="mb-2">{{ \Illuminate\Support\Str::limit($post->body, 120) }}</p>
-                @if ($post->is_paid)
-                    <span class="badge text-bg-warning align-self-start">${{ number_format($post->price / 100, 2) }}</span>
+                @if ($post->isSubscribersOnly())
+                    <span class="badge text-bg-info align-self-start">Subscribers</span>
+                @elseif ($post->isPpv())
+                    <span class="badge text-bg-warning align-self-start">PPV ${{ number_format($post->price / 100, 2) }}</span>
                 @else
                     <span class="badge text-bg-secondary align-self-start">Free</span>
                 @endif

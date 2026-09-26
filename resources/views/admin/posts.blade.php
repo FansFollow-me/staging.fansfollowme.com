@@ -22,8 +22,10 @@
                     <td class="small">{{ \Illuminate\Support\Str::limit($post->body, 60) }}</td>
                     <td>{{ $post->type->value }}</td>
                     <td>
-                        @if ($post->is_paid)
-                            ${{ number_format($post->price / 100, 2) }}
+                        @if ($post->isSubscribersOnly())
+                            Subscribers
+                        @elseif ($post->isPpv())
+                            PPV ${{ number_format($post->price / 100, 2) }}
                         @else
                             Free
                         @endif

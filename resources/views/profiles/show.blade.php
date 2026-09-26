@@ -190,18 +190,37 @@
                             @if ($locked)
                                 <div class="ffm-post-locked">
                                     <i class="fas fa-lock mb-2"></i>
-                                    <div class="fw-bold">Subscribe to unlock</div>
-                                    <div class="small text-secondary mb-3">${{ number_format($post->price / 100, 2) }} · {{ $post->published_at?->diffForHumans() }}</div>
+                                    <div class="fw-bold">
+                                        @if ($post->isPpv())
+                                            Unlock for ${{ number_format($post->price / 100, 2) }}
+                                        @else
+                                            Subscribe to unlock
+                                        @endif
+                                    </div>
+                                    <div class="small text-secondary mb-3">{{ $post->accessLabel() }} · {{ $post->published_at?->diffForHumans() }}</div>
                                     @guest
                                         <div class="d-flex flex-wrap gap-2 justify-content-center">
-                                            <a class="btn btn-ffm" href="{{ $loginUrl }}">Log in</a>
+                                            <a class="btn btn-ffm" href="{{ $loginUrl }}">Log in to unlock</a>
                                             <a class="btn btn-outline-primary" href="{{ $signupUrl }}">Join</a>
                                         </div>
                                     @else
-                                        <form method="POST" action="{{ route('subscribe', $profileUser) }}">
-                                            @csrf
-                                            <button class="btn btn-ffm" type="submit">Subscribe to unlock</button>
-                                        </form>
+                                        @if ($post->isPpv())
+                                            @if ((auth()->user()->wallet?->balance ?? 0) >= $post->price)
+                                                <form method="POST" action="{{ route('posts.unlock', $post) }}">
+                                                    @csrf
+                                                    <button class="btn btn-ffm" type="submit">
+                                                        Unlock for ${{ number_format($post->price / 100, 2) }} (wallet)
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <a class="btn btn-ffm" href="{{ route('wallet.show') }}">Add funds</a>
+                                            @endif
+                                        @else
+                                            <form method="POST" action="{{ route('subscribe', $profileUser) }}">
+                                                @csrf
+                                                <button class="btn btn-ffm" type="submit">Subscribe to unlock</button>
+                                            </form>
+                                        @endif
                                     @endguest
                                 </div>
                             @else
@@ -211,7 +230,14 @@
                                     </a>
                                 @endif
                                 <div class="p-3">
-                                    <div class="small text-secondary mb-2">{{ $post->published_at?->diffForHumans() }}</div>
+                                    <div class="small text-secondary mb-2">
+                                        {{ $post->published_at?->diffForHumans() }}
+                                        @if ($post->isSubscribersOnly())
+                                            <span class="badge text-bg-info ms-1">Subscribers</span>
+                                        @elseif ($post->isPpv())
+                                            <span class="badge text-bg-warning ms-1">PPV ${{ number_format($post->price / 100, 2) }}</span>
+                                        @endif
+                                    </div>
                                     @if ($post->body)
                                         <p class="mb-2">{{ $post->body }}</p>
                                     @endif

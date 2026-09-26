@@ -25,12 +25,13 @@ class PostTest extends TestCase
             ->post('/my/posts', [
                 'body' => 'Free training tip for everyone',
                 'type' => 'text',
+                'access' => 'free',
             ])
             ->assertRedirect('/my/posts');
 
         $this->assertDatabaseHas('posts', [
             'creator_id' => $creator->id,
-            'is_paid' => false,
+            'access' => 'free',
             'status' => 'published',
         ]);
     }
@@ -44,13 +45,14 @@ class PostTest extends TestCase
                 'body' => 'Premium coaching breakdown',
                 'type' => 'text',
                 'is_paid' => '1',
+            'access' => 'ppv',
                 'price' => '999',
             ])
             ->assertRedirect('/my/posts');
 
         $this->assertDatabaseHas('posts', [
             'creator_id' => $creator->id,
-            'is_paid' => true,
+            'access' => 'ppv',
             'price' => 999,
         ]);
     }
@@ -61,7 +63,7 @@ class PostTest extends TestCase
         $this->actingAs($creator)->post('/my/posts', [
             'body' => 'Secret premium content body',
             'type' => 'text',
-            'is_paid' => '1',
+            'access' => 'ppv',
             'price' => '499',
         ]);
 
@@ -88,6 +90,7 @@ class PostTest extends TestCase
         $this->actingAs($creator)->post('/my/posts', [
             'body' => 'Open free content',
             'type' => 'text',
+            'access' => 'free',
         ]);
         $post = $creator->posts()->first();
 

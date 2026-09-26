@@ -9,10 +9,21 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
+    public const ACCESS_FREE = 'free';
+    public const ACCESS_SUBSCRIBERS = 'subscribers';
+    public const ACCESS_PPV = 'ppv';
+
+    public const ACCESS_OPTIONS = [
+        self::ACCESS_FREE,
+        self::ACCESS_SUBSCRIBERS,
+        self::ACCESS_PPV,
+    ];
+
     protected $fillable = [
         'creator_id',
         'type',
         'body',
+        'access',
         'is_paid',
         'price',
         'status',
@@ -41,9 +52,29 @@ class Post extends Model
         return $this->hasMany(PostMedia::class);
     }
 
+    public function isFree(): bool
+    {
+        return $this->access === self::ACCESS_FREE;
+    }
+
+    public function isSubscribersOnly(): bool
+    {
+        return $this->access === self::ACCESS_SUBSCRIBERS;
+    }
+
+    public function isPpv(): bool
+    {
+        return $this->access === self::ACCESS_PPV;
+    }
+
+    /**
+     * FREE: always open.
+     * SUBSCRIBERS: open to owner/admin/active subscriber.
+     * PPV: open to owner/admin or after purchase — NOT to subscribers.
+     */
     public function isLockedFor(?User $user): bool
     {
-        if (! $this->is_paid) {
+        if ($this->isFree()) {
             return false;
         }
 
@@ -55,22 +86,28 @@ class Post extends Model
             return false;
         }
 
-        $hasPpv = PpvPurchase::where('user_id', $user->id)
-            ->where('post_id', $this->id)
-            ->exists();
-
-        if ($hasPpv) {
-            return false;
+        if ($this->isPpv()) {
+            return ! PpvPurchase::where('user_id', $user->id)
+                ->where('post_id', $this->id)
+                ->exists();
         }
 
-        $hasActiveSub = Subscription::where('fan_id', $user->id)
+        // subscribers-only
+        return ! Subscription::where('fan_id', $user->id)
             ->where('creator_id', $this->creator_id)
             ->where('status', 'active')
             ->where(function ($q) {
                 $q->whereNull('ends_at')->orWhere('ends_at', '>', now());
             })
             ->exists();
+    }
 
-        return ! $hasActiveSub;
+    public function accessLabel(): string
+    {
+        return match ($this->access) {
+            self::ACCESS_SUBSCRIBERS => 'Subscribers',
+            self::ACCESS_PPV => 'PPV $'.number_format($this->price / 100, 2),
+            default => 'Free',
+        };
     }
 }

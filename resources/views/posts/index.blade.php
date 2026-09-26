@@ -19,8 +19,10 @@
                 <div class="card card-ffm p-3 h-100">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge text-bg-secondary">{{ $post->type->value }}</span>
-                        @if ($post->is_paid)
-                            <span class="badge text-bg-warning">${{ number_format($post->price / 100, 2) }}</span>
+                        @if ($post->isSubscribersOnly())
+            <span class="badge text-bg-info">Subscribers</span>
+        @elseif ($post->isPpv())
+                            <span class="badge text-bg-warning">PPV ${{ number_format($post->price / 100, 2) }}</span>
                         @else
                             <span class="badge text-bg-dark">Free</span>
                         @endif

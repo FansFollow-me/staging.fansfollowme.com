@@ -36,26 +36,43 @@
                 <div class="text-secondary small">{{ '@'.$post->creator->username }} · {{ $post->published_at?->diffForHumans() }}</div>
             </div>
         </div>
-        @if ($post->is_paid)
-            <span class="badge text-bg-warning">Paid ${{ number_format($post->price / 100, 2) }}</span>
+        @if ($post->isSubscribersOnly())
+            <span class="badge text-bg-info">Subscribers</span>
+        @elseif ($post->isPpv())
+            <span class="badge text-bg-warning">PPV ${{ number_format($post->price / 100, 2) }}</span>
         @endif
     </div>
 
     @if ($locked)
         <div class="p-5 text-center" style="min-height:280px;background:#0f172a;">
             <i class="fas fa-lock mb-2"></i>
-            <p class="mb-2">This post is locked.</p>
-            @auth
-                <form method="POST" action="{{ route('posts.unlock', $post) }}" class="d-inline">
-                    @csrf
-                    <button class="btn btn-ffm" type="submit">
-                        Unlock for ${{ number_format($post->price / 100, 2) }} (wallet)
-                    </button>
-                </form>
-                <div class="small text-secondary mt-2">or subscribe to {{ '@'.$post->creator->username }}</div>
+            @if ($post->isPpv())
+                <p class="mb-2 fw-bold">Unlock for ${{ number_format($post->price / 100, 2) }}</p>
             @else
-                <a class="btn btn-ffm" href="{{ route('login') }}">Log in to unlock</a>
-            @endauth
+                <p class="mb-2 fw-bold">Subscribe to unlock</p>
+            @endif
+            @guest
+                <a class="btn btn-ffm" href="{{ $loginUrl ?? route('login') }}">Log in to unlock</a>
+            @else
+                @if ($post->isPpv())
+                    @if (($walletBalance ?? 0) >= $post->price)
+                        <form method="POST" action="{{ route('posts.unlock', $post) }}" class="d-inline">
+                            @csrf
+                            <button class="btn btn-ffm" type="submit">
+                                Unlock for ${{ number_format($post->price / 100, 2) }} (wallet)
+                            </button>
+                        </form>
+                    @else
+                        <a class="btn btn-ffm" href="{{ route('wallet.show') }}">Add funds</a>
+                        <div class="small text-secondary mt-2">Not enough wallet balance for ${{ number_format($post->price / 100, 2) }}</div>
+                    @endif
+                @else
+                    <form method="POST" action="{{ route('subscribe', $post->creator) }}" class="d-inline">
+                        @csrf
+                        <button class="btn btn-ffm" type="submit">Subscribe to unlock</button>
+                    </form>
+                @endif
+            @endguest
         </div>
     @else
         @foreach ($post->media as $media)

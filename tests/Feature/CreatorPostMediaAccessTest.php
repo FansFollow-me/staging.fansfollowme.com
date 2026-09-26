@@ -57,7 +57,7 @@ class CreatorPostMediaAccessTest extends TestCase
             ->post('/my/posts', [
                 'body' => $paid ? 'Locked drop' : 'Free photo drop',
                 'type' => 'photo',
-                'is_paid' => $paid ? '1' : '0',
+                'access' => $paid ? 'ppv' : 'free',
                 'price' => $paid ? (string) $price : '0',
                 'media' => UploadedFile::fake()->create('shot.jpg', 120, 'image/jpeg'),
             ])
@@ -96,7 +96,7 @@ class CreatorPostMediaAccessTest extends TestCase
         $this->actingAs($otherFan)->get($mediaRoute)->assertForbidden();
     }
 
-    public function test_paid_post_media_ok_for_owner_subscriber_and_ppv_buyer(): void
+    public function test_ppv_media_ok_for_owner_and_buyer_not_subscriber(): void
     {
         $creator = $this->makeCreator('coach3');
         $paid = $this->publishPhoto($creator, true, 499);
@@ -106,7 +106,7 @@ class CreatorPostMediaAccessTest extends TestCase
         // Owner
         $this->actingAs($creator)->get($mediaRoute)->assertOk();
 
-        // Subscriber
+        // Subscriber without PPV purchase must NOT see PPV media
         $subscriber = $this->makeFan('subscriber1');
         Subscription::create([
             'fan_id' => $subscriber->id,
@@ -118,7 +118,7 @@ class CreatorPostMediaAccessTest extends TestCase
             'started_at' => now(),
             'ends_at' => now()->addMonth(),
         ]);
-        $this->actingAs($subscriber)->get($mediaRoute)->assertOk();
+        $this->actingAs($subscriber)->get($mediaRoute)->assertForbidden();
 
         // PPV buyer
         $buyer = $this->makeFan('ppvbuyer1', 2000);

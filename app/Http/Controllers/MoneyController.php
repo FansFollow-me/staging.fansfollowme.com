@@ -176,7 +176,7 @@ class MoneyController extends Controller
     {
         $user = $request->user();
 
-        if (! $post->is_paid) {
+        if (! $post->isPpv()) {
             return back();
         }
 

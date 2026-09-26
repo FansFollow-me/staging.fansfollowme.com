@@ -34,25 +34,29 @@ class PostController extends Controller
         $data = $request->validate([
             'body' => ['required', 'string', 'max:5000'],
             'type' => ['required', 'in:text,photo,video,audio,reel'],
-            'is_paid' => ['nullable', 'boolean'],
+            'access' => ['required', 'in:free,subscribers,ppv'],
             'price' => ['nullable', 'integer', 'min:0', 'max:1000000'],
             'media' => ['nullable', 'file', 'max:51200'],
         ]);
 
-        $isPaid = $request->boolean('is_paid');
-        $price = $isPaid ? (int) ($data['price'] ?? 0) : 0;
+        $access = $data['access'];
+        $price = 0;
 
-        if ($isPaid && $price < 100) {
-            return back()
-                ->withErrors(['price' => 'Paid posts must be at least $1.00'])
-                ->withInput();
+        if ($access === Post::ACCESS_PPV) {
+            $price = (int) ($data['price'] ?? 0);
+            if ($price < 100) {
+                return back()
+                    ->withErrors(['price' => 'Pay-per-view posts must be at least $1.00'])
+                    ->withInput();
+            }
         }
 
         $post = Post::create([
             'creator_id' => $user->id,
             'body' => $data['body'],
             'type' => $data['type'],
-            'is_paid' => $isPaid,
+            'access' => $access,
+            'is_paid' => $access === Post::ACCESS_PPV,
             'price' => $price,
             'status' => 'published',
             'published_at' => now(),
@@ -93,7 +97,11 @@ class PostController extends Controller
         }
 
         $locked = $post->isLockedFor($request->user());
+        $viewer = $request->user();
+        $walletBalance = $viewer?->wallet?->balance ?? 0;
+        $joinCode = $request->session()->get('join_code') ?? $request->query('ref');
+        $loginUrl = route('login', array_filter(['ref' => $joinCode]));
 
-        return view('posts.show', compact('post', 'locked'));
+        return view('posts.show', compact('post', 'locked', 'walletBalance', 'loginUrl'));
     }
 }
