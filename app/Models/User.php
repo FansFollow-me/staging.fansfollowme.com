@@ -121,9 +121,15 @@ class User extends Authenticatable
         return $this->publicAssetUrl($path) ?: asset('logo-monogram.png');
     }
 
-    public function coverUrl(): ?string
+    public function coverUrl(): string
     {
-        return $this->publicAssetUrl($this->profile?->cover_path);
+        $custom = $this->publicAssetUrl($this->profile?->cover_path);
+        if ($custom) {
+            return $custom;
+        }
+
+        // Fallback only — never written to cover_path
+        return asset('img/marketing/default-profile-cover.jpg');
     }
 
     private function publicAssetUrl(?string $path): ?string
