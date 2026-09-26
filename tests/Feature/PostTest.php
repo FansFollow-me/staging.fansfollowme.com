@@ -79,7 +79,7 @@ class PostTest extends TestCase
         $page = $this->get('/'.$creator->username.'/'.$post->id);
         $page->assertOk();
         $page->assertDontSee('Secret premium content body');
-        $page->assertSee('locked', false);
+        $page->assertSee('Subscribe to unlock');
     }
 
     public function test_guest_can_see_free_post_body(): void

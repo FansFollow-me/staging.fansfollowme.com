@@ -54,7 +54,7 @@ class QrJoinFlowTest extends TestCase
 
         $this->get('/j/'.$link->code)->assertRedirect(route('profile', ['username' => $creator->username, 'ref' => $link->code]));
 
-        $this->post('/signup', [
+        $response = $this->post('/signup', [
             'username' => 'qrfan1',
             'email' => 'qrfan1@example.com',
             'password' => 'Password123!',
@@ -63,9 +63,14 @@ class QrJoinFlowTest extends TestCase
             'terms' => '1',
             'age_confirm' => '1',
             'date_of_birth' => now()->subYears(30)->format('Y-m-d'),
-        ])->assertRedirect('/'.$creator->username);
+        ]);
 
         $this->assertAuthenticated();
+
+        // Lands on the creator profile (with optional ?ref= kept)
+        $location = (string) $response->headers->get('Location');
+        $this->assertStringContainsString('/'.$creator->username, $location);
+
         $this->assertDatabaseHas('users', [
             'username' => 'qrfan1',
             'referred_by' => $creator->id,
