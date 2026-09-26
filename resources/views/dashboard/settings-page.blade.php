@@ -75,6 +75,35 @@
             <div class="small text-muted mt-1" id="cover-filename"></div>
         </div>
 
+        @if ($user->isCreator() || $user->isAdmin())
+            @php
+                $subCents = (int) ($user->creatorSettings?->subscription_price ?? 0);
+                $subFree = old('subscription_free') !== null
+                    ? (bool) old('subscription_free')
+                    : $subCents <= 0;
+                $subDollars = old('subscription_price', $subCents > 0 ? \App\Support\Money::centsToInput($subCents) : '9.99');
+            @endphp
+            <div class="mb-4">
+                <label class="form-label fw-bold">Subscription price</label>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" name="subscription_free" value="1"
+                           id="subscription_free" @checked($subFree) onchange="toggleSubPrice()">
+                    <label class="form-check-label" for="subscription_free">
+                        Free profile (no subscription needed)
+                    </label>
+                </div>
+                <div id="sub-price-wrap" style="display:{{ $subFree ? 'none' : 'block' }};">
+                    <div class="input-group" style="max-width:220px;">
+                        <span class="input-group-text">$</span>
+                        <input class="form-control" type="number" name="subscription_price" id="subscription_price"
+                               min="1" max="100" step="0.01" value="{{ $subDollars }}">
+                    </div>
+                    <div class="form-text">Per month. Minimum $1.00 · Maximum $100.00. Existing subscribers keep their current price until renewal.</div>
+                </div>
+                @error('subscription_price')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
+            </div>
+        @endif
+
         <div class="mb-3">
             <label class="form-label">Display name</label>
             <input class="form-control" name="display_name" value="{{ old('display_name', $user->profile?->display_name) }}" required>
@@ -110,6 +139,15 @@
   }
   bindPreview('avatar-input', 'avatar-preview', 'avatar-filename');
   bindPreview('cover-input', 'cover-preview', 'cover-filename');
+
+  function toggleSubPrice() {
+    var free = document.getElementById('subscription_free');
+    var wrap = document.getElementById('sub-price-wrap');
+    if (free && wrap) {
+      wrap.style.display = free.checked ? 'none' : 'block';
+    }
+  }
+  toggleSubPrice();
 })();
 </script>
 @endsection

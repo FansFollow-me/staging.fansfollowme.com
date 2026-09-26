@@ -11,7 +11,7 @@ class SettingsController extends Controller
     public function page(Request $request): View
     {
         return view('dashboard.settings-page', [
-            'user' => $request->user()->load('profile'),
+            'user' => $request->user()->load(['profile', 'creatorSettings']),
         ]);
     }
 
@@ -83,6 +83,38 @@ class SettingsController extends Controller
                 'cover_path' => $coverPath,
             ]
         );
+
+        // Subscription price (creators / admins). Stored in cents.
+        // Active subscription rows keep their price until renewal.
+        if ($user->isCreator() || $user->isAdmin()) {
+            $subData = $request->validate([
+                'subscription_free' => ['nullable', 'boolean'],
+                'subscription_price' => ['nullable', 'numeric', 'min:0', 'max:100'],
+            ], [
+                'subscription_price.min' => 'Subscription price must be at least $1.00.',
+                'subscription_price.max' => 'Subscription price cannot exceed $100.00.',
+            ]);
+
+            if ($request->boolean('subscription_free')) {
+                $priceCents = 0;
+            } else {
+                $priceCents = \App\Support\Money::dollarsToCents($subData['subscription_price'] ?? 0);
+                if ($priceCents < 100 || $priceCents > 10000) {
+                    return back()
+                        ->withErrors(['subscription_price' => 'Subscription price must be between $1.00 and $100.00 (or turn on Free).'])
+                        ->withInput();
+                }
+            }
+
+            $user->creatorSettings()->updateOrCreate(
+                ['user_id' => $user->id],
+                [
+                    'subscription_price' => $priceCents,
+                    'currency' => 'USD',
+                    'accepts_subscriptions' => $priceCents > 0,
+                ]
+            );
+        }
 
         return back()->with('status', 'Profile updated');
     }
