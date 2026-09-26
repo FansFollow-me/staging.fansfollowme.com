@@ -207,7 +207,11 @@
   .support-section { padding: 1rem 0 3rem; }
   .support-section-title { font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0 0 1.25rem; text-align: center; }
 
-  .support-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+  .support-cards { display: grid; grid-template-columns: 1fr; gap: 1.25rem; max-width: 1100px; margin: 0 auto; }
+  @@media (min-width: 640px) { .support-cards { grid-template-columns: repeat(2, 1fr); } }
+  @@media (min-width: 992px) { .support-cards { grid-template-columns: repeat(3, 1fr); } }
+  .support-card { display: flex; flex-direction: column; }
+  .support-card-link { margin-top: auto; }
   .support-card { background: rgba(15,23,42,.6); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; padding: 1.5rem; transition: all .3s ease; cursor: pointer; }
   .support-card:hover { border-color: rgba(249,115,22,.3); transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,.2); }
   .support-card-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(249,115,22,.12); border: 1px solid rgba(249,115,22,.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #f97316; margin-bottom: 1rem; }
@@ -331,25 +335,25 @@
       <div class="container">
         <h2 class="support-section-title">How can we help?</h2>
         <div class="support-cards">
-          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}'">
+          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}#getting-started'">
             <div class="support-card-icon"><i class="fas fa-user-circle"></i></div>
             <h3>Account & Profile</h3>
             <p>Setting up your account, verifying your identity, changing your username, and managing your profile.</p>
             <span class="support-card-link">View articles <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}'">
+          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}#payments'">
             <div class="support-card-icon"><i class="fas fa-credit-card"></i></div>
             <h3>Payments & Payouts</h3>
             <p>Subscription billing, tips, payouts, withdrawal methods, and transaction history.</p>
             <span class="support-card-link">View articles <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}'">
+          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}#platform'">
             <div class="support-card-icon"><i class="fas fa-shield-alt"></i></div>
             <h3>Privacy & Security</h3>
             <p>Blocking users, restricting countries, two-factor authentication, and data privacy.</p>
             <span class="support-card-link">View articles <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div class="support-card" onclick="window.location.href='{{ route('page.for-creators') }}'">
+          <div class="support-card" onclick="window.location.href='{{ route('page.faq') }}#platform'">
             <div class="support-card-icon"><i class="fas fa-video"></i></div>
             <h3>Creator Tools</h3>
             <p>Posting content, setting subscription prices, video calls, live streaming, and your shop.</p>

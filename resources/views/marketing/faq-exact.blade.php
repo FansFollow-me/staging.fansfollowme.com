@@ -224,7 +224,7 @@
     <section class="section-dark">
       <div class="container">
         <div class="faq-grid">
-          <h2 class="faq-section-heading">Getting Started</h2>
+          <h2 class="faq-section-heading" id="getting-started">Getting Started</h2>
           <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much does it cost to join as a creator?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">Free to join. We only earn when you earn (20% platform fee). No monthly fees, no hidden costs.</div></div>
           <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much does it cost for fans?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">Free to create an account. Fans only pay for premium content, subscriptions, or services they choose to purchase from creators.</div></div>
           <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need a large following to start earning?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">No. Creators with 1K-5K followers earn $5K-20K/month. Followers can also earn through our referral program. Quality engagement matters more than follower count.</div></div>
@@ -235,7 +235,7 @@
     <section class="section-dark section-gradient">
       <div class="container">
         <div class="faq-grid">
-          <h2 class="faq-section-heading">Payments &amp; Earnings</h2>
+          <h2 class="faq-section-heading" id="payments">Payments &amp; Earnings</h2>
           <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I get paid?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">Bank transfer, PayPal, or crypto (BTC, ETH, USDT, SOL). Payouts processed within 5 business days.</div></div>
           <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's the revenue split?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">Creators keep 80%+ of earnings. VIP creators with large followings can negotiate custom rates even higher.</div></div>
           <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What are the revenue streams?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">17+ options including subscriptions, tips, PPV content, phone calls, text coaching, video consultations, digital products, and more.</div></div>
@@ -247,7 +247,7 @@
     <section class="section-dark">
       <div class="container">
         <div class="faq-grid">
-          <h2 class="faq-section-heading">Platform Features</h2>
+          <h2 class="faq-section-heading" id="platform">Platform Features</h2>
           <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I use this alongside other platforms?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">Absolutely! We don't require exclusivity. Many creators use FansFollow plus Instagram, YouTube, Patreon, etc.</div></div>
           <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What countries are supported?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">We support creators and fans worldwide. Crypto payments work globally without banking restrictions.</div></div>
           <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my content safe and secure?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">Yes. Encrypted communications, secure payment processing, and you control who sees your content.</div></div>
@@ -260,7 +260,7 @@
     <section class="section-dark section-gradient">
       <div class="container">
         <div class="faq-grid">
-          <h2 class="faq-section-heading">Technical</h2>
+          <h2 class="faq-section-heading" id="technical">Technical</h2>
           <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there a mobile app?<span class="faq-chevron">&#9662;</span></div><div class="faq-a">iOS and Android apps are in development and launching soon. Currently use the mobile-responsive website.</div></div>
         </div>
       </div>
