@@ -3,14 +3,12 @@
 
 @section('content')
 @php
-    $coverSrc = $user->profile?->cover_path ? asset($user->profile->cover_path) : null;
+    // Same URL builder as the public profile (app /media route, not asset())
+    $avatarSrc = $user->avatarUrl();
+    $coverSrc = $user->coverUrl();
 @endphp
 
 <h1 class="h3 mb-3">Edit profile</h1>
-
-@if (session('status'))
-    <div class="alert alert-success col-lg-6">{{ session('status') }}</div>
-@endif
 
 @if ($errors->any())
     <div class="alert alert-danger col-lg-6">
@@ -31,7 +29,7 @@
             <label class="form-label fw-bold">Profile photo</label>
             <div class="d-flex align-items-center gap-3 mb-2">
                 <img id="avatar-preview"
-                     src="{{ $user->profile?->avatar_path ? asset($user->profile->avatar_path) : '/public/logo-monogram.png' }}"
+                     src="{{ $avatarSrc }}"
                      alt="Profile photo" width="80" height="80" class="rounded-circle"
                      style="object-fit:cover; border:2px solid rgba(249,115,22,.5);">
                 <div class="flex-grow-1">
@@ -57,9 +55,9 @@
             <label class="form-label fw-bold">Cover image</label>
             <div class="mb-2 rounded-3 overflow-hidden" style="background:#1f2937; height:120px;">
                 <img id="cover-preview"
-                     src="{{ $user->profile?->cover_path ? asset($user->profile->cover_path) : '' }}"
+                     src="{{ $coverSrc }}"
                      alt="Cover" class="w-100 h-100"
-                     style="object-fit:cover; {{ $user->profile?->cover_path ? '' : 'display:none;' }}">
+                     style="object-fit:cover; {{ $coverSrc ? '' : 'display:none;' }}">
             </div>
             <div class="small text-secondary mb-2">JPG, PNG, or WebP · max 5MB</div>
             <div class="d-flex flex-wrap gap-2">

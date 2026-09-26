@@ -19,17 +19,36 @@ class UploadStorage
     /** Store a public-readable object (avatar, cover, free media, reels, stories). */
     public static function storePublic(UploadedFile $file, string $directory): string
     {
-        $path = $file->store($directory, ['disk' => self::disk(), 'visibility' => 'public']);
-
-        return ltrim((string) $path, '/');
+        return self::store($file, $directory, 'public');
     }
 
     /** Store a private object (paid media, vault, product files, video messages). */
     public static function storePrivate(UploadedFile $file, string $directory): string
     {
-        $path = $file->store($directory, ['disk' => self::disk(), 'visibility' => 'private']);
+        return self::store($file, $directory, 'private');
+    }
 
-        return ltrim((string) $path, '/');
+    private static function store(UploadedFile $file, string $directory, string $visibility): string
+    {
+        if (! $file->isValid()) {
+            throw new \RuntimeException($file->getErrorMessage() ?: 'Upload failed.');
+        }
+
+        $path = $file->store($directory, [
+            'disk' => self::disk(),
+            'visibility' => $visibility,
+        ]);
+
+        if (! is_string($path) || $path === '') {
+            throw new \RuntimeException('File was not written to storage.');
+        }
+
+        $path = ltrim($path, '/');
+        if (! Storage::disk(self::disk())->exists($path)) {
+            throw new \RuntimeException('File was not written to storage.');
+        }
+
+        return $path;
     }
 
     /**
@@ -39,18 +58,9 @@ class UploadStorage
      */
     public static function publicUrl(string $path): string
     {
-        $path = self::normalize($path);
-        $disk = self::disk();
-
-        if ($path !== '' && config("filesystems.disks.{$disk}.url")) {
-            try {
-                return Storage::disk($disk)->url($path);
-            } catch (\Throwable) {
-                // fall through to app route
-            }
-        }
-
-        return route('uploads.public', ['path' => $path]);
+        // Always stream through the app route. R2/S3 public URLs can 401
+        // even when the object exists; /media/{path} is the reliable source.
+        return route('uploads.public', ['path' => self::normalize($path)]);
     }
 
     public static function normalize(string $path): string

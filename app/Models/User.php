@@ -134,7 +134,11 @@ class User extends Authenticatable
         if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://') || str_starts_with($path, '/')) {
             return $path;
         }
-        if (str_starts_with($path, 'img/') || str_starts_with($path, 'public/img/')) {
+        // Repo / public assets (seeded demo images, logo)
+        if (str_starts_with($path, 'img/')
+            || str_starts_with($path, 'public/img/')
+            || str_starts_with($path, 'logo-')
+            || ! str_contains($path, '/')) {
             return asset($path);
         }
 

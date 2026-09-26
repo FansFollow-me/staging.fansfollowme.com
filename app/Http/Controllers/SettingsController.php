@@ -17,6 +17,17 @@ class SettingsController extends Controller
 
     public function updatePage(Request $request)
     {
+        // Surface silent PHP upload failures (post_max_size / upload_max_filesize)
+        // instead of reporting success and leaving the old image in place.
+        foreach (['avatar' => 'Profile photo', 'cover' => 'Cover image'] as $field => $label) {
+            $file = $request->file($field);
+            if ($file && ! $file->isValid()) {
+                return back()
+                    ->withErrors([$field => $label.' upload failed: '.$file->getErrorMessage()])
+                    ->withInput();
+            }
+        }
+
         $data = $request->validate([
             'display_name' => ['required', 'string', 'max:80'],
             'bio' => ['nullable', 'string', 'max:1000'],
@@ -37,22 +48,30 @@ class SettingsController extends Controller
         $avatarPath = $profile?->avatar_path;
         $coverPath = $profile?->cover_path;
 
-        if ($request->boolean('remove_avatar')) {
-            $this->deletePublicImage($avatarPath);
-            $avatarPath = null;
-        }
-        if ($request->boolean('remove_cover')) {
-            $this->deletePublicImage($coverPath);
-            $coverPath = null;
-        }
+        try {
+            if ($request->boolean('remove_avatar')) {
+                $this->deletePublicImage($avatarPath);
+                $avatarPath = null;
+            }
+            if ($request->boolean('remove_cover')) {
+                $this->deletePublicImage($coverPath);
+                $coverPath = null;
+            }
 
-        if ($request->hasFile('avatar')) {
-            $this->deletePublicImage($avatarPath);
-            $avatarPath = $this->storePublicImage($request->file('avatar'));
-        }
-        if ($request->hasFile('cover')) {
-            $this->deletePublicImage($coverPath);
-            $coverPath = $this->storePublicImage($request->file('cover'));
+            if ($request->hasFile('avatar')) {
+                $newAvatar = $this->storePublicImage($request->file('avatar'));
+                $this->deletePublicImage($avatarPath);
+                $avatarPath = $newAvatar;
+            }
+            if ($request->hasFile('cover')) {
+                $newCover = $this->storePublicImage($request->file('cover'));
+                $this->deletePublicImage($coverPath);
+                $coverPath = $newCover;
+            }
+        } catch (\Throwable $e) {
+            return back()
+                ->withErrors(['avatar' => 'Image upload failed: '.$e->getMessage()])
+                ->withInput();
         }
 
         $user->profile()->updateOrCreate(
