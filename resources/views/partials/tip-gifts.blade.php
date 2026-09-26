@@ -10,9 +10,11 @@
     <input type="hidden" name="gift_key" id="tip-gift-key" value="">
     <input type="hidden" name="amount" id="tip-gift-amount" value="100">
 
-    <div class="tip-gift-grid mb-3">
-        @foreach ($gifts as $gift)
-            <label class="tip-gift-card" data-gift="{{ $gift['key'] }}" data-amount="{{ $gift['amount'] }}" data-tier="{{ $gift['tier'] }}">
+    <div class="tip-gift-grid mb-3" id="tip-gift-grid">
+        @foreach ($gifts as $i => $gift)
+            <label class="tip-gift-card{{ $i >= 6 ? ' tip-gift-extra' : '' }}"
+                   data-gift="{{ $gift['key'] }}" data-amount="{{ $gift['amount'] }}" data-tier="{{ $gift['tier'] }}"
+                   @if($i >= 6) style="display:none;" @endif>
                 <input type="radio" name="_gift_radio" value="{{ $gift['key'] }}">
                 <span class="gift-emoji">{{ $gift['emoji'] }}</span>
                 <span class="gift-label">{{ $gift['label'] }}</span>
@@ -21,6 +23,9 @@
             </label>
         @endforeach
     </div>
+    @if (count($gifts) > 6)
+        <button type="button" class="btn btn-ffm-outline mb-3" id="tip-gift-see-all">See all gifts</button>
+    @endif
 
     <div class="d-flex gap-2 flex-wrap align-items-center">
         <button class="btn btn-ffm" type="submit" id="tip-send-btn">Send Fist Bump</button>
@@ -70,6 +75,19 @@ window.FFM_GIFT_META = @json(\App\Support\TipCatalog::jsMap());
             select(card);
         });
     });
+
+    var seeAll = document.getElementById('tip-gift-see-all');
+    if (seeAll) {
+        seeAll.addEventListener('click', function () {
+            var extras = form.querySelectorAll('.tip-gift-extra');
+            var open = seeAll.getAttribute('data-open') === '1';
+            extras.forEach(function (el) {
+                el.style.display = open ? 'none' : '';
+            });
+            seeAll.setAttribute('data-open', open ? '0' : '1');
+            seeAll.textContent = open ? 'See all gifts' : 'Show fewer gifts';
+        });
+    }
 })();
 </script>
 @endpush

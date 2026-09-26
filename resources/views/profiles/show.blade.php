@@ -83,17 +83,17 @@
             <div class="d-flex flex-wrap gap-2 pb-2">
                 @auth
                     @if (auth()->id() === $profileUser->id)
-                        <a class="btn btn-outline-primary" href="{{ route('join.my-qr') }}">My QR</a>
+                        <a class="btn btn-ffm-outline" href="{{ route('join.my-qr') }}">My QR</a>
                     @elseif ($profileUser->isCreator())
                         @if (auth()->user()->following->contains($profileUser->id))
                             <form method="POST" action="{{ route('unfollow', $profileUser) }}">
                                 @csrf @method('DELETE')
-                                <button class="btn btn-outline-primary" type="submit">Following</button>
+                                <button class="btn btn-ffm-outline" type="submit">Following</button>
                             </form>
                         @else
                             <form method="POST" action="{{ route('follow', $profileUser) }}">
                                 @csrf
-                                <button class="btn btn-outline-primary" type="submit">Follow</button>
+                                <button class="btn btn-ffm-outline" type="submit">Follow</button>
                             </form>
                         @endif
                         @if ($isPaidCreator && empty($isSubscribed))
@@ -104,19 +104,19 @@
                         @endif
                         <form method="POST" action="{{ route('messages.start', $profileUser) }}">
                             @csrf
-                            <button class="btn btn-outline-primary" type="submit">Message</button>
+                            <button class="btn btn-ffm-outline" type="submit">Message</button>
                         </form>
                     @endif
                 @else
                     @if ($isPaidCreator)
                         <a class="btn btn-ffm" href="{{ $loginUrl }}">Subscribe ${{ number_format($subPrice / 100, 2) }}/mo</a>
                     @else
-                        <a class="btn btn-ffm" href="{{ $loginUrl }}">Follow</a>
+                        <a class="btn btn-ffm-outline" href="{{ $loginUrl }}">Follow</a>
                     @endif
-                    <a class="btn btn-outline-primary" href="{{ $loginUrl }}">Log in</a>
+                    <a class="btn btn-ffm-outline" href="{{ $loginUrl }}">Log in</a>
                 @endauth
                 @if (!empty($shareJoinUrl))
-                    <button type="button" class="btn btn-outline-primary" data-share-qr-btn>
+                    <button type="button" class="btn btn-ffm-outline" data-share-qr-btn>
                         <i class="fas fa-share-nodes"></i> Share
                     </button>
                 @endif
@@ -168,9 +168,6 @@
                     </div>
                 </div>
             @endif
-            @if (auth()->id() !== $profileUser->id && $profileUser->isCreator())
-                <div class="mt-3">@include('partials.tip-gifts')</div>
-            @endif
         @endauth
 
         <hr class="border-secondary border-opacity-25 my-4">
@@ -201,7 +198,7 @@
                                     @guest
                                         <div class="d-flex flex-wrap gap-2 justify-content-center">
                                             <a class="btn btn-ffm" href="{{ $loginUrl }}">Log in to unlock</a>
-                                            <a class="btn btn-outline-primary" href="{{ $signupUrl }}">Join</a>
+                                            <a class="btn btn-ffm-outline" href="{{ $signupUrl }}">Join</a>
                                         </div>
                                     @else
                                         @if ($post->isPpv())
@@ -251,6 +248,12 @@
             <div class="mt-3">{{ $posts->links() }}</div>
         @endif
 
+        @auth
+            @if (auth()->id() !== $profileUser->id && $profileUser->isCreator())
+                <div class="mt-4 col-lg-8">@include('partials.tip-gifts')</div>
+            @endif
+        @endauth
+
         @if (!empty($giftTotals) && $giftTotals->isNotEmpty())
             <div class="card card-ffm p-3 mt-4 col-lg-8">
                 <h2 class="h6 mb-2">Gift wall</h2>
@@ -277,7 +280,7 @@
                     <div class="small text-secondary">Log in or join to follow, subscribe, and unlock posts.</div>
                 </div>
                 <div class="d-flex gap-2">
-                    <a class="btn btn-outline-primary" href="{{ $loginUrl }}">Log in</a>
+                    <a class="btn btn-ffm-outline" href="{{ $loginUrl }}">Log in</a>
                     <a class="btn btn-ffm" href="{{ $signupUrl }}">Join</a>
                 </div>
             </div>
