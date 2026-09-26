@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="FansFollow.me login for creators, fans, celebrities, and admins. Access the live creator platform with your existing account.">
-  <link rel="canonical" href="https://fansfollowme.com/login.html">
+  <link rel="canonical" href="{{ url()->current() }}">
     <meta name="keywords" content="donations,support,creators,content creators,subscription,content" />
   <meta name="theme-color" content="#450ea7">
   <meta name="msvalidate.01" content="83E04AABA8CC0BC0618D1849666A133A">
@@ -498,8 +498,8 @@
   </style>
 <meta property="og:title" content="Login - FansFollow.me">
 <meta property="og:description" content="FansFollow.me login for creators, fans, celebrities, and admins. Access the live creator platform with your existing account.">
-<meta property="og:image" content="/public/logo-full-lockup.png">
-<meta property="og:url" content="https://fansfollowme.com/login.html">
+<meta property="og:image" content="{{ url('/public/logo-full-lockup.png') }}">
+<meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website"></head>
 <body>
   <header class="public-shell-topbar">

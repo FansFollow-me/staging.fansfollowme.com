@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Terms of Service of FansFollow.me">
-  <link rel="canonical" href="https://fansfollowme.com/terms.html">
+  <link rel="canonical" href="{{ url()->current() }}">
   <meta name="keywords" content="terms, Terms of Service," />
   <meta name="theme-color" content="#f97316">
   <title>Terms of Service - FansFollow.me</title>
@@ -446,8 +446,8 @@
   </style>
 <meta property="og:title" content="Terms of Service - FansFollow.me">
 <meta property="og:description" content="Terms of Service of FansFollow.me">
-<meta property="og:image" content="/public/logo-full-lockup.png">
-<meta property="og:url" content="https://fansfollowme.com/terms.html">
+<meta property="og:image" content="{{ url('/public/logo-full-lockup.png') }}">
+<meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website"></head>
 <body>
   <header class="public-shell-topbar">
@@ -514,6 +514,7 @@
     <a href="{{ route('page.live-streams') }}">&#128308; Live Streams</a>
     <a href="{{ route('page.business') }}">&#128188; Business</a>
     <a href="{{ route('page.support') }}">&#128172; Support</a>
+    <a href="{{ route('page.qr-signups') }}">&#128241; QR Sign-Ups</a>
     @auth
       @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
       <a href="{{ route('join.my-qr') }}">&#128241; My QR code</a>

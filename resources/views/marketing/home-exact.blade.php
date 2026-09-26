@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="FansFollow.me is the global fitness and martial arts creator platform for subscriptions, coaching, direct fan access, and live creator discovery.">
-  <link rel="canonical" href="https://fansfollowme.com/">
+  <link rel="canonical" href="{{ url()->current() }}">
     <meta name="keywords" content="donations,support,creators,content creators,subscription,content" />
   <meta name="theme-color" content="#450ea7">
   <meta name="msvalidate.01" content="83E04AABA8CC0BC0618D1849666A133A">
@@ -1645,8 +1645,8 @@
     <meta name="twitter:image" content="/public/logo-full-lockup.png">
 <meta property="og:title" content="FansFollow.me - Global Fitness & Martial Arts Creator Platform">
 <meta property="og:description" content="FansFollow.me is the global fitness and martial arts creator platform for subscriptions, coaching, direct fan access, and live creator discovery.">
-<meta property="og:image" content="/public/logo-full-lockup.png">
-<meta property="og:url" content="https://fansfollowme.com/">
+<meta property="og:image" content="{{ url('/public/logo-full-lockup.png') }}">
+<meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website"></head>
 <body>
   <header class="public-shell-topbar">
@@ -1713,6 +1713,7 @@
     <a href="{{ route('page.live-streams') }}">&#128308; Live Streams</a>
     <a href="{{ route('page.business') }}">&#128188; Business</a>
     <a href="{{ route('page.support') }}">&#128172; Support</a>
+    <a href="{{ route('page.qr-signups') }}">&#128241; QR Sign-Ups</a>
     @auth
       @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
       <a href="{{ route('join.my-qr') }}">&#128241; My QR code</a>

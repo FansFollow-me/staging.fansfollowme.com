@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Create your account on FansFollow.me. Join the #1 global fitness and martial arts creator platform.">
-  <link rel="canonical" href="https://fansfollowme.com/signup.html">
+  <link rel="canonical" href="{{ url()->current() }}">
     <meta name="keywords" content="donations,support,creators,content creators,subscription,content" />
   <meta name="theme-color" content="#450ea7">
   <meta name="msvalidate.01" content="83E04AABA8CC0BC0618D1849666A133A">
@@ -525,8 +525,8 @@
   </style>
 <meta property="og:title" content="Sign Up - FansFollow.me">
 <meta property="og:description" content="Create your account on FansFollow.me. Join the #1 global fitness and martial arts creator platform.">
-<meta property="og:image" content="/public/logo-full-lockup.png">
-<meta property="og:url" content="https://fansfollowme.com/signup.html">
+<meta property="og:image" content="{{ url('/public/logo-full-lockup.png') }}">
+<meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website"></head>
 <body>
   <header class="public-shell-topbar">

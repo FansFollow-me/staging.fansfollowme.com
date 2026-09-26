@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Turn your following into income on FansFollow.me &#8212; subscriptions, tips, shop sales and coaching tools built for fitness and combat sports creators.">
-  <link rel="canonical" href="https://fansfollowme.com/for-creators.html">
+  <link rel="canonical" href="{{ url()->current() }}">
     <meta name="keywords" content="donations,support,creators,content creators,subscription,content" />
   <meta name="theme-color" content="#450ea7">
   <meta name="msvalidate.01" content="83E04AABA8CC0BC0618D1849666A133A">
@@ -1481,8 +1481,8 @@
 <meta property="og:title" content="For Creators - FansFollow.me
  FansFollow.me">
 <meta property="og:description" content="Turn your following into income on FansFollow.me &#8212; subscriptions, tips, shop sales and coaching tools built for fitness and combat sports creators.">
-<meta property="og:image" content="/public/logo-full-lockup.png">
-<meta property="og:url" content="https://fansfollowme.com/for-creators.html">
+<meta property="og:image" content="{{ url('/public/logo-full-lockup.png') }}">
+<meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website"></head>
 <body>
   <header class="public-shell-topbar">
@@ -1549,6 +1549,7 @@
     <a href="{{ route('page.live-streams') }}">&#128308; Live Streams</a>
     <a href="{{ route('page.business') }}">&#128188; Business</a>
     <a href="{{ route('page.support') }}">&#128172; Support</a>
+    <a href="{{ route('page.qr-signups') }}">&#128241; QR Sign-Ups</a>
     @auth
       @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
       <a href="{{ route('join.my-qr') }}">&#128241; My QR code</a>
@@ -1595,7 +1596,7 @@ streams on FansFollow.me.</p>
         <div class="why-creators-item"><strong>Secure & professional</strong><p>Encrypted messaging and automated billing for your brand.</p></div>
         <div class="why-creators-item"><strong>Track your success</strong><p>Dashboard for earnings, fans and content performance.</p></div>
         <div class="why-creators-item"><strong>Built for your niche</strong><p>Made for fitness, martial arts and combat sports creators.</p></div>
-        <div class="why-creators-item"><strong>Earn FFM reward tokens</strong><p>Earn extra tokens as fans engage on the platform.</p></div>
+        <!-- FFM-REWARD-TOKEN-RESTORE: <div class="why-creators-item"><strong>Earn FFM reward tokens</strong><p>Earn extra tokens as fans engage on the platform.</p></div> -->
         <div class="why-creators-item"><strong>Negotiate higher rates</strong><p>Large creators can discuss custom terms above 80%+.</p></div>
       </div>
     </div>
@@ -1629,7 +1630,7 @@ streams on FansFollow.me.</p>
 <section class="section-photo">
   <div class="container">
     <h2>Ready to start earning?</h2>
-    <p>Join thousands of creators already making money on FansFollow</p>
+    <p>Join fitness and combat sports creators already building on FansFollow.me</p>
     <a class='cta-btn' href='{{ route('register') }}?role=creator'>Create Your Profile Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
 </section>

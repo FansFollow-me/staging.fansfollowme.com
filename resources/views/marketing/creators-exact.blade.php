@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Browse and discover verified creators on FansFollow.me &#8212; filter by category and gender to find your favorite fitness, combat sports, and entertainment talent.">
-  <link rel="canonical" href="https://fansfollowme.com/creators.html">
+  <link rel="canonical" href="{{ url()->current() }}">
   <meta name="theme-color" content="#f97316">
   <title>Creators - FansFollow.me</title>
   <link href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%230d1119%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-size=%2736%27 font-weight=%27bold%27 text-anchor=%27middle%27 fill=%27%23f97316%27 font-family=%27Arial,sans-serif%27%3EF%3C/text%3E%3C/svg%3E" rel="icon">
@@ -158,8 +158,8 @@
   </style>
 <meta property="og:title" content="Creators - FansFollow.me">
 <meta property="og:description" content="Browse and discover verified creators on FansFollow.me &#8212; filter by category and gender to find your favorite fitness, combat sports, and entertainment talent.">
-<meta property="og:image" content="/public/logo-full-lockup.png">
-<meta property="og:url" content="https://fansfollowme.com/creators.html">
+<meta property="og:image" content="{{ url('/public/logo-full-lockup.png') }}">
+<meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website"></head>
 <body>
   <header class="public-shell-topbar">
@@ -226,6 +226,7 @@
     <a href="{{ route('page.live-streams') }}">&#128308; Live Streams</a>
     <a href="{{ route('page.business') }}">&#128188; Business</a>
     <a href="{{ route('page.support') }}">&#128172; Support</a>
+    <a href="{{ route('page.qr-signups') }}">&#128241; QR Sign-Ups</a>
     @auth
       @if (auth()->user()->isCreator() || auth()->user()->isAdmin())
       <a href="{{ route('join.my-qr') }}">&#128241; My QR code</a>

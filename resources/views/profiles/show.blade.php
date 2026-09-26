@@ -142,8 +142,8 @@
         @endif
 
         <div class="d-flex ffm-profile-stats mt-2">
-            <span><strong>{{ number_format($postCount ?? $posts->total()) }}</strong> posts</span>
-            <span><strong>{{ number_format($followerCount ?? 0) }}</strong> followers</span>
+            <span><strong>{{ number_format($postCount ?? $posts->total()) }}</strong> {{ ($postCount ?? $posts->total()) === 1 ? 'post' : 'posts' }}</span>
+            <span><strong>{{ number_format($followerCount ?? 0) }}</strong> {{ ($followerCount ?? 0) === 1 ? 'follower' : 'followers' }}</span>
             @if ($isPaidCreator)
                 <span>Paid · ${{ number_format($subPrice / 100, 2) }}/mo</span>
             @elseif ($profileUser->isCreator())
