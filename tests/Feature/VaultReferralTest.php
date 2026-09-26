@@ -28,7 +28,8 @@ class VaultReferralTest extends TestCase
 
     public function test_creator_can_upload_and_list_vault(): void
     {
-        Storage::fake('public');
+        Storage::fake('local');
+        config(['ffm.upload_disk' => 'local']);
         $creator = $this->creator();
 
         $this->actingAs($creator)->post('/my/vault', [
@@ -82,7 +83,8 @@ class VaultReferralTest extends TestCase
 
     public function test_vault_download_owner_only(): void
     {
-        Storage::fake('public');
+        Storage::fake('local');
+        config(['ffm.upload_disk' => 'local']);
         $creator = $this->creator();
         $other = $this->creator();
 

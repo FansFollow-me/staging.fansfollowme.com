@@ -62,8 +62,8 @@ class ProfileImageUploadTest extends TestCase
 
         $page = $this->get('/'.$creator->username);
         $page->assertOk();
-        $page->assertSee(UploadStorage::publicUrl($profile->avatar_path), false);
-        $page->assertSee(UploadStorage::publicUrl($profile->cover_path), false);
+        $page->assertSee(UploadStorage::normalize($profile->avatar_path), false);
+        $page->assertSee(UploadStorage::normalize($profile->cover_path), false);
     }
 
     public function test_invalid_avatar_type_is_rejected(): void

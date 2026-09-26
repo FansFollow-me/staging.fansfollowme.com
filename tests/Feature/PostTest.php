@@ -73,9 +73,13 @@ class PostTest extends TestCase
         $this->flushSession();
 
         $response = $this->get('/posts/'.$post->id);
-        $response->assertOk();
-        $response->assertDontSee('Secret premium content body');
-        $response->assertSee('locked', false);
+        $response->assertStatus(301);
+        $response->assertRedirect('/'.$creator->username.'/'.$post->id);
+
+        $page = $this->get('/'.$creator->username.'/'.$post->id);
+        $page->assertOk();
+        $page->assertDontSee('Secret premium content body');
+        $page->assertSee('locked', false);
     }
 
     public function test_guest_can_see_free_post_body(): void
@@ -90,6 +94,12 @@ class PostTest extends TestCase
         $this->app['auth']->forgetGuards();
         $this->flushSession();
 
-        $this->get('/posts/'.$post->id)->assertOk()->assertSee('Open free content');
+        $this->get('/posts/'.$post->id)
+            ->assertStatus(301)
+            ->assertRedirect('/'.$creator->username.'/'.$post->id);
+
+        $this->get('/'.$creator->username.'/'.$post->id)
+            ->assertOk()
+            ->assertSee('Open free content');
     }
 }

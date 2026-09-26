@@ -39,7 +39,7 @@ class QrJoinFlowTest extends TestCase
         [$creator, $link] = $this->paidCreator('qrpaid2');
 
         $this->get('/j/'.$link->code)
-            ->assertRedirect(route('register', ['join_code' => $link->code]));
+            ->assertRedirect(route('profile', ['username' => $creator->username, 'ref' => $link->code]));
 
         $this->get('/'.$creator->username)
             ->assertOk()
@@ -52,7 +52,7 @@ class QrJoinFlowTest extends TestCase
     {
         [$creator, $link] = $this->paidCreator('qrpaid3');
 
-        $this->get('/j/'.$link->code)->assertRedirect(route('register', ['join_code' => $link->code]));
+        $this->get('/j/'.$link->code)->assertRedirect(route('profile', ['username' => $creator->username, 'ref' => $link->code]));
 
         $this->post('/signup', [
             'username' => 'qrfan1',
@@ -94,14 +94,16 @@ class QrJoinFlowTest extends TestCase
 
         $this->actingAs($creator)->get('/my/qr')
             ->assertOk()
-            ->assertSee('In-person QR signup')
+            ->assertSee('My QR Code')
             ->assertSee('qr-canvas-wrap')
             ->assertSee('qrcode.min.js')
-            ->assertSee('Print / save PDF');
+            ->assertSee('Show Full Screen')
+            ->assertSee('Download QR (PNG)');
 
         $link = JoinLink::where('creator_id', $creator->id)->first();
         $this->assertNotNull($link);
-        $this->assertStringContainsString('/j/'.$link->code, $link->url());
+        $this->assertStringContainsString($creator->username.'?ref=', $link->url());
+        $this->assertStringContainsString('ref='.urlencode($link->code), $link->url());
         $this->actingAs($creator)->get('/my/qr')->assertSee($link->url(), false);
     }
 }

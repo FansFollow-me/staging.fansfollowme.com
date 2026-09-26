@@ -6,6 +6,7 @@ use App\Enums\UserRole;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class CommerceTest extends TestCase
@@ -51,14 +52,39 @@ class CommerceTest extends TestCase
         $this->assertTrue($fan->fresh()->following->contains($creator->id));
     }
 
+    public function test_wallet_add_funds_starts_stripe_checkout(): void
+    {
+        $fan = $this->makeFan(0);
+
+        config(['services.stripe.secret' => 'sk_test_fake']);
+        Http::fake([
+            'api.stripe.com/*' => Http::response([
+                'url' => 'https://checkout.stripe.com/test/session_abc',
+            ], 200),
+        ]);
+
+        $this->actingAs($fan)->post('/wallet/add-funds', ['amount' => 5000])
+            ->assertRedirect('https://checkout.stripe.com/test/session_abc');
+
+        // Checkout does not credit the wallet until the webhook confirms payment
+        $this->assertSame(0, $fan->fresh()->wallet->balance);
+    }
+
+    public function test_wallet_add_funds_rejects_when_stripe_disabled(): void
+    {
+        $fan = $this->makeFan(0);
+        config(['services.stripe.secret' => null]);
+
+        $this->actingAs($fan)->post('/wallet/add-funds', ['amount' => 5000])
+            ->assertSessionHasErrors('amount');
+
+        $this->assertSame(0, $fan->fresh()->wallet->balance);
+    }
+
     public function test_wallet_deposit_and_subscribe(): void
     {
         $creator = $this->makeCreator();
-        $fan = $this->makeFan(0);
-
-        $this->actingAs($fan)->post('/wallet/add-funds', ['amount' => 5000])
-            ->assertSessionHas('status');
-        $this->assertSame(5000, $fan->fresh()->wallet->balance);
+        $fan = $this->makeFan(5000);
 
         $this->actingAs($fan)->post('/subscribe/'.$creator->id)
             ->assertSessionHas('status');
@@ -107,7 +133,7 @@ class CommerceTest extends TestCase
         $this->assertTrue($post->isLockedFor($fan));
 
         $this->actingAs($fan)->post('/posts/'.$post->id.'/unlock')
-            ->assertRedirect('/posts/'.$post->id);
+            ->assertRedirect(route('posts.show', $post));
 
         $this->assertFalse($post->fresh()->isLockedFor($fan));
         $this->assertSame(1500, $fan->fresh()->wallet->balance);

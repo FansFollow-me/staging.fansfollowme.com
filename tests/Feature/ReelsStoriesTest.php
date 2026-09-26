@@ -29,7 +29,8 @@ class ReelsStoriesTest extends TestCase
 
     public function test_creator_can_create_reel(): void
     {
-        Storage::fake('public');
+        Storage::fake('local');
+        config(['ffm.upload_disk' => 'local']);
         $creator = $this->creator();
 
         $video = UploadedFile::fake()->create('reel.mp4', 1024, 'video/mp4');
